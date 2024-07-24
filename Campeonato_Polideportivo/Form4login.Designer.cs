@@ -30,12 +30,13 @@ namespace Campeonato_Polideportivo
         private void InitializeComponent()
         {
             this.PanelIzquierdo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.LblLogin = new System.Windows.Forms.Label();
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.LLblPassword = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.PanelIzquierdo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +50,17 @@ namespace Campeonato_Polideportivo
             this.PanelIzquierdo.Name = "PanelIzquierdo";
             this.PanelIzquierdo.Size = new System.Drawing.Size(320, 653);
             this.PanelIzquierdo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox1.Image = global::Campeonato_Polideportivo.Properties.Resources.logotipo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 166);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(320, 265);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // TxtUsuario
             // 
@@ -119,16 +131,14 @@ namespace Campeonato_Polideportivo
             this.LLblPassword.TabStop = true;
             this.LLblPassword.Text = "¿Has olvidado tu contraseña?";
             // 
-            // pictureBox1
+            // button1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox1.Image = global::Campeonato_Polideportivo.Properties.Resources.logotipo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 166);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(320, 265);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.button1.Location = new System.Drawing.Point(963, 437);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form4login
             // 
@@ -136,6 +146,7 @@ namespace Campeonato_Polideportivo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.LLblPassword);
             this.Controls.Add(this.BtnIngresar);
             this.Controls.Add(this.LblLogin);
@@ -162,5 +173,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.LinkLabel LLblPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
