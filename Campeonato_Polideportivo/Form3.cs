@@ -24,7 +24,11 @@ namespace Campeonato_Polideportivo
 
         private void LblCampeonatos_Click(object sender, EventArgs e)
         {
+        }
 
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            LblEquipos.BackColor = Color.Transparent; //Para que los label no tengan un fondo de color
         }
     }
 }

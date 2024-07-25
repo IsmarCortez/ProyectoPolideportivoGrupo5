@@ -29,6 +29,7 @@ namespace Campeonato_Polideportivo
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4login));
             this.PanelIzquierdo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TxtUsuario = new System.Windows.Forms.TextBox();
@@ -153,10 +154,11 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.TxtPassword);
             this.Controls.Add(this.TxtUsuario);
             this.Controls.Add(this.PanelIzquierdo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "Form4login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form4login";
+            this.Text = "Login";
             this.PanelIzquierdo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
