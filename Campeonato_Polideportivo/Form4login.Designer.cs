@@ -40,6 +40,7 @@ namespace Campeonato_Polideportivo
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.PanelIzquierdo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +103,7 @@ namespace Campeonato_Polideportivo
             this.LblLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
             this.LblLogin.Location = new System.Drawing.Point(709, 75);
             this.LblLogin.Name = "LblLogin";
-            this.LblLogin.Size = new System.Drawing.Size(80, 40);
+            this.LblLogin.Size = new System.Drawing.Size(81, 40);
             this.LblLogin.TabIndex = 3;
             this.LblLogin.Text = "LOGIN";
             // 
@@ -157,19 +158,28 @@ namespace Campeonato_Polideportivo
             this.label1.Location = new System.Drawing.Point(372, 290);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 16);
+            this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Alejandro";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(355, 441);
+            this.label2.Location = new System.Drawing.Point(410, 414);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 16);
+            this.label2.Size = new System.Drawing.Size(113, 17);
             this.label2.TabIndex = 8;
             this.label2.Text = "Ismar Cortez jeje";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(413, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Fernando";
             // 
             // Form4login
             // 
@@ -177,6 +187,7 @@ namespace Campeonato_Polideportivo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.ClientSize = new System.Drawing.Size(1184, 654);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -211,5 +222,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
