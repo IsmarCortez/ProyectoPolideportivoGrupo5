@@ -29,26 +29,15 @@ namespace Campeonato_Polideportivo
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
             this.CmbDeporte = new System.Windows.Forms.ComboBox();
             this.LblEquipos = new System.Windows.Forms.Label();
-            this.BtnEliminar = new System.Windows.Forms.Button();
-            this.BtnModificacion = new System.Windows.Forms.Button();
-            this.BtnIngreso = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.CmbEquipo = new System.Windows.Forms.ComboBox();
+            this.BtnIngresar = new System.Windows.Forms.Button();
+            this.BtnModificar = new System.Windows.Forms.Button();
+            this.BtnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(42, 31);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(46, 27);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "X";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // CmbDeporte
             // 
@@ -64,43 +53,13 @@ namespace Campeonato_Polideportivo
             // 
             this.LblEquipos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.LblEquipos.AutoSize = true;
-            this.LblEquipos.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEquipos.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEquipos.Location = new System.Drawing.Point(425, 36);
             this.LblEquipos.Name = "LblEquipos";
-            this.LblEquipos.Size = new System.Drawing.Size(150, 48);
+            this.LblEquipos.Size = new System.Drawing.Size(145, 50);
             this.LblEquipos.TabIndex = 15;
-            this.LblEquipos.Text = "Equipos";
+            this.LblEquipos.Text = "EQUIPOS";
             this.LblEquipos.Click += new System.EventHandler(this.LblCampeonatos_Click);
-            // 
-            // BtnEliminar
-            // 
-            this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnEliminar.Location = new System.Drawing.Point(665, 529);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(174, 27);
-            this.BtnEliminar.TabIndex = 13;
-            this.BtnEliminar.Text = "Eliminar";
-            this.BtnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // BtnModificacion
-            // 
-            this.BtnModificacion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnModificacion.Location = new System.Drawing.Point(405, 529);
-            this.BtnModificacion.Name = "BtnModificacion";
-            this.BtnModificacion.Size = new System.Drawing.Size(174, 27);
-            this.BtnModificacion.TabIndex = 12;
-            this.BtnModificacion.Text = "Modificacion";
-            this.BtnModificacion.UseVisualStyleBackColor = true;
-            // 
-            // BtnIngreso
-            // 
-            this.BtnIngreso.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnIngreso.Location = new System.Drawing.Point(150, 529);
-            this.BtnIngreso.Name = "BtnIngreso";
-            this.BtnIngreso.Size = new System.Drawing.Size(174, 27);
-            this.BtnIngreso.TabIndex = 11;
-            this.BtnIngreso.Text = "Ingreso";
-            this.BtnIngreso.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -112,7 +71,7 @@ namespace Campeonato_Polideportivo
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 315);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 293);
             this.dataGridView1.TabIndex = 10;
             // 
             // CmbEquipo
@@ -125,22 +84,74 @@ namespace Campeonato_Polideportivo
             this.CmbEquipo.TabIndex = 17;
             this.CmbEquipo.Text = "Selecciona un equipo...";
             // 
+            // BtnIngresar
+            // 
+            this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnIngresar.FlatAppearance.BorderSize = 0;
+            this.BtnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnIngresar.Location = new System.Drawing.Point(144, 505);
+            this.BtnIngresar.Name = "BtnIngresar";
+            this.BtnIngresar.Size = new System.Drawing.Size(174, 41);
+            this.BtnIngresar.TabIndex = 18;
+            this.BtnIngresar.Text = "INGRESAR";
+            this.BtnIngresar.UseVisualStyleBackColor = false;
+            // 
+            // BtnModificar
+            // 
+            this.BtnModificar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnModificar.FlatAppearance.BorderSize = 0;
+            this.BtnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.BtnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnModificar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnModificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnModificar.Location = new System.Drawing.Point(399, 505);
+            this.BtnModificar.Name = "BtnModificar";
+            this.BtnModificar.Size = new System.Drawing.Size(174, 41);
+            this.BtnModificar.TabIndex = 19;
+            this.BtnModificar.Text = "MODIFICAR";
+            this.BtnModificar.UseVisualStyleBackColor = false;
+            // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnEliminar.FlatAppearance.BorderSize = 0;
+            this.BtnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.BtnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEliminar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnEliminar.Location = new System.Drawing.Point(659, 505);
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(174, 41);
+            this.BtnEliminar.TabIndex = 20;
+            this.BtnEliminar.Text = "ELIMINAR";
+            this.BtnEliminar.UseVisualStyleBackColor = false;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(995, 653);
+            this.Controls.Add(this.BtnEliminar);
+            this.Controls.Add(this.BtnModificar);
+            this.Controls.Add(this.BtnIngresar);
             this.Controls.Add(this.CmbEquipo);
             this.Controls.Add(this.CmbDeporte);
             this.Controls.Add(this.LblEquipos);
-            this.Controls.Add(this.BtnEliminar);
-            this.Controls.Add(this.BtnModificacion);
-            this.Controls.Add(this.BtnIngreso);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button4);
             this.Name = "Form3";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,14 +159,12 @@ namespace Campeonato_Polideportivo
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox CmbDeporte;
         private System.Windows.Forms.Label LblEquipos;
-        private System.Windows.Forms.Button BtnEliminar;
-        private System.Windows.Forms.Button BtnModificacion;
-        private System.Windows.Forms.Button BtnIngreso;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox CmbEquipo;
+        private System.Windows.Forms.Button BtnIngresar;
+        private System.Windows.Forms.Button BtnModificar;
+        private System.Windows.Forms.Button BtnEliminar;
     }
 }
