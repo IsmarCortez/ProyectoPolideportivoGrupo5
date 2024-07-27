@@ -85,3 +85,10 @@ C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.CopyComplete
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormDeporte.resources
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormEquipo.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormAnotaciones.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormArbitro.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormAsistencia.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormCampeonato.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormEntrenador.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormFaltas.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormJugador.resources

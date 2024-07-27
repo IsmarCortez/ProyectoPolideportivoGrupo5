@@ -123,17 +123,59 @@
     <Compile Include="Form4login.Designer.cs">
       <DependentUpon>Form4login.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAnotaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAnotaciones.Designer.cs">
+      <DependentUpon>FormAnotaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormArbitro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArbitro.Designer.cs">
+      <DependentUpon>FormArbitro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAsistencia.Designer.cs">
+      <DependentUpon>FormAsistencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCampeonato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCampeonato.Designer.cs">
+      <DependentUpon>FormCampeonato.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDeporte.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDeporte.Designer.cs">
       <DependentUpon>FormDeporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEntrenador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEntrenador.Designer.cs">
+      <DependentUpon>FormEntrenador.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEquipo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormEquipo.Designer.cs">
       <DependentUpon>FormEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFaltas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFaltas.Designer.cs">
+      <DependentUpon>FormFaltas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormJugador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormJugador.Designer.cs">
+      <DependentUpon>FormJugador.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,11 +191,32 @@
     <EmbeddedResource Include="Form4login.resx">
       <DependentUpon>Form4login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAnotaciones.resx">
+      <DependentUpon>FormAnotaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArbitro.resx">
+      <DependentUpon>FormArbitro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAsistencia.resx">
+      <DependentUpon>FormAsistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCampeonato.resx">
+      <DependentUpon>FormCampeonato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDeporte.resx">
       <DependentUpon>FormDeporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEntrenador.resx">
+      <DependentUpon>FormEntrenador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEquipo.resx">
       <DependentUpon>FormEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFaltas.resx">
+      <DependentUpon>FormFaltas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormJugador.resx">
+      <DependentUpon>FormJugador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
