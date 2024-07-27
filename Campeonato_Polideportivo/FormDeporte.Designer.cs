@@ -43,6 +43,7 @@ namespace Campeonato_Polideportivo
             this.Regla = new System.Windows.Forms.Label();
             this.textBox3Regla = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,11 +213,21 @@ namespace Campeonato_Polideportivo
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(153, 452);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 16);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Chubasco";
+            // 
             // FormDeporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 653);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox3Regla);
             this.Controls.Add(this.Regla);
@@ -255,5 +266,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Label Regla;
         private System.Windows.Forms.TextBox textBox3Regla;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }
