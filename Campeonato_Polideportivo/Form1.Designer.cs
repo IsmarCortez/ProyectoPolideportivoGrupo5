@@ -31,6 +31,17 @@ namespace Campeonato_Polideportivo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.PanelLateral = new System.Windows.Forms.Panel();
+            this.PanelIngresar = new System.Windows.Forms.Panel();
+            this.BtnEquipo2 = new System.Windows.Forms.Button();
+            this.BtnDeporte1 = new System.Windows.Forms.Button();
+            this.BtnIngresar = new System.Windows.Forms.Button();
+            this.BtnFaltas = new System.Windows.Forms.Button();
+            this.BtnAnotaciones = new System.Windows.Forms.Button();
+            this.BtnAsistencia = new System.Windows.Forms.Button();
+            this.BtnCampeonato = new System.Windows.Forms.Button();
+            this.BtnArbitro = new System.Windows.Forms.Button();
+            this.BtnEntrenador = new System.Windows.Forms.Button();
+            this.BtnJugador = new System.Windows.Forms.Button();
             this.BtnEquipo = new System.Windows.Forms.Button();
             this.BtnDeporte = new System.Windows.Forms.Button();
             this.BtnInicio = new System.Windows.Forms.Button();
@@ -40,36 +51,18 @@ namespace Campeonato_Polideportivo
             this.LblTitulo2 = new System.Windows.Forms.Label();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BtnJugador = new System.Windows.Forms.Button();
-            this.BtnEntrenador = new System.Windows.Forms.Button();
-            this.BtnArbitro = new System.Windows.Forms.Button();
-            this.BtnCampeonato = new System.Windows.Forms.Button();
-            this.BtnAsistencia = new System.Windows.Forms.Button();
-            this.BtnAnotaciones = new System.Windows.Forms.Button();
-            this.BtnFaltas = new System.Windows.Forms.Button();
-            this.PanelIngresar = new System.Windows.Forms.Panel();
-            this.BtnEquipo2 = new System.Windows.Forms.Button();
-            this.BtnDeporte1 = new System.Windows.Forms.Button();
-            this.BtnIngresar = new System.Windows.Forms.Button();
-            this.PanelEquipos = new System.Windows.Forms.Panel();
-            this.BtnJugadores = new System.Windows.Forms.Button();
-            this.BtnEntrenadores = new System.Windows.Forms.Button();
-            this.BtnEquipos = new System.Windows.Forms.Button();
             this.PanelLateral.SuspendLayout();
+            this.PanelIngresar.SuspendLayout();
             this.PanelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.PanelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.PanelIngresar.SuspendLayout();
-            this.PanelEquipos.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelLateral
             // 
             this.PanelLateral.AutoScroll = true;
             this.PanelLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(58)))), ((int)(((byte)(64)))));
-            this.PanelLateral.Controls.Add(this.PanelEquipos);
-            this.PanelLateral.Controls.Add(this.BtnEquipos);
             this.PanelLateral.Controls.Add(this.PanelIngresar);
             this.PanelLateral.Controls.Add(this.BtnIngresar);
             this.PanelLateral.Controls.Add(this.BtnFaltas);
@@ -88,6 +81,177 @@ namespace Campeonato_Polideportivo
             this.PanelLateral.Name = "PanelLateral";
             this.PanelLateral.Size = new System.Drawing.Size(187, 653);
             this.PanelLateral.TabIndex = 0;
+            // 
+            // PanelIngresar
+            // 
+            this.PanelIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.PanelIngresar.Controls.Add(this.BtnEquipo2);
+            this.PanelIngresar.Controls.Add(this.BtnDeporte1);
+            this.PanelIngresar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelIngresar.Location = new System.Drawing.Point(0, 640);
+            this.PanelIngresar.Name = "PanelIngresar";
+            this.PanelIngresar.Size = new System.Drawing.Size(166, 157);
+            this.PanelIngresar.TabIndex = 27;
+            // 
+            // BtnEquipo2
+            // 
+            this.BtnEquipo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.BtnEquipo2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnEquipo2.FlatAppearance.BorderSize = 0;
+            this.BtnEquipo2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.BtnEquipo2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEquipo2.Location = new System.Drawing.Point(0, 40);
+            this.BtnEquipo2.Name = "BtnEquipo2";
+            this.BtnEquipo2.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.BtnEquipo2.Size = new System.Drawing.Size(166, 40);
+            this.BtnEquipo2.TabIndex = 1;
+            this.BtnEquipo2.Text = "Equipo";
+            this.BtnEquipo2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnEquipo2.UseVisualStyleBackColor = false;
+            // 
+            // BtnDeporte1
+            // 
+            this.BtnDeporte1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.BtnDeporte1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnDeporte1.FlatAppearance.BorderSize = 0;
+            this.BtnDeporte1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.BtnDeporte1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDeporte1.Location = new System.Drawing.Point(0, 0);
+            this.BtnDeporte1.Name = "BtnDeporte1";
+            this.BtnDeporte1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.BtnDeporte1.Size = new System.Drawing.Size(166, 40);
+            this.BtnDeporte1.TabIndex = 0;
+            this.BtnDeporte1.Text = "Deporte";
+            this.BtnDeporte1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnDeporte1.UseVisualStyleBackColor = false;
+            // 
+            // BtnIngresar
+            // 
+            this.BtnIngresar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnIngresar.FlatAppearance.BorderSize = 0;
+            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnIngresar.Location = new System.Drawing.Point(0, 595);
+            this.BtnIngresar.Name = "BtnIngresar";
+            this.BtnIngresar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnIngresar.Size = new System.Drawing.Size(166, 45);
+            this.BtnIngresar.TabIndex = 26;
+            this.BtnIngresar.Text = "aun por ver";
+            this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnIngresar.UseVisualStyleBackColor = true;
+            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
+            // 
+            // BtnFaltas
+            // 
+            this.BtnFaltas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnFaltas.FlatAppearance.BorderSize = 0;
+            this.BtnFaltas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnFaltas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnFaltas.Location = new System.Drawing.Point(0, 550);
+            this.BtnFaltas.Name = "BtnFaltas";
+            this.BtnFaltas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnFaltas.Size = new System.Drawing.Size(166, 45);
+            this.BtnFaltas.TabIndex = 24;
+            this.BtnFaltas.Text = "Faltas";
+            this.BtnFaltas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnFaltas.UseVisualStyleBackColor = true;
+            this.BtnFaltas.Click += new System.EventHandler(this.BtnFaltas_Click);
+            // 
+            // BtnAnotaciones
+            // 
+            this.BtnAnotaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnAnotaciones.FlatAppearance.BorderSize = 0;
+            this.BtnAnotaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAnotaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnAnotaciones.Location = new System.Drawing.Point(0, 505);
+            this.BtnAnotaciones.Name = "BtnAnotaciones";
+            this.BtnAnotaciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnAnotaciones.Size = new System.Drawing.Size(166, 45);
+            this.BtnAnotaciones.TabIndex = 23;
+            this.BtnAnotaciones.Text = "Anotaciones";
+            this.BtnAnotaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAnotaciones.UseVisualStyleBackColor = true;
+            this.BtnAnotaciones.Click += new System.EventHandler(this.BtnAnotaciones_Click);
+            // 
+            // BtnAsistencia
+            // 
+            this.BtnAsistencia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnAsistencia.FlatAppearance.BorderSize = 0;
+            this.BtnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAsistencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnAsistencia.Location = new System.Drawing.Point(0, 460);
+            this.BtnAsistencia.Name = "BtnAsistencia";
+            this.BtnAsistencia.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnAsistencia.Size = new System.Drawing.Size(166, 45);
+            this.BtnAsistencia.TabIndex = 22;
+            this.BtnAsistencia.Text = "Asistencia";
+            this.BtnAsistencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAsistencia.UseVisualStyleBackColor = true;
+            this.BtnAsistencia.Click += new System.EventHandler(this.BtnAsistencia_Click);
+            // 
+            // BtnCampeonato
+            // 
+            this.BtnCampeonato.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnCampeonato.FlatAppearance.BorderSize = 0;
+            this.BtnCampeonato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCampeonato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnCampeonato.Location = new System.Drawing.Point(0, 415);
+            this.BtnCampeonato.Name = "BtnCampeonato";
+            this.BtnCampeonato.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnCampeonato.Size = new System.Drawing.Size(166, 45);
+            this.BtnCampeonato.TabIndex = 21;
+            this.BtnCampeonato.Text = "Campeonato";
+            this.BtnCampeonato.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCampeonato.UseVisualStyleBackColor = true;
+            this.BtnCampeonato.Click += new System.EventHandler(this.BtnCampeonato_Click);
+            // 
+            // BtnArbitro
+            // 
+            this.BtnArbitro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnArbitro.FlatAppearance.BorderSize = 0;
+            this.BtnArbitro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnArbitro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnArbitro.Location = new System.Drawing.Point(0, 370);
+            this.BtnArbitro.Name = "BtnArbitro";
+            this.BtnArbitro.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnArbitro.Size = new System.Drawing.Size(166, 45);
+            this.BtnArbitro.TabIndex = 20;
+            this.BtnArbitro.Text = "Arbitro";
+            this.BtnArbitro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnArbitro.UseVisualStyleBackColor = true;
+            this.BtnArbitro.Click += new System.EventHandler(this.BtnArbitro_Click);
+            // 
+            // BtnEntrenador
+            // 
+            this.BtnEntrenador.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnEntrenador.FlatAppearance.BorderSize = 0;
+            this.BtnEntrenador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEntrenador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnEntrenador.Location = new System.Drawing.Point(0, 325);
+            this.BtnEntrenador.Name = "BtnEntrenador";
+            this.BtnEntrenador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnEntrenador.Size = new System.Drawing.Size(166, 45);
+            this.BtnEntrenador.TabIndex = 19;
+            this.BtnEntrenador.Text = "Entrenador";
+            this.BtnEntrenador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnEntrenador.UseVisualStyleBackColor = true;
+            this.BtnEntrenador.Click += new System.EventHandler(this.BtnEntrenador_Click);
+            // 
+            // BtnJugador
+            // 
+            this.BtnJugador.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnJugador.FlatAppearance.BorderSize = 0;
+            this.BtnJugador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnJugador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnJugador.Location = new System.Drawing.Point(0, 280);
+            this.BtnJugador.Name = "BtnJugador";
+            this.BtnJugador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnJugador.Size = new System.Drawing.Size(166, 45);
+            this.BtnJugador.TabIndex = 18;
+            this.BtnJugador.Text = "Jugador";
+            this.BtnJugador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnJugador.UseVisualStyleBackColor = true;
+            this.BtnJugador.Click += new System.EventHandler(this.BtnJugador_Click);
             // 
             // BtnEquipo
             // 
@@ -206,234 +370,6 @@ namespace Campeonato_Polideportivo
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // BtnJugador
-            // 
-            this.BtnJugador.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnJugador.FlatAppearance.BorderSize = 0;
-            this.BtnJugador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnJugador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnJugador.Location = new System.Drawing.Point(0, 280);
-            this.BtnJugador.Name = "BtnJugador";
-            this.BtnJugador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnJugador.Size = new System.Drawing.Size(166, 45);
-            this.BtnJugador.TabIndex = 18;
-            this.BtnJugador.Text = "Jugador";
-            this.BtnJugador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnJugador.UseVisualStyleBackColor = true;
-            this.BtnJugador.Click += new System.EventHandler(this.BtnJugador_Click);
-            // 
-            // BtnEntrenador
-            // 
-            this.BtnEntrenador.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnEntrenador.FlatAppearance.BorderSize = 0;
-            this.BtnEntrenador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEntrenador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnEntrenador.Location = new System.Drawing.Point(0, 325);
-            this.BtnEntrenador.Name = "BtnEntrenador";
-            this.BtnEntrenador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnEntrenador.Size = new System.Drawing.Size(166, 45);
-            this.BtnEntrenador.TabIndex = 19;
-            this.BtnEntrenador.Text = "Entrenador";
-            this.BtnEntrenador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnEntrenador.UseVisualStyleBackColor = true;
-            this.BtnEntrenador.Click += new System.EventHandler(this.BtnEntrenador_Click);
-            // 
-            // BtnArbitro
-            // 
-            this.BtnArbitro.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnArbitro.FlatAppearance.BorderSize = 0;
-            this.BtnArbitro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnArbitro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnArbitro.Location = new System.Drawing.Point(0, 370);
-            this.BtnArbitro.Name = "BtnArbitro";
-            this.BtnArbitro.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnArbitro.Size = new System.Drawing.Size(166, 45);
-            this.BtnArbitro.TabIndex = 20;
-            this.BtnArbitro.Text = "Arbitro";
-            this.BtnArbitro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnArbitro.UseVisualStyleBackColor = true;
-            this.BtnArbitro.Click += new System.EventHandler(this.BtnArbitro_Click);
-            // 
-            // BtnCampeonato
-            // 
-            this.BtnCampeonato.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnCampeonato.FlatAppearance.BorderSize = 0;
-            this.BtnCampeonato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCampeonato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnCampeonato.Location = new System.Drawing.Point(0, 415);
-            this.BtnCampeonato.Name = "BtnCampeonato";
-            this.BtnCampeonato.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnCampeonato.Size = new System.Drawing.Size(166, 45);
-            this.BtnCampeonato.TabIndex = 21;
-            this.BtnCampeonato.Text = "Campeonato";
-            this.BtnCampeonato.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCampeonato.UseVisualStyleBackColor = true;
-            this.BtnCampeonato.Click += new System.EventHandler(this.BtnCampeonato_Click);
-            // 
-            // BtnAsistencia
-            // 
-            this.BtnAsistencia.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnAsistencia.FlatAppearance.BorderSize = 0;
-            this.BtnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAsistencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnAsistencia.Location = new System.Drawing.Point(0, 460);
-            this.BtnAsistencia.Name = "BtnAsistencia";
-            this.BtnAsistencia.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnAsistencia.Size = new System.Drawing.Size(166, 45);
-            this.BtnAsistencia.TabIndex = 22;
-            this.BtnAsistencia.Text = "Asistencia";
-            this.BtnAsistencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAsistencia.UseVisualStyleBackColor = true;
-            this.BtnAsistencia.Click += new System.EventHandler(this.BtnAsistencia_Click);
-            // 
-            // BtnAnotaciones
-            // 
-            this.BtnAnotaciones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnAnotaciones.FlatAppearance.BorderSize = 0;
-            this.BtnAnotaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAnotaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnAnotaciones.Location = new System.Drawing.Point(0, 505);
-            this.BtnAnotaciones.Name = "BtnAnotaciones";
-            this.BtnAnotaciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnAnotaciones.Size = new System.Drawing.Size(166, 45);
-            this.BtnAnotaciones.TabIndex = 23;
-            this.BtnAnotaciones.Text = "Anotaciones";
-            this.BtnAnotaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAnotaciones.UseVisualStyleBackColor = true;
-            this.BtnAnotaciones.Click += new System.EventHandler(this.BtnAnotaciones_Click);
-            // 
-            // BtnFaltas
-            // 
-            this.BtnFaltas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnFaltas.FlatAppearance.BorderSize = 0;
-            this.BtnFaltas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnFaltas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnFaltas.Location = new System.Drawing.Point(0, 550);
-            this.BtnFaltas.Name = "BtnFaltas";
-            this.BtnFaltas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnFaltas.Size = new System.Drawing.Size(166, 45);
-            this.BtnFaltas.TabIndex = 24;
-            this.BtnFaltas.Text = "Faltas";
-            this.BtnFaltas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnFaltas.UseVisualStyleBackColor = true;
-            this.BtnFaltas.Click += new System.EventHandler(this.BtnFaltas_Click);
-            // 
-            // PanelIngresar
-            // 
-            this.PanelIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.PanelIngresar.Controls.Add(this.BtnEquipo2);
-            this.PanelIngresar.Controls.Add(this.BtnDeporte1);
-            this.PanelIngresar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelIngresar.Location = new System.Drawing.Point(0, 640);
-            this.PanelIngresar.Name = "PanelIngresar";
-            this.PanelIngresar.Size = new System.Drawing.Size(166, 374);
-            this.PanelIngresar.TabIndex = 27;
-            // 
-            // BtnEquipo2
-            // 
-            this.BtnEquipo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.BtnEquipo2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnEquipo2.FlatAppearance.BorderSize = 0;
-            this.BtnEquipo2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.BtnEquipo2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEquipo2.Location = new System.Drawing.Point(0, 40);
-            this.BtnEquipo2.Name = "BtnEquipo2";
-            this.BtnEquipo2.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BtnEquipo2.Size = new System.Drawing.Size(166, 40);
-            this.BtnEquipo2.TabIndex = 1;
-            this.BtnEquipo2.Text = "Equipo";
-            this.BtnEquipo2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnEquipo2.UseVisualStyleBackColor = false;
-            // 
-            // BtnDeporte1
-            // 
-            this.BtnDeporte1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.BtnDeporte1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnDeporte1.FlatAppearance.BorderSize = 0;
-            this.BtnDeporte1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.BtnDeporte1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDeporte1.Location = new System.Drawing.Point(0, 0);
-            this.BtnDeporte1.Name = "BtnDeporte1";
-            this.BtnDeporte1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BtnDeporte1.Size = new System.Drawing.Size(166, 40);
-            this.BtnDeporte1.TabIndex = 0;
-            this.BtnDeporte1.Text = "Deporte";
-            this.BtnDeporte1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnDeporte1.UseVisualStyleBackColor = false;
-            // 
-            // BtnIngresar
-            // 
-            this.BtnIngresar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnIngresar.FlatAppearance.BorderSize = 0;
-            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnIngresar.Location = new System.Drawing.Point(0, 595);
-            this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnIngresar.Size = new System.Drawing.Size(166, 45);
-            this.BtnIngresar.TabIndex = 26;
-            this.BtnIngresar.Text = "Ingresar";
-            this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnIngresar.UseVisualStyleBackColor = true;
-            // 
-            // PanelEquipos
-            // 
-            this.PanelEquipos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.PanelEquipos.Controls.Add(this.BtnJugadores);
-            this.PanelEquipos.Controls.Add(this.BtnEntrenadores);
-            this.PanelEquipos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelEquipos.Location = new System.Drawing.Point(0, 1059);
-            this.PanelEquipos.Name = "PanelEquipos";
-            this.PanelEquipos.Size = new System.Drawing.Size(166, 83);
-            this.PanelEquipos.TabIndex = 29;
-            // 
-            // BtnJugadores
-            // 
-            this.BtnJugadores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.BtnJugadores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnJugadores.FlatAppearance.BorderSize = 0;
-            this.BtnJugadores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.BtnJugadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnJugadores.Location = new System.Drawing.Point(0, 40);
-            this.BtnJugadores.Name = "BtnJugadores";
-            this.BtnJugadores.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BtnJugadores.Size = new System.Drawing.Size(166, 43);
-            this.BtnJugadores.TabIndex = 1;
-            this.BtnJugadores.Text = "Jugadores";
-            this.BtnJugadores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnJugadores.UseVisualStyleBackColor = false;
-            // 
-            // BtnEntrenadores
-            // 
-            this.BtnEntrenadores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.BtnEntrenadores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnEntrenadores.FlatAppearance.BorderSize = 0;
-            this.BtnEntrenadores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.BtnEntrenadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEntrenadores.Location = new System.Drawing.Point(0, 0);
-            this.BtnEntrenadores.Name = "BtnEntrenadores";
-            this.BtnEntrenadores.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BtnEntrenadores.Size = new System.Drawing.Size(166, 40);
-            this.BtnEntrenadores.TabIndex = 0;
-            this.BtnEntrenadores.Text = "Entrenadores";
-            this.BtnEntrenadores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnEntrenadores.UseVisualStyleBackColor = false;
-            // 
-            // BtnEquipos
-            // 
-            this.BtnEquipos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnEquipos.FlatAppearance.BorderSize = 0;
-            this.BtnEquipos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEquipos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnEquipos.Location = new System.Drawing.Point(0, 1014);
-            this.BtnEquipos.Name = "BtnEquipos";
-            this.BtnEquipos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnEquipos.Size = new System.Drawing.Size(166, 45);
-            this.BtnEquipos.TabIndex = 28;
-            this.BtnEquipos.Text = "Equipos";
-            this.BtnEquipos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnEquipos.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -449,13 +385,12 @@ namespace Campeonato_Polideportivo
             this.Text = "Campeonato Polideportivo";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.PanelLateral.ResumeLayout(false);
+            this.PanelIngresar.ResumeLayout(false);
             this.PanelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.PanelForm.ResumeLayout(false);
             this.PanelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.PanelIngresar.ResumeLayout(false);
-            this.PanelEquipos.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -472,10 +407,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnDeporte;
         private System.Windows.Forms.Label LblTitulo2;
         private System.Windows.Forms.Button BtnEquipo;
-        private System.Windows.Forms.Panel PanelEquipos;
-        private System.Windows.Forms.Button BtnJugadores;
-        private System.Windows.Forms.Button BtnEntrenadores;
-        private System.Windows.Forms.Button BtnEquipos;
         private System.Windows.Forms.Panel PanelIngresar;
         private System.Windows.Forms.Button BtnEquipo2;
         private System.Windows.Forms.Button BtnDeporte1;

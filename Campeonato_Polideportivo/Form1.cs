@@ -16,17 +16,17 @@ namespace Campeonato_Polideportivo
         {
             InitializeComponent();
             Design(); //Se manda a llamar la función luego de inicializar los componentes
+            this.Load += new EventHandler(Form1_Load); //evento para poner el programa en pantalla completa
         }
         private void Design() //Es una función para ocultar los paneles secundarios en el panel principal
         {
-            PanelEquipos.Visible = false; //Se utiliza para ocultar los paneles
-            PanelIngresar.Visible = false;
+              PanelIngresar.Visible = false;//Se utiliza para ocultar los paneles
+
         }
 
         private void OcultarSubMenu()//Función para ocultar los paneles en caso esten abiertos 
         {
-            if (PanelEquipos.Visible == true)
-                PanelEquipos.Visible = false;
+
             if (PanelIngresar.Visible == true)
                 PanelIngresar.Visible = false;
         }
@@ -46,8 +46,11 @@ namespace Campeonato_Polideportivo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          //  LblTitulo.BackColor = Color.Transparent; //Para que los label no tengan un fondo de color
-           // LblTitulo2.BackColor = Color.Transparent;
+            //  LblTitulo.BackColor = Color.Transparent; //Para que los label no tengan un fondo de color
+            // LblTitulo2.BackColor = Color.Transparent;
+
+            this.WindowState = FormWindowState.Maximized; //maximiza el programa
+            //this.FormBorderStyle = FormBorderStyle.None; //esto es para quitar los bordes al maximizar
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,11 +81,7 @@ namespace Campeonato_Polideportivo
             OcultarSubMenu();
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            abrirForm(new Form3());
-            MostrarSubMenu(PanelEquipos);
-        }
+
 
         private Form FormActivo = null; //Se cierra el formulario activo
         private void abrirForm(Form Form1) 
@@ -207,6 +206,16 @@ namespace Campeonato_Polideportivo
         {
             abrirForm(new FormFaltas()); //para abrir el segundo formulario
             OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnEquipos_Click_1(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelIngresar);
+        }
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelIngresar);
         }
     }
 }
