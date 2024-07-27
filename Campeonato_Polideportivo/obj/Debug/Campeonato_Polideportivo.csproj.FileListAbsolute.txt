@@ -147,3 +147,8 @@ C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polidep
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.CopyComplete
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.pdb
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.dll
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.xml
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe.config
