@@ -19,18 +19,16 @@ namespace Campeonato_Polideportivo
         }
         private void Design() //Es una función para ocultar los paneles secundarios en el panel principal
         {
-            //PanelButton1.Visible = false; 
             PanelEquipos.Visible = false; //Se utiliza para ocultar los paneles
-            PanelConsultar.Visible = false;
-           // PanelButton3.Visible = false;
+            PanelIngresar.Visible = false;
         }
 
         private void OcultarSubMenu()//Función para ocultar los paneles en caso esten abiertos 
         {
             if (PanelEquipos.Visible == true)
                 PanelEquipos.Visible = false;
-            if (PanelConsultar.Visible == true)
-                PanelConsultar.Visible = false;
+            if (PanelIngresar.Visible == true)
+                PanelIngresar.Visible = false;
         }
 
         private void MostrarSubMenu(Panel subMenu)//Función que muestra o esconde el subpanel
@@ -48,13 +46,16 @@ namespace Campeonato_Polideportivo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+          //  LblTitulo.BackColor = Color.Transparent; //Para que los label no tengan un fondo de color
+           // LblTitulo2.BackColor = Color.Transparent;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             // MostrarSubMenu(PanelButton1); Se manda a llamar el evento de mostrar con el panel que le pertenece al boton
-            abrirForm(new Form2());
+
+            if (FormActivo != null) // si existe un formulario activo
+                FormActivo.Close(); // se cierra
             OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
         }
 
@@ -101,18 +102,111 @@ namespace Campeonato_Polideportivo
 
         private void button16_Click(object sender, EventArgs e)
         {
-            MostrarSubMenu(PanelConsultar);
+            MostrarSubMenu(PanelIngresar);
         }
 
         private void BtnEmpleados_Click(object sender, EventArgs e)
         {
-            abrirForm(new Form3()); //para abrir el segundo formulario
+         // MostrarSubMenu(PanelButton1); Se manda a llamar el evento de mostrar con el panel que le pertenece al boton
+            abrirForm(new Form2());
             OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
         }
 
         private void TxtTitulo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnEmpleados_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormDeporte()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEquipos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDeporte_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormDeporte()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnDeporte_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormDeporte()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnEquipo_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormEquipo()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnDeporte1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEquipo2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEquipo_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormEquipo()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnJugador_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormJugador()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnEntrenador_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormEntrenador()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnArbitro_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormArbitro()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnCampeonato_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormCampeonato()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnAsistencia_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormAsistencia()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnAnotaciones_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormAnotaciones()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnFaltas_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormFaltas()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
         }
     }
 }
