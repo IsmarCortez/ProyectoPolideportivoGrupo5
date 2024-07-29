@@ -22,6 +22,7 @@ namespace Campeonato_Polideportivo
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+
             string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
             string query = "INSERT INTO deporte (nombre, tipo, id_regla) VALUES (@nombre, @tipo, @id_regla)";
 
@@ -45,11 +46,6 @@ namespace Campeonato_Polideportivo
                     }
                 }
             }
-
-
-
-
-
         }
 
  

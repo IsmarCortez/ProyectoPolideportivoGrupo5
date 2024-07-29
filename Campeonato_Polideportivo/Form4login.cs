@@ -19,6 +19,7 @@ namespace Campeonato_Polideportivo
         {
             InitializeComponent();
             FormConexion = new Conexion();  //Se manda a llamar la conexion
+            this.Load += new EventHandler(Form4login_Load); //evento para poner el programa en pantalla completa
         }
 
         private void TxtUsuario_Enter(object sender, EventArgs e)
@@ -44,6 +45,12 @@ namespace Campeonato_Polideportivo
             {
                 MessageBox.Show("Error al conectar");
             }
+        }
+
+        private void Form4login_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized; //maximiza el programa
+            //this.FormBorderStyle = FormBorderStyle.None; //esto es para quitar los bordes al maximizar
         }
     }
 }
