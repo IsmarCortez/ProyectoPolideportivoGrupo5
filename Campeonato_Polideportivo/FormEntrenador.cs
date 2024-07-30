@@ -57,7 +57,6 @@ namespace Campeonato_Polideportivo
 
             string Nombre = TxtNombre.Text;
             string Apellido = TxtApellido.Text;
-            //DateTime.TryParse(TxtFechaNacimiento.Text, out FechaNacimiento);
             DateTime FechaNacimiento = DtpEntrenador.Value;
 
             string Nacionalidad = TxtNacionalidad.Text;
@@ -96,6 +95,7 @@ namespace Campeonato_Polideportivo
                 }
 
                 Limpiar();
+                CargarEquipos();
             }
         }
 
@@ -179,19 +179,26 @@ namespace Campeonato_Polideportivo
                         cmd.Parameters.AddWithValue("@nacionalidad", Nacionalidad);
                         cmd.Parameters.AddWithValue("@equipo", Equipo);
 
-                        // Ejecutar el comando
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        // Verificar si se modificó algún registro
-                        if (rowsAffected > 0)
+                        DialogResult result = MessageBox.Show("¿Está seguro de que deseas eliminar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes) // El usuario hizo clic en "Sí"
                         {
-                            // Mostrar mensaje de éxito
-                            MessageBox.Show("Datos modificados correctamente.");
+                            // Ejecutar el comando
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Datos modificados correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                //  mensaje si no se encontró el registro
+                                MessageBox.Show("No se encontro el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
-                            // Mostrar mensaje si no se encontró el registro
-                            MessageBox.Show("No se encontró el registro con el ID especificado.");
+                            // El usuario hizo clic en "No"
+                            MessageBox.Show("No se realizó ninguna acción.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     Limpiar();
@@ -212,7 +219,6 @@ namespace Campeonato_Polideportivo
                 TxtNombre.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 TxtApellido.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 DtpEntrenador.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-               // TxtFechaNacimiento.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 TxtNacionalidad.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 CmbEquipo.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
 
@@ -244,19 +250,26 @@ namespace Campeonato_Polideportivo
                         // Agregar el parámetro
                         cmd.Parameters.AddWithValue("@id_entrenador", id_entrenador);
 
-                        // Ejecutar el comando
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        // Verificar si se eliminó algún registro
-                        if (rowsAffected > 0)
+                        DialogResult result = MessageBox.Show("¿Está seguro de que deseas eliminar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes) // El usuario hizo clic en "Sí"
                         {
-                            // Mostrar mensaje de que si se elimino
-                            MessageBox.Show("Datos eliminados correctamente.");
+                            // Ejecutar el comando
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Datos eliminados correctamente.", "Datos eliminados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                //  mensaje si no se encontró el registro
+                                MessageBox.Show("No se encontro el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
-                            //  mensaje si no se encontró el registro
-                            MessageBox.Show("No se encontró el registro con el ID especificado.");
+                            // El usuario hizo clic en "No"
+                            MessageBox.Show("No se realizó ninguna acción.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -274,7 +287,7 @@ namespace Campeonato_Polideportivo
             TxtNombre.Clear();
             TxtApellido.Clear();
             DtpEntrenador.Value = DateTime.Now;
-            CmbEquipo.Text = "";
+            CmbEquipo.Text = "Seleccione un equipo...";
             TxtNacionalidad.Clear();
        }
     }
