@@ -152,3 +152,11 @@ C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.xml
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe.config
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormBasquetbol.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormBeisbol.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormFutbol.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormVoleibol.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormOtrosPartidos.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormDeportista.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormPartidosIndividuales.resources
+C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormTorneo.resources

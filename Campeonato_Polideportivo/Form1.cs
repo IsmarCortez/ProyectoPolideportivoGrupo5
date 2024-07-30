@@ -20,15 +20,20 @@ namespace Campeonato_Polideportivo
         }
         private void Design() //Es una función para ocultar los paneles secundarios en el panel principal
         {
-              PanelIngresar.Visible = false;//Se utiliza para ocultar los paneles
-
+            PanelColectivo.Visible = false;//Se utiliza para ocultar los paneles
+            PanelIndividual.Visible = false;
+            PanelPartido.Visible = false;
         }
 
         private void OcultarSubMenu()//Función para ocultar los paneles en caso esten abiertos 
         {
 
-            if (PanelIngresar.Visible == true)
-                PanelIngresar.Visible = false;
+           if (PanelColectivo.Visible == true)
+                PanelColectivo.Visible = false;
+            if (PanelIndividual.Visible == true)
+                PanelIndividual.Visible = false;
+            if (PanelPartido.Visible == true)
+                PanelPartido.Visible = false;
         }
 
         private void MostrarSubMenu(Panel subMenu)//Función que muestra o esconde el subpanel
@@ -101,7 +106,7 @@ namespace Campeonato_Polideportivo
 
         private void button16_Click(object sender, EventArgs e)
         {
-            MostrarSubMenu(PanelIngresar);
+            MostrarSubMenu(PanelColectivo);
         }
 
         private void BtnEmpleados_Click(object sender, EventArgs e)
@@ -210,12 +215,110 @@ namespace Campeonato_Polideportivo
 
         private void BtnEquipos_Click_1(object sender, EventArgs e)
         {
-            MostrarSubMenu(PanelIngresar);
+            MostrarSubMenu(PanelColectivo);
         }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            MostrarSubMenu(PanelIngresar);
+            MostrarSubMenu(PanelColectivo);
+        }
+
+        private void BtnFutbol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormEquipo());
+        }
+
+        private void BtnBasquetbol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormJugador());
+        }
+
+        private void BtnVoleibol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormEntrenador());
+        }
+
+        private void BtnBeisbol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormArbitro());
+        }
+
+        private void BtnOtros_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormCampeonato());
+        }
+
+        private void BtnFutbol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormFutbol());
+        }
+
+
+
+        private void BtnAsistencia_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormAsistencia());
+        }
+
+        private void BtnAnotaciones_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormAnotaciones());
+        }
+
+        private void BtnFaltas_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormFaltas());
+        }
+
+        private void BtnDeportista_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormDeportista());
+        }
+
+        private void BtnIndividual_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelIndividual);
+        }
+
+        private void BtnPartido_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelPartido);
+        }
+
+        private void BtnTorneo_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormTorneo());
+        }
+
+        private void BtnPartidosIndividuales_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormPartidosIndividuales());
+        }
+
+        private void BtnFutbol_Click_2(object sender, EventArgs e)
+        {
+            abrirForm(new FormFutbol());
+        }
+
+        private void BtnBasquetbol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormBasquetbol());
+        }
+
+        private void BtnVoleibol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormVoleibol());
+        }
+
+        private void BtnBeisbol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormBeisbol());
+        }
+
+        private void BtnOtros_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormOtrosPartidos());
+
         }
     }
 }
