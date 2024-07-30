@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using MySql.Data.MySqlClient;
+=======
+﻿using MySqlConnector;
+>>>>>>> 9db9a2c7e093017c5945b2d36bb779c4688ec7bb
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +23,7 @@ namespace Campeonato_Polideportivo
             CargarComboBox();
         }
 
+<<<<<<< HEAD
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -27,6 +32,13 @@ namespace Campeonato_Polideportivo
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             string connectionString = "server=localhost;database=CampeonatoPoli2;uid=root;pwd=1970;";
+=======
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+
+            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
+>>>>>>> 9db9a2c7e093017c5945b2d36bb779c4688ec7bb
             string query = "INSERT INTO deporte (nombre, tipo, id_regla) VALUES (@nombre, @tipo, @id_regla)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -49,6 +61,7 @@ namespace Campeonato_Polideportivo
                     }
                 }
             }
+<<<<<<< HEAD
 
 
 
@@ -66,6 +79,15 @@ namespace Campeonato_Polideportivo
         private void CargarComboBox()
         {
             string connectionString = "server=localhost;database=CampeonatoPoli2;uid=root;pwd=1970;";
+=======
+        }
+
+ 
+
+        private void CargarComboBox()
+        {
+            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
+>>>>>>> 9db9a2c7e093017c5945b2d36bb779c4688ec7bb
             string query = "SELECT nombre FROM deporte";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -92,6 +114,7 @@ namespace Campeonato_Polideportivo
             }
         }
 
+<<<<<<< HEAD
         private void BtnVer_Click(object sender, EventArgs e)
         {
 
@@ -119,11 +142,17 @@ namespace Campeonato_Polideportivo
 
 
         }
+=======
+>>>>>>> 9db9a2c7e093017c5945b2d36bb779c4688ec7bb
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
             string connectionString = "server=localhost;database=CampeonatoPoli2;uid=root;pwd=1970;";
+=======
+            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
+>>>>>>> 9db9a2c7e093017c5945b2d36bb779c4688ec7bb
             string query = "SELECT * FROM deporte";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -149,9 +178,41 @@ namespace Campeonato_Polideportivo
 
         }
 
+<<<<<<< HEAD
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             string connectionString = "server=localhost;database=CampeonatoPoli2;uid=root;pwd=1970;";
+=======
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
+            string query = "SELECT * FROM deporte";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void BtnModificar_Click_1(object sender, EventArgs e)
+        {
+            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
+>>>>>>> 9db9a2c7e093017c5945b2d36bb779c4688ec7bb
             string query = "UPDATE deporte SET tipo = @tipo, id_regla = @idRegla WHERE nombre = @nombre";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -175,6 +236,7 @@ namespace Campeonato_Polideportivo
                     }
                 }
             }
+<<<<<<< HEAD
 
 
         }
@@ -182,6 +244,13 @@ namespace Campeonato_Polideportivo
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             string connectionString = "server=localhost;database=CampeonatoPoli2;uid=root;pwd=1970;";
+=======
+        }
+
+        private void BtnEliminar_Click_1(object sender, EventArgs e)
+        {
+            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
+>>>>>>> 9db9a2c7e093017c5945b2d36bb779c4688ec7bb
             string query = "DELETE FROM deporte WHERE nombre = @nombre";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))

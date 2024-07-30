@@ -16,19 +16,24 @@ namespace Campeonato_Polideportivo
         {
             InitializeComponent();
             Design(); //Se manda a llamar la función luego de inicializar los componentes
+            this.Load += new EventHandler(Form1_Load); //evento para poner el programa en pantalla completa
         }
         private void Design() //Es una función para ocultar los paneles secundarios en el panel principal
         {
-            PanelEquipos.Visible = false; //Se utiliza para ocultar los paneles
-            PanelIngresar.Visible = false;
+            PanelColectivo.Visible = false;//Se utiliza para ocultar los paneles
+            PanelIndividual.Visible = false;
+            PanelPartido.Visible = false;
         }
 
         private void OcultarSubMenu()//Función para ocultar los paneles en caso esten abiertos 
         {
-            if (PanelEquipos.Visible == true)
-                PanelEquipos.Visible = false;
-            if (PanelIngresar.Visible == true)
-                PanelIngresar.Visible = false;
+
+           if (PanelColectivo.Visible == true)
+                PanelColectivo.Visible = false;
+            if (PanelIndividual.Visible == true)
+                PanelIndividual.Visible = false;
+            if (PanelPartido.Visible == true)
+                PanelPartido.Visible = false;
         }
 
         private void MostrarSubMenu(Panel subMenu)//Función que muestra o esconde el subpanel
@@ -46,8 +51,11 @@ namespace Campeonato_Polideportivo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          //  LblTitulo.BackColor = Color.Transparent; //Para que los label no tengan un fondo de color
-           // LblTitulo2.BackColor = Color.Transparent;
+            //  LblTitulo.BackColor = Color.Transparent; //Para que los label no tengan un fondo de color
+            // LblTitulo2.BackColor = Color.Transparent;
+
+            this.WindowState = FormWindowState.Maximized; //maximiza el programa
+            //this.FormBorderStyle = FormBorderStyle.None; //esto es para quitar los bordes al maximizar
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,11 +86,7 @@ namespace Campeonato_Polideportivo
             OcultarSubMenu();
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            abrirForm(new Form3());
-            MostrarSubMenu(PanelEquipos);
-        }
+
 
         private Form FormActivo = null; //Se cierra el formulario activo
         private void abrirForm(Form Form1) 
@@ -102,7 +106,7 @@ namespace Campeonato_Polideportivo
 
         private void button16_Click(object sender, EventArgs e)
         {
-            MostrarSubMenu(PanelIngresar);
+            MostrarSubMenu(PanelColectivo);
         }
 
         private void BtnEmpleados_Click(object sender, EventArgs e)
@@ -153,6 +157,167 @@ namespace Campeonato_Polideportivo
 
         private void BtnDeporte1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void BtnEquipo2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEquipo_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormEquipo()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnJugador_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormJugador()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnEntrenador_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormEntrenador()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnArbitro_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormArbitro()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnCampeonato_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormCampeonato()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnAsistencia_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormAsistencia()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnAnotaciones_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormAnotaciones()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnFaltas_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormFaltas()); //para abrir el segundo formulario
+            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
+        }
+
+        private void BtnEquipos_Click_1(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelColectivo);
+        }
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelColectivo);
+        }
+
+        private void BtnFutbol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormEquipo());
+        }
+
+        private void BtnBasquetbol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormJugador());
+        }
+
+        private void BtnVoleibol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormEntrenador());
+        }
+
+        private void BtnBeisbol_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormArbitro());
+        }
+
+        private void BtnOtros_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormCampeonato());
+        }
+
+        private void BtnFutbol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormFutbol());
+        }
+
+
+
+        private void BtnAsistencia_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormAsistencia());
+        }
+
+        private void BtnAnotaciones_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormAnotaciones());
+        }
+
+        private void BtnFaltas_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormFaltas());
+        }
+
+        private void BtnDeportista_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormDeportista());
+        }
+
+        private void BtnIndividual_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelIndividual);
+        }
+
+        private void BtnPartido_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelPartido);
+        }
+
+        private void BtnTorneo_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormTorneo());
+        }
+
+        private void BtnPartidosIndividuales_Click(object sender, EventArgs e)
+        {
+            abrirForm(new FormPartidosIndividuales());
+        }
+
+        private void BtnFutbol_Click_2(object sender, EventArgs e)
+        {
+            abrirForm(new FormFutbol());
+        }
+
+        private void BtnBasquetbol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormBasquetbol());
+        }
+
+        private void BtnVoleibol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormVoleibol());
+        }
+
+        private void BtnBeisbol_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormBeisbol());
+        }
+
+        private void BtnOtros_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new FormOtrosPartidos());
 
         }
     }
