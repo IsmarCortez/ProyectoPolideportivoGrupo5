@@ -41,7 +41,7 @@ namespace Campeonato_Polideportivo
             this.LblIdCampeonato = new System.Windows.Forms.Label();
             this.CmbFalta = new System.Windows.Forms.ComboBox();
             this.LblFaltas = new System.Windows.Forms.Label();
-            this.DgwCampeonato = new System.Windows.Forms.DataGridView();
+            this.DgvFaltas = new System.Windows.Forms.DataGridView();
             this.CmbTarjeta = new System.Windows.Forms.ComboBox();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.LblDescripcion = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@ namespace Campeonato_Polideportivo
             this.CmbJugador = new System.Windows.Forms.ComboBox();
             this.CmbArbitro = new System.Windows.Forms.ComboBox();
             this.LblArbitro = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.DgwCampeonato)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvFaltas)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnVer
@@ -74,6 +74,7 @@ namespace Campeonato_Polideportivo
             this.BtnVer.TabIndex = 88;
             this.BtnVer.Text = "VER";
             this.BtnVer.UseVisualStyleBackColor = false;
+            this.BtnVer.Click += new System.EventHandler(this.BtnVer_Click);
             // 
             // BtnEliminar
             // 
@@ -91,6 +92,7 @@ namespace Campeonato_Polideportivo
             this.BtnEliminar.TabIndex = 87;
             this.BtnEliminar.Text = "ELIMINAR";
             this.BtnEliminar.UseVisualStyleBackColor = false;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnModificar
             // 
@@ -108,6 +110,7 @@ namespace Campeonato_Polideportivo
             this.BtnModificar.TabIndex = 86;
             this.BtnModificar.Text = "MODIFICAR";
             this.BtnModificar.UseVisualStyleBackColor = false;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // BtnIngresar
             // 
@@ -125,6 +128,7 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar.TabIndex = 85;
             this.BtnIngresar.Text = "INGRESAR";
             this.BtnIngresar.UseVisualStyleBackColor = false;
+            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // TxtMinuto
             // 
@@ -135,6 +139,7 @@ namespace Campeonato_Polideportivo
             // 
             // TxtIdFaltas
             // 
+            this.TxtIdFaltas.Enabled = false;
             this.TxtIdFaltas.Location = new System.Drawing.Point(153, 46);
             this.TxtIdFaltas.Name = "TxtIdFaltas";
             this.TxtIdFaltas.Size = new System.Drawing.Size(100, 22);
@@ -196,19 +201,20 @@ namespace Campeonato_Polideportivo
             this.LblFaltas.TabIndex = 72;
             this.LblFaltas.Text = "FALTAS";
             // 
-            // DgwCampeonato
+            // DgvFaltas
             // 
-            this.DgwCampeonato.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvFaltas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgwCampeonato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DgwCampeonato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgwCampeonato.Location = new System.Drawing.Point(431, 98);
-            this.DgwCampeonato.Name = "DgwCampeonato";
-            this.DgwCampeonato.RowHeadersWidth = 51;
-            this.DgwCampeonato.RowTemplate.Height = 24;
-            this.DgwCampeonato.Size = new System.Drawing.Size(521, 411);
-            this.DgwCampeonato.TabIndex = 71;
+            this.DgvFaltas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvFaltas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvFaltas.Location = new System.Drawing.Point(431, 98);
+            this.DgvFaltas.Name = "DgvFaltas";
+            this.DgvFaltas.RowHeadersWidth = 51;
+            this.DgvFaltas.RowTemplate.Height = 24;
+            this.DgvFaltas.Size = new System.Drawing.Size(521, 411);
+            this.DgvFaltas.TabIndex = 71;
+            this.DgvFaltas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFaltas_CellContentClick);
             // 
             // CmbTarjeta
             // 
@@ -286,18 +292,22 @@ namespace Campeonato_Polideportivo
             this.CmbPartido.Size = new System.Drawing.Size(250, 24);
             this.CmbPartido.TabIndex = 100;
             this.CmbPartido.Text = "Selecciona un partido...";
+            this.CmbPartido.SelectedIndexChanged += new System.EventHandler(this.CmbPartido_SelectedIndexChanged);
             // 
             // CmbEquipo
             // 
+            this.CmbEquipo.Enabled = false;
             this.CmbEquipo.FormattingEnabled = true;
             this.CmbEquipo.Location = new System.Drawing.Point(153, 389);
             this.CmbEquipo.Name = "CmbEquipo";
             this.CmbEquipo.Size = new System.Drawing.Size(250, 24);
             this.CmbEquipo.TabIndex = 101;
             this.CmbEquipo.Text = "Selecciona un equipo...";
+            this.CmbEquipo.SelectedIndexChanged += new System.EventHandler(this.CmbEquipo_SelectedIndexChanged);
             // 
             // CmbJugador
             // 
+            this.CmbJugador.Enabled = false;
             this.CmbJugador.FormattingEnabled = true;
             this.CmbJugador.Location = new System.Drawing.Point(153, 437);
             this.CmbJugador.Name = "CmbJugador";
@@ -353,10 +363,10 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.LblIdCampeonato);
             this.Controls.Add(this.CmbFalta);
             this.Controls.Add(this.LblFaltas);
-            this.Controls.Add(this.DgwCampeonato);
+            this.Controls.Add(this.DgvFaltas);
             this.Name = "FormFaltas";
             this.Text = "FormFaltas";
-            ((System.ComponentModel.ISupportInitialize)(this.DgwCampeonato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvFaltas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,7 +386,7 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Label LblIdCampeonato;
         private System.Windows.Forms.ComboBox CmbFalta;
         private System.Windows.Forms.Label LblFaltas;
-        private System.Windows.Forms.DataGridView DgwCampeonato;
+        private System.Windows.Forms.DataGridView DgvFaltas;
         private System.Windows.Forms.ComboBox CmbTarjeta;
         private System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.Label LblDescripcion;
