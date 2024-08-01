@@ -28,6 +28,13 @@ namespace Campeonato_Polideportivo
             CmbPartido.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbArbitro.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbJugador.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbTarjeta.SelectedIndex = -1;
+            CmbFalta.SelectedIndex = -1;
+            CmbPartido.SelectedIndex = -1;
+            CmbArbitro.SelectedIndex = -1;
+            CmbEquipo.SelectedIndex = -1;
+            CmbEquipo.Enabled = false;
+            CmbArbitro.Enabled = false;
         }
 
         private void CargarPartidos()
@@ -35,7 +42,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT id_partido FROM partido";
+            string query = "SELECT pkidpartido FROM partido";
 
             try
             {
@@ -44,8 +51,8 @@ namespace Campeonato_Polideportivo
                 adapter.Fill(dt);
 
                 CmbPartido.DataSource = dt;
-                CmbPartido.DisplayMember = "id_partido";
-                CmbPartido.ValueMember = "id_partido";
+                CmbPartido.DisplayMember = "pkidpartido";
+                CmbPartido.ValueMember = "pkidpartido";
             }
             catch (Exception ex)
             {
@@ -55,7 +62,6 @@ namespace Campeonato_Polideportivo
             {
                 conn.Close();
             }
-            //CmbPartido.Text = "Selecciona un partido...";
         }
 
         private void CargarEquipos(string id_partido)
@@ -64,35 +70,32 @@ namespace Campeonato_Polideportivo
             MySqlConnection conn = conexion.getConexion();
 
             string query = @"
-               SELECT 
-                equipo_local.nombre AS NombreLocal,
-                equipo_visitante.nombre AS NombreVisitante,
-
-                equipo_local.id_equipo AS IdLocal,
-   
-                equipo_visitante.id_equipo AS IdVisitante
-  
-            FROM 
-                partido
-            JOIN 
-                equipo AS equipo_local ON partido.equipo_local_id = equipo_local.id_equipo
-            JOIN 
-                equipo AS equipo_visitante ON partido.equipo_vis_id = equipo_visitante.id_equipo
-            WHERE 
-                partido.id_partido = @id_partido";
+              SELECT 
+                    equipo_local.nombre AS NombreLocal,
+                    equipo_visitante.nombre AS NombreVisitante,
+                    equipo_local.pkidequipo AS IdLocal,
+                    equipo_visitante.pkidequipo AS IdVisitante
+                FROM 
+                    partido
+                JOIN 
+                    equipo AS equipo_local ON partido.fkequipolocalid = equipo_local.pkidequipo
+                JOIN 
+                    equipo AS equipo_visitante ON partido.fkequipovisid = equipo_visitante.pkidequipo
+                WHERE 
+                    partido.pkidpartido = @pkidpartido";
 
             try
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@id_partido", id_partido);
+                    cmd.Parameters.AddWithValue("@pkidpartido", id_partido);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
                     // Configurar DataTable para equipos
                     DataTable equipos = new DataTable();
-                    equipos.Columns.Add("id_equipo", typeof(int));
+                    equipos.Columns.Add("pkidequipo", typeof(int));
                     equipos.Columns.Add("nombre");
 
                     if (dt.Rows.Count > 0)
@@ -103,7 +106,7 @@ namespace Campeonato_Polideportivo
 
                     CmbEquipo.DataSource = equipos;
                     CmbEquipo.DisplayMember = "nombre";
-                    CmbEquipo.ValueMember = "id_equipo"; // Puedes ajustar esto según tus necesidades
+                    CmbEquipo.ValueMember = "pkidequipo"; 
                 }
             }
             catch (Exception ex)
@@ -120,13 +123,13 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT id_jugador, nombre, apellido FROM jugador WHERE id_equipo = @id_equipo";
+            string query = "SELECT pkidjugador, nombre, apellido FROM jugador WHERE fkidequipo = @fkidequipo";
 
             try
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
+                    cmd.Parameters.AddWithValue("@fkidequipo", id_equipo);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -140,7 +143,7 @@ namespace Campeonato_Polideportivo
                     // Configurar ComboBox
                     CmbJugador.DataSource = dt;
                     CmbJugador.DisplayMember = "nombreCompleto";
-                    CmbJugador.ValueMember = "id_jugador";
+                    CmbJugador.ValueMember = "pkidjugador";
                 }
             }
             catch (Exception ex)
@@ -158,7 +161,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT id_arbitro, nombre, apellido FROM arbitro";
+            string query = "SELECT pkidarbitro, nombre, apellido FROM arbitro";
 
             try
             {
@@ -174,7 +177,7 @@ namespace Campeonato_Polideportivo
 
                 CmbArbitro.DataSource = dt;
                 CmbArbitro.DisplayMember = "nombreCompleto";
-                CmbArbitro.ValueMember = "id_arbitro";
+                CmbArbitro.ValueMember = "pkidarbitro";
             }
             catch (Exception ex)
             {
@@ -184,7 +187,6 @@ namespace Campeonato_Polideportivo
             {
                 conn.Close();
             }
-            CmbArbitro.Text = "Selecciona un arbitro...";
         }
 
         private void CmbPartido_SelectedIndexChanged(object sender, EventArgs e) //metodo para que al seleccionar un dato se muestre en el otro combobox
@@ -194,7 +196,11 @@ namespace Campeonato_Polideportivo
                 string id_partido = CmbPartido.SelectedValue.ToString();
                 CargarEquipos(id_partido);
             }
-            CmbEquipo.Enabled = true;
+            if (CmbPartido.SelectedIndex != -1)
+            {
+                CmbEquipo.Enabled = true;
+            }
+
         }
 
         private void CmbEquipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -204,22 +210,27 @@ namespace Campeonato_Polideportivo
                 string id_equipo = CmbEquipo.SelectedValue.ToString();
                 CargarJugadores(id_equipo);
             }
-            CmbJugador.Enabled = true;
+            if (CmbPartido.SelectedIndex != -1)
+            {
+                CmbJugador.Enabled = true;
+            }
         }
 
         private void Limpiar()//metodo para limpiar todo el formulario al realizar alguna accion
         {
             TxtIdFaltas.Clear();
             TxtMinuto.Clear();
-            CmbTarjeta.SelectedIndex = 0;
-            CmbTarjeta.Text = "Seleccione una tarjeta...";
-            CmbFalta.Text = "Seleccione un tipo de falta...";
+            CmbTarjeta.SelectedIndex = -1;
+            CmbFalta.SelectedIndex = -1;
+            CmbPartido.SelectedIndex = -1;
+            CmbArbitro.SelectedIndex = -1;
+            CmbEquipo.SelectedIndex = -1;
+            CmbJugador.SelectedIndex = -1;
+            CmbEquipo.Enabled = false;
+            CmbJugador.Enabled = false;
+            CmbArbitro.Enabled = false;
             TxtDescripcion.Clear();
             DtpFecha.Value = DateTime.Now;
-            CmbPartido.Text = "Seleccione un partido...";
-            CmbEquipo.Text = "Seleccione un equipo...";
-            CmbJugador.Text = "Seleccione un jugador...";
-            CmbArbitro.Text = "Seleccione un arbitro...";
         }
 
         private void CargarTarjetas()
@@ -254,6 +265,7 @@ namespace Campeonato_Polideportivo
             int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
             int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
             int IdArbitro = Convert.ToInt32(CmbArbitro.SelectedValue);
+            CamposVacios();
 
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
@@ -261,7 +273,7 @@ namespace Campeonato_Polideportivo
                 try
                 {
                     // SQL insertar datos
-                    string query = "INSERT INTO faltas (minuto, tarjeta, tipo_falta, descripcion, fecha, id_partido, id_jugador, id_arbitro) VALUES (@minuto, @tarjeta, @tipo_falta, @descripcion, @fecha, @id_partido, @id_jugador, @id_arbitro)";
+                    string query = "INSERT INTO faltas (minuto, tarjeta, tipofalta, descripcion, fecha, fkidpartido, fkidjugador, fkidarbitro) VALUES (@minuto, @tarjeta, @tipofalta, @descripcion, @fecha, @fkidpartido, @fkidjugador, @fkidarbitro)";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -269,12 +281,12 @@ namespace Campeonato_Polideportivo
                         // Agregar los parámetros
                         cmd.Parameters.AddWithValue("@minuto", Minuto);
                         cmd.Parameters.AddWithValue("@tarjeta", Tarjeta);
-                        cmd.Parameters.AddWithValue("@tipo_falta", TipoFalta);
+                        cmd.Parameters.AddWithValue("@tipofalta", TipoFalta);
                         cmd.Parameters.AddWithValue("@descripcion", Descripcion);
                         cmd.Parameters.AddWithValue("@fecha", Fecha);
-                        cmd.Parameters.AddWithValue("@id_partido", IdPartido);
-                        cmd.Parameters.AddWithValue("@id_jugador", IdJugador);
-                        cmd.Parameters.AddWithValue("@id_arbitro", IdArbitro);
+                        cmd.Parameters.AddWithValue("@fkidpartido", IdPartido);
+                        cmd.Parameters.AddWithValue("@fkidjugador", IdJugador);
+                        cmd.Parameters.AddWithValue("@fkidarbitro", IdArbitro);
 
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
@@ -302,24 +314,24 @@ namespace Campeonato_Polideportivo
                 {
                     string query = @"
                        SELECT 
-                        faltas.id_faltas AS ID,
+                        faltas.pkidfaltas AS ID,
                         faltas.minuto AS Minuto,
                         faltas.tarjeta AS Tarjeta,
-                        faltas.tipo_falta AS Tipo,
+                        faltas.tipofalta AS Tipo,
                         faltas.descripcion AS Descripcion,
                         faltas.fecha AS Fecha,
-                        faltas.id_partido AS Partido,
+                        faltas.fkidpartido AS Partido,
                         equipo.nombre AS Equipo,
                         CONCAT(jugador.nombre, ' ', jugador.apellido) AS Jugador,
                         CONCAT(arbitro.nombre, ' ', arbitro.apellido) AS Arbitro
                     FROM 
                         faltas
                     JOIN 
-                        jugador ON faltas.id_jugador = jugador.id_jugador
+                        jugador ON faltas.fkidjugador = jugador.pkidjugador
                     JOIN 
-                        arbitro ON faltas.id_arbitro = arbitro.id_arbitro
+                        arbitro ON faltas.fkidarbitro = arbitro.pkidarbitro
                     JOIN 
-                        equipo ON jugador.id_equipo = equipo.id_equipo;";
+                        equipo ON jugador.fkidequipo = equipo.pkidequipo;";
 
                     // Crear el adaptador
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -377,26 +389,27 @@ namespace Campeonato_Polideportivo
                 int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
                 int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
                 int IdArbitro = Convert.ToInt32(CmbArbitro.SelectedValue);
+                CamposVacios();
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para actualizar datos
-                    string query = "UPDATE faltas SET minuto = @minuto, tarjeta = @tarjeta, tipo_falta = @tipo_falta, descripcion = @descripcion, fecha = @fecha, id_partido = @id_partido, id_jugador = @id_jugador, id_arbitro = @id_arbitro WHERE id_faltas = @id_faltas";
+                    string query = "UPDATE faltas SET minuto = @minuto, tarjeta = @tarjeta, tipofalta = @tipofalta, descripcion = @descripcion, fecha = @fecha, fkidpartido = @fkidpartido, fkidjugador = @fkidjugador, fkidarbitro = @fkidarbitro WHERE pkidfaltas = @pkidfaltas";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@id_faltas", TxtIdFaltas.Text);
+                        cmd.Parameters.AddWithValue("@pkidfaltas", TxtIdFaltas.Text);
                         cmd.Parameters.AddWithValue("@minuto", Minuto);
                         cmd.Parameters.AddWithValue("@tarjeta", Tarjeta);
-                        cmd.Parameters.AddWithValue("@tipo_falta", TipoFalta);
+                        cmd.Parameters.AddWithValue("@tipofalta", TipoFalta);
                         cmd.Parameters.AddWithValue("@descripcion", Descripcion);
                         cmd.Parameters.AddWithValue("@fecha", Fecha);
-                        cmd.Parameters.AddWithValue("@id_partido", IdPartido);
-                        cmd.Parameters.AddWithValue("@id_jugador", IdJugador);
-                        cmd.Parameters.AddWithValue("@id_arbitro", IdArbitro);
+                        cmd.Parameters.AddWithValue("@fkidpartido", IdPartido);
+                        cmd.Parameters.AddWithValue("@fkidjugador", IdJugador);
+                        cmd.Parameters.AddWithValue("@fkidarbitro", IdArbitro);
 
                         DialogResult result = MessageBox.Show("¿Está seguro de que deseas modificar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes) // El usuario hizo clic en "Sí"
@@ -437,19 +450,19 @@ namespace Campeonato_Polideportivo
             try
             {
                 // Obtener el id_entrenador del TextBox
-                int id_faltas = int.Parse(TxtIdFaltas.Text);
+                int pkidfaltas = int.Parse(TxtIdFaltas.Text);
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para eliminar datos
-                    string query = "DELETE FROM faltas WHERE id_faltas = @id_faltas";
+                    string query = "DELETE FROM faltas WHERE pkidfaltas = @pkidfaltas";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar el parámetro
-                        cmd.Parameters.AddWithValue("@id_faltas", id_faltas);
+                        cmd.Parameters.AddWithValue("@pkidfaltas", pkidfaltas);
 
                         // Mostrar pregunta por si desea eliminar
                         DialogResult result = MessageBox.Show("¿Está seguro de que deseas eliminar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -482,6 +495,58 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show($"Error: {ex.Message}");
             }
             Limpiar();
+        }
+
+        private void CamposVacios()
+        {
+            if (string.IsNullOrWhiteSpace(TxtMinuto.Text))//Para obligar a llenar los campos
+            {
+                MessageBox.Show("Por favor ingrese el minuto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (CmbTarjeta.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione una tarjeta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (CmbFalta.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione una falta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(TxtDescripcion.Text))
+            {
+                MessageBox.Show("Por favor ingrese la descripción.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (CmbPartido.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione un partido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (CmbEquipo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione un equipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (CmbJugador.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione un jugador", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (CmbArbitro.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione un arbitro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void CmbJugador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbJugador.SelectedIndex != -1)
+            {
+                CmbArbitro.Enabled = true;
+            }
         }
     }
 }

@@ -72,6 +72,8 @@ namespace Campeonato_Polideportivo
             // 
             // DgwCampeonato
             // 
+            this.DgwCampeonato.AllowUserToAddRows = false;
+            this.DgwCampeonato.AllowUserToDeleteRows = false;
             this.DgwCampeonato.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -79,6 +81,7 @@ namespace Campeonato_Polideportivo
             this.DgwCampeonato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgwCampeonato.Location = new System.Drawing.Point(427, 99);
             this.DgwCampeonato.Name = "DgwCampeonato";
+            this.DgwCampeonato.ReadOnly = true;
             this.DgwCampeonato.RowHeadersWidth = 51;
             this.DgwCampeonato.RowTemplate.Height = 24;
             this.DgwCampeonato.Size = new System.Drawing.Size(521, 369);

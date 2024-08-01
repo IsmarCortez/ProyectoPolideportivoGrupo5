@@ -18,6 +18,7 @@ namespace Campeonato_Polideportivo
             InitializeComponent();
             CargarDeportes();//mandamos a llamar la funcion la cual cargara los deportes existentes
             CmbDeporte.Text = "Seleccione un deporte...";
+            CmbDeporte.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void CargarDeportes()
@@ -25,7 +26,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT id_deporte, nombre FROM deporte";
+            string query = "SELECT pkiddeporte, nombre FROM deporte";
 
             try
             {
@@ -35,7 +36,7 @@ namespace Campeonato_Polideportivo
 
                 CmbDeporte.DataSource = dt;
                 CmbDeporte.DisplayMember = "nombre";
-                CmbDeporte.ValueMember = "id_deporte";
+                CmbDeporte.ValueMember = "pkiddeporte";
             }
             catch (Exception ex)
             {
@@ -66,13 +67,25 @@ namespace Campeonato_Polideportivo
             DateTime FechaFin = DtpFechaFin.Value;
             int Deporte = Convert.ToInt32(CmbDeporte.SelectedValue);
 
+            // Verificar si el TextBox está lleno
+            if (string.IsNullOrWhiteSpace(TxtNombre.Text))
+            {
+                MessageBox.Show("Por favor ingrese el nombre del deporte.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(TxtTemporada.Text))
+            {
+                MessageBox.Show("Por favor ingrese el nombre del deporte.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
                 try
                 {
                     // SQL insertar datos
-                    string query = "INSERT INTO campeonato (nombre, temporada, fecha_inicio, fecha_fin, id_deporte) VALUES (@nombre, @temporada, @fecha_inicio, @fecha_fin, @id_deporte)";
+                    string query = "INSERT INTO campeonato (nombre, temporada, fechainicio, fechafin, fkiddeporte) VALUES (@nombre, @temporada, @fechainicio, @fechafin, @fkiddeporte)";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -80,9 +93,9 @@ namespace Campeonato_Polideportivo
                         // Agregar los parámetros
                         cmd.Parameters.AddWithValue("@nombre", Nombre);
                         cmd.Parameters.AddWithValue("@temporada", Temporada);
-                        cmd.Parameters.AddWithValue("@fecha_inicio", FechaInicio);
-                        cmd.Parameters.AddWithValue("@fecha_fin", FechaFin);
-                        cmd.Parameters.AddWithValue("@id_deporte", Deporte);
+                        cmd.Parameters.AddWithValue("@fechainicio", FechaInicio);
+                        cmd.Parameters.AddWithValue("@fechafin", FechaFin);
+                        cmd.Parameters.AddWithValue("@fkiddeporte", Deporte);
 
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
@@ -110,16 +123,16 @@ namespace Campeonato_Polideportivo
                 {
                     string query = @"
                         SELECT 
-                            campeonato.id_campeonato AS ID,
+                            campeonato.pkidcampeonato AS ID,
                             campeonato.nombre AS Campeonato, 
                             campeonato.temporada AS Temporada, 
-                            campeonato.fecha_inicio AS FechaInicio, 
-                            campeonato.fecha_fin AS FechaFin, 
+                            campeonato.fechainicio AS FechaInicio, 
+                            campeonato.fechafin AS FechaFin, 
                             deporte.nombre AS Deporte
                         FROM 
                             campeonato
                         JOIN 
-                            deporte ON campeonato.id_deporte = deporte.id_deporte";
+                            deporte ON campeonato.fkiddeporte = deporte.pkiddeporte";
 
                     // Crear el adaptador
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -156,22 +169,33 @@ namespace Campeonato_Polideportivo
                 DateTime FechaFin = DtpFechaFin.Value;
                 int Deporte = Convert.ToInt32(CmbDeporte.SelectedValue);
 
+                if (string.IsNullOrWhiteSpace(TxtNombre.Text))
+                {
+                    MessageBox.Show("Por favor ingrese el nombre del deporte.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(TxtTemporada.Text))
+                {
+                    MessageBox.Show("Por favor ingrese el nombre del deporte.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para actualizar datos
-                    string query = "UPDATE campeonato SET nombre = @nombre, temporada = @temporada, fecha_inicio = @fecha_inicio, fecha_fin = @fecha_fin, id_deporte = @id_deporte WHERE id_campeonato = @id_campeonato";
+                    string query = "UPDATE campeonato SET nombre = @nombre, temporada = @temporada, fechainicio = @fechainicio, fechafin = @fechafin, fkiddeporte = @fkiddeporte WHERE pkidcampeonato = @pkidcampeonato";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@id_campeonato", TxtIdCampeonato.Text);
+                        cmd.Parameters.AddWithValue("@pkidcampeonato", TxtIdCampeonato.Text);
                         cmd.Parameters.AddWithValue("@nombre", Nombre);
                         cmd.Parameters.AddWithValue("@temporada", Temporada);
-                        cmd.Parameters.AddWithValue("@fecha_inicio", FechaInicio);
-                        cmd.Parameters.AddWithValue("@fecha_fin", FechaFin);
-                        cmd.Parameters.AddWithValue("@id_deporte", Deporte);
+                        cmd.Parameters.AddWithValue("@fechainicio", FechaInicio);
+                        cmd.Parameters.AddWithValue("@fechafin", FechaFin);
+                        cmd.Parameters.AddWithValue("@fkiddeporte", Deporte);
 
                         DialogResult result = MessageBox.Show("¿Está seguro de que deseas modificar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes) // El usuario hizo clic en "Sí"
@@ -228,19 +252,19 @@ namespace Campeonato_Polideportivo
             try
             {
                 // Obtener el id_entrenador del TextBox
-                int id_campeonato = int.Parse(TxtIdCampeonato.Text);
+                int pkidcampeonato = int.Parse(TxtIdCampeonato.Text);
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para eliminar datos
-                    string query = "DELETE FROM campeonato WHERE id_campeonato = @id_campeonato";
+                    string query = "DELETE FROM campeonato WHERE pkidcampeonato = @pkidcampeonato";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar el parámetro
-                        cmd.Parameters.AddWithValue("@id_campeonato", id_campeonato);
+                        cmd.Parameters.AddWithValue("@pkidcampeonato", pkidcampeonato);
 
                         // Mostrar pregunta por si desea eliminar
                         DialogResult result = MessageBox.Show("¿Está seguro de que deseas eliminar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

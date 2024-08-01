@@ -203,6 +203,8 @@ namespace Campeonato_Polideportivo
             // 
             // DgvFaltas
             // 
+            this.DgvFaltas.AllowUserToAddRows = false;
+            this.DgvFaltas.AllowUserToDeleteRows = false;
             this.DgvFaltas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -210,6 +212,7 @@ namespace Campeonato_Polideportivo
             this.DgvFaltas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvFaltas.Location = new System.Drawing.Point(431, 98);
             this.DgvFaltas.Name = "DgvFaltas";
+            this.DgvFaltas.ReadOnly = true;
             this.DgvFaltas.RowHeadersWidth = 51;
             this.DgvFaltas.RowTemplate.Height = 24;
             this.DgvFaltas.Size = new System.Drawing.Size(521, 411);
@@ -314,6 +317,7 @@ namespace Campeonato_Polideportivo
             this.CmbJugador.Size = new System.Drawing.Size(250, 24);
             this.CmbJugador.TabIndex = 102;
             this.CmbJugador.Text = "Selecciona un jugador...";
+            this.CmbJugador.SelectedIndexChanged += new System.EventHandler(this.CmbJugador_SelectedIndexChanged);
             // 
             // CmbArbitro
             // 
