@@ -44,18 +44,19 @@ namespace Campeonato_Polideportivo
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.TxtGoles = new System.Windows.Forms.Label();
             this.TxtApellido = new System.Windows.Forms.TextBox();
             this.TxtPosicion = new System.Windows.Forms.TextBox();
             this.TxtNumero = new System.Windows.Forms.TextBox();
             this.TxtNacionalidad = new System.Windows.Forms.TextBox();
             this.TxtTitular = new System.Windows.Forms.TextBox();
             this.PicFotografia = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.TxtFecha = new System.Windows.Forms.TextBox();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.TxtId = new System.Windows.Forms.TextBox();
+            this.TxtFecha = new System.Windows.Forms.DateTimePicker();
+            this.BtnSeleccionarFoto = new System.Windows.Forms.Button();
+            this.LblGoles = new System.Windows.Forms.Label();
+            this.TxtGoles = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridVer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicFotografia)).BeginInit();
             this.SuspendLayout();
@@ -106,7 +107,7 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnIngresar.Location = new System.Drawing.Point(66, 518);
+            this.BtnIngresar.Location = new System.Drawing.Point(102, 518);
             this.BtnIngresar.Name = "BtnIngresar";
             this.BtnIngresar.Size = new System.Drawing.Size(174, 41);
             this.BtnIngresar.TabIndex = 32;
@@ -142,11 +143,11 @@ namespace Campeonato_Polideportivo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridVer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridVer.Location = new System.Drawing.Point(299, 165);
+            this.GridVer.Location = new System.Drawing.Point(384, 157);
             this.GridVer.Name = "GridVer";
             this.GridVer.RowHeadersWidth = 51;
             this.GridVer.RowTemplate.Height = 24;
-            this.GridVer.Size = new System.Drawing.Size(630, 336);
+            this.GridVer.Size = new System.Drawing.Size(586, 336);
             this.GridVer.TabIndex = 28;
             this.GridVer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVer_CellContentClick);
             // 
@@ -164,7 +165,7 @@ namespace Campeonato_Polideportivo
             // 
             this.TxtNombre.Location = new System.Drawing.Point(176, 123);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(100, 22);
+            this.TxtNombre.Size = new System.Drawing.Size(140, 22);
             this.TxtNombre.TabIndex = 36;
             this.TxtNombre.TextChanged += new System.EventHandler(this.TxtNombre_TextChanged);
             // 
@@ -238,28 +239,18 @@ namespace Campeonato_Polideportivo
             this.label8.Text = "Fotografia";
             this.label8.Click += new System.EventHandler(this.label1_Click);
             // 
-            // TxtGoles
-            // 
-            this.TxtGoles.AutoSize = true;
-            this.TxtGoles.Location = new System.Drawing.Point(29, 410);
-            this.TxtGoles.Name = "TxtGoles";
-            this.TxtGoles.Size = new System.Drawing.Size(45, 17);
-            this.TxtGoles.TabIndex = 35;
-            this.TxtGoles.Text = "Goles";
-            this.TxtGoles.Click += new System.EventHandler(this.label1_Click);
-            // 
             // TxtApellido
             // 
             this.TxtApellido.Location = new System.Drawing.Point(176, 157);
             this.TxtApellido.Name = "TxtApellido";
-            this.TxtApellido.Size = new System.Drawing.Size(100, 22);
+            this.TxtApellido.Size = new System.Drawing.Size(140, 22);
             this.TxtApellido.TabIndex = 36;
             // 
             // TxtPosicion
             // 
             this.TxtPosicion.Location = new System.Drawing.Point(176, 221);
             this.TxtPosicion.Name = "TxtPosicion";
-            this.TxtPosicion.Size = new System.Drawing.Size(100, 22);
+            this.TxtPosicion.Size = new System.Drawing.Size(140, 22);
             this.TxtPosicion.TabIndex = 36;
             this.TxtPosicion.TextChanged += new System.EventHandler(this.TxtPosicion_TextChanged);
             // 
@@ -267,7 +258,7 @@ namespace Campeonato_Polideportivo
             // 
             this.TxtNumero.Location = new System.Drawing.Point(176, 251);
             this.TxtNumero.Name = "TxtNumero";
-            this.TxtNumero.Size = new System.Drawing.Size(100, 22);
+            this.TxtNumero.Size = new System.Drawing.Size(140, 22);
             this.TxtNumero.TabIndex = 36;
             this.TxtNumero.TextChanged += new System.EventHandler(this.TxtPosicion_TextChanged);
             // 
@@ -275,7 +266,7 @@ namespace Campeonato_Polideportivo
             // 
             this.TxtNacionalidad.Location = new System.Drawing.Point(176, 279);
             this.TxtNacionalidad.Name = "TxtNacionalidad";
-            this.TxtNacionalidad.Size = new System.Drawing.Size(100, 22);
+            this.TxtNacionalidad.Size = new System.Drawing.Size(140, 22);
             this.TxtNacionalidad.TabIndex = 36;
             this.TxtNacionalidad.TextChanged += new System.EventHandler(this.TxtPosicion_TextChanged);
             // 
@@ -283,33 +274,18 @@ namespace Campeonato_Polideportivo
             // 
             this.TxtTitular.Location = new System.Drawing.Point(176, 316);
             this.TxtTitular.Name = "TxtTitular";
-            this.TxtTitular.Size = new System.Drawing.Size(100, 22);
+            this.TxtTitular.Size = new System.Drawing.Size(140, 22);
             this.TxtTitular.TabIndex = 36;
             this.TxtTitular.TextChanged += new System.EventHandler(this.TxtPosicion_TextChanged);
             // 
             // PicFotografia
             // 
-            this.PicFotografia.Location = new System.Drawing.Point(176, 354);
+            this.PicFotografia.Location = new System.Drawing.Point(125, 344);
             this.PicFotografia.Name = "PicFotografia";
-            this.PicFotografia.Size = new System.Drawing.Size(100, 50);
+            this.PicFotografia.Size = new System.Drawing.Size(169, 102);
             this.PicFotografia.TabIndex = 38;
             this.PicFotografia.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(176, 421);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 36;
-            this.textBox1.TextChanged += new System.EventHandler(this.TxtPosicion_TextChanged);
-            // 
-            // TxtFecha
-            // 
-            this.TxtFecha.Location = new System.Drawing.Point(176, 190);
-            this.TxtFecha.Name = "TxtFecha";
-            this.TxtFecha.Size = new System.Drawing.Size(100, 22);
-            this.TxtFecha.TabIndex = 36;
-            this.TxtFecha.TextChanged += new System.EventHandler(this.TxtPosicion_TextChanged);
+            this.PicFotografia.Click += new System.EventHandler(this.PicFotografia_Click);
             // 
             // BtnModificar
             // 
@@ -343,26 +319,61 @@ namespace Campeonato_Polideportivo
             // 
             this.TxtId.Location = new System.Drawing.Point(176, 89);
             this.TxtId.Name = "TxtId";
-            this.TxtId.Size = new System.Drawing.Size(100, 22);
+            this.TxtId.Size = new System.Drawing.Size(140, 22);
             this.TxtId.TabIndex = 36;
             this.TxtId.TextChanged += new System.EventHandler(this.TxtNombre_TextChanged);
+            // 
+            // TxtFecha
+            // 
+            this.TxtFecha.Location = new System.Drawing.Point(176, 190);
+            this.TxtFecha.Name = "TxtFecha";
+            this.TxtFecha.Size = new System.Drawing.Size(200, 22);
+            this.TxtFecha.TabIndex = 39;
+            // 
+            // BtnSeleccionarFoto
+            // 
+            this.BtnSeleccionarFoto.Location = new System.Drawing.Point(300, 370);
+            this.BtnSeleccionarFoto.Name = "BtnSeleccionarFoto";
+            this.BtnSeleccionarFoto.Size = new System.Drawing.Size(76, 46);
+            this.BtnSeleccionarFoto.TabIndex = 40;
+            this.BtnSeleccionarFoto.Text = "Subir Foto";
+            this.BtnSeleccionarFoto.UseVisualStyleBackColor = true;
+            this.BtnSeleccionarFoto.Click += new System.EventHandler(this.BtnSeleccionarFoto_Click_1);
+            // 
+            // LblGoles
+            // 
+            this.LblGoles.AutoSize = true;
+            this.LblGoles.Location = new System.Drawing.Point(32, 475);
+            this.LblGoles.Name = "LblGoles";
+            this.LblGoles.Size = new System.Drawing.Size(45, 17);
+            this.LblGoles.TabIndex = 41;
+            this.LblGoles.Text = "Goles";
+            // 
+            // TxtGoles
+            // 
+            this.TxtGoles.Location = new System.Drawing.Point(157, 470);
+            this.TxtGoles.Name = "TxtGoles";
+            this.TxtGoles.Size = new System.Drawing.Size(100, 22);
+            this.TxtGoles.TabIndex = 42;
+            this.TxtGoles.TextChanged += new System.EventHandler(this.TxtGoles_TextChanged);
             // 
             // FormJugador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 653);
+            this.Controls.Add(this.TxtGoles);
+            this.Controls.Add(this.LblGoles);
+            this.Controls.Add(this.BtnSeleccionarFoto);
+            this.Controls.Add(this.TxtFecha);
             this.Controls.Add(this.PicFotografia);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.TxtTitular);
             this.Controls.Add(this.TxtNacionalidad);
             this.Controls.Add(this.TxtNumero);
-            this.Controls.Add(this.TxtFecha);
             this.Controls.Add(this.TxtPosicion);
             this.Controls.Add(this.TxtApellido);
             this.Controls.Add(this.TxtId);
             this.Controls.Add(this.TxtNombre);
-            this.Controls.Add(this.TxtGoles);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -405,17 +416,18 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label TxtGoles;
         private System.Windows.Forms.TextBox TxtApellido;
         private System.Windows.Forms.TextBox TxtPosicion;
         private System.Windows.Forms.TextBox TxtNumero;
         private System.Windows.Forms.TextBox TxtNacionalidad;
         private System.Windows.Forms.TextBox TxtTitular;
         private System.Windows.Forms.PictureBox PicFotografia;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox TxtFecha;
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox TxtId;
+        private System.Windows.Forms.DateTimePicker TxtFecha;
+        private System.Windows.Forms.Button BtnSeleccionarFoto;
+        private System.Windows.Forms.Label LblGoles;
+        private System.Windows.Forms.TextBox TxtGoles;
     }
 }
