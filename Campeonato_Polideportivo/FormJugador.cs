@@ -63,8 +63,8 @@ namespace Campeonato_Polideportivo
                 Conexion conexion = new Conexion();
                 MySqlConnection conn = conexion.getConexion();
 
-                string query = "INSERT INTO jugador (nombre, apellido, posicion, numero, nacionalidad, titular, fotografia, fkidequipo, cantanotaciones, fecha_nacimiento) " +
-                               "VALUES (@nombre, @apellido, @posicion, @numero, @nacionalidad, @titular, @fotografia, @fkidequipo, @cantanotaciones, @fecha_nacimiento)";
+                string query = "INSERT INTO jugador (nombre, apellido, posicion, numero, nacionalidad, titular, fotografia, fkidequipo, cantanotaciones, fechanacimiento) " +
+                               "VALUES (@nombre, @apellido, @posicion, @numero, @nacionalidad, @titular, @fotografia, @fkidequipo, @cantanotaciones, @fechanacimiento)";
 
                 try
                 {
@@ -78,7 +78,7 @@ namespace Campeonato_Polideportivo
                     command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value); // Insertar la imagen o NULL
                     command.Parameters.AddWithValue("@fkidequipo", fkidequipo);
                     command.Parameters.AddWithValue("@cantanotaciones", goles);
-                    command.Parameters.AddWithValue("@fecha_nacimiento", fechaNacimiento);
+                    command.Parameters.AddWithValue("@fechanacimiento", fechaNacimiento);
 
                     int result = command.ExecuteNonQuery();
 
@@ -135,7 +135,7 @@ namespace Campeonato_Polideportivo
 
                 string query = "UPDATE jugador SET nombre = @nombre, apellido = @apellido, posicion = @posicion, numero = @numero, " +
                                "nacionalidad = @nacionalidad, titular = @titular, fotografia = @fotografia, fkidequipo = @fkidequipo, " +
-                               "cantanotaciones = @cantanotaciones, fecha_nacimiento = @fecha_nacimiento WHERE pkidjugador = @pkidjugador";
+                               "cantanotaciones = @cantanotaciones, fechanacimiento = @fechanacimiento WHERE pkidjugador = @pkidjugador";
 
                 try
                 {
@@ -149,7 +149,7 @@ namespace Campeonato_Polideportivo
                     command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value); // Insertar la imagen o NULL
                     command.Parameters.AddWithValue("@fkidequipo", fkidequipo);
                     command.Parameters.AddWithValue("@cantanotaciones", goles);
-                    command.Parameters.AddWithValue("@fecha_nacimiento", fechaNacimiento);
+                    command.Parameters.AddWithValue("@fechanacimiento", fechaNacimiento);
                     command.Parameters.AddWithValue("@pkidjugador", idJugador);
 
                     int result = command.ExecuteNonQuery();
@@ -233,7 +233,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fecha_nacimiento, fotografia " +
+            string query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
                            "FROM jugador WHERE pkidjugador = @pkidjugador";
 
             try
@@ -255,7 +255,7 @@ namespace Campeonato_Polideportivo
                     TxtNacionalidad.Text = row["nacionalidad"].ToString();
                     TxtTitular.Text = row["titular"].ToString();
                     TxtGoles.Text = row["cantanotaciones"].ToString();
-                    TxtFecha.Value = Convert.ToDateTime(row["fecha_nacimiento"]);
+                    TxtFecha.Value = Convert.ToDateTime(row["fechanacimiento"]);
 
                     if (row["fotografia"] != DBNull.Value)
                     {
