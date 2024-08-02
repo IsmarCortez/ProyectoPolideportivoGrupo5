@@ -44,7 +44,7 @@ namespace Campeonato_Polideportivo
             this.BtnVer = new System.Windows.Forms.Button();
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.LblFutbol = new System.Windows.Forms.Label();
-            this.GridVer = new System.Windows.Forms.DataGridView();
+            this.DgvFutbol = new System.Windows.Forms.DataGridView();
             this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.CmbEstadoPartido = new System.Windows.Forms.ComboBox();
             this.CmbGanadorEmpate = new System.Windows.Forms.ComboBox();
@@ -65,7 +65,9 @@ namespace Campeonato_Polideportivo
             this.NudGolesVisitante = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.GridVer)).BeginInit();
+            this.TxtIdFutbol = new System.Windows.Forms.TextBox();
+            this.LblIdFutbol = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvFutbol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudGolesLocal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudTirosLocal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPosesionLocal)).BeginInit();
@@ -151,9 +153,9 @@ namespace Campeonato_Polideportivo
             this.LblIdPartido.AutoSize = true;
             this.LblIdPartido.Location = new System.Drawing.Point(35, 12);
             this.LblIdPartido.Name = "LblIdPartido";
-            this.LblIdPartido.Size = new System.Drawing.Size(21, 17);
+            this.LblIdPartido.Size = new System.Drawing.Size(70, 17);
             this.LblIdPartido.TabIndex = 47;
-            this.LblIdPartido.Text = "ID";
+            this.LblIdPartido.Text = "ID Partido";
             // 
             // label1
             // 
@@ -180,6 +182,7 @@ namespace Campeonato_Polideportivo
             this.BtnEliminar.TabIndex = 45;
             this.BtnEliminar.Text = "ELIMINAR";
             this.BtnEliminar.UseVisualStyleBackColor = false;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnModificar
             // 
@@ -197,6 +200,7 @@ namespace Campeonato_Polideportivo
             this.BtnModificar.TabIndex = 44;
             this.BtnModificar.Text = "MODIFICAR";
             this.BtnModificar.UseVisualStyleBackColor = false;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // BtnVer
             // 
@@ -214,6 +218,7 @@ namespace Campeonato_Polideportivo
             this.BtnVer.TabIndex = 43;
             this.BtnVer.Text = "VER";
             this.BtnVer.UseVisualStyleBackColor = false;
+            this.BtnVer.Click += new System.EventHandler(this.BtnVer_Click);
             // 
             // BtnIngresar
             // 
@@ -244,18 +249,19 @@ namespace Campeonato_Polideportivo
             this.LblFutbol.TabIndex = 40;
             this.LblFutbol.Text = "FÚTBOL";
             // 
-            // GridVer
+            // DgvFutbol
             // 
-            this.GridVer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvFutbol.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GridVer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridVer.Location = new System.Drawing.Point(50, 246);
-            this.GridVer.Name = "GridVer";
-            this.GridVer.RowHeadersWidth = 51;
-            this.GridVer.RowTemplate.Height = 24;
-            this.GridVer.Size = new System.Drawing.Size(895, 316);
-            this.GridVer.TabIndex = 39;
+            this.DgvFutbol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvFutbol.Location = new System.Drawing.Point(50, 246);
+            this.DgvFutbol.Name = "DgvFutbol";
+            this.DgvFutbol.RowHeadersWidth = 51;
+            this.DgvFutbol.RowTemplate.Height = 24;
+            this.DgvFutbol.Size = new System.Drawing.Size(895, 316);
+            this.DgvFutbol.TabIndex = 39;
+            this.DgvFutbol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFutbol_CellContentClick);
             // 
             // DtpFecha
             // 
@@ -271,7 +277,7 @@ namespace Campeonato_Polideportivo
             this.CmbEstadoPartido.Name = "CmbEstadoPartido";
             this.CmbEstadoPartido.Size = new System.Drawing.Size(164, 24);
             this.CmbEstadoPartido.TabIndex = 66;
-            this.CmbEstadoPartido.Text = "Seleccione un estado...";
+            this.CmbEstadoPartido.SelectedIndexChanged += new System.EventHandler(this.CmbEstadoPartido_SelectedIndexChanged);
             // 
             // CmbGanadorEmpate
             // 
@@ -280,6 +286,7 @@ namespace Campeonato_Polideportivo
             this.CmbGanadorEmpate.Name = "CmbGanadorEmpate";
             this.CmbGanadorEmpate.Size = new System.Drawing.Size(164, 24);
             this.CmbGanadorEmpate.TabIndex = 67;
+            this.CmbGanadorEmpate.SelectedIndexChanged += new System.EventHandler(this.CmbGanadorEmpate_SelectedIndexChanged);
             // 
             // CmbCampeonato
             // 
@@ -288,6 +295,7 @@ namespace Campeonato_Polideportivo
             this.CmbCampeonato.Name = "CmbCampeonato";
             this.CmbCampeonato.Size = new System.Drawing.Size(164, 24);
             this.CmbCampeonato.TabIndex = 68;
+            this.CmbCampeonato.SelectedIndexChanged += new System.EventHandler(this.CmbCampeonato_SelectedIndexChanged);
             // 
             // CmbFase
             // 
@@ -296,6 +304,7 @@ namespace Campeonato_Polideportivo
             this.CmbFase.Name = "CmbFase";
             this.CmbFase.Size = new System.Drawing.Size(164, 24);
             this.CmbFase.TabIndex = 69;
+            this.CmbFase.SelectedIndexChanged += new System.EventHandler(this.CmbFase_SelectedIndexChanged);
             // 
             // CmbArbitro
             // 
@@ -424,11 +433,30 @@ namespace Campeonato_Polideportivo
             this.label15.TabIndex = 82;
             this.label15.Text = "Goles Visitante";
             // 
+            // TxtIdFutbol
+            // 
+            this.TxtIdFutbol.Enabled = false;
+            this.TxtIdFutbol.Location = new System.Drawing.Point(822, 72);
+            this.TxtIdFutbol.Name = "TxtIdFutbol";
+            this.TxtIdFutbol.Size = new System.Drawing.Size(129, 22);
+            this.TxtIdFutbol.TabIndex = 90;
+            // 
+            // LblIdFutbol
+            // 
+            this.LblIdFutbol.AutoSize = true;
+            this.LblIdFutbol.Location = new System.Drawing.Point(689, 72);
+            this.LblIdFutbol.Name = "LblIdFutbol";
+            this.LblIdFutbol.Size = new System.Drawing.Size(64, 17);
+            this.LblIdFutbol.TabIndex = 89;
+            this.LblIdFutbol.Text = "ID Futbol";
+            // 
             // FormFutbol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 653);
+            this.Controls.Add(this.TxtIdFutbol);
+            this.Controls.Add(this.LblIdFutbol);
             this.Controls.Add(this.NudPosesionVisitante);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.NudTirosVisitante);
@@ -464,10 +492,10 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.BtnVer);
             this.Controls.Add(this.BtnIngresar);
             this.Controls.Add(this.LblFutbol);
-            this.Controls.Add(this.GridVer);
+            this.Controls.Add(this.DgvFutbol);
             this.Name = "FormFutbol";
             this.Text = "FormFutbol";
-            ((System.ComponentModel.ISupportInitialize)(this.GridVer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvFutbol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudGolesLocal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudTirosLocal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPosesionLocal)).EndInit();
@@ -495,7 +523,7 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnVer;
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.Label LblFutbol;
-        private System.Windows.Forms.DataGridView GridVer;
+        private System.Windows.Forms.DataGridView DgvFutbol;
         private System.Windows.Forms.DateTimePicker DtpFecha;
         private System.Windows.Forms.ComboBox CmbEstadoPartido;
         private System.Windows.Forms.ComboBox CmbGanadorEmpate;
@@ -516,5 +544,7 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.NumericUpDown NudGolesVisitante;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox TxtIdFutbol;
+        private System.Windows.Forms.Label LblIdFutbol;
     }
 }
