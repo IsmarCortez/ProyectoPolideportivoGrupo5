@@ -161,7 +161,6 @@ C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormPartidosIndividuales.resources
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormTorneo.resources
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe.config
@@ -383,7 +382,6 @@ C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\D
 C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.CopyComplete
-=======
 C:\Users\kater\OneDrive\Desktop\Analisis2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe.config
 C:\Users\kater\OneDrive\Desktop\Analisis2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe
 C:\Users\kater\OneDrive\Desktop\Analisis2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.pdb
