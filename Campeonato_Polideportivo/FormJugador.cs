@@ -63,8 +63,13 @@ namespace Campeonato_Polideportivo
                 Conexion conexion = new Conexion();
                 MySqlConnection conn = conexion.getConexion();
 
+<<<<<<< HEAD
                 string query = "INSERT INTO jugador (nombre, apellido, posicion, numero, nacionalidad, titular, fotografia, fkidequipo, cantanotaciones, fecha_nacimiento) " +
                                "VALUES (@nombre, @apellido, @posicion, @numero, @nacionalidad, @titular, @fotografia, @fkidequipo, @cantanotaciones, @fecha_nacimiento)";
+=======
+                string query = "INSERT INTO jugador (nombre, apellido, posicion, numero, nacionalidad, titular, fotografia, fkidequipo, cantanotaciones, fechanacimiento) " +
+                               "VALUES (@nombre, @apellido, @posicion, @numero, @nacionalidad, @titular, @fotografia, @fkidequipo, @cantanotaciones, @fechanacimiento)";
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
 
                 try
                 {
@@ -78,7 +83,11 @@ namespace Campeonato_Polideportivo
                     command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value); // Insertar la imagen o NULL
                     command.Parameters.AddWithValue("@fkidequipo", fkidequipo);
                     command.Parameters.AddWithValue("@cantanotaciones", goles);
+<<<<<<< HEAD
                     command.Parameters.AddWithValue("@fecha_nacimiento", fechaNacimiento);
+=======
+                    command.Parameters.AddWithValue("@fechanacimiento", fechaNacimiento);
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
 
                     int result = command.ExecuteNonQuery();
 
@@ -135,7 +144,11 @@ namespace Campeonato_Polideportivo
 
                 string query = "UPDATE jugador SET nombre = @nombre, apellido = @apellido, posicion = @posicion, numero = @numero, " +
                                "nacionalidad = @nacionalidad, titular = @titular, fotografia = @fotografia, fkidequipo = @fkidequipo, " +
+<<<<<<< HEAD
                                "cantanotaciones = @cantanotaciones, fecha_nacimiento = @fecha_nacimiento WHERE pkidjugador = @pkidjugador";
+=======
+                               "cantanotaciones = @cantanotaciones, fechanacimiento = @fechanacimiento WHERE pkidjugador = @pkidjugador";
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
 
                 try
                 {
@@ -149,7 +162,11 @@ namespace Campeonato_Polideportivo
                     command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value); // Insertar la imagen o NULL
                     command.Parameters.AddWithValue("@fkidequipo", fkidequipo);
                     command.Parameters.AddWithValue("@cantanotaciones", goles);
+<<<<<<< HEAD
                     command.Parameters.AddWithValue("@fecha_nacimiento", fechaNacimiento);
+=======
+                    command.Parameters.AddWithValue("@fechanacimiento", fechaNacimiento);
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
                     command.Parameters.AddWithValue("@pkidjugador", idJugador);
 
                     int result = command.ExecuteNonQuery();
@@ -233,7 +250,11 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
+<<<<<<< HEAD
             string query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fecha_nacimiento, fotografia " +
+=======
+            string query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
                            "FROM jugador WHERE pkidjugador = @pkidjugador";
 
             try
@@ -255,7 +276,11 @@ namespace Campeonato_Polideportivo
                     TxtNacionalidad.Text = row["nacionalidad"].ToString();
                     TxtTitular.Text = row["titular"].ToString();
                     TxtGoles.Text = row["cantanotaciones"].ToString();
+<<<<<<< HEAD
                     TxtFecha.Value = Convert.ToDateTime(row["fecha_nacimiento"]);
+=======
+                    TxtFecha.Value = Convert.ToDateTime(row["fechanacimiento"]);
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
 
                     if (row["fotografia"] != DBNull.Value)
                     {

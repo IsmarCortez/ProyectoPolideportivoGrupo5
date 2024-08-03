@@ -161,6 +161,9 @@ C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormPartidosIndividuales.resources
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormTorneo.resources
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe.config
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.pdb
@@ -229,6 +232,7 @@ C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campe
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.CopyComplete
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.pdb
+<<<<<<< HEAD
 =======
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe.config
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe
@@ -300,3 +304,18 @@ C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.pdb
 >>>>>>> a67a920411537aad14424c7fcf16659e9cde9ac8
+=======
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.dll
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.xml
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe.config
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormBasquetbol.resources
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormBeisbol.resources
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormDeportista.resources
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormFutbol.resources
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormOtrosPartidos.resources
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormPartidosIndividuales.resources
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormTorneo.resources
+C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormVoleibol.resources
+>>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
