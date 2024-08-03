@@ -115,6 +115,7 @@ namespace Campeonato_Polideportivo
             // 
             // CmbJugador
             // 
+<<<<<<< HEAD
             this.CmbJugador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CmbJugador.FormattingEnabled = true;
             this.CmbJugador.Location = new System.Drawing.Point(252, 148);
@@ -123,6 +124,16 @@ namespace Campeonato_Polideportivo
             this.CmbJugador.Size = new System.Drawing.Size(287, 21);
             this.CmbJugador.TabIndex = 51;
             this.CmbJugador.Text = "Selecciona un jugador...";
+=======
+            this.CmbJugador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.CmbJugador.FormattingEnabled = true;
+            this.CmbJugador.Location = new System.Drawing.Point(304, 143);
+            this.CmbJugador.Name = "CmbJugador";
+            this.CmbJugador.Size = new System.Drawing.Size(381, 24);
+            this.CmbJugador.TabIndex = 51;
+            this.CmbJugador.Text = "Selecciona un deporte...";
+            this.CmbJugador.SelectedIndexChanged += new System.EventHandler(this.CmbJugador_SelectedIndexChanged);
+>>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
             // 
             // LblAsistencia
             // 
@@ -138,6 +149,7 @@ namespace Campeonato_Polideportivo
             // 
             // DgvAsistencia
             // 
+<<<<<<< HEAD
             this.DgvAsistencia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DgvAsistencia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvAsistencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -205,6 +217,18 @@ namespace Campeonato_Polideportivo
             this.LblMinuto.Size = new System.Drawing.Size(39, 13);
             this.LblMinuto.TabIndex = 60;
             this.LblMinuto.Text = "Minuto";
+=======
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(109, 225);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(776, 293);
+            this.dataGridView1.TabIndex = 49;
+>>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
             // 
             // FormAsistencia
             // 
