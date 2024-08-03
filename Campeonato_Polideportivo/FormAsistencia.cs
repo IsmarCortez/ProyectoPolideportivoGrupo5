@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 using System.IO;
 using MySql.Data.MySqlClient;
@@ -21,21 +20,14 @@ namespace Campeonato_Polideportivo
         public FormAsistencia()
         {
             InitializeComponent();
-<<<<<<< HEAD
 
             CargarEquipos();
 
-=======
-            CargarEquipos();
->>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
         }
 
         private void CargarEquipos()
         {
-<<<<<<< HEAD
-            
-=======
->>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
+
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
@@ -49,14 +41,8 @@ namespace Campeonato_Polideportivo
 
                 CmbEquipo.DataSource = dt;
                 CmbEquipo.DisplayMember = "nombre";
-<<<<<<< HEAD
                 CmbEquipo.ValueMember = "pkidequipo"; // Eliminar espacio adicional
 
-=======
-                CmbEquipo.ValueMember = "pkidequipo";
-
-                // Asignar el evento SelectedIndexChanged
->>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
                 CmbEquipo.SelectedIndexChanged += new EventHandler(CmbEquipo_SelectedIndexChanged);
             }
             catch (Exception ex)
@@ -69,7 +55,6 @@ namespace Campeonato_Polideportivo
             }
         }
 
-<<<<<<< HEAD
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
@@ -123,8 +108,6 @@ namespace Campeonato_Polideportivo
             CmbEquipo.Text = "Seleccione un equipo...";
         }
 
-=======
->>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
         private void CmbEquipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CmbEquipo.SelectedValue != null)
@@ -142,11 +125,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-<<<<<<< HEAD
             string query = "SELECT pkidjugador, apellido FROM jugador WHERE fkidequipo = @fkidequipo";
-=======
-            string query = "SELECT pkidjugador, nombre FROM jugador WHERE fkidequipo = @fkidequipo";
->>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
 
             try
             {
@@ -158,11 +137,7 @@ namespace Campeonato_Polideportivo
                 adapter.Fill(dt);
 
                 CmbJugador.DataSource = dt;
-<<<<<<< HEAD
                 CmbJugador.DisplayMember = "apellido";
-=======
-                CmbJugador.DisplayMember = "nombre";
->>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
                 CmbJugador.ValueMember = "pkidjugador";
             }
             catch (Exception ex)
@@ -175,7 +150,6 @@ namespace Campeonato_Polideportivo
             }
         }
 
-<<<<<<< HEAD
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             string minuto = TxtMinuto.Text;
@@ -276,7 +250,7 @@ namespace Campeonato_Polideportivo
                 conn.Close();
             }
         }
-    
+
 
 
         private void BtnEliminar_Click(object sender, EventArgs e)
@@ -331,12 +305,6 @@ namespace Campeonato_Polideportivo
         private void DgvAsistencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-=======
-        private void CmbJugador_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Aquí puedes manejar la selección del jugador si es necesario
->>>>>>> 9726fba8a8f9896ab163378b34db0ee10eb1d4db
         }
     }
 }
-
