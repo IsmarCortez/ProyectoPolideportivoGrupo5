@@ -441,3 +441,20 @@ ViewLayer.csproj.FileListAbsolute.txt
 
 .Codigo\Modulos\Menu\Ejecucion\Ejecucion\obj\Debug\Ejecucion.csproj.FileListAbsolute.txt
 
+# Ignorar archivos ejecutables
+*.exe
+
+# Ignorar archivos de depuración
+*.pdb
+
+# Ignorar archivos de cache
+*.cache
+# Ignorar carpetas de Visual Studio
+.vs/
+.vscode/
+
+# Ignorar archivos específicos de Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
