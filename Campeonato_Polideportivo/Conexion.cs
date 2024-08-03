@@ -12,7 +12,7 @@ namespace Campeonato_Polideportivo
         private MySqlConnection conexion; //Variable tipo MySql para realizar la funcion
 
         private string server = "localhost"; //nombre del servidor 
-        private string database = "CampeonatoPolideportivo"; //nombre de la base de datos
+        private string database = "PoliDB"; //nombre de la base de datos
         private string user = "root"; //nombre del usuario
         private string password = ""; //contraseña del usuario
         private string Conector; //variable para almacenar la conexion
