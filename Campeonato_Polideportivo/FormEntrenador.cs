@@ -277,5 +277,10 @@ namespace Campeonato_Polideportivo
             CmbEquipo.Text = "";
             TxtNacionalidad.Clear();
        }
+
+        private void CmbEquipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
