@@ -455,3 +455,13 @@ obj/
 *.exe
 *.pdb
 *.cache
+
+# Ignorar carpetas de Visual Studio
+.vs/
+.vscode/
+
+# Ignorar archivos específicos de Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
