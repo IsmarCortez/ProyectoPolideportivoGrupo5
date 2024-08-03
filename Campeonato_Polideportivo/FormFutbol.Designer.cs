@@ -67,6 +67,8 @@ namespace Campeonato_Polideportivo
             this.label15 = new System.Windows.Forms.Label();
             this.TxtIdFutbol = new System.Windows.Forms.TextBox();
             this.LblIdFutbol = new System.Windows.Forms.Label();
+            this.BtnClasificacion = new System.Windows.Forms.Button();
+            this.DgvClasificacion = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.DgvFutbol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudGolesLocal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudTirosLocal)).BeginInit();
@@ -74,6 +76,7 @@ namespace Campeonato_Polideportivo
             ((System.ComponentModel.ISupportInitialize)(this.NudPosesionVisitante)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudTirosVisitante)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudGolesVisitante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvClasificacion)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtGoles
@@ -251,9 +254,12 @@ namespace Campeonato_Polideportivo
             // 
             // DgvFutbol
             // 
+            this.DgvFutbol.AllowUserToAddRows = false;
+            this.DgvFutbol.AllowUserToDeleteRows = false;
             this.DgvFutbol.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DgvFutbol.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvFutbol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvFutbol.Location = new System.Drawing.Point(50, 246);
             this.DgvFutbol.Name = "DgvFutbol";
@@ -450,11 +456,39 @@ namespace Campeonato_Polideportivo
             this.LblIdFutbol.TabIndex = 89;
             this.LblIdFutbol.Text = "ID Futbol";
             // 
+            // BtnClasificacion
+            // 
+            this.BtnClasificacion.Location = new System.Drawing.Point(822, 12);
+            this.BtnClasificacion.Name = "BtnClasificacion";
+            this.BtnClasificacion.Size = new System.Drawing.Size(129, 35);
+            this.BtnClasificacion.TabIndex = 91;
+            this.BtnClasificacion.Text = "Clasificación";
+            this.BtnClasificacion.UseVisualStyleBackColor = true;
+            this.BtnClasificacion.Click += new System.EventHandler(this.BtnClasificacion_Click);
+            // 
+            // DgvClasificacion
+            // 
+            this.DgvClasificacion.AllowUserToAddRows = false;
+            this.DgvClasificacion.AllowUserToDeleteRows = false;
+            this.DgvClasificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DgvClasificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvClasificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvClasificacion.Location = new System.Drawing.Point(88, 246);
+            this.DgvClasificacion.Name = "DgvClasificacion";
+            this.DgvClasificacion.RowHeadersWidth = 51;
+            this.DgvClasificacion.RowTemplate.Height = 24;
+            this.DgvClasificacion.Size = new System.Drawing.Size(822, 316);
+            this.DgvClasificacion.TabIndex = 92;
+            // 
             // FormFutbol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 653);
+            this.Controls.Add(this.DgvClasificacion);
+            this.Controls.Add(this.BtnClasificacion);
             this.Controls.Add(this.TxtIdFutbol);
             this.Controls.Add(this.LblIdFutbol);
             this.Controls.Add(this.NudPosesionVisitante);
@@ -495,6 +529,7 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.DgvFutbol);
             this.Name = "FormFutbol";
             this.Text = "FormFutbol";
+            this.Load += new System.EventHandler(this.FormFutbol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvFutbol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudGolesLocal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudTirosLocal)).EndInit();
@@ -502,6 +537,7 @@ namespace Campeonato_Polideportivo
             ((System.ComponentModel.ISupportInitialize)(this.NudPosesionVisitante)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudTirosVisitante)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudGolesVisitante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvClasificacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -546,5 +582,7 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox TxtIdFutbol;
         private System.Windows.Forms.Label LblIdFutbol;
+        private System.Windows.Forms.Button BtnClasificacion;
+        private System.Windows.Forms.DataGridView DgvClasificacion;
     }
 }

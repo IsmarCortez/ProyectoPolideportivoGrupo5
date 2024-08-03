@@ -105,8 +105,8 @@ namespace Campeonato_Polideportivo
         private void CargarGanadorEmpate()
         {
             CmbGanadorEmpate.Items.Add(new { Valor = 'V', Texto = "Ganador Equipo Local" });
-            CmbGanadorEmpate.Items.Add(new { Valor = 'V', Texto = "Empate" });
             CmbGanadorEmpate.Items.Add(new { Valor = 'V', Texto = "Ganador Equipo Visitante" });
+            CmbGanadorEmpate.Items.Add(new { Valor = 'V', Texto = "Empate" });
             CmbGanadorEmpate.DisplayMember = "Texto";
             CmbGanadorEmpate.ValueMember = "Valor";
         }
@@ -216,7 +216,7 @@ namespace Campeonato_Polideportivo
             NudTirosVisitante.Value = 0;
             NudPosesionVisitante.Value = 0;
             CmbGanadorEmpate.Enabled = false;
-            CmbCampeonato.Enabled = false;
+           // CmbCampeonato.Enabled = false;
             CmbFase.Enabled = false;
             CmbArbitro.Enabled = false;
 
@@ -248,20 +248,21 @@ namespace Campeonato_Polideportivo
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                MySqlTransaction transaction = conn.BeginTransaction();
                 try
                 {
                     if (CmbGanadorEmpate.SelectedIndex == 0)
                     {
                         // SQL insertar datos en partido
-                        string query = $@"INSERT INTO partido (fecha_hora, fkequipolocalid, fkequipovisid, estadopartido, ganadorlocal, fkidcampeonato, fkidfase, fkidarbitro) 
-                              VALUES (@fecha_hora, @fkequipolocalid, @fkequipovisid, @estadopartido, @ganadorlocal, @fkidcampeonato, @fkidfase, @fkidarbitro);
+                        string query = $@"INSERT INTO partido (fechahora, fkequipolocalid, fkequipovisid, estadopartido, ganadorlocal, fkidcampeonato, fkidfase, fkidarbitro) 
+                              VALUES (@fechahora, @fkequipolocalid, @fkequipovisid, @estadopartido, @ganadorlocal, @fkidcampeonato, @fkidfase, @fkidarbitro);
                               SELECT LAST_INSERT_ID();";
                         int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
                         {
                             // Agregar los parámetros
-                            cmd.Parameters.AddWithValue("@fecha_hora", Fecha);
+                            cmd.Parameters.AddWithValue("@fechahora", Fecha);
                             cmd.Parameters.AddWithValue("@fkequipolocalid", FkIdEquipoLocalId);
                             cmd.Parameters.AddWithValue("@fkequipovisid", FkIdEquipoVisId);
                             cmd.Parameters.AddWithValue("@estadopartido", EstadoPartido);
@@ -299,20 +300,28 @@ namespace Campeonato_Polideportivo
                             MessageBox.Show("Datos ingresados a futbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
+                        string callProcedure = "CALL actualizar_clasificacion(@ultimo_partido);";
+                        using (MySqlCommand procCmd = new MySqlCommand(callProcedure, conn, transaction))
+                        {
+                            procCmd.Parameters.AddWithValue("@ultimo_partido", FkIdPartido);
+                            procCmd.ExecuteNonQuery();
+                        }
+                        // Confirmar la transacción
+                        transaction.Commit();
                     }
 
                     if (CmbGanadorEmpate.SelectedIndex == 1)
                     {
                         // SQL insertar datos en partido
-                        string query = $@"INSERT INTO partido (fecha_hora, fkequipolocalid, fkequipovisid, estadopartido, ganadorvisitante, fkidcampeonato, fkidfase, fkidarbitro) 
-                              VALUES (@fecha_hora, @fkequipolocalid, @fkequipovisid, @estadopartido, @ganadorlocal, @fkidcampeonato, @fkidfase, @fkidarbitro);
+                        string query = $@"INSERT INTO partido (fechahora, fkequipolocalid, fkequipovisid, estadopartido, ganadorvisitante, fkidcampeonato, fkidfase, fkidarbitro) 
+                              VALUES (@fechahora, @fkequipolocalid, @fkequipovisid, @estadopartido, @ganadorlocal, @fkidcampeonato, @fkidfase, @fkidarbitro);
                               SELECT LAST_INSERT_ID();";
                         int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
                         {
                             // Agregar los parámetros
-                            cmd.Parameters.AddWithValue("@fecha_hora", Fecha);
+                            cmd.Parameters.AddWithValue("@fechahora", Fecha);
                             cmd.Parameters.AddWithValue("@fkequipolocalid", FkIdEquipoLocalId);
                             cmd.Parameters.AddWithValue("@fkequipovisid", FkIdEquipoVisId);
                             cmd.Parameters.AddWithValue("@estadopartido", EstadoPartido);
@@ -350,20 +359,28 @@ namespace Campeonato_Polideportivo
                             MessageBox.Show("Datos ingresados a futbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
+                        string callProcedure = "CALL actualizar_clasificacion(@ultimo_partido);";
+                        using (MySqlCommand procCmd = new MySqlCommand(callProcedure, conn, transaction))
+                        {
+                            procCmd.Parameters.AddWithValue("@ultimo_partido", FkIdPartido);
+                            procCmd.ExecuteNonQuery();
+                        }
+                        // Confirmar la transacción
+                        transaction.Commit();
                     }
 
                     if (CmbGanadorEmpate.SelectedIndex == 2)
                     {
                         // SQL insertar datos en partido
-                        string query = $@"INSERT INTO partido (fecha_hora, fkequipolocalid, fkequipovisid, estadopartido, empate, fkidcampeonato, fkidfase, fkidarbitro) 
-                              VALUES (@fecha_hora, @fkequipolocalid, @fkequipovisid, @estadopartido, @ganadorlocal, @fkidcampeonato, @fkidfase, @fkidarbitro);
+                        string query = $@"INSERT INTO partido (fechahora, fkequipolocalid, fkequipovisid, estadopartido, empate, fkidcampeonato, fkidfase, fkidarbitro) 
+                              VALUES (@fechahora, @fkequipolocalid, @fkequipovisid, @estadopartido, @ganadorlocal, @fkidcampeonato, @fkidfase, @fkidarbitro);
                               SELECT LAST_INSERT_ID();";
                         // Crear el comando
                         int FkIdPartido;
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
                         {
                             // Agregar los parámetros
-                            cmd.Parameters.AddWithValue("@fecha_hora", Fecha);
+                            cmd.Parameters.AddWithValue("@fechahora", Fecha);
                             cmd.Parameters.AddWithValue("@fkequipolocalid", FkIdEquipoLocalId);
                             cmd.Parameters.AddWithValue("@fkequipovisid", FkIdEquipoVisId);
                             cmd.Parameters.AddWithValue("@estadopartido", EstadoPartido);
@@ -400,11 +417,21 @@ namespace Campeonato_Polideportivo
                             MessageBox.Show("Datos ingresados a futbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
+                        string callProcedure = "CALL actualizar_clasificacion(@ultimo_partido);";
+                        using (MySqlCommand procCmd = new MySqlCommand(callProcedure, conn, transaction))
+                        {
+                            procCmd.Parameters.AddWithValue("@ultimo_partido", FkIdPartido);
+                            procCmd.ExecuteNonQuery();
+                        }
+                        // Confirmar la transacción
+                        transaction.Commit();
                     }
 
                 }
                 catch (Exception ex)
                 {
+                    // Revertir la transacción en caso de error
+                    transaction.Rollback();
                     // Mostrar mensaje de error
                     MessageBox.Show($"Error: {ex.Message}");
                 }
@@ -486,6 +513,8 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
+            DgvClasificacion.Visible = false;
+            DgvFutbol.Visible = true;
             Conexion conexion = new Conexion(); //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -494,7 +523,7 @@ namespace Campeonato_Polideportivo
                     string query = @"
                      SELECT 
                         partido.pkidpartido AS IDPartido,
-                        partido.fecha_hora AS Fecha,
+                        partido.fechahora AS Fecha,
                         el.nombre AS EquipoLocal,
                         ev.nombre AS EquipoVisitante,
                         c.nombre AS Campeonato,
@@ -578,7 +607,7 @@ namespace Campeonato_Polideportivo
                     if (CmbGanadorEmpate.SelectedIndex == 0)
                     {
                         // SQL insertar datos en partido
-                        string query = $@"UPDATE partido SET fecha_hora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, ganadorlocal = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
+                        string query = $@"UPDATE partido SET fechahora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, ganadorlocal = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
                         int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -646,7 +675,7 @@ namespace Campeonato_Polideportivo
                     if (CmbGanadorEmpate.SelectedIndex == 1)
                     {
                         // SQL insertar datos en partido
-                        string query = $@"UPDATE partido SET fecha_hora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, ganador = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
+                        string query = $@"UPDATE partido SET fechahora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, ganador = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
                         int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -714,7 +743,7 @@ namespace Campeonato_Polideportivo
                     if (CmbGanadorEmpate.SelectedIndex == 2)
                     {
                         // SQL insertar datos en partido
-                        string query = $@"UPDATE partido SET fecha_hora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, empate = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
+                        string query = $@"UPDATE partido SET fechahora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, empate = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
                         int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -892,6 +921,47 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show($"Error: {ex.Message}");
                 }
             }
+        }
+
+        private void BtnClasificacion_Click(object sender, EventArgs e)
+        {
+            DgvFutbol.Visible = false;
+            DgvClasificacion.Visible = true;
+
+            Conexion conexion = new Conexion();
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                try
+                {
+                    /// string query = "SELECT * FROM vista_clasificacion ORDER BY puntos DESC, victorias DESC WHERE fkidcampeonato = @fkidcampeonato";
+                    string query = "SELECT * FROM vista_clasificacion WHERE fkidcampeonato = @fkidcampeonato";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        int FkIdCampeonato = Convert.ToInt32(CmbCampeonato.SelectedValue);
+                        cmd.Parameters.AddWithValue("@fkidcampeonato", FkIdCampeonato);
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            DgvClasificacion.DataSource = dataTable;
+                        }
+                    }
+
+                    // Opcional: Ajustar el ancho de las columnas
+                    DgvClasificacion.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar la clasificación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void FormFutbol_Load(object sender, EventArgs e)
+        {
+            DgvClasificacion.Visible = false;
         }
     }
 }
