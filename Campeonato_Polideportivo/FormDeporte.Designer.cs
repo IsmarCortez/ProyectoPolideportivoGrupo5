@@ -29,7 +29,7 @@ namespace Campeonato_Polideportivo
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnVer = new System.Windows.Forms.Button();
             this.textBox3Regla = new System.Windows.Forms.TextBox();
             this.Regla = new System.Windows.Forms.Label();
             this.textBox2IngresoTipo = new System.Windows.Forms.TextBox();
@@ -45,23 +45,23 @@ namespace Campeonato_Polideportivo
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // BtnVer
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button1.Location = new System.Drawing.Point(297, 535);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 41);
-            this.button1.TabIndex = 49;
-            this.button1.Text = "VER";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.BtnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnVer.FlatAppearance.BorderSize = 0;
+            this.BtnVer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.BtnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnVer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnVer.Location = new System.Drawing.Point(297, 535);
+            this.BtnVer.Name = "BtnVer";
+            this.BtnVer.Size = new System.Drawing.Size(174, 41);
+            this.BtnVer.TabIndex = 49;
+            this.BtnVer.Text = "VER";
+            this.BtnVer.UseVisualStyleBackColor = false;
+            this.BtnVer.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBox3Regla
             // 
@@ -75,7 +75,7 @@ namespace Campeonato_Polideportivo
             this.Regla.AutoSize = true;
             this.Regla.Location = new System.Drawing.Point(43, 361);
             this.Regla.Name = "Regla";
-            this.Regla.Size = new System.Drawing.Size(44, 16);
+            this.Regla.Size = new System.Drawing.Size(45, 17);
             this.Regla.TabIndex = 47;
             this.Regla.Text = "Regla";
             // 
@@ -98,7 +98,7 @@ namespace Campeonato_Polideportivo
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(43, 290);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.Size = new System.Drawing.Size(36, 17);
             this.label2.TabIndex = 44;
             this.label2.Text = "Tipo";
             // 
@@ -107,7 +107,7 @@ namespace Campeonato_Polideportivo
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(40, 237);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 16);
+            this.label1.Size = new System.Drawing.Size(117, 17);
             this.label1.TabIndex = 43;
             this.label1.Text = "Nombre Deporte:";
             // 
@@ -183,7 +183,7 @@ namespace Campeonato_Polideportivo
             this.LblDeportes.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblDeportes.Location = new System.Drawing.Point(407, 17);
             this.LblDeportes.Name = "LblDeportes";
-            this.LblDeportes.Size = new System.Drawing.Size(167, 50);
+            this.LblDeportes.Size = new System.Drawing.Size(170, 50);
             this.LblDeportes.TabIndex = 37;
             this.LblDeportes.Text = "DEPORTES";
             // 
@@ -192,6 +192,7 @@ namespace Campeonato_Polideportivo
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(476, 207);
             this.dataGridView1.Name = "dataGridView1";
@@ -205,7 +206,7 @@ namespace Campeonato_Polideportivo
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 653);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnVer);
             this.Controls.Add(this.textBox3Regla);
             this.Controls.Add(this.Regla);
             this.Controls.Add(this.textBox2IngresoTipo);
@@ -228,7 +229,7 @@ namespace Campeonato_Polideportivo
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnVer;
         private System.Windows.Forms.TextBox textBox3Regla;
         private System.Windows.Forms.Label Regla;
         private System.Windows.Forms.TextBox textBox2IngresoTipo;

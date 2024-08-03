@@ -21,78 +21,72 @@ namespace Campeonato_Polideportivo
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            // Obtener el id del deporte seleccionado
             var selectedDeporte = (KeyValuePair<int, string>)CmbDeporte.SelectedItem;
             int fkiddeporte = selectedDeporte.Key;
 
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "INSERT INTO torneo (nombre, temporada, fechainicio, fechafin, fkiddeporte) " +
-                "VALUES (@nombre, @temporada, @fechainicio, @fechafin, @fkiddeporte)";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
-                    command.Parameters.AddWithValue("@temporada", TxtTemporada.Text);
-                    command.Parameters.AddWithValue("@fechainicio", dateTimePickerFechaInicio.Value);
-                    command.Parameters.AddWithValue("@fechafin", dateTimePickerFechafin.Value);
-                    command.Parameters.AddWithValue("@fkiddeporte", fkiddeporte);
-                    // command.Parameters.AddWithValue("@fotografia", TxtSexo.Text);
-                    //command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value);
-
-
-                    //  command.Parameters.AddWithValue("@id_regla", Convert.ToInt32(textBox3Regla.Text));
-
-                    try
+                    string query = "INSERT INTO torneo (nombre, temporada, fechainicio, fechafin, fkiddeporte) " +
+                                   "VALUES (@nombre, @temporada, @fechainicio, @fechafin, @fkiddeporte)";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Datos insertados exitosamente.");
-                        limpiar();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
+                        command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
+                        command.Parameters.AddWithValue("@temporada", TxtTemporada.Text);
+                        command.Parameters.AddWithValue("@fechainicio", dateTimePickerFechaInicio.Value);
+                        command.Parameters.AddWithValue("@fechafin", dateTimePickerFechafin.Value);
+                        command.Parameters.AddWithValue("@fkiddeporte", fkiddeporte);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Datos insertados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo insertar el registro.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    limpiar();
+                }
             }
-
         }
 
         private void CargarComboBox()
         {
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "SELECT pkiddeporte, nombre FROM deporte";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    try
+                    string query = "SELECT pkiddeporte, nombre FROM deporte";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        connection.Open();
                         MySqlDataReader reader = command.ExecuteReader();
-
                         Dictionary<int, string> deportes = new Dictionary<int, string>();
-
                         while (reader.Read())
                         {
                             int id = reader.GetInt32("pkiddeporte");
                             string nombre = reader.GetString("nombre");
                             deportes.Add(id, nombre);
                         }
-
                         CmbDeporte.DataSource = new BindingSource(deportes, null);
                         CmbDeporte.DisplayMember = "Value";
                         CmbDeporte.ValueMember = "Key";
-
-                        reader.Close();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -123,63 +117,25 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
-
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "SELECT * FROM torneo";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    try
+                    string query = "SELECT * FROM torneo";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        connection.Open();
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-
-                        /*dataTable.Columns.Add("Fotografia", Type.GetType("System.Byte[]"));
-                        foreach (DataRow drow in dataTable.Rows) {
-
-                            drow["fotografia"] = File.ReadAllBytes(drow["ImageFile"].ToString());
-                        
-                        
-                        }*/
-
-
-
-
-
-
                         GridVer.DataSource = dataTable;
-
-
-
-
-
-                        /*------------------------------*/
-
-
-
-
-
-                        /*-------------------------------*/
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-
-
-
-
-
-
         }
 
         private void GridVer_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -205,48 +161,39 @@ namespace Campeonato_Polideportivo
             int fkiddeporte = selectedDeporte.Key;
 
             Conexion conexion = new Conexion();
-            try
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                // Crear la conexión
-                using (MySqlConnection conn = conexion.getConexion())
+                try
                 {
-                    // Crear la consulta SQL para actualizar datos
-                    string query = "UPDATE torneo SET nombre = @nombre, temporada = @temporada, fechainicio = @fechainicio, fechafin = @fechafin, fkiddeporte= @fkiddeporte WHERE pkidtorneo = @pkidtorneo";
-
-                    // Crear el comando
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    string query = "UPDATE torneo SET nombre = @nombre, temporada = @temporada, fechainicio = @fechainicio, fechafin = @fechafin, fkiddeporte = @fkiddeporte WHERE pkidtorneo = @pkidtorneo";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@pkidtorneo", TxtId.Text);
-                        cmd.Parameters.AddWithValue("@nombre", TxtNombre.Text);
-                        cmd.Parameters.AddWithValue("@temporada", TxtTemporada.Text);
-                        cmd.Parameters.AddWithValue("@fechainicio", dateTimePickerFechaInicio.Value);
-                        cmd.Parameters.AddWithValue("@fechafin", dateTimePickerFechafin.Value);
-                        cmd.Parameters.AddWithValue("@fkiddeporte", fkiddeporte);
+                        command.Parameters.AddWithValue("@pkidtorneo", TxtId.Text);
+                        command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
+                        command.Parameters.AddWithValue("@temporada", TxtTemporada.Text);
+                        command.Parameters.AddWithValue("@fechainicio", dateTimePickerFechaInicio.Value);
+                        command.Parameters.AddWithValue("@fechafin", dateTimePickerFechafin.Value);
+                        command.Parameters.AddWithValue("@fkiddeporte", fkiddeporte);
 
-
-                        // Ejecutar el comando
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        // Verificar si se modificó algún registro
+                        int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            // Mostrar mensaje de éxito
-                            MessageBox.Show("Datos modificados correctamente.");
+                            MessageBox.Show("Datos modificados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            // Mostrar mensaje si no se encontró el registro
-                            MessageBox.Show("No se encontró el registro con el ID especificado.");
+                            MessageBox.Show("No se encontró el registro con el ID especificado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
                     limpiar();
                 }
-            }
-            catch (Exception ex)
-            {
-                // Mostrar mensaje de error
-                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 

@@ -44,15 +44,15 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.LblBeisbol = new System.Windows.Forms.Label();
             this.GridVer = new System.Windows.Forms.DataGridView();
-            this.dateTimePickerFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerFechafin = new System.Windows.Forms.DateTimePicker();
-            this.CmbDeporte = new System.Windows.Forms.ComboBox();
             this.pkidtorneo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.temporada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechainicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fkiddeporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePickerFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFechafin = new System.Windows.Forms.DateTimePicker();
+            this.CmbDeporte = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridVer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +83,7 @@ namespace Campeonato_Polideportivo
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(74, 339);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.Size = new System.Drawing.Size(59, 17);
             this.label6.TabIndex = 214;
             this.label6.Text = "Deporte";
             // 
@@ -92,7 +92,7 @@ namespace Campeonato_Polideportivo
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(74, 298);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 16);
+            this.label4.Size = new System.Drawing.Size(81, 17);
             this.label4.TabIndex = 212;
             this.label4.Text = "Fecha Final";
             // 
@@ -101,7 +101,7 @@ namespace Campeonato_Polideportivo
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(74, 269);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 16);
+            this.label3.Size = new System.Drawing.Size(83, 17);
             this.label3.TabIndex = 211;
             this.label3.Text = "Fecha Inicio";
             // 
@@ -110,7 +110,7 @@ namespace Campeonato_Polideportivo
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(74, 231);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 210;
             this.label2.Text = "Temporada";
             // 
@@ -119,7 +119,7 @@ namespace Campeonato_Polideportivo
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(74, 166);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 16);
+            this.label9.Size = new System.Drawing.Size(75, 17);
             this.label9.TabIndex = 209;
             this.label9.Text = "ID_Torneo";
             // 
@@ -128,7 +128,7 @@ namespace Campeonato_Polideportivo
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(74, 200);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
+            this.label1.Size = new System.Drawing.Size(108, 17);
             this.label1.TabIndex = 208;
             this.label1.Text = "Nombre Torneo";
             // 
@@ -211,7 +211,7 @@ namespace Campeonato_Polideportivo
             this.LblBeisbol.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblBeisbol.Location = new System.Drawing.Point(473, 34);
             this.LblBeisbol.Name = "LblBeisbol";
-            this.LblBeisbol.Size = new System.Drawing.Size(134, 50);
+            this.LblBeisbol.Size = new System.Drawing.Size(136, 50);
             this.LblBeisbol.TabIndex = 202;
             this.LblBeisbol.Text = "TORNEO";
             // 
@@ -220,6 +220,7 @@ namespace Campeonato_Polideportivo
             this.GridVer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridVer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridVer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridVer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pkidtorneo,
@@ -236,6 +237,54 @@ namespace Campeonato_Polideportivo
             this.GridVer.Size = new System.Drawing.Size(669, 336);
             this.GridVer.TabIndex = 201;
             this.GridVer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVer_CellContentClick);
+            // 
+            // pkidtorneo
+            // 
+            this.pkidtorneo.DataPropertyName = "pkidtorneo";
+            this.pkidtorneo.HeaderText = "ID_torneo";
+            this.pkidtorneo.MinimumWidth = 6;
+            this.pkidtorneo.Name = "pkidtorneo";
+            this.pkidtorneo.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Nombre Torneo";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // temporada
+            // 
+            this.temporada.DataPropertyName = "temporada";
+            this.temporada.HeaderText = "Temporada";
+            this.temporada.MinimumWidth = 6;
+            this.temporada.Name = "temporada";
+            this.temporada.ReadOnly = true;
+            // 
+            // fechainicio
+            // 
+            this.fechainicio.DataPropertyName = "fechainicio";
+            this.fechainicio.HeaderText = "Fecha Inicio";
+            this.fechainicio.MinimumWidth = 6;
+            this.fechainicio.Name = "fechainicio";
+            this.fechainicio.ReadOnly = true;
+            // 
+            // fechafin
+            // 
+            this.fechafin.DataPropertyName = "fechafin";
+            this.fechafin.HeaderText = "Fecha Fin";
+            this.fechafin.MinimumWidth = 6;
+            this.fechafin.Name = "fechafin";
+            this.fechafin.ReadOnly = true;
+            // 
+            // fkiddeporte
+            // 
+            this.fkiddeporte.DataPropertyName = "fkiddeporte";
+            this.fkiddeporte.HeaderText = "Deporte";
+            this.fkiddeporte.MinimumWidth = 6;
+            this.fkiddeporte.Name = "fkiddeporte";
+            this.fkiddeporte.ReadOnly = true;
             // 
             // dateTimePickerFechaInicio
             // 
@@ -259,60 +308,6 @@ namespace Campeonato_Polideportivo
             this.CmbDeporte.Size = new System.Drawing.Size(121, 24);
             this.CmbDeporte.TabIndex = 230;
             this.CmbDeporte.SelectedIndexChanged += new System.EventHandler(this.CmbDeporte_SelectedIndexChanged);
-            // 
-            // pkidtorneo
-            // 
-            this.pkidtorneo.DataPropertyName = "pkidtorneo";
-            this.pkidtorneo.HeaderText = "ID_torneo";
-            this.pkidtorneo.MinimumWidth = 6;
-            this.pkidtorneo.Name = "pkidtorneo";
-            this.pkidtorneo.ReadOnly = true;
-            this.pkidtorneo.Width = 125;
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "nombre";
-            this.nombre.HeaderText = "Nombre Torneo";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 125;
-            // 
-            // temporada
-            // 
-            this.temporada.DataPropertyName = "temporada";
-            this.temporada.HeaderText = "Temporada";
-            this.temporada.MinimumWidth = 6;
-            this.temporada.Name = "temporada";
-            this.temporada.ReadOnly = true;
-            this.temporada.Width = 125;
-            // 
-            // fechainicio
-            // 
-            this.fechainicio.DataPropertyName = "fechainicio";
-            this.fechainicio.HeaderText = "Fecha Inicio";
-            this.fechainicio.MinimumWidth = 6;
-            this.fechainicio.Name = "fechainicio";
-            this.fechainicio.ReadOnly = true;
-            this.fechainicio.Width = 125;
-            // 
-            // fechafin
-            // 
-            this.fechafin.DataPropertyName = "fechafin";
-            this.fechafin.HeaderText = "Fecha Fin";
-            this.fechafin.MinimumWidth = 6;
-            this.fechafin.Name = "fechafin";
-            this.fechafin.ReadOnly = true;
-            this.fechafin.Width = 125;
-            // 
-            // fkiddeporte
-            // 
-            this.fkiddeporte.DataPropertyName = "fkiddeporte";
-            this.fkiddeporte.HeaderText = "Deporte";
-            this.fkiddeporte.MinimumWidth = 6;
-            this.fkiddeporte.Name = "fkiddeporte";
-            this.fkiddeporte.ReadOnly = true;
-            this.fkiddeporte.Width = 125;
             // 
             // FormTorneo
             // 

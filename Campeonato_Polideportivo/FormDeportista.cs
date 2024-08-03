@@ -23,42 +23,42 @@ namespace Campeonato_Polideportivo
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "INSERT INTO deportista (nombre, apellido, fechanacimiento, nacionalidad, sexo, fotografia) " +
-                "VALUES (@nombre, @apellido, @fechanacimiento, @nacionalidad, @sexo, @fotografia)";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
-                    command.Parameters.AddWithValue("@apellido", TxtApellido.Text);
-                    command.Parameters.AddWithValue("@fechanacimiento", dateTimePickerDepor.Value);
-                    command.Parameters.AddWithValue("@nacionalidad", TxtNacionalidad.Text);
-                    command.Parameters.AddWithValue("@sexo", TxtSexo.Text);
-                    // command.Parameters.AddWithValue("@fotografia", TxtSexo.Text);
-                    command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value);
-
-
-                    //  command.Parameters.AddWithValue("@id_regla", Convert.ToInt32(textBox3Regla.Text));
-
-                    try
+                    string query = "INSERT INTO deportista (nombre, apellido, fechanacimiento, nacionalidad, sexo, fotografia) " +
+                                   "VALUES (@nombre, @apellido, @fechanacimiento, @nacionalidad, @sexo, @fotografia)";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Datos insertados exitosamente.");
-                        limpiar();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
+                        command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
+                        command.Parameters.AddWithValue("@apellido", TxtApellido.Text);
+                        command.Parameters.AddWithValue("@fechanacimiento", dateTimePickerDepor.Value);
+                        command.Parameters.AddWithValue("@nacionalidad", TxtNacionalidad.Text);
+                        command.Parameters.AddWithValue("@sexo", TxtSexo.Text);
+                        command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Datos insertados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo insertar el registro.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    limpiar();
+                }
             }
-
-
-
         }
 
         private void PicFotografia_Click(object sender, EventArgs e)
@@ -87,63 +87,28 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
-
-
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "SELECT * FROM deportista";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    try
+                    string query = "SELECT * FROM deportista";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        connection.Open();
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
 
-                        /*dataTable.Columns.Add("Fotografia", Type.GetType("System.Byte[]"));
-                        foreach (DataRow drow in dataTable.Rows) {
-
-                            drow["fotografia"] = File.ReadAllBytes(drow["ImageFile"].ToString());
-                        
-                        
-                        }*/
-
-
-
-
-
-
                         GridVer.DataSource = dataTable;
-
-
-
-
-
-                        /*------------------------------*/
-       
-
-
-
-
-                        /*-------------------------------*/
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-
-
         }
 
-   
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {

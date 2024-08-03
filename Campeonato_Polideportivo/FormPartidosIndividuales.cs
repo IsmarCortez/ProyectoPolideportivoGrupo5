@@ -29,155 +29,84 @@ namespace Campeonato_Polideportivo
             CmbTorneo.Text = "Seleccione un Torneo";
         }
 
-        private void CargarComboBoxLocal()
+        private void CargarComboBox(ComboBox comboBox, string query)
         {
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "SELECT pkidjugador, nombre FROM deportista";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    try
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        connection.Open();
                         MySqlDataReader reader = command.ExecuteReader();
-
-                        Dictionary<int, string> deportista = new Dictionary<int, string>();
-
+                        Dictionary<int, string> items = new Dictionary<int, string>();
                         while (reader.Read())
                         {
-                            int id = reader.GetInt32("pkidjugador");
-                            string nombre = reader.GetString("nombre");
-                            deportista.Add(id, nombre);
+                            int id = reader.GetInt32(0);
+                            string nombre = reader.GetString(1);
+                            items.Add(id, nombre);
                         }
-
-                        CmbLocal.DataSource = new BindingSource(deportista, null);
-                        CmbLocal.DisplayMember = "Value";
-                        CmbLocal.ValueMember = "Key";
-
-                        reader.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
+                        comboBox.DataSource = new BindingSource(items, null);
+                        comboBox.DisplayMember = "Value";
+                        comboBox.ValueMember = "Key";
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private void CargarComboBoxLocal()
+        {
+            CargarComboBox(CmbLocal, "SELECT pkidjugador, nombre FROM deportista");
         }
 
         private void CargarComboBoxVis()
         {
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "SELECT pkidjugador, nombre FROM deportista";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        MySqlDataReader reader = command.ExecuteReader();
-
-                        Dictionary<int, string> deportista = new Dictionary<int, string>();
-
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32("pkidjugador");
-                            string nombre = reader.GetString("nombre");
-                            deportista.Add(id, nombre);
-                        }
-
-                        CmbVis.DataSource = new BindingSource(deportista, null);
-                        CmbVis.DisplayMember = "Value";
-                        CmbVis.ValueMember = "Key";
-
-                        reader.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
-                }
-            }
+            CargarComboBox(CmbVis, "SELECT pkidjugador, nombre FROM deportista");
         }
-
 
         private void CargarComboBoxTorneo()
         {
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "SELECT pkidtorneo, nombre FROM torneo";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        MySqlDataReader reader = command.ExecuteReader();
-
-                        Dictionary<int, string> deportista = new Dictionary<int, string>();
-
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32("pkidtorneo");
-                            string nombre = reader.GetString("nombre");
-                            deportista.Add(id, nombre);
-                        }
-
-                        CmbTorneo.DataSource = new BindingSource(deportista, null);
-                        CmbTorneo.DisplayMember = "Value";
-                        CmbTorneo.ValueMember = "Key";
-
-                        reader.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
-                }
-            }
+            CargarComboBox(CmbTorneo, "SELECT pkidtorneo, nombre FROM torneo");
         }
+
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            // Obtener el id del deportista local seleccionado
             var selectedLocal = (KeyValuePair<int, string>)CmbLocal.SelectedItem;
-            int fklocal = selectedLocal.Key;
-
-            // Obtener el id del deportista visitante seleccionado
             var selectedVis = (KeyValuePair<int, string>)CmbVis.SelectedItem;
-            int fkVis = selectedVis.Key;
-
-            // Obtener el id del torneo seleccionado
             var selectedTorneo = (KeyValuePair<int, string>)CmbTorneo.SelectedItem;
-            int fkTorneo = selectedTorneo.Key;
 
-            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "INSERT INTO partidosindividuales (fkdeportistalocal, fkdeportistavisitante, fkidtorneo) " +
-                           "VALUES (@fkdeportistalocal, @fkdeportistavisitante, @fkidtorneo)";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@fkdeportistalocal", fklocal);
-                    command.Parameters.AddWithValue("@fkdeportistavisitante", fkVis);
-                    command.Parameters.AddWithValue("@fkidtorneo", fkTorneo);
+                    string query = "INSERT INTO partidosindividuales (fkdeportistalocal, fkdeportistavisitante, fkidtorneo) VALUES (@fkdeportistalocal, @fkdeportistavisitante, @fkidtorneo)";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@fkdeportistalocal", selectedLocal.Key);
+                        command.Parameters.AddWithValue("@fkdeportistavisitante", selectedVis.Key);
+                        command.Parameters.AddWithValue("@fkidtorneo", selectedTorneo.Key);
 
-                    try
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Datos insertados exitosamente.");
-                        limpiar();
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Datos insertados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo insertar el registro.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -193,53 +122,23 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
-            String connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
-            string query = "SELECT * FROM partidosindividuales";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    try
+                    string query = "SELECT * FROM partidosindividuales";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        connection.Open();
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-
-                        /*dataTable.Columns.Add("Fotografia", Type.GetType("System.Byte[]"));
-                        foreach (DataRow drow in dataTable.Rows) {
-
-                            drow["fotografia"] = File.ReadAllBytes(drow["ImageFile"].ToString());
-                        
-                        
-                        }*/
-
-
-
-
-
-
                         GridVer.DataSource = dataTable;
-
-
-
-
-
-                        /*------------------------------*/
-
-
-
-
-
-                        /*-------------------------------*/
-
-
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -256,60 +155,39 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            // Obtener el id del deportista local seleccionado
             var selectedLocal = (KeyValuePair<int, string>)CmbLocal.SelectedItem;
-            int fklocal = selectedLocal.Key;
-
-            // Obtener el id del deportista visitante seleccionado
             var selectedVis = (KeyValuePair<int, string>)CmbVis.SelectedItem;
-            int fkVis = selectedVis.Key;
-
-            // Obtener el id del torneo seleccionado
             var selectedTorneo = (KeyValuePair<int, string>)CmbTorneo.SelectedItem;
-            int fkTorneo = selectedTorneo.Key;
 
             Conexion conexion = new Conexion();
-            try
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                // Crear la conexión
-                using (MySqlConnection conn = conexion.getConexion())
+                try
                 {
-                    // Crear la consulta SQL para actualizar datos
-                    string query = "UPDATE partidosindividuales SET fkdeportistalocal = @fkdeportistalocal, fkdeportistavisitante = @fkdeportistavisitante, fkidtorneo= @fkidtorneo WHERE pkidsesion = @pkidsesion";
-
-                    // Crear el comando
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    string query = "UPDATE partidosindividuales SET fkdeportistalocal = @fkdeportistalocal, fkdeportistavisitante = @fkdeportistavisitante, fkidtorneo = @fkidtorneo WHERE pkidsesion = @pkidsesion";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@pkidsesion", TxtId.Text);
-                        cmd.Parameters.AddWithValue("@fkdeportistalocal", fklocal);
-                        cmd.Parameters.AddWithValue("@fkdeportistavisitante", fkVis);
-                        cmd.Parameters.AddWithValue("@fkidtorneo", fkTorneo);
+                        command.Parameters.AddWithValue("@pkidsesion", TxtId.Text);
+                        command.Parameters.AddWithValue("@fkdeportistalocal", selectedLocal.Key);
+                        command.Parameters.AddWithValue("@fkdeportistavisitante", selectedVis.Key);
+                        command.Parameters.AddWithValue("@fkidtorneo", selectedTorneo.Key);
 
-
-
-                        // Ejecutar el comando
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        // Verificar si se modificó algún registro
+                        int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            // Mostrar mensaje de éxito
-                            MessageBox.Show("Datos modificados correctamente.");
+                            MessageBox.Show("Datos modificados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiar();
                         }
                         else
                         {
-                            // Mostrar mensaje si no se encontró el registro
-                            MessageBox.Show("No se encontró el registro con el ID especificado.");
+                            MessageBox.Show("No se encontró el registro con el ID especificado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    limpiar();
                 }
-            }
-            catch (Exception ex)
-            {
-                // Mostrar mensaje de error
-                MessageBox.Show($"Error: {ex.Message}");
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

@@ -40,13 +40,13 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.LblBeisbol = new System.Windows.Forms.Label();
             this.GridVer = new System.Windows.Forms.DataGridView();
-            this.CmbLocal = new System.Windows.Forms.ComboBox();
-            this.CmbVis = new System.Windows.Forms.ComboBox();
-            this.CmbTorneo = new System.Windows.Forms.ComboBox();
             this.pkidsesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fkdeportistalocal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fkdeportistavisitante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fkidtorneo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmbLocal = new System.Windows.Forms.ComboBox();
+            this.CmbVis = new System.Windows.Forms.ComboBox();
+            this.CmbTorneo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridVer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +63,7 @@ namespace Campeonato_Polideportivo
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(29, 308);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
+            this.label3.Size = new System.Drawing.Size(75, 17);
             this.label3.TabIndex = 238;
             this.label3.Text = "ID_Torneo";
             // 
@@ -72,7 +72,7 @@ namespace Campeonato_Polideportivo
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(29, 272);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 16);
+            this.label2.Size = new System.Drawing.Size(131, 17);
             this.label2.TabIndex = 237;
             this.label2.Text = "Deportista Visitante";
             // 
@@ -81,7 +81,7 @@ namespace Campeonato_Polideportivo
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(29, 207);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 16);
+            this.label9.Size = new System.Drawing.Size(72, 17);
             this.label9.TabIndex = 236;
             this.label9.Text = "ID_Sesion";
             // 
@@ -90,7 +90,7 @@ namespace Campeonato_Polideportivo
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(29, 241);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 16);
+            this.label1.Size = new System.Drawing.Size(111, 17);
             this.label1.TabIndex = 235;
             this.label1.Text = "Deportista Local";
             // 
@@ -173,7 +173,7 @@ namespace Campeonato_Polideportivo
             this.LblBeisbol.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblBeisbol.Location = new System.Drawing.Point(477, 62);
             this.LblBeisbol.Name = "LblBeisbol";
-            this.LblBeisbol.Size = new System.Drawing.Size(377, 50);
+            this.LblBeisbol.Size = new System.Drawing.Size(382, 50);
             this.LblBeisbol.TabIndex = 229;
             this.LblBeisbol.Text = "PARTIDOS INDIVIDUALES";
             // 
@@ -182,6 +182,7 @@ namespace Campeonato_Polideportivo
             this.GridVer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridVer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridVer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridVer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pkidsesion,
@@ -195,6 +196,34 @@ namespace Campeonato_Polideportivo
             this.GridVer.Size = new System.Drawing.Size(640, 336);
             this.GridVer.TabIndex = 228;
             this.GridVer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVer_CellContentClick);
+            // 
+            // pkidsesion
+            // 
+            this.pkidsesion.DataPropertyName = "pkidsesion";
+            this.pkidsesion.HeaderText = "ID_Sesion";
+            this.pkidsesion.MinimumWidth = 6;
+            this.pkidsesion.Name = "pkidsesion";
+            // 
+            // fkdeportistalocal
+            // 
+            this.fkdeportistalocal.DataPropertyName = "fkdeportistalocal";
+            this.fkdeportistalocal.HeaderText = "Deportista Local";
+            this.fkdeportistalocal.MinimumWidth = 6;
+            this.fkdeportistalocal.Name = "fkdeportistalocal";
+            // 
+            // fkdeportistavisitante
+            // 
+            this.fkdeportistavisitante.DataPropertyName = "fkdeportistavisitante";
+            this.fkdeportistavisitante.HeaderText = "Deportista Visitante";
+            this.fkdeportistavisitante.MinimumWidth = 6;
+            this.fkdeportistavisitante.Name = "fkdeportistavisitante";
+            // 
+            // fkidtorneo
+            // 
+            this.fkidtorneo.DataPropertyName = "fkidtorneo";
+            this.fkidtorneo.HeaderText = "ID_Torneo";
+            this.fkidtorneo.MinimumWidth = 6;
+            this.fkidtorneo.Name = "fkidtorneo";
             // 
             // CmbLocal
             // 
@@ -219,38 +248,6 @@ namespace Campeonato_Polideportivo
             this.CmbTorneo.Name = "CmbTorneo";
             this.CmbTorneo.Size = new System.Drawing.Size(171, 24);
             this.CmbTorneo.TabIndex = 252;
-            // 
-            // pkidsesion
-            // 
-            this.pkidsesion.DataPropertyName = "pkidsesion";
-            this.pkidsesion.HeaderText = "ID_Sesion";
-            this.pkidsesion.MinimumWidth = 6;
-            this.pkidsesion.Name = "pkidsesion";
-            this.pkidsesion.Width = 125;
-            // 
-            // fkdeportistalocal
-            // 
-            this.fkdeportistalocal.DataPropertyName = "fkdeportistalocal";
-            this.fkdeportistalocal.HeaderText = "Deportista Local";
-            this.fkdeportistalocal.MinimumWidth = 6;
-            this.fkdeportistalocal.Name = "fkdeportistalocal";
-            this.fkdeportistalocal.Width = 125;
-            // 
-            // fkdeportistavisitante
-            // 
-            this.fkdeportistavisitante.DataPropertyName = "fkdeportistavisitante";
-            this.fkdeportistavisitante.HeaderText = "Deportista Visitante";
-            this.fkdeportistavisitante.MinimumWidth = 6;
-            this.fkdeportistavisitante.Name = "fkdeportistavisitante";
-            this.fkdeportistavisitante.Width = 125;
-            // 
-            // fkidtorneo
-            // 
-            this.fkidtorneo.DataPropertyName = "fkidtorneo";
-            this.fkidtorneo.HeaderText = "ID_Torneo";
-            this.fkidtorneo.MinimumWidth = 6;
-            this.fkidtorneo.Name = "fkidtorneo";
-            this.fkidtorneo.Width = 125;
             // 
             // FormPartidosIndividuales
             // 
