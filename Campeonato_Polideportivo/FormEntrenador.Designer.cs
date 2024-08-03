@@ -113,6 +113,7 @@ namespace Campeonato_Polideportivo
             this.CmbEquipo.Size = new System.Drawing.Size(354, 24);
             this.CmbEquipo.TabIndex = 38;
             this.CmbEquipo.Text = "Selecciona un equipo...";
+            this.CmbEquipo.SelectedIndexChanged += new System.EventHandler(this.CmbEquipo_SelectedIndexChanged);
             // 
             // LblEntrenador
             // 
@@ -121,7 +122,7 @@ namespace Campeonato_Polideportivo
             this.LblEntrenador.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEntrenador.Location = new System.Drawing.Point(381, 51);
             this.LblEntrenador.Name = "LblEntrenador";
-            this.LblEntrenador.Size = new System.Drawing.Size(216, 50);
+            this.LblEntrenador.Size = new System.Drawing.Size(213, 50);
             this.LblEntrenador.TabIndex = 36;
             this.LblEntrenador.Text = "ENTRENADOR";
             // 
@@ -160,7 +161,7 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(62, 133);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(58, 17);
+            this.LblNombre.Size = new System.Drawing.Size(56, 16);
             this.LblNombre.TabIndex = 43;
             this.LblNombre.Text = "Nombre";
             // 
@@ -169,7 +170,7 @@ namespace Campeonato_Polideportivo
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(62, 201);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(58, 17);
+            this.LblApellido.Size = new System.Drawing.Size(57, 16);
             this.LblApellido.TabIndex = 44;
             this.LblApellido.Text = "Apellido";
             // 
@@ -178,7 +179,7 @@ namespace Campeonato_Polideportivo
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 265);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 17);
+            this.label3.Size = new System.Drawing.Size(135, 16);
             this.label3.TabIndex = 45;
             this.label3.Text = "Fecha de Nacimiento";
             // 
@@ -187,7 +188,7 @@ namespace Campeonato_Polideportivo
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(30, 323);
             this.LblNacionalidad.Name = "LblNacionalidad";
-            this.LblNacionalidad.Size = new System.Drawing.Size(90, 17);
+            this.LblNacionalidad.Size = new System.Drawing.Size(88, 16);
             this.LblNacionalidad.TabIndex = 46;
             this.LblNacionalidad.Text = "Nacionalidad";
             // 
@@ -196,7 +197,7 @@ namespace Campeonato_Polideportivo
             this.LblEquipo.AutoSize = true;
             this.LblEquipo.Location = new System.Drawing.Point(55, 387);
             this.LblEquipo.Name = "LblEquipo";
-            this.LblEquipo.Size = new System.Drawing.Size(52, 17);
+            this.LblEquipo.Size = new System.Drawing.Size(50, 16);
             this.LblEquipo.TabIndex = 47;
             this.LblEquipo.Text = "Equipo";
             // 
@@ -226,7 +227,7 @@ namespace Campeonato_Polideportivo
             this.LblIdEntrenador.AutoSize = true;
             this.LblIdEntrenador.Location = new System.Drawing.Point(30, 82);
             this.LblIdEntrenador.Name = "LblIdEntrenador";
-            this.LblIdEntrenador.Size = new System.Drawing.Size(96, 17);
+            this.LblIdEntrenador.Size = new System.Drawing.Size(89, 16);
             this.LblIdEntrenador.TabIndex = 52;
             this.LblIdEntrenador.Text = "ID Entrenador";
             // 

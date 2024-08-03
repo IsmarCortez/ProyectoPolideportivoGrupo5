@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|c:\\users\\leone\\source\\repos\\proyectopolideportivogrupo5\\campeonato_polideportivo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|solutionrelative:campeonato_polideportivo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\campeonato_polideportivo\\formtorneo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|solutionrelative:campeonato_polideportivo\\formtorneo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\campeonato_polideportivo\\form4login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|solutionrelative:campeonato_polideportivo\\form4login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|c:\\users\\leone\\source\\repos\\proyectopolideportivogrupo5\\campeonato_polideportivo\\formpartidosindividuales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|solutionrelative:campeonato_polideportivo\\formpartidosindividuales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\campeonato_polideportivo\\form4login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|solutionrelative:campeonato_polideportivo\\form4login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|c:\\users\\leone\\source\\repos\\proyectopolideportivogrupo5\\campeonato_polideportivo\\formtorneo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|solutionrelative:campeonato_polideportivo\\formtorneo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|c:\\users\\leone\\source\\repos\\proyectopolideportivogrupo5\\campeonato_polideportivo\\formpartidosindividuales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B6F9707-52F9-4C3E-A6B3-8457C9AFE521}|Campeonato_Polideportivo\\Campeonato_Polideportivo.csproj|solutionrelative:campeonato_polideportivo\\formpartidosindividuales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form4login.cs",
-              "DocumentMoniker": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\Form4login.cs",
-              "RelativeDocumentMoniker": "Campeonato_Polideportivo\\Form4login.cs",
-              "ToolTip": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\Form4login.cs",
-              "RelativeToolTip": "Campeonato_Polideportivo\\Form4login.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAD4vycAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "FormTorneo.cs",
+              "DocumentMoniker": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormTorneo.cs",
+              "RelativeDocumentMoniker": "Campeonato_Polideportivo\\FormTorneo.cs",
+              "ToolTip": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormTorneo.cs",
+              "RelativeToolTip": "Campeonato_Polideportivo\\FormTorneo.cs",
+              "ViewState": "AQIAALgAAAAAAAAAAAAWwMsAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T17:07:37.532Z",
+              "WhenOpened": "2024-08-03T00:11:51.84Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form4login.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\Form4login.cs",
-              "RelativeDocumentMoniker": "Campeonato_Polideportivo\\Form4login.cs",
-              "ToolTip": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\Form4login.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Campeonato_Polideportivo\\Form4login.cs [Dise\u00F1o]",
+              "DocumentIndex": 3,
+              "Title": "FormPartidosIndividuales.cs",
+              "DocumentMoniker": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormPartidosIndividuales.cs",
+              "RelativeDocumentMoniker": "Campeonato_Polideportivo\\FormPartidosIndividuales.cs",
+              "ToolTip": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormPartidosIndividuales.cs",
+              "RelativeToolTip": "Campeonato_Polideportivo\\FormPartidosIndividuales.cs",
+              "ViewState": "AQIAAO8AAAAAAAAAAAAgwAQBAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T17:04:00.421Z",
+              "WhenOpened": "2024-08-02T23:24:16.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormPartidosIndividuales.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormPartidosIndividuales.cs",
+              "RelativeDocumentMoniker": "Campeonato_Polideportivo\\FormPartidosIndividuales.cs",
+              "ToolTip": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormPartidosIndividuales.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Campeonato_Polideportivo\\FormPartidosIndividuales.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T23:05:13.366Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\Form1.cs",
-              "RelativeDocumentMoniker": "Campeonato_Polideportivo\\Form1.cs",
-              "ToolTip": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Campeonato_Polideportivo\\Form1.cs [Dise\u00F1o]",
+              "Title": "FormTorneo.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormTorneo.cs",
+              "RelativeDocumentMoniker": "Campeonato_Polideportivo\\FormTorneo.cs",
+              "ToolTip": "C:\\Users\\leone\\source\\repos\\ProyectoPolideportivoGrupo5\\Campeonato_Polideportivo\\FormTorneo.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Campeonato_Polideportivo\\FormTorneo.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T17:03:57.506Z",
+              "WhenOpened": "2024-08-02T01:15:26.372Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]
