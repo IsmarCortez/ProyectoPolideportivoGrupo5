@@ -17,13 +17,11 @@ namespace Campeonato_Polideportivo
         {
             InitializeComponent();
             CargarEquipos();
-            CmbEquipo.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void FormEntrenador_Load(object sender, EventArgs e)
         {
             CmbEquipo.Text = "Seleccione un equipo...";
-            //BtnIngresar.Enabled = false;  // Deshabilitar el botón al inicio
         }
 
         private void CargarEquipos()
@@ -31,7 +29,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT pkidequipo, nombre FROM equipo";
+            string query = "SELECT id_equipo, nombre FROM equipo";
 
             try
             {
@@ -41,7 +39,7 @@ namespace Campeonato_Polideportivo
 
                 CmbEquipo.DataSource = dt;
                 CmbEquipo.DisplayMember = "nombre";
-                CmbEquipo.ValueMember = "pkidequipo";
+                CmbEquipo.ValueMember = "id_equipo";
             }
             catch (Exception ex)
             {
@@ -59,25 +57,11 @@ namespace Campeonato_Polideportivo
 
             string Nombre = TxtNombre.Text;
             string Apellido = TxtApellido.Text;
+            //DateTime.TryParse(TxtFechaNacimiento.Text, out FechaNacimiento);
             DateTime FechaNacimiento = DtpEntrenador.Value;
+
             string Nacionalidad = TxtNacionalidad.Text;
             int Equipo = Convert.ToInt32(CmbEquipo.SelectedValue);
-
-            if (string.IsNullOrWhiteSpace(TxtNombre.Text)) //Para obligar a llenar los campos
-            {
-                MessageBox.Show("Por favor ingrese el nombre del entrenador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(TxtNacionalidad.Text))
-            {
-                MessageBox.Show("Por favor ingrese la nacionalidad.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(TxtApellido.Text))
-            {
-                MessageBox.Show("Por favor ingrese el apellido del entrenador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
 
             //  conexión mysql
@@ -86,7 +70,7 @@ namespace Campeonato_Polideportivo
                 try
                 {
                     // SQL insertar datos
-                    string query = "INSERT INTO entrenador (nombre, apellido, fechanacimiento, nacionalidad, fkidequipo) VALUES (@nombre, @apellido, @fechanacimiento, @nacionalidad, @equipo)";
+                    string query = "INSERT INTO entrenador (nombre, apellido, fecha_nacimiento, nacionalidad, id_equipo) VALUES (@nombre, @apellido, @fecha_nacimiento, @nacionalidad, @equipo)";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -94,7 +78,7 @@ namespace Campeonato_Polideportivo
                         // Agregar los parámetros
                         cmd.Parameters.AddWithValue("@nombre", Nombre);
                         cmd.Parameters.AddWithValue("@apellido", Apellido);
-                        cmd.Parameters.AddWithValue("@fechanacimiento", FechaNacimiento);
+                        cmd.Parameters.AddWithValue("@fecha_nacimiento", FechaNacimiento);
                         cmd.Parameters.AddWithValue("@nacionalidad", Nacionalidad);
                         cmd.Parameters.AddWithValue("@equipo", Equipo);
 
@@ -102,7 +86,7 @@ namespace Campeonato_Polideportivo
                         cmd.ExecuteNonQuery();
 
                         // Mostrar mensaje de éxito
-                        MessageBox.Show("Datos ingresados correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Datos ingresados correctamente.");
                     }
                 }
                 catch (Exception ex)
@@ -110,6 +94,7 @@ namespace Campeonato_Polideportivo
                     // Mostrar mensaje de error
                     MessageBox.Show($"Error: {ex.Message}");
                 }
+
                 Limpiar();
             }
         }
@@ -129,16 +114,16 @@ namespace Campeonato_Polideportivo
 
                     string query = @"
                         SELECT 
-                            entrenador.pkidentrenador AS IDEntrenador,
-                            entrenador.Nombre AS Nombre, 
-                            entrenador.Apellido AS Apellido, 
-                            entrenador.fechanacimiento AS FechaDeNacimiento, 
-                            entrenador.Nacionalidad AS Nacionalidad, 
+                            entrenador.id_entrenador,
+                            entrenador.Nombre, 
+                            entrenador.Apellido, 
+                            entrenador.Fecha_Nacimiento, 
+                            entrenador.Nacionalidad, 
                             equipo.Nombre AS EquipoNombre
                         FROM 
                             entrenador
                         JOIN 
-                            equipo ON entrenador.fkidequipo = equipo.pkidequipo";
+                            equipo ON entrenador.id_equipo = equipo.id_equipo";
 
                     // Crear el adaptador
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -176,59 +161,37 @@ namespace Campeonato_Polideportivo
                 DateTime FechaNacimiento = DtpEntrenador.Value;
                 string Nacionalidad = TxtNacionalidad.Text;
                 int Equipo = Convert.ToInt32(CmbEquipo.SelectedValue);
-                if (string.IsNullOrWhiteSpace(TxtNombre.Text)) //Para obligar a llenar los campos
-                {
-                    MessageBox.Show("Por favor ingrese el nombre del entrenador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(TxtNacionalidad.Text))
-                {
-                    MessageBox.Show("Por favor ingrese la nacionalidad.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(TxtApellido.Text))
-                {
-                    MessageBox.Show("Por favor ingrese el apellido del entrenador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para actualizar datos
-                    string query = "UPDATE Entrenador SET nombre = @nombre, apellido = @apellido, fechanacimiento = @fechanacimiento, nacionalidad = @nacionalidad, fkidequipo = @equipo WHERE pkidentrenador = @pkidentrenador";
+                    string query = "UPDATE Entrenador SET nombre = @nombre, apellido = @apellido, fecha_nacimiento = @fecha_nacimiento, nacionalidad = @nacionalidad, id_equipo = @equipo WHERE id_entrenador = @id_entrenador";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@pkidentrenador", TxtID.Text);
+                        cmd.Parameters.AddWithValue("@id_entrenador", TxtID.Text);
                         cmd.Parameters.AddWithValue("@nombre", Nombre);
                         cmd.Parameters.AddWithValue("@apellido", Apellido);
-                        cmd.Parameters.AddWithValue("@fechanacimiento", FechaNacimiento);
+                        cmd.Parameters.AddWithValue("@fecha_nacimiento", FechaNacimiento);
                         cmd.Parameters.AddWithValue("@nacionalidad", Nacionalidad);
                         cmd.Parameters.AddWithValue("@equipo", Equipo);
 
-                        DialogResult result = MessageBox.Show("¿Está seguro de que deseas modificar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes) // El usuario hizo clic en "Sí"
-                        {
-                            // Ejecutar el comando
-                            int rowsAffected = cmd.ExecuteNonQuery();
+                        // Ejecutar el comando
+                        int rowsAffected = cmd.ExecuteNonQuery();
 
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Datos modificados correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                //  mensaje si no se encontró el registro
-                                MessageBox.Show("No se encontro el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                        // Verificar si se modificó algún registro
+                        if (rowsAffected > 0)
+                        {
+                            // Mostrar mensaje de éxito
+                            MessageBox.Show("Datos modificados correctamente.");
                         }
                         else
                         {
-                            // El usuario hizo clic en "No"
-                            MessageBox.Show("No se realizó ninguna acción.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Mostrar mensaje si no se encontró el registro
+                            MessageBox.Show("No se encontró el registro con el ID especificado.");
                         }
                     }
                     Limpiar();
@@ -249,8 +212,10 @@ namespace Campeonato_Polideportivo
                 TxtNombre.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 TxtApellido.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 DtpEntrenador.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+               // TxtFechaNacimiento.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 TxtNacionalidad.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 CmbEquipo.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+
             }
             catch
             {
@@ -265,40 +230,33 @@ namespace Campeonato_Polideportivo
             try
             {
                 // Obtener el id_entrenador del TextBox
-                int identrenador = int.Parse(TxtID.Text);
+                int id_entrenador = int.Parse(TxtID.Text);
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para eliminar datos
-                    string query = "DELETE FROM Entrenador WHERE pkidentrenador = @pkidentrenador";
+                    string query = "DELETE FROM Entrenador WHERE id_entrenador = @id_entrenador";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar el parámetro
-                        cmd.Parameters.AddWithValue("@pkidentrenador", identrenador);
+                        cmd.Parameters.AddWithValue("@id_entrenador", id_entrenador);
 
-                        DialogResult result = MessageBox.Show("¿Está seguro de que deseas eliminar los datos?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes) // El usuario hizo clic en "Sí"
+                        // Ejecutar el comando
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // Verificar si se eliminó algún registro
+                        if (rowsAffected > 0)
                         {
-                            // Ejecutar el comando
-                            int rowsAffected = cmd.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Datos eliminados correctamente.", "Datos eliminados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                //  mensaje si no se encontró el registro
-                                MessageBox.Show("No se encontro el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            // Mostrar mensaje de que si se elimino
+                            MessageBox.Show("Datos eliminados correctamente.");
                         }
                         else
                         {
-                            // El usuario hizo clic en "No"
-                            MessageBox.Show("No se realizó ninguna acción.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //  mensaje si no se encontró el registro
+                            MessageBox.Show("No se encontró el registro con el ID especificado.");
                         }
                     }
                 }
@@ -316,7 +274,7 @@ namespace Campeonato_Polideportivo
             TxtNombre.Clear();
             TxtApellido.Clear();
             DtpEntrenador.Value = DateTime.Now;
-            CmbEquipo.Text = "Seleccione un equipo...";
+            CmbEquipo.Text = "";
             TxtNacionalidad.Clear();
        }
 
