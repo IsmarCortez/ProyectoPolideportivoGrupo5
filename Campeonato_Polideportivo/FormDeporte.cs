@@ -1,4 +1,4 @@
-﻿using MySqlConnector;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,77 +22,78 @@ namespace Campeonato_Polideportivo
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-
-            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
-            string query = "INSERT INTO deporte (nombre, tipo, id_regla) VALUES (@nombre, @tipo, @id_regla)";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@nombre", textBox1IngresoDepo.Text);
-                    command.Parameters.AddWithValue("@tipo", textBox2IngresoTipo.Text);
-                    command.Parameters.AddWithValue("@id_regla", Convert.ToInt32(textBox3Regla.Text));
+                    string query = "INSERT INTO deporte (nombre, tipo, id_regla) VALUES (@nombre, @tipo, @id_regla)";
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@nombre", textBox1IngresoDepo.Text);
+                        command.Parameters.AddWithValue("@tipo", textBox2IngresoTipo.Text);
+                        command.Parameters.AddWithValue("@id_regla", Convert.ToInt32(textBox3Regla.Text));
 
-                    try
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Datos insertados exitosamente.");
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Datos insertados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se insertaron datos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
- 
+
 
         private void CargarComboBox()
         {
-            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
-            string query = "SELECT nombre FROM deporte";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                string query = "SELECT nombre FROM deporte";
+                using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     try
                     {
-                        connection.Open();
                         MySqlDataReader reader = command.ExecuteReader();
 
+                        CmbDeporte.Items.Clear(); // Limpiar los elementos existentes
                         while (reader.Read())
                         {
                             CmbDeporte.Items.Add(reader.GetString("nombre"));
                         }
-
                         reader.Close();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
 
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
-            string query = "SELECT * FROM deporte";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                string query = "SELECT * FROM deporte";
+                using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     try
                     {
-                        connection.Open();
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -100,7 +101,7 @@ namespace Campeonato_Polideportivo
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -112,16 +113,14 @@ namespace Campeonato_Polideportivo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
-            string query = "SELECT * FROM deporte";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                string query = "SELECT * FROM deporte";
+                using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     try
                     {
-                        connection.Open();
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -129,7 +128,7 @@ namespace Campeonato_Polideportivo
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -137,27 +136,31 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
-            string query = "UPDATE deporte SET tipo = @tipo, id_regla = @idRegla WHERE nombre = @nombre";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                string query = "UPDATE deporte SET tipo = @tipo, id_regla = @idRegla WHERE nombre = @nombre";
+                using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@nombre", CmbDeporte.SelectedItem);
                     command.Parameters.AddWithValue("@tipo", textBox2IngresoTipo.Text);
                     command.Parameters.AddWithValue("@idRegla", int.Parse(textBox3Regla.Text));
-                    command.Parameters.AddWithValue("@idDeporte", Convert.ToInt32(textBox3Regla.Text));
 
                     try
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Registro actualizado exitosamente.");
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró el registro para actualizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -165,37 +168,40 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
-            string query = "DELETE FROM deporte WHERE nombre = @nombre";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Conexion conexion = new Conexion();
+            using (MySqlConnection conn = conexion.getConexion())
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                string query = "DELETE FROM deporte WHERE nombre = @nombre";
+                using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@nombre", CmbDeporte.SelectedItem);
 
                     try
                     {
-                        connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
-
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Registro eliminado exitosamente.");
+                            MessageBox.Show("Registro eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             CargarComboBox(); // Recarga el ComboBox después de eliminar
                         }
                         else
                         {
-                            MessageBox.Show("No se encontró el registro para eliminar.");
+                            MessageBox.Show("No se encontró el registro para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            
 
-            }
+        }
+        }
+
+        private void CmbDeporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
