@@ -440,4 +440,18 @@ ModelLayer.csproj.FileListAbsolute.txt
 ViewLayer.csproj.FileListAbsolute.txt
 
 .Codigo\Modulos\Menu\Ejecucion\Ejecucion\obj\Debug\Ejecucion.csproj.FileListAbsolute.txt
-
+# Archivos de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+ 
+# Archivos generados por el compilador
+bin/
+obj/
+ 
+# Otros archivos generados
+*.exe
+*.pdb
+*.cache
