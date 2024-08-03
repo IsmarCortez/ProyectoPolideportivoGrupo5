@@ -75,7 +75,7 @@ namespace Campeonato_Polideportivo
             this.Regla.AutoSize = true;
             this.Regla.Location = new System.Drawing.Point(43, 361);
             this.Regla.Name = "Regla";
-            this.Regla.Size = new System.Drawing.Size(44, 16);
+            this.Regla.Size = new System.Drawing.Size(45, 17);
             this.Regla.TabIndex = 47;
             this.Regla.Text = "Regla";
             // 
@@ -98,7 +98,7 @@ namespace Campeonato_Polideportivo
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(43, 290);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.Size = new System.Drawing.Size(36, 17);
             this.label2.TabIndex = 44;
             this.label2.Text = "Tipo";
             // 
@@ -107,7 +107,7 @@ namespace Campeonato_Polideportivo
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(40, 237);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 16);
+            this.label1.Size = new System.Drawing.Size(117, 17);
             this.label1.TabIndex = 43;
             this.label1.Text = "Nombre Deporte:";
             // 
@@ -174,7 +174,6 @@ namespace Campeonato_Polideportivo
             this.CmbDeporte.Size = new System.Drawing.Size(381, 24);
             this.CmbDeporte.TabIndex = 38;
             this.CmbDeporte.Text = "Selecciona un deporte...";
-            this.CmbDeporte.SelectedIndexChanged += new System.EventHandler(this.CmbDeporte_SelectedIndexChanged);
             // 
             // LblDeportes
             // 
@@ -183,7 +182,7 @@ namespace Campeonato_Polideportivo
             this.LblDeportes.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblDeportes.Location = new System.Drawing.Point(407, 17);
             this.LblDeportes.Name = "LblDeportes";
-            this.LblDeportes.Size = new System.Drawing.Size(167, 50);
+            this.LblDeportes.Size = new System.Drawing.Size(170, 50);
             this.LblDeportes.TabIndex = 37;
             this.LblDeportes.Text = "DEPORTES";
             // 
