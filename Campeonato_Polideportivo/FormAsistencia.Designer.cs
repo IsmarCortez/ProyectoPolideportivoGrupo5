@@ -33,7 +33,7 @@ namespace Campeonato_Polideportivo
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.CmbEquipo = new System.Windows.Forms.ComboBox();
-            this.CmbDeporte = new System.Windows.Forms.ComboBox();
+            this.CmbJugador = new System.Windows.Forms.ComboBox();
             this.LblAsistencia = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -100,15 +100,16 @@ namespace Campeonato_Polideportivo
             this.CmbEquipo.TabIndex = 52;
             this.CmbEquipo.Text = "Selecciona un equipo...";
             // 
-            // CmbDeporte
+            // CmbJugador
             // 
-            this.CmbDeporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.CmbDeporte.FormattingEnabled = true;
-            this.CmbDeporte.Location = new System.Drawing.Point(304, 143);
-            this.CmbDeporte.Name = "CmbDeporte";
-            this.CmbDeporte.Size = new System.Drawing.Size(381, 24);
-            this.CmbDeporte.TabIndex = 51;
-            this.CmbDeporte.Text = "Selecciona un deporte...";
+            this.CmbJugador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.CmbJugador.FormattingEnabled = true;
+            this.CmbJugador.Location = new System.Drawing.Point(304, 143);
+            this.CmbJugador.Name = "CmbJugador";
+            this.CmbJugador.Size = new System.Drawing.Size(381, 24);
+            this.CmbJugador.TabIndex = 51;
+            this.CmbJugador.Text = "Selecciona un deporte...";
+            this.CmbJugador.SelectedIndexChanged += new System.EventHandler(this.CmbJugador_SelectedIndexChanged);
             // 
             // LblAsistencia
             // 
@@ -123,8 +124,8 @@ namespace Campeonato_Polideportivo
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(109, 225);
@@ -143,7 +144,7 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnIngresar);
             this.Controls.Add(this.CmbEquipo);
-            this.Controls.Add(this.CmbDeporte);
+            this.Controls.Add(this.CmbJugador);
             this.Controls.Add(this.LblAsistencia);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormAsistencia";
@@ -160,7 +161,7 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.ComboBox CmbEquipo;
-        private System.Windows.Forms.ComboBox CmbDeporte;
+        private System.Windows.Forms.ComboBox CmbJugador;
         private System.Windows.Forms.Label LblAsistencia;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
