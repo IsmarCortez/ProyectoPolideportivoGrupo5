@@ -112,7 +112,7 @@ namespace Campeonato_Polideportivo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=CampeonatoPolideportivo;uid=root;pwd=;";
+            string connectionString = "server=localhost;database=PoliDB;uid=root;pwd=1970;";
             string query = "SELECT * FROM deporte";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -196,6 +196,11 @@ namespace Campeonato_Polideportivo
                 }
 
             }
+        }
+
+        private void CmbDeporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
