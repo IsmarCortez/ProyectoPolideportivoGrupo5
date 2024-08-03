@@ -106,13 +106,13 @@ namespace Campeonato_Polideportivo
             // 
             // CmbEquipo
             // 
-            this.CmbEquipo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.CmbEquipo.FormattingEnabled = true;
-            this.CmbEquipo.Location = new System.Drawing.Point(113, 387);
+            this.CmbEquipo.Location = new System.Drawing.Point(134, 387);
             this.CmbEquipo.Name = "CmbEquipo";
-            this.CmbEquipo.Size = new System.Drawing.Size(354, 24);
+            this.CmbEquipo.Size = new System.Drawing.Size(288, 24);
             this.CmbEquipo.TabIndex = 38;
             this.CmbEquipo.Text = "Selecciona un equipo...";
+            this.CmbEquipo.SelectedIndexChanged += new System.EventHandler(this.CmbEquipo_SelectedIndexChanged);
             // 
             // LblEntrenador
             // 
@@ -127,13 +127,19 @@ namespace Campeonato_Polideportivo
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(541, 133);
+            this.dataGridView1.Location = new System.Drawing.Point(445, 133);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(405, 367);
+            this.dataGridView1.Size = new System.Drawing.Size(538, 367);
             this.dataGridView1.TabIndex = 35;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -204,21 +210,21 @@ namespace Campeonato_Polideportivo
             // 
             this.TxtNombre.Location = new System.Drawing.Point(134, 133);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(360, 22);
+            this.TxtNombre.Size = new System.Drawing.Size(288, 22);
             this.TxtNombre.TabIndex = 48;
             // 
             // TxtApellido
             // 
             this.TxtApellido.Location = new System.Drawing.Point(134, 201);
             this.TxtApellido.Name = "TxtApellido";
-            this.TxtApellido.Size = new System.Drawing.Size(360, 22);
+            this.TxtApellido.Size = new System.Drawing.Size(288, 22);
             this.TxtApellido.TabIndex = 49;
             // 
             // TxtNacionalidad
             // 
             this.TxtNacionalidad.Location = new System.Drawing.Point(134, 320);
             this.TxtNacionalidad.Name = "TxtNacionalidad";
-            this.TxtNacionalidad.Size = new System.Drawing.Size(360, 22);
+            this.TxtNacionalidad.Size = new System.Drawing.Size(288, 22);
             this.TxtNacionalidad.TabIndex = 51;
             // 
             // LblIdEntrenador
@@ -240,9 +246,9 @@ namespace Campeonato_Polideportivo
             // 
             // DtpEntrenador
             // 
-            this.DtpEntrenador.Location = new System.Drawing.Point(178, 260);
+            this.DtpEntrenador.Location = new System.Drawing.Point(159, 260);
             this.DtpEntrenador.Name = "DtpEntrenador";
-            this.DtpEntrenador.Size = new System.Drawing.Size(316, 22);
+            this.DtpEntrenador.Size = new System.Drawing.Size(263, 22);
             this.DtpEntrenador.TabIndex = 54;
             // 
             // FormEntrenador
