@@ -457,18 +457,38 @@ obj/
 *.cache
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 # Ignorar carpetas de Visual Studio
 .vs/
 .vscode/
 
 # Ignorar archivos específicos de Visual Studio
+=======
+
+
+# Archivos de Visual Studio
+.vs/
+>>>>>>> ede95be294b8682e775d963b8e5991dc41d1b1e8
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+<<<<<<< HEAD
 
 =======
 >>>>>>> 26669623922a90b63fca05cb4e9b00fe55e66803
+=======
+ 
+# Archivos generados por el compilador
+bin/
+obj/
+ 
+# Otros archivos generados
+*.exe
+*.pdb
+*.cache
+
+>>>>>>> ede95be294b8682e775d963b8e5991dc41d1b1e8
 
 # Ignorar carpetas de Visual Studio
 .vs/
@@ -478,4 +498,8 @@ obj/
 *.suo
 *.user
 *.userosscache
+<<<<<<< HEAD
 *.sln.docstates
+=======
+*.sln.docstates
+>>>>>>> ede95be294b8682e775d963b8e5991dc41d1b1e8
