@@ -33,13 +33,13 @@ namespace Campeonato_Polideportivo
                 try
                 {
                     // SQL insertar datos
-                    string query = "INSERT INTO Equipo (id_equipo, nombre, estadio, ciudad) VALUES (@id_equipo, @nombre, @estadio, @ciudad)";
+                    string query = "INSERT INTO equipo (pkidequipo, nombre, estadio, ciudad) VALUES (@pkidequipo, @nombre, @estadio, @ciudad)";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
+                        cmd.Parameters.AddWithValue("@pkidequipo", id_equipo);
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@estadio", estadio);
                         cmd.Parameters.AddWithValue("@ciudad", ciudad);
@@ -67,19 +67,19 @@ namespace Campeonato_Polideportivo
             try
             {
                 // Obtener el id_equipo del TextBox
-                int id_equipo = int.Parse(TxtIdEquipo.Text);
+                int pkidequipo = int.Parse(TxtIdEquipo.Text);
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para eliminar datos
-                    string query = "DELETE FROM Equipo WHERE id_equipo = @id_equipo";
+                    string query = "DELETE FROM equipo WHERE pkidequipo = @pkidequipo";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar el parámetro
-                        cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
+                        cmd.Parameters.AddWithValue("@pkidequipo", pkidequipo);
 
                         // Ejecutar el comando
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -120,13 +120,13 @@ namespace Campeonato_Polideportivo
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para actualizar datos
-                    string query = "UPDATE Equipo SET nombre = @nombre, estadio = @estadio, ciudad = @ciudad WHERE id_equipo = @id_equipo";
+                    string query = "UPDATE equipo SET nombre = @nombre, estadio = @estadio, ciudad = @ciudad WHERE pkidequipo = @pkidequipo";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
+                        cmd.Parameters.AddWithValue("@pkidequipo", id_equipo);
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@estadio", estadio);
                         cmd.Parameters.AddWithValue("@ciudad", ciudad);
@@ -166,7 +166,7 @@ namespace Campeonato_Polideportivo
                 using (MySqlConnection conn = conexion.getConexion())
                 {
                     // Crear la consulta SQL para obtener datos
-                    string query = "SELECT * FROM Equipo";
+                    string query = "SELECT * FROM equipo";
 
                     // Crear el adaptador
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -187,6 +187,18 @@ namespace Campeonato_Polideportivo
                 // Mostrar mensaje de error
                 MessageBox.Show($"Error: {ex.Message}");
             }
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+          
+                // Limpiar los TextBox del form
+                TxtIdEquipo.Text = string.Empty;
+                TxtNombreEquipo.Text = string.Empty;
+                TxtEstadio.Text = string.Empty;
+                TxtCiudad.Text = string.Empty;
+            
+
         }
     }
 }
