@@ -161,7 +161,6 @@ C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormPartidosIndividuales.resources
 C:\Users\ferch\Pictures\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormTorneo.resources
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe.config
@@ -232,8 +231,6 @@ C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campe
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.CopyComplete
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe
 C:\Analisi2\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.pdb
-<<<<<<< HEAD
-=======
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe.config
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.pdb
@@ -304,7 +301,6 @@ C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe
 C:\Users\leone\source\repos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.pdb
 >>>>>>> a67a920411537aad14424c7fcf16659e9cde9ac8
-=======
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.dll
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
@@ -318,4 +314,71 @@ C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polidep
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormPartidosIndividuales.resources
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormTorneo.resources
 C:\Analisi2\ProyectoPolideportivo\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormVoleibol.resources
->>>>>>> 56b3979a5979ed3643806370d81c798f31b05443
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.AssemblyReference.cache
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe.config
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.Form1.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.Form2.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.Form3.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.Form4login.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormAnotaciones.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormArbitro.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormAsistencia.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormBasquetbol.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormBeisbol.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormCampeonato.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormDeporte.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormDeportista.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormEntrenador.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormEquipo.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormFaltas.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormFutbol.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormJugador.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormOtrosPartidos.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormPartidosIndividuales.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormTorneo.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.FormVoleibol.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.Properties.Resources.resources
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.GenerateResource.cache
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.CoreCompileInputs.cache
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.exe
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.pdb
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe.config
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.exe
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Campeonato_Polideportivo.pdb
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Google.Protobuf.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySql.Data.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Buffers.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.IO.Pipelines.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Memory.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\ZstdSharp.dll
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Google.Protobuf.pdb
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Google.Protobuf.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySql.Data.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\MySqlConnector.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Buffers.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.IO.Pipelines.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Memory.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\ferch\Videos\ProyectoPolideportivoGrupo5\Campeonato_Polideportivo\obj\Debug\Campeonato_Polideportivo.csproj.CopyComplete
