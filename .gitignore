@@ -448,3 +448,20 @@ Campeonato_Polideportivo/bin/Debug/Campeonato_Polideportivo.pdb
 Campeonato_Polideportivo/obj/Debug/Campeonato_Polideportivo.csproj.GenerateResource.cache
 Campeonato_Polideportivo/obj/Debug/Campeonato_Polideportivo.exe
 Campeonato_Polideportivo/obj/Debug/Campeonato_Polideportivo.pdb
+
+
+# Archivos de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+ 
+# Archivos generados por el compilador
+bin/
+obj/
+ 
+# Otros archivos generados
+*.exe
+*.pdb
+*.cache
