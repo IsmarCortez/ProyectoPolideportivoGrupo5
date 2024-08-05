@@ -1,6 +1,8 @@
 CREATE DATABASE PoliDB;
 USE PoliDB;
 
+
+
 CREATE TABLE deporte (
     pkiddeporte INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
@@ -22,6 +24,8 @@ CREATE TABLE reglas_deporte (
     FOREIGN KEY (fkiddeporte) REFERENCES deporte(pkiddeporte),
 	FOREIGN KEY (fkidregla) REFERENCES reglas(pkidregla)
 );
+
+select * from reglas;
 
 CREATE TABLE sexo(
     pkidsexo INT NOT NULL AUTO_INCREMENT,
@@ -90,7 +94,8 @@ CREATE TABLE usuario (
     contrasenia varchar(150),
     fkpermisos int,
     fkprivilegios int,
-	ultimaconexion DATE,
+	ultimaconexion DATETIME,
+    iniciosesion BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (pkidusuario),
   FOREIGN KEY (fkpermisos) REFERENCES Permisos(pkidpermisos),
   FOREIGN KEY (fkprivilegios) REFERENCES Privilegios(pkidprivi)
@@ -460,6 +465,8 @@ FROM
 ORDER BY 
     c.fkidcampeonato, c.puntos DESC, c.victorias DESC;
     
+select * from vista_clasificacion;   
+use polidb;    
     -- Para ingresar un partido se haria de esta forma
 INSERT INTO partido (fechahora, fkequipolocalid, fkequipovisid, estadopartido, empate, fkidcampeonato, fkidfase, fkidarbitro)
 VALUES ('2024-07-01', 1, 3, 'En curso', 'V', 3, 1, 1);
@@ -467,4 +474,58 @@ SET @ultimo_partido = LAST_INSERT_ID();
 CALL actualizar_clasificacion(@ultimo_partido);
 SELECT * FROM vista_clasificacion WHERE fkidcampeonato = 1; -- Se manda a llamar la vista de esta forma
 
+-- cree los privilegios     
+INSERT INTO Privilegios (Privilegios) VALUES ('Ver');
+INSERT INTO Privilegios (Privilegios) VALUES ('Ver y Editar');
+INSERT INTO Privilegios (Privilegios) VALUES ('Ver, Editar y Eliminar');
+-- cree los permisos
+INSERT INTO Permisos (Permisos) VALUES ('Usuario Estándar');
+INSERT INTO Permisos (Permisos) VALUES ('Gerente');
+INSERT INTO Permisos (Permisos) VALUES ('Administrador');
 
+-- inserte el administrador de manera manual
+INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES 
+('Alejandro', 'alejandro@gmail.com', '1234', 3, 3, '2024-08-01');
+INSERT INTO Empleado (pkidempleado, nombre, apellido, puesto, fkidusuario) VALUES 
+(1, 'Alejandro', 'Boch', 'Administrador', 1);
+INSERT INTO Direccionempleado (Calle, Avenida, Zona, Departamento, CodigoPostal, NumeroCasa) VALUES
+('5ta', '9na', '1', 'Guatemala', '11001', '13');  
+INSERT INTO Direccion_Empleado (fkiddireccion, fkidempleado)  VALUES (1,1);
+INSERT INTO Telefonoempleado (telefono) VALUES ('55369918');
+INSERT INTO Telefono_Empleado (fkidtelefono, fkidempleado) VALUES (1,1);
+
+INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES 
+('Katy', 'katy@gmail.com', '4321', 3, 3, '2024-08-01');
+
+-- Creación de trigger para ultima hora de actualización
+DELIMITER //
+
+CREATE TRIGGER actualiza_ultimaconexion
+BEFORE UPDATE ON usuario
+FOR EACH ROW
+BEGIN
+    IF NEW.iniciosesion = TRUE AND OLD.iniciosesion = FALSE THEN
+        SET NEW.ultimaconexion = NOW();
+        SET NEW.iniciosesion = FALSE;  -- Resetea el campo a FALSE
+    END IF;
+END//
+USE polidb;
+
+
+select * from jugador;
+select * from reglas_deporte;
+select * from equipo;
+
+
+DELIMITER ;
+delete FROM usuario
+WHERE pkidusuario = 3;
+SELECT * FROM usuario;
+SELECT * FROM permisos;
+SELECT * FROM privilegios;
+
+SELECT * FROM Empleado;
+SELECT * FROM Telefonoempleado;
+SELECT * FROM Direccionempleado;
+SELECT * FROM Direccion_Empleado;
+SELECT * FROM Telefono_Empleado;

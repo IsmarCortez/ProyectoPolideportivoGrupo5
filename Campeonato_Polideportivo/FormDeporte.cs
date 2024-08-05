@@ -13,10 +13,14 @@ namespace Campeonato_Polideportivo
 {
     public partial class FormDeporte : Form
     {
+        private Conexion FormConexion;
+        private string connectionString;
         public FormDeporte()
         {
             InitializeComponent();
             CargarComboBox();
+            FormConexion = new Conexion();  //Se manda a llamar la conexion
+            this.Load += new EventHandler(FormDeporte_Load);
         }
 
 
@@ -27,6 +31,7 @@ namespace Campeonato_Polideportivo
             {
                 try
                 {
+                    conn.Open();
                     string query = "INSERT INTO deporte (nombre, tipo, id_regla) VALUES (@nombre, @tipo, @id_regla)";
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
@@ -49,6 +54,14 @@ namespace Campeonato_Polideportivo
                 {
                     MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                finally
+                {
+                    // Asegurarse de que la conexión se cierra
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
             }
         }
 
@@ -64,6 +77,7 @@ namespace Campeonato_Polideportivo
                 {
                     try
                     {
+                        conn.Open();
                         MySqlDataReader reader = command.ExecuteReader();
 
                         CmbDeporte.Items.Clear(); // Limpiar los elementos existentes
@@ -76,6 +90,14 @@ namespace Campeonato_Polideportivo
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        // Asegurarse de que la conexión se cierra
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
                     }
                 }
             }
@@ -94,6 +116,7 @@ namespace Campeonato_Polideportivo
                 {
                     try
                     {
+                        conn.Open();
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -102,6 +125,14 @@ namespace Campeonato_Polideportivo
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        // Asegurarse de que la conexión se cierra
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
                     }
                 }
             }
@@ -121,6 +152,7 @@ namespace Campeonato_Polideportivo
                 {
                     try
                     {
+                        conn.Open();
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -129,6 +161,14 @@ namespace Campeonato_Polideportivo
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        // Asegurarse de que la conexión se cierra
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
                     }
                 }
             }
@@ -148,6 +188,7 @@ namespace Campeonato_Polideportivo
 
                     try
                     {
+                        conn.Open();
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
@@ -161,6 +202,14 @@ namespace Campeonato_Polideportivo
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        // Asegurarse de que la conexión se cierra
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
                     }
                 }
             }
@@ -178,6 +227,7 @@ namespace Campeonato_Polideportivo
 
                     try
                     {
+                        conn.Open();
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
@@ -193,6 +243,14 @@ namespace Campeonato_Polideportivo
                     {
                         MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    finally
+                    {
+                        // Asegurarse de que la conexión se cierra
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                    }
                 }
             
 
@@ -202,6 +260,69 @@ namespace Campeonato_Polideportivo
         private void CmbDeporte_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public class UsuarioValidator
+        {
+
+            public string connectionString;
+
+            public UsuarioValidator(string connectionString)
+            {
+                this.connectionString = connectionString;
+            }
+            public bool VerificarPermisosYPrivilegios(string usuario)
+            {
+                Conexion conexion = new Conexion();
+                using (MySqlConnection conn = conexion.getConexion())
+                {
+                    conn.Open();
+                    string query = "SELECT fkpermisos, fkprivilegios FROM usuario WHERE usuario = @usuario";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@usuario", usuario);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int fkpermisos = reader.GetInt32("fkpermisos");
+                                int fkprivilegios = reader.GetInt32("fkprivilegios");
+
+                                // Verificar si ambos campos son iguales a 1
+                                return fkpermisos == 1 && fkprivilegios == 1;
+                            }
+                        }
+                    }
+                }
+
+                // Si no se encontró el usuario, o los valores no son ambos 1
+                return false;
+            }
+        }
+
+        private void FormDeporte_Load(object sender, EventArgs e)
+        {
+            Conexion conexion = new Conexion();
+            UsuarioValidator usuarioValidator = new UsuarioValidator(connectionString);
+
+            string usuario = GlobalVariables.usuario; // Aquí debes obtener el ID del usuario que deseas verificar
+            bool tienePermisosYPrivilegios = usuarioValidator.VerificarPermisosYPrivilegios(usuario);
+
+            if (tienePermisosYPrivilegios)
+            {
+                // Permisos y privilegios son ambos igual a 1
+                // Bloquear el botón BtnModificar
+                BtnModificar.Visible = false;
+                BtnEliminar.Visible = false;
+            }
+            else
+            {
+                // Permisos o privilegios no son ambos igual a 1
+                BtnModificar.Visible = true;
+                BtnEliminar.Visible = true;
+            }
         }
     }
 }

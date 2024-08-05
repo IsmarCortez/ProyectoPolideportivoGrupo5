@@ -13,6 +13,8 @@ namespace Campeonato_Polideportivo
 {
     public partial class FormTorneo : Form
     {
+        private Conexion FormConexion;
+        private string connectionString;
         public FormTorneo()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Campeonato_Polideportivo
             {
                 try
                 {
+                    conn.Open();
                     string query = "INSERT INTO torneo (nombre, temporada, fechainicio, fechafin, fkiddeporte) " +
                                    "VALUES (@nombre, @temporada, @fechainicio, @fechafin, @fkiddeporte)";
                     using (MySqlCommand command = new MySqlCommand(query, conn))
@@ -68,6 +71,7 @@ namespace Campeonato_Polideportivo
             {
                 try
                 {
+                    conn.Open();
                     string query = "SELECT pkiddeporte, nombre FROM deporte";
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
@@ -122,6 +126,7 @@ namespace Campeonato_Polideportivo
             {
                 try
                 {
+                    conn.Open();
                     string query = "SELECT * FROM torneo";
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
@@ -165,6 +170,7 @@ namespace Campeonato_Polideportivo
             {
                 try
                 {
+                    conn.Open();
                     string query = "UPDATE torneo SET nombre = @nombre, temporada = @temporada, fechainicio = @fechainicio, fechafin = @fechafin, fkiddeporte = @fkiddeporte WHERE pkidtorneo = @pkidtorneo";
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
@@ -197,9 +203,69 @@ namespace Campeonato_Polideportivo
             }
         }
 
+        public class UsuarioValidator
+        {
+
+            public string connectionString;
+
+            public UsuarioValidator(string connectionString)
+            {
+                this.connectionString = connectionString;
+            }
+            public bool VerificarPermisosYPrivilegios(string usuario)
+            {
+                Conexion conexion = new Conexion();
+                using (MySqlConnection conn = conexion.getConexion())
+                {
+                    conn.Open();
+                    string query = "SELECT fkpermisos, fkprivilegios FROM usuario WHERE usuario = @usuario";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@usuario", usuario);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int fkpermisos = reader.GetInt32("fkpermisos");
+                                int fkprivilegios = reader.GetInt32("fkprivilegios");
+
+                                // Verificar si ambos campos son iguales a 1
+                                return fkpermisos == 1 && fkprivilegios == 1;
+                            }
+                        }
+                    }
+                }
+
+                // Si no se encontró el usuario, o los valores no son ambos 1
+                return false;
+            }
+        }
+
         private void FormTorneo_Load(object sender, EventArgs e)
         {
             CmbDeporte.Text = "Seleccione un deporte...";
+
+            Conexion conexion = new Conexion();
+            UsuarioValidator usuarioValidator = new UsuarioValidator(connectionString);
+
+            string usuario = GlobalVariables.usuario; // Aquí debes obtener el ID del usuario que deseas verificar
+            bool tienePermisosYPrivilegios = usuarioValidator.VerificarPermisosYPrivilegios(usuario);
+
+            if (tienePermisosYPrivilegios)
+            {
+                // Permisos y privilegios son ambos igual a 1
+                // Bloquear el botón BtnModificar
+                BtnModificar.Visible = false;
+                BtnEliminar.Visible = false;
+            }
+            else
+            {
+                // Permisos o privilegios no son ambos igual a 1
+                BtnModificar.Visible = true;
+                BtnEliminar.Visible = true;
+            }
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
@@ -213,6 +279,7 @@ namespace Campeonato_Polideportivo
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     // Crear la consulta SQL para eliminar datos
                     string query = "DELETE FROM torneo WHERE pkidtorneo = @pkidtorneo";
 
