@@ -30,79 +30,87 @@ namespace Campeonato_Polideportivo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4login));
-            this.PanelIzquierdo = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.TxtUsuario = new System.Windows.Forms.TextBox();
-            this.TxtPassword = new System.Windows.Forms.TextBox();
-            this.LblLogin = new System.Windows.Forms.Label();
+            this.PanelForm = new System.Windows.Forms.Panel();
+            this.llblAdmin = new System.Windows.Forms.LinkLabel();
+            this.llblCuenta = new System.Windows.Forms.LinkLabel();
             this.BtnIngresar = new System.Windows.Forms.Button();
-            this.LLblPassword = new System.Windows.Forms.LinkLabel();
-            this.BtnConexion = new System.Windows.Forms.Button();
-            this.PanelIzquierdo.SuspendLayout();
+            this.TxtContrasenia = new System.Windows.Forms.TextBox();
+            this.TxtUsuario = new System.Windows.Forms.TextBox();
+            this.LblLogin = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.PanelForm.SuspendLayout();
             this.SuspendLayout();
             // 
-            // PanelIzquierdo
+            // panel1
             // 
-            this.PanelIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.PanelIzquierdo.Controls.Add(this.pictureBox1);
-            this.PanelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PanelIzquierdo.Location = new System.Drawing.Point(0, 0);
-            this.PanelIzquierdo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PanelIzquierdo.Name = "PanelIzquierdo";
-            this.PanelIzquierdo.Size = new System.Drawing.Size(320, 654);
-            this.PanelIzquierdo.TabIndex = 0;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(58)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 531);
+            this.panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::Campeonato_Polideportivo.Properties.Resources.logotipo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 166);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(320, 265);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 531);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // TxtUsuario
+            // PanelForm
             // 
-            this.TxtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TxtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.TxtUsuario.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.TxtUsuario.Location = new System.Drawing.Point(445, 193);
-            this.TxtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TxtUsuario.Name = "TxtUsuario";
-            this.TxtUsuario.Size = new System.Drawing.Size(605, 36);
-            this.TxtUsuario.TabIndex = 1;
-            this.TxtUsuario.Text = "Usuario";
-            this.TxtUsuario.Enter += new System.EventHandler(this.TxtUsuario_Enter);
+            this.PanelForm.Controls.Add(this.llblAdmin);
+            this.PanelForm.Controls.Add(this.llblCuenta);
+            this.PanelForm.Controls.Add(this.BtnIngresar);
+            this.PanelForm.Controls.Add(this.TxtContrasenia);
+            this.PanelForm.Controls.Add(this.TxtUsuario);
+            this.PanelForm.Controls.Add(this.LblLogin);
+            this.PanelForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelForm.Location = new System.Drawing.Point(200, 0);
+            this.PanelForm.Name = "PanelForm";
+            this.PanelForm.Size = new System.Drawing.Size(688, 531);
+            this.PanelForm.TabIndex = 1;
+            this.PanelForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // TxtPassword
+            // llblAdmin
             // 
-            this.TxtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TxtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.TxtPassword.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.TxtPassword.Location = new System.Drawing.Point(445, 352);
-            this.TxtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TxtPassword.Name = "TxtPassword";
-            this.TxtPassword.Size = new System.Drawing.Size(605, 36);
-            this.TxtPassword.TabIndex = 2;
-            this.TxtPassword.Text = "Contraseña";
+            this.llblAdmin.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
+            this.llblAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.llblAdmin.AutoSize = true;
+            this.llblAdmin.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llblAdmin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.llblAdmin.Location = new System.Drawing.Point(594, 505);
+            this.llblAdmin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.llblAdmin.Name = "llblAdmin";
+            this.llblAdmin.Size = new System.Drawing.Size(83, 17);
+            this.llblAdmin.TabIndex = 18;
+            this.llblAdmin.TabStop = true;
+            this.llblAdmin.Text = "Administrador";
+            this.llblAdmin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAdmin_LinkClicked_1);
             // 
-            // LblLogin
+            // llblCuenta
             // 
-            this.LblLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LblLogin.AutoSize = true;
-            this.LblLogin.Font = new System.Drawing.Font("Haettenschweiler", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.LblLogin.Location = new System.Drawing.Point(709, 75);
-            this.LblLogin.Name = "LblLogin";
-            this.LblLogin.Size = new System.Drawing.Size(81, 40);
-            this.LblLogin.TabIndex = 3;
-            this.LblLogin.Text = "LOGIN";
+            this.llblCuenta.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
+            this.llblCuenta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.llblCuenta.AutoSize = true;
+            this.llblCuenta.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llblCuenta.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.llblCuenta.Location = new System.Drawing.Point(319, 349);
+            this.llblCuenta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.llblCuenta.Name = "llblCuenta";
+            this.llblCuenta.Size = new System.Drawing.Size(109, 17);
+            this.llblCuenta.TabIndex = 17;
+            this.llblCuenta.TabStop = true;
+            this.llblCuenta.Text = "No tengo una cuenta";
+            this.llblCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblCuenta_LinkClicked);
             // 
             // BtnIngresar
             // 
@@ -114,77 +122,87 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnIngresar.Location = new System.Drawing.Point(445, 492);
-            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnIngresar.Location = new System.Drawing.Point(149, 287);
+            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(605, 41);
-            this.BtnIngresar.TabIndex = 4;
+            this.BtnIngresar.Size = new System.Drawing.Size(454, 33);
+            this.BtnIngresar.TabIndex = 15;
             this.BtnIngresar.Text = "INGRESAR";
             this.BtnIngresar.UseVisualStyleBackColor = false;
-            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
+            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click_1);
             // 
-            // LLblPassword
+            // TxtContrasenia
             // 
-            this.LLblPassword.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
-            this.LLblPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LLblPassword.AutoSize = true;
-            this.LLblPassword.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LLblPassword.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.LLblPassword.Location = new System.Drawing.Point(653, 574);
-            this.LLblPassword.Name = "LLblPassword";
-            this.LLblPassword.Size = new System.Drawing.Size(189, 22);
-            this.LLblPassword.TabIndex = 5;
-            this.LLblPassword.TabStop = true;
-            this.LLblPassword.Text = "¿Has olvidado tu contraseña?";
+            this.TxtContrasenia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtContrasenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.TxtContrasenia.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtContrasenia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.TxtContrasenia.Location = new System.Drawing.Point(149, 210);
+            this.TxtContrasenia.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtContrasenia.Name = "TxtContrasenia";
+            this.TxtContrasenia.Size = new System.Drawing.Size(455, 31);
+            this.TxtContrasenia.TabIndex = 8;
+            this.TxtContrasenia.Text = "Contraseña";
             // 
-            // BtnConexion
+            // TxtUsuario
             // 
-            this.BtnConexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.BtnConexion.Location = new System.Drawing.Point(697, 418);
-            this.BtnConexion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnConexion.Name = "BtnConexion";
-            this.BtnConexion.Size = new System.Drawing.Size(107, 46);
-            this.BtnConexion.TabIndex = 6;
-            this.BtnConexion.Text = "Conexion";
-            this.BtnConexion.UseVisualStyleBackColor = false;
-            this.BtnConexion.Click += new System.EventHandler(this.button1_Click);
+            this.TxtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.TxtUsuario.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.TxtUsuario.Location = new System.Drawing.Point(149, 139);
+            this.TxtUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtUsuario.Name = "TxtUsuario";
+            this.TxtUsuario.Size = new System.Drawing.Size(455, 31);
+            this.TxtUsuario.TabIndex = 7;
+            this.TxtUsuario.Text = "Usuario";
+            // 
+            // LblLogin
+            // 
+            this.LblLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblLogin.AutoSize = true;
+            this.LblLogin.Font = new System.Drawing.Font("Haettenschweiler", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.LblLogin.Location = new System.Drawing.Point(335, 60);
+            this.LblLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblLogin.Name = "LblLogin";
+            this.LblLogin.Size = new System.Drawing.Size(64, 32);
+            this.LblLogin.TabIndex = 6;
+            this.LblLogin.Text = "LOGIN";
             // 
             // Form4login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(1184, 654);
-            this.Controls.Add(this.BtnConexion);
-            this.Controls.Add(this.LLblPassword);
-            this.Controls.Add(this.BtnIngresar);
-            this.Controls.Add(this.LblLogin);
-            this.Controls.Add(this.TxtPassword);
-            this.Controls.Add(this.TxtUsuario);
-            this.Controls.Add(this.PanelIzquierdo);
+            this.ClientSize = new System.Drawing.Size(888, 531);
+            this.Controls.Add(this.PanelForm);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1198, 592);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(902, 488);
             this.Name = "Form4login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form4login_Load);
-            this.PanelIzquierdo.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.PanelForm.ResumeLayout(false);
+            this.PanelForm.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel PanelIzquierdo;
-        private System.Windows.Forms.TextBox TxtUsuario;
-        private System.Windows.Forms.TextBox TxtPassword;
-        private System.Windows.Forms.Label LblLogin;
-        private System.Windows.Forms.Button BtnIngresar;
-        private System.Windows.Forms.LinkLabel LLblPassword;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button BtnConexion;
+        private System.Windows.Forms.Panel PanelForm;
+        private System.Windows.Forms.LinkLabel llblAdmin;
+        private System.Windows.Forms.LinkLabel llblCuenta;
+        private System.Windows.Forms.Button BtnIngresar;
+        private System.Windows.Forms.TextBox TxtContrasenia;
+        private System.Windows.Forms.TextBox TxtUsuario;
+        private System.Windows.Forms.Label LblLogin;
     }
 }

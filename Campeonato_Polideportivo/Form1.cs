@@ -109,13 +109,7 @@ namespace Campeonato_Polideportivo
             MostrarSubMenu(PanelColectivo);
         }
 
-        private void BtnEmpleados_Click(object sender, EventArgs e)
-        {
-         // MostrarSubMenu(PanelButton1); Se manda a llamar el evento de mostrar con el panel que le pertenece al boton
-            abrirForm(new Form2());
-            OcultarSubMenu(); //Función para que se esconda todo el submenu cuando se utilice alguno de esos botones
-        }
-
+       
         private void TxtTitulo_TextChanged(object sender, EventArgs e)
         {
 

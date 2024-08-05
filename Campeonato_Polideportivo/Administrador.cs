@@ -11,90 +11,21 @@ using MySql.Data.MySqlClient;
 
 namespace Campeonato_Polideportivo
 {
-
-    public partial class Form4login : Form
+    public partial class Administrador : Form
     {
-
-        private Conexion FormConexion; //Variable creada para conectar la base de datos al iniciar
-        public Form4login()
+        public Administrador()
         {
             InitializeComponent();
-            FormConexion = new Conexion();  //Se manda a llamar la conexion
-            this.Load += new EventHandler(Form4login_Load); //evento para poner el programa en pantalla completa
-        }
 
-        private void TxtUsuario_Enter(object sender, EventArgs e)
-        {
-            //Aqui iria el login
         }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            Form1 obj = new Form1();
-            obj.Show();
-
-            this.Hide();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (FormConexion.getConexion() != null)
-            {
-                MessageBox.Show("Conexion exitosa");
-            }
-            else
-            {
-                MessageBox.Show("Error al conectar");
-            }
-        }
-
-        private void Form4login_Load(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized; //maximiza el programa
-                                                          //this.FormBorderStyle = FormBorderStyle.None; //esto es para quitar los bordes al maximizar
-            FormConexion = new Conexion();  //Se manda a llamar la conexion
-            this.Load += new EventHandler(Form4login_Load);
-        }
-
-        private Form FormActivo = null; //Se cierra el formulario activo
-        private void abrirForm(Form Form1)
-        {
-            if (FormActivo != null) // si existe un formulario activo
-                FormActivo.Close(); // se cierra
-            FormActivo = Form1; // se almacena el formulario activo al cerrar el otro formulario
-            Form1.TopLevel = false; // el formulario se comportara como un control
-            Form1.FormBorderStyle = FormBorderStyle.None; // se quita el borde del formulario
-            Form1.Dock = DockStyle.Fill; // se rellena todo el panel del formulario
-            PanelForm.Controls.Add(Form1); // se añade el formulario al panel 
-            PanelForm.Tag = Form1; // se asocia el formulario con el panel contenedor
-            Form1.BringToFront(); // para añadir logotipo
-            Form1.Show(); // se muestra el formulario
-
-        }
-
-  
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void llblAdmin_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            abrirForm(new Administrador());
-        }
-
-        private void BtnIngresar_Click_1(object sender, EventArgs e)
-        {
-            //Crea una nueva instancia de la clase Conexion
+            // Crea una nueva instancia de la clase Conexion
             Conexion conexion = new Conexion();
 
             // Recoge los datos de los TextBox
-
-            //pruebas pendisntes
-            GlobalVariables.usuario = TxtUsuario.Text;
-            FormCampeonato formCampeonato = new FormCampeonato();
-
-
+            string usuario = TxtUsuario.Text;
             string contrasenia = TxtContrasenia.Text;
 
             using (MySqlConnection conn = conexion.getConexion())
@@ -110,7 +41,7 @@ namespace Campeonato_Polideportivo
 
                     using (MySqlCommand permisosCmd = new MySqlCommand(permisosQuery, conn))
                     {
-                        permisosCmd.Parameters.AddWithValue("@usuario", GlobalVariables.usuario);
+                        permisosCmd.Parameters.AddWithValue("@usuario", usuario);
 
                         if (conn.State == System.Data.ConnectionState.Closed)
                         {
@@ -129,7 +60,7 @@ namespace Campeonato_Polideportivo
                                 userId = reader.GetInt32("pkidusuario");
 
                                 // Verifica si los permisos son 3 y 3
-                                if (fkPermisos == 1 && fkPrivilegios == 1)
+                                if (fkPermisos == 3 || fkPrivilegios == 3 && fkPermisos == 2 || fkPrivilegios == 2)
                                 {
                                     tienePermisos = true;
                                 }
@@ -144,7 +75,7 @@ namespace Campeonato_Polideportivo
 
                         using (MySqlCommand credencialesCmd = new MySqlCommand(credencialesQuery, conn))
                         {
-                            credencialesCmd.Parameters.AddWithValue("@usuario", GlobalVariables.usuario);
+                            credencialesCmd.Parameters.AddWithValue("@usuario", usuario);
                             credencialesCmd.Parameters.AddWithValue("@contrasenia", contrasenia);
 
                             int count = Convert.ToInt32(credencialesCmd.ExecuteScalar());
@@ -157,12 +88,11 @@ namespace Campeonato_Polideportivo
                         if (esValido)
                         {
                             // Actualizar iniciodesesion a true para activar el trigger
-                            string actualizarInicioSesionQuery = "UPDATE usuario SET iniciosesion = @iniciosesion, ultimaconexion = @ultimaconexion WHERE pkidusuario = @userId";
+                            string actualizarInicioSesionQuery = "UPDATE usuario SET iniciosesion = @iniciosesion WHERE pkidusuario = @userId";
 
                             using (MySqlCommand actualizarCmd = new MySqlCommand(actualizarInicioSesionQuery, conn))
                             {
                                 actualizarCmd.Parameters.AddWithValue("@iniciosesion", true);
-                                actualizarCmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now);
                                 actualizarCmd.Parameters.AddWithValue("@userId", userId);
                                 actualizarCmd.ExecuteNonQuery();
                             }
@@ -200,16 +130,14 @@ namespace Campeonato_Polideportivo
             }
         }
 
-        private void llblCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            abrirForm(new CrearCuenta());
+            this.Close();
+        }
+
+        private void Administrador_Load(object sender, EventArgs e)
+        {
+
         }
     }
-    public static class GlobalVariables
-    {
-        public static string usuario { get; set; }
-        public static int fkpermisos { get; set; }
-        public static int fkprivilegios { get; set; }
-    }
 }
-
