@@ -25,7 +25,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
 
             // Recoge los datos de los TextBox
-            string usuario = TxtUsuario.Text;
+            GlobalVariables.usuario = TxtUsuario.Text;
             string contrasenia = TxtContrasenia.Text;
 
             using (MySqlConnection conn = conexion.getConexion())
@@ -41,7 +41,7 @@ namespace Campeonato_Polideportivo
 
                     using (MySqlCommand permisosCmd = new MySqlCommand(permisosQuery, conn))
                     {
-                        permisosCmd.Parameters.AddWithValue("@usuario", usuario);
+                        permisosCmd.Parameters.AddWithValue("@usuario", GlobalVariables.usuario);
 
                         if (conn.State == System.Data.ConnectionState.Closed)
                         {
@@ -75,7 +75,7 @@ namespace Campeonato_Polideportivo
 
                         using (MySqlCommand credencialesCmd = new MySqlCommand(credencialesQuery, conn))
                         {
-                            credencialesCmd.Parameters.AddWithValue("@usuario", usuario);
+                            credencialesCmd.Parameters.AddWithValue("@usuario", GlobalVariables.usuario);
                             credencialesCmd.Parameters.AddWithValue("@contrasenia", contrasenia);
 
                             int count = Convert.ToInt32(credencialesCmd.ExecuteScalar());
@@ -139,5 +139,6 @@ namespace Campeonato_Polideportivo
         {
 
         }
+
     }
 }

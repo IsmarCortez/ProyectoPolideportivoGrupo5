@@ -32,6 +32,7 @@ CREATE TABLE sexo(
     nombre VARCHAR(50) NOT NULL,
      PRIMARY KEY (pkidsexo)
 );
+
 INSERT INTO sexo (nombre)  -- Inserción datos predeterminados
 VALUES ('Masculino'), ('Femenino');
 
@@ -55,6 +56,8 @@ CREATE TABLE fase (
     fase VARCHAR(150),
     PRIMARY KEY (pkidfase)
 );
+
+-- Inserción fase
 INSERT INTO fase (fase) VALUES
 -- Fases de Fútbol
 ('Fase de Grupos'),
@@ -74,6 +77,7 @@ INSERT INTO fase (fase) VALUES
 ('Semifinal de Conferencia'),
 ('Final de Conferencia'),
 ('Final de la NBA');
+
 
 CREATE TABLE Permisos(
     pkidpermisos INT NOT NULL AUTO_INCREMENT,
@@ -465,39 +469,6 @@ FROM
 ORDER BY 
     c.fkidcampeonato, c.puntos DESC, c.victorias DESC;
     
-select * from vista_clasificacion;   
-use polidb;    
-    -- Para ingresar un partido se haria de esta forma
-INSERT INTO partido (fechahora, fkequipolocalid, fkequipovisid, estadopartido, empate, fkidcampeonato, fkidfase, fkidarbitro)
-VALUES ('2024-07-01', 1, 3, 'En curso', 'V', 3, 1, 1);
-SET @ultimo_partido = LAST_INSERT_ID();
-CALL actualizar_clasificacion(@ultimo_partido);
-SELECT * FROM vista_clasificacion WHERE fkidcampeonato = 1; -- Se manda a llamar la vista de esta forma
-
--- cree los privilegios     
-INSERT INTO Privilegios (Privilegios) VALUES ('Ver');
-INSERT INTO Privilegios (Privilegios) VALUES ('Ver y Editar');
-INSERT INTO Privilegios (Privilegios) VALUES ('Ver, Editar y Eliminar');
--- cree los permisos
-INSERT INTO Permisos (Permisos) VALUES ('Usuario Estándar');
-INSERT INTO Permisos (Permisos) VALUES ('Gerente');
-INSERT INTO Permisos (Permisos) VALUES ('Administrador');
-
--- inserte el administrador de manera manual
-INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES 
-('Alejandro', 'alejandro@gmail.com', '1234', 3, 3, '2024-08-01');
-INSERT INTO Empleado (pkidempleado, nombre, apellido, puesto, fkidusuario) VALUES 
-(1, 'Alejandro', 'Boch', 'Administrador', 1);
-INSERT INTO Direccionempleado (Calle, Avenida, Zona, Departamento, CodigoPostal, NumeroCasa) VALUES
-('5ta', '9na', '1', 'Guatemala', '11001', '13');  
-INSERT INTO Direccion_Empleado (fkiddireccion, fkidempleado)  VALUES (1,1);
-INSERT INTO Telefonoempleado (telefono) VALUES ('55369918');
-INSERT INTO Telefono_Empleado (fkidtelefono, fkidempleado) VALUES (1,1);
-
-INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES 
-('Katy', 'katy@gmail.com', '4321', 3, 3, '2024-08-01');
-
--- Creación de trigger para ultima hora de actualización
 DELIMITER //
 
 CREATE TRIGGER actualiza_ultimaconexion
@@ -509,23 +480,234 @@ BEGIN
         SET NEW.iniciosesion = FALSE;  -- Resetea el campo a FALSE
     END IF;
 END//
-USE polidb;
-
-
-select * from jugador;
-select * from reglas_deporte;
-select * from equipo;
-
-
 DELIMITER ;
-delete FROM usuario
-WHERE pkidusuario = 3;
+
+-- ACA ESTA LA VISTA DE EMPLEADO
+CREATE OR REPLACE VIEW VistaEmpleado AS
+SELECT
+    e.pkidempleado,
+    e.nombre AS NombreEmpleado,
+    e.apellido,
+    e.puesto,
+    te.telefono,
+    de.Calle,
+    de.Avenida,
+    de.Zona,
+    de.Departamento,
+    de.CodigoPostal,
+    de.NumeroCasa,
+    u.usuario AS usuario 
+FROM
+    Empleado e
+    JOIN Direccion_Empleado de_emp ON e.pkidempleado = de_emp.fkidempleado
+    JOIN Direccionempleado de ON de_emp.fkiddireccion = de.pkiddireccion
+    JOIN Telefono_Empleado te_emp ON e.pkidempleado = te_emp.fkidempleado
+    JOIN Telefonoempleado te ON te_emp.fkidtelefono = te.pkidtelefono
+    JOIN Usuario u ON e.fkidusuario = u.pkidusuario; 
+
+-- VISTA USUARIOS
+CREATE OR REPLACE VIEW VistaUsuarios AS
+SELECT
+    u.pkidusuario AS IDUsuario,
+    u.usuario AS NombreUsuario,
+    u.email AS Email,
+    p.Permisos AS Permiso,
+    pr.Privilegios AS Privilegio,
+    u.ultimaconexion AS UltimaConexion
+FROM
+    usuario u
+    JOIN Permisos p ON u.fkpermisos = p.pkidpermisos
+    JOIN Privilegios pr ON u.fkprivilegios = pr.pkidprivi
+ORDER BY
+    u.ultimaconexion DESC; 
+  
+ -- VISTA DE EQUIPOS POR CAMPEONATO
+ CREATE OR REPLACE VIEW VistaEquiposPorCampeonato AS
+SELECT 
+    c.fkidcampeonato AS IdCampeonato,
+    camp.nombre AS NombreCampeonato,
+    e.pkidequipo AS IdEquipo,
+    e.nombre AS NombreEquipo
+FROM 
+    clasificacion c
+    JOIN equipo e ON c.fkidequipo = e.pkidequipo
+    JOIN campeonato camp ON c.fkidcampeonato = camp.pkidcampeonato
+ORDER BY 
+    camp.nombre, e.nombre;
+ 
+-- VISTA DE JUGADORES POR EQUIPO
+CREATE OR REPLACE VIEW VistaJugadoresPorEquipo AS
+SELECT
+    e.nombre AS NombreEquipo,
+    j.nombre AS NombreJugador,
+    j.apellido AS ApellidoJugador,
+    j.numero AS NumeroJugador,
+    j.posicion AS PosicionJugador,
+    j.nacionalidad AS NacionalidadJugador
+FROM
+    jugador j
+    JOIN equipo e ON j.fkidequipo = e.pkidequipo
+ORDER BY
+    e.nombre, j.apellido, j.nombre;
+
+-- VISTA DE LOS PARTIDOS FUT
+CREATE OR REPLACE VIEW VistaResultadosPartidosFutbol AS
+SELECT
+    p.pkidpartido AS IDPartido,
+    camp.nombre AS NombreCampeonato,
+    el.nombre AS NombreEquipoLocal,
+    ev.nombre AS NombreEquipoVisitante,
+    p.fechahora AS FechaHora,
+    fut.golesequipolocal AS GolesEquipoLocal,
+    fut.golesequipovisitante AS GolesEquipoVisitante
+FROM
+    partido p
+    JOIN campeonato camp ON p.fkidcampeonato = camp.pkidcampeonato
+    JOIN equipo el ON p.fkequipolocalid = el.pkidequipo
+    JOIN equipo ev ON p.fkequipovisid = ev.pkidequipo
+    JOIN futbol fut ON p.pkidpartido = fut.fkidpartido
+ORDER BY
+    p.fechahora DESC;
+    
+    
+-- VISTA PARTIDOS BASKET
+CREATE OR REPLACE VIEW VistaResultadosPartidosBasketball AS
+SELECT
+    p.pkidpartido AS IDPartido,
+    camp.nombre AS NombreCampeonato,
+    el.nombre AS NombreEquipoLocal,
+    ev.nombre AS NombreEquipoVisitante,
+    p.fechahora AS FechaHora,
+    b.puntosequipolocal AS PuntosEquipoLocal,
+    b.puntosequipovisitante AS PuntosEquipoVisitante
+FROM
+    partido p
+    JOIN campeonato camp ON p.fkidcampeonato = camp.pkidcampeonato
+    JOIN equipo el ON p.fkequipolocalid = el.pkidequipo
+    JOIN equipo ev ON p.fkequipovisid = ev.pkidequipo
+    JOIN basketball b ON p.pkidpartido = b.fkidpartido
+ORDER BY
+    p.fechahora DESC;
+    
+-- VISTA PARTIDOS DE BASEBALL
+CREATE OR REPLACE VIEW VistaResultadosPartidosBaseball AS
+SELECT
+    p.pkidpartido AS IDPartido,
+    camp.nombre AS NombreCampeonato,
+    el.nombre AS NombreEquipoLocal,
+    ev.nombre AS NombreEquipoVisitante,
+    p.fechahora AS FechaHora,
+    b.carrerasequipolocal AS CarrerasEquipoLocal,
+    b.carrerasequipovisitante AS CarrerasEquipoVisitante
+FROM
+    partido p
+    JOIN campeonato camp ON p.fkidcampeonato = camp.pkidcampeonato
+    JOIN equipo el ON p.fkequipolocalid = el.pkidequipo
+    JOIN equipo ev ON p.fkequipovisid = ev.pkidequipo
+    JOIN baseball b ON p.pkidpartido = b.fkidpartido
+    ORDER BY
+    p.fechahora DESC;
+
+-- VISTA PARTIDOS VOLEYBOL
+CREATE OR REPLACE VIEW VistaResultadosPartidosVolleyball AS
+SELECT
+    p.pkidpartido AS IDPartido,
+    camp.nombre AS NombreCampeonato,
+    el.nombre AS NombreEquipoLocal,
+    ev.nombre AS NombreEquipoVisitante,
+    p.fechahora AS FechaHora,
+    v.setsganadosequipolocal AS SetsGanadosEquipoLocal,
+    v.setsganadosequipovisitante AS SetsGanadosEquipoVisitante
+FROM
+    partido p
+    JOIN campeonato camp ON p.fkidcampeonato = camp.pkidcampeonato
+    JOIN equipo el ON p.fkequipolocalid = el.pkidequipo
+    JOIN equipo ev ON p.fkequipovisid = ev.pkidequipo
+    JOIN volleyball v ON p.pkidpartido = v.fkidpartido
+ORDER BY
+    p.fechahora DESC;
+
+-- VISTAS DE LOS JUGADORES SUSPENDIDOS
+CREATE OR REPLACE VIEW VistaJugadoresSuspendidos AS
+SELECT
+    j.pkidjugador AS IDJugador,
+    j.nombre AS NombreJugador,
+    j.apellido AS ApellidoJugador,
+    j.nacionalidad AS Nacionalidad,
+    j.fkidequipo AS IDEquipo,
+    e.nombre AS NombreEquipo,
+    f.tarjeta AS Tarjeta,
+    f.tipofalta AS TipoFalta,
+    f.descripcion AS DescripcionFalta,
+    f.fecha AS FechaFalta,
+    f.fkidjugador AS IDArbitro
+FROM
+    faltas f
+    JOIN jugador j ON f.fkidjugador = j.pkidjugador
+    JOIN equipo e ON j.fkidequipo = e.pkidequipo
+WHERE
+    f.tarjeta = 'Roja'
+ORDER BY
+    f.fecha DESC;
+    
+-- VISTA DE LOS DATOS PERSONALES DEL JUGADOR
+CREATE OR REPLACE VIEW VistaDatosPersonalesJugadores AS
+SELECT
+    pkidjugador AS IDJugador,
+    nombre AS Nombre,
+    apellido AS Apellido,
+    fechanacimiento AS FechaNacimiento,
+    nacionalidad AS Nacionalidad,
+    sexo AS Sexo
+FROM
+    deportista;
+ 
+-- DE ACA PARA ABAJO COMO TAL SOLO HAY INGRESO DE DATOS PREDETERMINADOS 
+-- cree los privilegios     
+INSERT INTO Privilegios (Privilegios) VALUES ('Ver');
+INSERT INTO Privilegios (Privilegios) VALUES ('Ver y Generar Reportes');
+INSERT INTO Privilegios (Privilegios) VALUES ('Ver, Editar y Eliminar');
+
+-- cree los permisos
+INSERT INTO Permisos (Permisos) VALUES ('Usuario Estándar');
+INSERT INTO Permisos (Permisos) VALUES ('Gerente');
+INSERT INTO Permisos (Permisos) VALUES ('Administrador');
+
+-- DE ACA PARA ABAJO SOLO HAY SELECTS E INGRESO DE DATOS DE PRUEBA 
+    
+
+   
+    -- Para ingresar un partido se haria de esta forma
+/*INSERT INTO partido (fechahora, fkequipolocalid, fkequipovisid, estadopartido, empate, fkidcampeonato, fkidfase, fkidarbitro)
+VALUES ('2024-07-01', 1, 3, 'En curso', 'V', 3, 1, 1);
+SET @ultimo_partido = LAST_INSERT_ID();
+CALL actualizar_clasificacion(@ultimo_partido);
+SELECT * FROM vista_clasificacion WHERE fkidcampeonato = 1; -- Se manda a llamar la vista de esta forma*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+use polidb;
+
 SELECT * FROM usuario;
 SELECT * FROM permisos;
 SELECT * FROM privilegios;
+select * from sexo;
 
 SELECT * FROM Empleado;
 SELECT * FROM Telefonoempleado;
 SELECT * FROM Direccionempleado;
 SELECT * FROM Direccion_Empleado;
 SELECT * FROM Telefono_Empleado;
+
