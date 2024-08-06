@@ -16,8 +16,11 @@ namespace Campeonato_Polideportivo
         public Administrador()
         {
             InitializeComponent();
-
+            // Asociar el evento KeyPress
+            TxtContrasenia.KeyPress += TxtContrasenia_KeyPress;
         }
+
+
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
@@ -138,6 +141,18 @@ namespace Campeonato_Polideportivo
         private void Administrador_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void TxtContrasenia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Evita el beep cuando se presiona Enter
+                e.Handled = true;
+                // Llama al método del botón como si se hubiera hecho clic en él
+                BtnIngresar_Click(sender, e);
+            }
         }
 
     }

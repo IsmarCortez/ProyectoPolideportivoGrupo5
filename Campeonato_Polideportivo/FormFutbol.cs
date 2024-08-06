@@ -47,7 +47,14 @@ namespace Campeonato_Polideportivo
         {
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
-            string query = "SELECT pkidequipo, nombre FROM equipo";
+            string query = @"
+                SELECT DISTINCT e.pkidequipo, e.nombre 
+                FROM equipo e
+                LEFT JOIN partido p ON e.pkidequipo = p.fkequipolocalid OR e.pkidequipo = p.fkequipovisid
+                LEFT JOIN campeonato c ON p.fkidcampeonato = c.pkidcampeonato
+                LEFT JOIN deporte d ON c.fkiddeporte = d.pkiddeporte
+                WHERE d.nombre = 'Futbol' OR d.nombre IS NULL
+                ORDER BY e.nombre";
             try
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
@@ -103,11 +110,11 @@ namespace Campeonato_Polideportivo
 
         private void CargarEstadoPartido()
         {
-            CmbEstadoPartido.Items.Add("Sin empezar");
-            CmbEstadoPartido.Items.Add("Primer tiempo");
-            CmbEstadoPartido.Items.Add("Descanso medio tiempo");
-            CmbEstadoPartido.Items.Add("Segundo Tiempo");
-            CmbEstadoPartido.Items.Add("Terminado");
+            CmbEstadoPartido.Items.Add("Pendiente");
+            CmbEstadoPartido.Items.Add("En Curso");
+            CmbEstadoPartido.Items.Add("Suspendido");
+            CmbEstadoPartido.Items.Add("Finalizado");
+            CmbEstadoPartido.Items.Add("Cancelado");
         }
 
         private void CargarGanadorEmpate()
@@ -124,7 +131,12 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT pkidcampeonato, nombre FROM campeonato";
+            string query = @"
+                SELECT c.pkidcampeonato, c.nombre 
+                FROM campeonato c
+                JOIN deporte d ON c.fkiddeporte = d.pkiddeporte
+                WHERE d.nombre = 'Futbol'
+                ORDER BY c.nombre";
 
             try
             {
@@ -135,6 +147,11 @@ namespace Campeonato_Polideportivo
                 CmbCampeonato.DataSource = dt;
                 CmbCampeonato.DisplayMember = "nombre";
                 CmbCampeonato.ValueMember = "pkidcampeonato";
+                // Si no hay campeonatos, mostrar mensaje
+                if (dt.Rows.Count == 0) // Solo está la fila "Seleccionar campeonato"
+                {
+                    MessageBox.Show("No hay campeonatos de futbol registrados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -616,7 +633,6 @@ namespace Campeonato_Polideportivo
                     {
                         // SQL insertar datos en partido
                         string query = $@"UPDATE partido SET fechahora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, ganadorlocal = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
-                        int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
                         {
@@ -684,7 +700,6 @@ namespace Campeonato_Polideportivo
                     {
                         // SQL insertar datos en partido
                         string query = $@"UPDATE partido SET fechahora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, ganador = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
-                        int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
                         {
@@ -752,7 +767,6 @@ namespace Campeonato_Polideportivo
                     {
                         // SQL insertar datos en partido
                         string query = $@"UPDATE partido SET fechahora = @fechahora, fkequipolocalid = @fkequipolocalid, fkequipovisid = @fkequipovisid, estadopartido = @estadopartido, empate = @ganadorlocal, ganadorlocal = @ganadorlocal, fkidcampeonato = @fkidcampeonato, fkidfase = @fkidfase, fkidarbitro = @fkidarbitro WHERE pkidpartido = @pkidpartido";
-                        int FkIdPartido;
                         // Crear el comando
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))
                         {
