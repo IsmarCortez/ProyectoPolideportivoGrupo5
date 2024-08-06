@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Campeonato_Polideportivo
 {
     public partial class Form1 : Form
     {
+        private Conexion FormConexion;
+        private string connectionString;
         public Form1()
         {
             InitializeComponent();
@@ -49,13 +52,98 @@ namespace Campeonato_Polideportivo
             }
         }
 
+        public class UsuarioValidator
+        {
+
+            public string connectionString;
+
+            public UsuarioValidator(string connectionString)
+            {
+                this.connectionString = connectionString;
+            }
+            public int ObtenerNivelDeAcceso(string usuario)
+            {
+                Conexion conexion = new Conexion();
+                using (MySqlConnection conn = conexion.getConexion())
+                {
+                    conn.Open();
+                    string query = "SELECT fkpermisos, fkprivilegios FROM usuario WHERE usuario = @usuario";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@usuario", usuario);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int fkpermisos = reader.GetInt32("fkpermisos");
+                                int fkprivilegios = reader.GetInt32("fkprivilegios");
+
+                                // Determinar el nivel de acceso basado en fkpermisos y fkprivilegios
+                                if (fkpermisos == 1 && fkprivilegios == 1)
+                                {
+                                    return 1; // Nivel de acceso bajo (ocultar ambos botones)
+                                }
+                                else if (fkpermisos == 2 && fkprivilegios == 2) 
+                                {
+                                    return 2; // Nivel de acceso medio/alto (mostrar BtnRegistro, ocultar button3)
+                                }
+                                else if (fkpermisos == 3 && fkprivilegios == 3)
+                                {
+                                    return 3; // Nivel de acceso alto (mostrar ambos botones)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Si no se encontró el usuario
+                return 0; // Nivel de acceso no determinado
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            //  LblTitulo.BackColor = Color.Transparent; //Para que los label no tengan un fondo de color
-            // LblTitulo2.BackColor = Color.Transparent;
+            // Maximizar la ventana
+            this.WindowState = FormWindowState.Maximized;
 
-            this.WindowState = FormWindowState.Maximized; //maximiza el programa
-            //this.FormBorderStyle = FormBorderStyle.None; //esto es para quitar los bordes al maximizar
+            // Crear instancias
+            Conexion conexion = new Conexion();
+            UsuarioValidator usuarioValidator = new UsuarioValidator(connectionString);
+
+            // Obtener el nombre de usuario actual
+            string usuario = GlobalVariables.usuario;
+
+            // Obtener el nivel de acceso del usuario
+            int nivelDeAcceso = usuarioValidator.ObtenerNivelDeAcceso(usuario);
+
+            // Controlar la visibilidad de los botones basado en el nivel de acceso
+            if (nivelDeAcceso == 1)
+            {
+                // Ocultar ambos botones
+                BtnRegistro.Visible = false;
+                button3.Visible = false;
+            }
+            else if (nivelDeAcceso == 2)
+            {
+                // Mostrar BtnRegistro y ocultar button3
+                BtnRegistro.Visible = false;
+                button3.Visible = true;
+            }
+            else if (nivelDeAcceso == 3)
+            {
+                // Mostrar ambos botones
+                BtnRegistro.Visible = true;
+                button3.Visible = true;
+            }
+            else
+            {
+                // Si el nivel de acceso no está definido (por ejemplo, usuario no encontrado)
+                BtnRegistro.Visible = false;
+                button3.Visible = false;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -313,6 +401,26 @@ namespace Campeonato_Polideportivo
         {
             abrirForm(new FormOtrosPartidos());
 
+        }
+
+        private void BtnEmpleados_Click_2(object sender, EventArgs e)
+        {
+            abrirForm(new Empleados());
+        }
+
+        private void BtnRegistro_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelRegistro);
+        }
+
+        private void BtnUsuario_Click(object sender, EventArgs e)
+        {
+            abrirForm(new Usuarios());
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            abrirForm(new Vistas());
         }
     }
 }

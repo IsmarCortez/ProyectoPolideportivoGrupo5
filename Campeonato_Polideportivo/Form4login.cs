@@ -128,60 +128,61 @@ namespace Campeonato_Polideportivo
                                 // Guarda el pkidusuario
                                 userId = reader.GetInt32("pkidusuario");
 
-                                // Verifica si los permisos son 3 y 3
+                                // Verifica si los permisos son 1 y 1
                                 if (fkPermisos == 1 && fkPrivilegios == 1)
                                 {
                                     tienePermisos = true;
                                 }
-                            }
-                        }
-                    }
 
-                    if (tienePermisos)
-                    {
-                        // Consulta para verificar usuario y contraseña
-                        string credencialesQuery = "SELECT COUNT(*) FROM usuario WHERE usuario = @usuario AND contrasenia = @contrasenia";
-
-                        using (MySqlCommand credencialesCmd = new MySqlCommand(credencialesQuery, conn))
-                        {
-                            credencialesCmd.Parameters.AddWithValue("@usuario", GlobalVariables.usuario);
-                            credencialesCmd.Parameters.AddWithValue("@contrasenia", contrasenia);
-
-                            int count = Convert.ToInt32(credencialesCmd.ExecuteScalar());
-                            if (count > 0)
-                            {
-                                esValido = true;
                             }
                         }
 
-                        if (esValido)
+                        if (tienePermisos)
                         {
-                            // Actualizar iniciodesesion a true para activar el trigger
-                            string actualizarInicioSesionQuery = "UPDATE usuario SET iniciosesion = @iniciosesion, ultimaconexion = @ultimaconexion WHERE pkidusuario = @userId";
+                            // Consulta para verificar usuario y contraseña
+                            string credencialesQuery = "SELECT COUNT(*) FROM usuario WHERE usuario = @usuario AND contrasenia = @contrasenia";
 
-                            using (MySqlCommand actualizarCmd = new MySqlCommand(actualizarInicioSesionQuery, conn))
+                            using (MySqlCommand credencialesCmd = new MySqlCommand(credencialesQuery, conn))
                             {
-                                actualizarCmd.Parameters.AddWithValue("@iniciosesion", true);
-                                actualizarCmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now);
-                                actualizarCmd.Parameters.AddWithValue("@userId", userId);
-                                actualizarCmd.ExecuteNonQuery();
+                                credencialesCmd.Parameters.AddWithValue("@usuario", GlobalVariables.usuario);
+                                credencialesCmd.Parameters.AddWithValue("@contrasenia", contrasenia);
+
+                                int count = Convert.ToInt32(credencialesCmd.ExecuteScalar());
+                                if (count > 0)
+                                {
+                                    esValido = true;
+                                }
                             }
 
-                            // Acción a realizar si el usuario y la contraseña son válidos
-                            Form1 obj = new Form1();
-                            obj.Show();
-                            this.Hide();
+                            if (esValido)
+                            {
+                                // Actualizar iniciodesesion a true para activar el trigger
+                                string actualizarInicioSesionQuery = "UPDATE usuario SET iniciosesion = @iniciosesion, ultimaconexion = @ultimaconexion WHERE pkidusuario = @userId";
+
+                                using (MySqlCommand actualizarCmd = new MySqlCommand(actualizarInicioSesionQuery, conn))
+                                {
+                                    actualizarCmd.Parameters.AddWithValue("@iniciosesion", true);
+                                    actualizarCmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now);
+                                    actualizarCmd.Parameters.AddWithValue("@userId", userId);
+                                    actualizarCmd.ExecuteNonQuery();
+                                }
+
+                                // Acción a realizar si el usuario y la contraseña son válidos
+                                Form1 obj = new Form1();
+                                obj.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                // Acción a realizar si el usuario y/o la contraseña no son válidos
+                                MessageBox.Show("No puedes pasar, tu cuenta no existe!");
+                            }
                         }
                         else
                         {
-                            // Acción a realizar si el usuario y/o la contraseña no son válidos
-                            MessageBox.Show("No puedes pasar, tu cuenta no existe!");
+                            // Mensaje si el usuario no tiene permisos suficientes
+                            MessageBox.Show("No tienes permisos suficientes para acceder a esta función.");
                         }
-                    }
-                    else
-                    {
-                        // Mensaje si el usuario no tiene permisos suficientes
-                        MessageBox.Show("No tienes permisos suficientes para acceder a esta función.");
                     }
                 }
                 catch (Exception ex)
@@ -210,6 +211,8 @@ namespace Campeonato_Polideportivo
         public static string usuario { get; set; }
         public static int fkpermisos { get; set; }
         public static int fkprivilegios { get; set; }
+        public static int pkidusuario { get; set; }
+
     }
 }
 

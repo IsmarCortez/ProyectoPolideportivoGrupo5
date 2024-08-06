@@ -15,6 +15,7 @@ namespace Campeonato_Polideportivo
     {
         private Conexion FormConexion;
         private string connectionString;
+        private UsuarioValidator usuarioValidator;
         public FormPartidosIndividuales()
         {
             InitializeComponent();
@@ -22,46 +23,9 @@ namespace Campeonato_Polideportivo
             CargarComboBoxVis();
             CargarComboBoxTorneo();
 
-        }
-
-        public class UsuarioValidator
-        {
-
-            public string connectionString;
-
-            public UsuarioValidator(string connectionString)
-            {
-                this.connectionString = connectionString;
-            }
-            public bool VerificarPermisosYPrivilegios(string usuario)
-            {
-                Conexion conexion = new Conexion();
-                using (MySqlConnection conn = conexion.getConexion())
-                {
-                    conn.Open();
-                    string query = "SELECT fkpermisos, fkprivilegios FROM usuario WHERE usuario = @usuario";
-
-                    using (MySqlCommand command = new MySqlCommand(query, conn))
-                    {
-                        command.Parameters.AddWithValue("@usuario", usuario);
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                int fkpermisos = reader.GetInt32("fkpermisos");
-                                int fkprivilegios = reader.GetInt32("fkprivilegios");
-
-                                // Verificar si ambos campos son iguales a 1
-                                return fkpermisos == 1 && fkprivilegios == 1;
-                            }
-                        }
-                    }
-                }
-
-                // Si no se encontró el usuario, o los valores no son ambos 1
-                return false;
-            }
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
+            usuarioValidator = new UsuarioValidator(connectionString);
         }
 
         private void FormPartidosIndividuales_Load(object sender, EventArgs e)
@@ -70,24 +34,50 @@ namespace Campeonato_Polideportivo
             CmbVis.Text = "Seleccione un deportista visitante..";
             CmbTorneo.Text = "Seleccione un Torneo";
 
+            // Maximizar la ventana
+            this.WindowState = FormWindowState.Maximized;
+
+            // Crear instancias
             Conexion conexion = new Conexion();
             UsuarioValidator usuarioValidator = new UsuarioValidator(connectionString);
 
-            string usuario = GlobalVariables.usuario; // Aquí debes obtener el ID del usuario que deseas verificar
-            bool tienePermisosYPrivilegios = usuarioValidator.VerificarPermisosYPrivilegios(usuario);
+            // Obtener el nombre de usuario actual
+            string usuario = GlobalVariables.usuario;
 
-            if (tienePermisosYPrivilegios)
+            // Obtener el nivel de acceso del usuario
+            int nivelDeAcceso = usuarioValidator.ObtenerNivelDeAcceso(usuario);
+
+            // Controlar la visibilidad de los botones basado en el nivel de acceso
+            if (nivelDeAcceso == 1)
             {
-                // Permisos y privilegios son ambos igual a 1
-                // Bloquear el botón BtnModificar
+
+                BtnIngresar.Visible = true;
+                BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
-            else
+            else if (nivelDeAcceso == 2)
             {
-                // Permisos o privilegios no son ambos igual a 1
+
+                BtnIngresar.Visible = true;
+                BtnVer.Visible = true;
+                BtnModificar.Visible = false;
+                BtnEliminar.Visible = false;
+            }
+            else if (nivelDeAcceso == 3)
+            {
+                BtnIngresar.Visible = true;
+                BtnVer.Visible = true;
                 BtnModificar.Visible = true;
                 BtnEliminar.Visible = true;
+            }
+            else
+            {
+                // Si el nivel de acceso no está definido (por ejemplo, usuario no encontrado)
+                BtnIngresar.Visible = false;
+                BtnVer.Visible = false;
+                BtnModificar.Visible = false;
+                BtnEliminar.Visible = false;
             }
         }
 
