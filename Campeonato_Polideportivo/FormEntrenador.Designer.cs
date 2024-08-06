@@ -53,7 +53,7 @@ namespace Campeonato_Polideportivo
             // BtnEliminar
             // 
             this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnEliminar.FlatAppearance.BorderSize = 0;
             this.BtnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -71,7 +71,7 @@ namespace Campeonato_Polideportivo
             // BtnModificar
             // 
             this.BtnModificar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnModificar.FlatAppearance.BorderSize = 0;
             this.BtnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -89,7 +89,7 @@ namespace Campeonato_Polideportivo
             // BtnIngresar
             // 
             this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnIngresar.FlatAppearance.BorderSize = 0;
             this.BtnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -119,9 +119,10 @@ namespace Campeonato_Polideportivo
             this.LblEntrenador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.LblEntrenador.AutoSize = true;
             this.LblEntrenador.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEntrenador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblEntrenador.Location = new System.Drawing.Point(381, 51);
             this.LblEntrenador.Name = "LblEntrenador";
-            this.LblEntrenador.Size = new System.Drawing.Size(213, 50);
+            this.LblEntrenador.Size = new System.Drawing.Size(216, 50);
             this.LblEntrenador.TabIndex = 36;
             this.LblEntrenador.Text = "ENTRENADOR";
             // 
@@ -146,7 +147,7 @@ namespace Campeonato_Polideportivo
             // BtnVer
             // 
             this.BtnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.BtnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnVer.FlatAppearance.BorderSize = 0;
             this.BtnVer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -166,7 +167,7 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(62, 133);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(56, 16);
+            this.LblNombre.Size = new System.Drawing.Size(58, 17);
             this.LblNombre.TabIndex = 43;
             this.LblNombre.Text = "Nombre";
             // 
@@ -175,7 +176,7 @@ namespace Campeonato_Polideportivo
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(62, 201);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(57, 16);
+            this.LblApellido.Size = new System.Drawing.Size(58, 17);
             this.LblApellido.TabIndex = 44;
             this.LblApellido.Text = "Apellido";
             // 
@@ -184,7 +185,7 @@ namespace Campeonato_Polideportivo
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 265);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(135, 16);
+            this.label3.Size = new System.Drawing.Size(141, 17);
             this.label3.TabIndex = 45;
             this.label3.Text = "Fecha de Nacimiento";
             // 
@@ -193,7 +194,7 @@ namespace Campeonato_Polideportivo
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(30, 323);
             this.LblNacionalidad.Name = "LblNacionalidad";
-            this.LblNacionalidad.Size = new System.Drawing.Size(88, 16);
+            this.LblNacionalidad.Size = new System.Drawing.Size(90, 17);
             this.LblNacionalidad.TabIndex = 46;
             this.LblNacionalidad.Text = "Nacionalidad";
             // 
@@ -202,7 +203,7 @@ namespace Campeonato_Polideportivo
             this.LblEquipo.AutoSize = true;
             this.LblEquipo.Location = new System.Drawing.Point(55, 387);
             this.LblEquipo.Name = "LblEquipo";
-            this.LblEquipo.Size = new System.Drawing.Size(50, 16);
+            this.LblEquipo.Size = new System.Drawing.Size(52, 17);
             this.LblEquipo.TabIndex = 47;
             this.LblEquipo.Text = "Equipo";
             // 
@@ -232,7 +233,7 @@ namespace Campeonato_Polideportivo
             this.LblIdEntrenador.AutoSize = true;
             this.LblIdEntrenador.Location = new System.Drawing.Point(30, 82);
             this.LblIdEntrenador.Name = "LblIdEntrenador";
-            this.LblIdEntrenador.Size = new System.Drawing.Size(89, 16);
+            this.LblIdEntrenador.Size = new System.Drawing.Size(96, 17);
             this.LblIdEntrenador.TabIndex = 52;
             this.LblIdEntrenador.Text = "ID Entrenador";
             // 

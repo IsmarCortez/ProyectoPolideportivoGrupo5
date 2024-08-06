@@ -358,7 +358,14 @@ namespace Campeonato_Polideportivo
 
         private void DgvAsistencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            try
+            {
+                TxtIdAsistencia.Text = DgvAsistencia.CurrentRow.Cells[0].Value.ToString();
+                TxtMinuto.Text = DgvAsistencia.CurrentRow.Cells[1].Value.ToString();
+            }
+            catch
+            {
+            }
         }
     }
 }

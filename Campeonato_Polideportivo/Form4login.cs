@@ -21,6 +21,8 @@ namespace Campeonato_Polideportivo
             InitializeComponent();
             FormConexion = new Conexion();  //Se manda a llamar la conexion
             this.Load += new EventHandler(Form4login_Load); //evento para poner el programa en pantalla completa
+            // Asociar el evento KeyPress
+            TxtContrasenia.KeyPress += TxtContrasenia_KeyPress;
         }
 
         private void TxtUsuario_Enter(object sender, EventArgs e)
@@ -51,7 +53,6 @@ namespace Campeonato_Polideportivo
         private void Form4login_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized; //maximiza el programa
-                                                          //this.FormBorderStyle = FormBorderStyle.None; //esto es para quitar los bordes al maximizar
             FormConexion = new Conexion();  //Se manda a llamar la conexion
             this.Load += new EventHandler(Form4login_Load);
         }
@@ -90,7 +91,7 @@ namespace Campeonato_Polideportivo
 
             // Recoge los datos de los TextBox
 
-            //pruebas pendisntes
+            //pruebas pendientes
             GlobalVariables.usuario = TxtUsuario.Text;
             FormCampeonato formCampeonato = new FormCampeonato();
 
@@ -204,6 +205,23 @@ namespace Campeonato_Polideportivo
         private void llblCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             abrirForm(new CrearCuenta());
+        }
+
+        private void TxtContrasenia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtContrasenia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Evita el beep cuando se presiona Enter
+                e.Handled = true;
+                // Llama al método del botón como si se hubiera hecho clic en él
+                BtnIngresar_Click(sender, e);
+            }
         }
     }
     public static class GlobalVariables
