@@ -378,7 +378,9 @@ namespace Campeonato_Polideportivo
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 MySqlTransaction transaction = conn.BeginTransaction();
+                
                 try
                 {
                     if (CmbGanadorEmpate.SelectedIndex == 0)
@@ -663,6 +665,7 @@ namespace Campeonato_Polideportivo
                     // Crear el adaptador
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
                     {
+                        conn.Open();
                         // Crear un DataTable para almacenar los datos
                         DataTable dt = new DataTable();
 
@@ -717,6 +720,7 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     if (CmbGanadorEmpate.SelectedIndex == 0)
@@ -974,6 +978,7 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     // Iniciar una transacción para asegurar la integridad de los datos

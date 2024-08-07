@@ -258,6 +258,7 @@ namespace Campeonato_Polideportivo
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            
             Conexion conexion = new Conexion();
 
             //Partido
@@ -279,9 +280,11 @@ namespace Campeonato_Polideportivo
             //string FkIdPartido = TxtId.Text; 
             CamposVacios();
 
+
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open(); // Abrimos la conexión
                 MySqlTransaction transaction = conn.BeginTransaction();
                 try
                 {

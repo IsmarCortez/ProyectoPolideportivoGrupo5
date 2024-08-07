@@ -366,6 +366,7 @@ namespace Campeonato_Polideportivo
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     // SQL insertar datos
@@ -406,6 +407,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion(); //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     string query = @"
@@ -490,6 +492,7 @@ namespace Campeonato_Polideportivo
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     // Crear la consulta SQL para actualizar datos
                     string query = "UPDATE faltas SET minuto = @minuto, tarjeta = @tarjeta, tipofalta = @tipofalta, descripcion = @descripcion, fecha = @fecha, fkidpartido = @fkidpartido, fkidjugador = @fkidjugador, fkidarbitro = @fkidarbitro WHERE pkidfaltas = @pkidfaltas";
 
@@ -545,12 +548,14 @@ namespace Campeonato_Polideportivo
 
             try
             {
+
                 // Obtener el id_entrenador del TextBox
                 int pkidfaltas = int.Parse(TxtIdFaltas.Text);
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     // Crear la consulta SQL para eliminar datos
                     string query = "DELETE FROM faltas WHERE pkidfaltas = @pkidfaltas";
 

@@ -68,8 +68,9 @@ namespace Campeonato_Polideportivo
                 DateTime fechaNacimiento = TxtFecha.Value;
 
                 Conexion conexion = new Conexion();
-                MySqlConnection conn = conexion.getConexion();
 
+                MySqlConnection conn = conexion.getConexion();
+                conn.Open();
                 string query = "INSERT INTO jugador (nombre, apellido, posicion, numero, nacionalidad, titular, fotografia, fkidequipo, cantanotaciones, fechanacimiento) " +
                                "VALUES (@nombre, @apellido, @posicion, @numero, @nacionalidad, @titular, @fotografia, @fkidequipo, @cantanotaciones, @fechanacimiento)";
 
@@ -85,8 +86,7 @@ namespace Campeonato_Polideportivo
                     command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value); // Insertar la imagen o NULL
                     command.Parameters.AddWithValue("@fkidequipo", fkidequipo);
                     command.Parameters.AddWithValue("@cantanotaciones", goles);
-                    command.Parameters.AddWithValue("@fecha_nacimiento", fechaNacimiento);
-
+                    command.Parameters.AddWithValue("@fechanacimiento", fechaNacimiento);
 
                     int result = command.ExecuteNonQuery();
 
@@ -112,6 +112,7 @@ namespace Campeonato_Polideportivo
             {
                 MessageBox.Show("Error al obtener el equipo seleccionado.");
             }
+
         }
 
 
@@ -140,6 +141,7 @@ namespace Campeonato_Polideportivo
 
                 Conexion conexion = new Conexion();
                 MySqlConnection conn = conexion.getConexion();
+                conn.Open();
 
                 string query = "UPDATE jugador SET nombre = @nombre, apellido = @apellido, posicion = @posicion, numero = @numero, " +
                                "nacionalidad = @nacionalidad, titular = @titular, fotografia = @fotografia, fkidequipo = @fkidequipo, " +
@@ -200,6 +202,7 @@ namespace Campeonato_Polideportivo
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
+            conn.Open();
 
             string query = "DELETE FROM jugador WHERE pkidjugador = @pkidjugador";
 
@@ -232,23 +235,36 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
-            int idJugador;
-            if (!int.TryParse(TxtId.Text, out idJugador))
-            {
-                MessageBox.Show("ID inválido.");
-                return;
-            }
-
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
+            conn.Open();
 
-            string query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
-                           "FROM jugador WHERE pkidjugador = @pkidjugador";
+            string query;
+            MySqlCommand command = new MySqlCommand();
+
+            if (!string.IsNullOrEmpty(TxtId.Text))
+            {
+                int idJugador;
+                if (!int.TryParse(TxtId.Text, out idJugador))
+                {
+                    MessageBox.Show("ID inválido.");
+                    return;
+                }
+
+                query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
+                        "FROM jugador WHERE pkidjugador = @pkidjugador";
+                command.Parameters.AddWithValue("@pkidjugador", idJugador);
+            }
+            else
+            {
+                query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
+                        "FROM jugador";
+            }
 
             try
             {
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@pkidjugador", idJugador);
+                command.Connection = conn;
+                command.CommandText = query;
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -256,30 +272,31 @@ namespace Campeonato_Polideportivo
 
                 if (dt.Rows.Count > 0)
                 {
-                    DataRow row = dt.Rows[0];
-                    TxtNombre.Text = row["nombre"].ToString();
-                    TxtApellido.Text = row["apellido"].ToString();
-                    TxtPosicion.Text = row["posicion"].ToString();
-                    TxtNumero.Text = row["numero"].ToString();
-                    TxtNacionalidad.Text = row["nacionalidad"].ToString();
-                    TxtTitular.Text = row["titular"].ToString();
-                    TxtGoles.Text = row["cantanotaciones"].ToString();
-                    TxtFecha.Value = Convert.ToDateTime(row["fechanacimiento"]);
-
-
-                    if (row["fotografia"] != DBNull.Value)
+                    if (!string.IsNullOrEmpty(TxtId.Text) && dt.Rows.Count == 1)
                     {
-                        byte[] fotoBytes = (byte[])row["fotografia"];
-                        using (MemoryStream ms = new MemoryStream(fotoBytes))
+                        DataRow row = dt.Rows[0];
+                        TxtNombre.Text = row["nombre"].ToString();
+                        TxtApellido.Text = row["apellido"].ToString();
+                        TxtPosicion.Text = row["posicion"].ToString();
+                        TxtNumero.Text = row["numero"].ToString();
+                        TxtNacionalidad.Text = row["nacionalidad"].ToString();
+                        TxtTitular.Text = row["titular"].ToString();
+                        TxtGoles.Text = row["cantanotaciones"].ToString();
+                        TxtFecha.Value = Convert.ToDateTime(row["fechanacimiento"]);
+
+                        if (row["fotografia"] != DBNull.Value)
                         {
-                            PicFotografia.Image = Image.FromStream(ms);
+                            byte[] fotoBytes = (byte[])row["fotografia"];
+                            using (MemoryStream ms = new MemoryStream(fotoBytes))
+                            {
+                                PicFotografia.Image = Image.FromStream(ms);
+                            }
+                        }
+                        else
+                        {
+                            PicFotografia.Image = null;
                         }
                     }
-                    else
-                    {
-                        PicFotografia.Image = null;
-                    }
-
                     GridVer.DataSource = dt;
                 }
                 else
@@ -295,6 +312,7 @@ namespace Campeonato_Polideportivo
             {
                 conn.Close();
             }
+
         }
 
 

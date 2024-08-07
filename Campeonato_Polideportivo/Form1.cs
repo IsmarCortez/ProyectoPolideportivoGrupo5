@@ -422,5 +422,20 @@ namespace Campeonato_Polideportivo
         {
             abrirForm(new Vistas());
         }
+
+        private void BtnAsistencia_Click_2(object sender, EventArgs e)
+        {
+            abrirForm(new FormAsistencia());
+        }
+
+        private void BtnAnotaciones_Click_2(object sender, EventArgs e)
+        {
+            abrirForm(new FormAnotaciones());
+        }
+
+        private void BtnFaltas_Click_2(object sender, EventArgs e)
+        {
+            abrirForm(new FormFaltas());
+        }
     }
 }
