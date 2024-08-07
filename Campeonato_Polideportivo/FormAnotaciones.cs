@@ -21,30 +21,302 @@ namespace Campeonato_Polideportivo
         public FormAnotaciones()
         {
             InitializeComponent();
+            // Desactivar manejadores de eventos
+            CmbCampeonato.SelectedIndexChanged -= CmbCampeonato_SelectedIndexChanged;
+            CmbPartido.SelectedIndexChanged -= CmbPartido_SelectedIndexChanged;
+            CmbEquipo.SelectedIndexChanged -= CmbEquipo_SelectedIndexChanged;
+            CargarCampeonatos();
+            //CargarPartidos();
+            CargarTipoAnotacion();
+            CmbTipoAnotacion.DropDownStyle = ComboBoxStyle.DropDownList;//para que no cambien el contenido
+            CmbAsistencia.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbEquipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbPartido.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbJugador.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbCampeonato.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbTipoAnotacion.SelectedIndex = -1;
+            CmbAsistencia.SelectedIndex = -1;
+            CmbEquipo.SelectedIndex = -1;
+            CmbPartido.SelectedIndex = -1;
+            CmbJugador.SelectedIndex = -1;
+            CmbCampeonato.SelectedIndex = -1;
+            DgvJugs.Visible = false;
+
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
 
+            // Reactivar manejadores de eventos
+            CmbCampeonato.SelectedIndexChanged += CmbCampeonato_SelectedIndexChanged;
+            CmbPartido.SelectedIndexChanged += CmbPartido_SelectedIndexChanged;
+            CmbEquipo.SelectedIndexChanged += CmbEquipo_SelectedIndexChanged;
         }
 
-    
-       private void BtnIngresar_Click(object sender, EventArgs e)
+        private void CargarTipoAnotacion()
+        {
+            //Basquet
+            CmbTipoAnotacion.Items.Add("Punto");
+            CmbTipoAnotacion.Items.Add("Bloqueo");
+            CmbTipoAnotacion.Items.Add("Servicio");
+
+            //Baseball
+            CmbTipoAnotacion.Items.Add("Carrera");
+            CmbTipoAnotacion.Items.Add("Home Run");
+            CmbTipoAnotacion.Items.Add("Hit");
+
+            //Futbol
+            CmbTipoAnotacion.Items.Add("Gol");
+            CmbTipoAnotacion.Items.Add("Asistencia");
+            CmbTipoAnotacion.Items.Add("Penalti");
+
+            //Basquetbal
+            CmbTipoAnotacion.Items.Add("Canasta");
+            CmbTipoAnotacion.Items.Add("Asistencia");
+            CmbTipoAnotacion.Items.Add("Rebote");
+        }
+
+        private void CargarCampeonatos()
+        {
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
+
+            string query = "SELECT pkidcampeonato, nombre FROM campeonato";
+
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                CmbCampeonato.DataSource = dt;
+                CmbCampeonato.DisplayMember = "nombre";
+                CmbCampeonato.ValueMember = "pkidcampeonato";
+
+                // Configurar el ComboBox para que no tenga ningún elemento seleccionado inicialmente
+                CmbCampeonato.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los campeonatos: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void CargarPartidos(int idCampeonato)
+        {
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
+
+            string query = @"
+                SELECT 
+                    p.pkidpartido,
+                    CONCAT(el.nombre, ' vs ', ev.nombre) AS equipos
+                FROM 
+                    partido p
+                JOIN 
+                    equipo el ON p.fkequipolocalid = el.pkidequipo
+                JOIN 
+                    equipo ev ON p.fkequipovisid = ev.pkidequipo
+                WHERE 
+                    p.fkidcampeonato = @idCampeonato";
+
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    CmbPartido.DataSource = dt;
+                    CmbPartido.DisplayMember = "equipos";
+                    CmbPartido.ValueMember = "pkidpartido";
+
+                    // Configurar el ComboBox para que no tenga ningún elemento seleccionado inicialmente
+                    CmbPartido.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los partidos: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void CargarEquipos(string id_partido)
+        {
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
+
+            string query = @"
+              SELECT 
+                    equipo_local.nombre AS NombreLocal,
+                    equipo_visitante.nombre AS NombreVisitante,
+                    equipo_local.pkidequipo AS IdLocal,
+                    equipo_visitante.pkidequipo AS IdVisitante
+                FROM 
+                    partido
+                JOIN 
+                    equipo AS equipo_local ON partido.fkequipolocalid = equipo_local.pkidequipo
+                JOIN 
+                    equipo AS equipo_visitante ON partido.fkequipovisid = equipo_visitante.pkidequipo
+                WHERE 
+                    partido.pkidpartido = @pkidpartido";
+
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@pkidpartido", id_partido);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    // Configurar DataTable para equipos
+                    DataTable equipos = new DataTable();
+                    equipos.Columns.Add("pkidequipo", typeof(int));
+                    equipos.Columns.Add("nombre");
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        equipos.Rows.Add(dt.Rows[0]["IdLocal"], dt.Rows[0]["NombreLocal"].ToString());
+                        equipos.Rows.Add(dt.Rows[0]["IdVisitante"], dt.Rows[0]["NombreVisitante"].ToString());
+                    }
+
+                    CmbEquipo.DataSource = equipos;
+                    CmbEquipo.DisplayMember = "nombre";
+                    CmbEquipo.ValueMember = "pkidequipo";
+
+                    // Resetear ComboBox de jugadores
+                    CmbJugador.DataSource = null;
+                    CmbJugador.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        private void CargarJugadores(string id_equipo)
+        {
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
+
+            string query = "SELECT pkidjugador, nombre, apellido FROM jugador WHERE fkidequipo = @fkidequipo";
+
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@fkidequipo", id_equipo);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    if (dt.Rows.Count == 0)
+                    {
+                        CmbJugador.DataSource = null;
+                        CmbJugador.Enabled = false;
+                        MessageBox.Show("No se encontraron jugadores para el equipo seleccionado.");
+                    }
+                    else
+                    {
+                        dt.Columns.Add("nombreCompleto", typeof(string), "nombre + ' ' + apellido");
+                        CmbJugador.DataSource = dt;
+                        CmbJugador.DisplayMember = "nombreCompleto";
+                        CmbJugador.ValueMember = "pkidjugador";
+                        CmbJugador.Enabled = true;
+                    }
+
+                    // Configurar ComboBox
+                    /*CmbJugador.DataSource = dt;
+                    CmbJugador.DisplayMember = "nombreCompleto";
+                    CmbJugador.ValueMember = "pkidjugador";*/
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los jugadores: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void CargarAsistencias(string id_partido)
+        {
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
+
+            string query = @"
+                SELECT a.pkidasistencia, CONCAT(j.nombre, ' ', j.apellido) AS asistencia
+                FROM asistencia a
+                INNER JOIN jugador j ON a.fkidjugador = j.pkidjugador
+                INNER JOIN equipo e ON j.fkidequipo = e.pkidequipo
+                INNER JOIN partido p ON (p.fkequipolocalid = e.pkidequipo OR p.fkequipovisid = e.pkidequipo)
+                WHERE p.pkidpartido = @pkidpartido";
+
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@pkidpartido", id_partido);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    CmbAsistencia.DataSource = dt;
+                    CmbAsistencia.DisplayMember = "asistencia";
+                    CmbAsistencia.ValueMember = "pkidasistencia";
+
+                    // Configurar el ComboBox para que no tenga ningún elemento seleccionado inicialmente
+                    CmbAsistencia.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar las asistencias: " + ex.Message);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+            }
+        }
+
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();
 
             try
             {
                 // Datos de entrada del usuario
-                string minuto = TxtMinuto.Text; // Ejemplo: "45"
-                string tipoAnotacion = TxtTipodeAnotacion.Text;
-                int idPartido = int.Parse(TxtIdPartido.Text);
-                int idJugador = int.Parse(TxtIdJugador.Text);
-                int idAsistencia = int.Parse(TxtAsistencia.Text);
-                string descripcion = TxtDescripcion.Text;
+                string Minuto = TxtMinuto.Text;
+                string tipoAnotacion = CmbTipoAnotacion.Text;
+                int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
+                int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
+                int IdAsistencia = Convert.ToInt32(CmbAsistencia.SelectedValue);
+                string Descripcion = TxtDescripcion.Text;               
+                
 
                 // Conexión a la base de datos
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open(); // Abrimos la conexión
                     // Consulta SQL para insertar datos
                     string query = "INSERT INTO anotaciones (minuto, tipoanotacion, fkidpartido, fkidjugador, fkidasistencia, descripcion) " +
                                    "VALUES (@minuto, @tipoanotacion, @fkidpartido, @fkidjugador, @fkidasistencia, @descripcion)";
@@ -53,12 +325,12 @@ namespace Campeonato_Polideportivo
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros con sus respectivos valores
-                        cmd.Parameters.AddWithValue("@minuto", minuto);
+                        cmd.Parameters.AddWithValue("@minuto", Minuto);
                         cmd.Parameters.AddWithValue("@tipoanotacion", tipoAnotacion);
-                        cmd.Parameters.AddWithValue("@fkidpartido", idPartido);
-                        cmd.Parameters.AddWithValue("@fkidjugador", idJugador);
-                        cmd.Parameters.AddWithValue("@fkidasistencia", idAsistencia);
-                        cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                        cmd.Parameters.AddWithValue("@fkidpartido", IdPartido);
+                        cmd.Parameters.AddWithValue("@fkidjugador", IdJugador);
+                        cmd.Parameters.AddWithValue("@fkidasistencia", IdAsistencia);
+                        cmd.Parameters.AddWithValue("@descripcion", Descripcion);
 
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
@@ -88,24 +360,24 @@ namespace Campeonato_Polideportivo
         }
 
      
-            private void BtnModificar_Click(object sender, EventArgs e)
+        private void BtnModificar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();  // Conexión a la base de datos
 
             try
             {
                 // Variables
-                int idAnotaciones = int.Parse(TxtIdAnotaciones.Text);
-                string minuto = TxtMinuto.Text;
-                string tipoAnotacion = TxtTipodeAnotacion.Text;
-                string descripcion = TxtDescripcion.Text;
-                int idPartido = int.Parse(TxtIdPartido.Text);
-                int idJugador = int.Parse(TxtIdJugador.Text);
-                int idAsistencia = int.Parse(TxtAsistencia.Text);
+                string Minuto = TxtMinuto.Text;
+                string tipoAnotacion = CmbTipoAnotacion.Text;
+                int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
+                int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
+                int IdAsistencia = Convert.ToInt32(CmbAsistencia.SelectedValue);
+                string Descripcion = TxtDescripcion.Text;
 
                 // Conexión a la base de datos
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open(); // Abrimos la conexión
                     // Consulta para modificar datos o actualizar
                     string query = "UPDATE anotaciones SET minuto = @minuto, tipoanotacion = @tipoanotacion, descripcion = @descripcion, " +
                                    "fkidpartido = @fkidpartido, fkidjugador = @fkidjugador, fkidasistencia = @fkidasistencia " +
@@ -114,13 +386,13 @@ namespace Campeonato_Polideportivo
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Parámetros
-                        cmd.Parameters.AddWithValue("@pkidanotaciones", idAnotaciones);
-                        cmd.Parameters.AddWithValue("@minuto", minuto);
+                        cmd.Parameters.AddWithValue("@pkidanotaciones", TxtIdAnotaciones.Text);
+                        cmd.Parameters.AddWithValue("@minuto", Minuto);
                         cmd.Parameters.AddWithValue("@tipoanotacion", tipoAnotacion);
-                        cmd.Parameters.AddWithValue("@descripcion", descripcion);
-                        cmd.Parameters.AddWithValue("@fkidpartido", idPartido);
-                        cmd.Parameters.AddWithValue("@fkidjugador", idJugador);
-                        cmd.Parameters.AddWithValue("@fkidasistencia", idAsistencia);
+                        cmd.Parameters.AddWithValue("@descripcion", Descripcion);
+                        cmd.Parameters.AddWithValue("@fkidpartido", IdPartido);
+                        cmd.Parameters.AddWithValue("@fkidjugador", IdJugador);
+                        cmd.Parameters.AddWithValue("@fkidasistencia", IdAsistencia);
 
                         // Ejecutar el comando
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -157,6 +429,7 @@ namespace Campeonato_Polideportivo
 
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open(); // Abrimos la conexión
                     // Consulta SQL para eliminar la anotación
                     string query = "DELETE FROM anotaciones WHERE pkidanotaciones = @pkidanotaciones";
 
@@ -191,6 +464,7 @@ namespace Campeonato_Polideportivo
         private void BtnVer_Click(object sender, EventArgs e)
         {   // conexion BD
             Conexion conexion = new Conexion();
+            DgvJugs.Visible = false;
 
             try
             {
@@ -204,7 +478,7 @@ namespace Campeonato_Polideportivo
                         {
                             DataTable dataTable = new DataTable();
                             adapter.Fill(dataTable);
-                            dataGridView1.DataSource = dataTable;
+                            DgvAnotaciones.DataSource = dataTable;
                         }
                     }
                 }
@@ -276,16 +550,151 @@ namespace Campeonato_Polideportivo
             TxtTipodeAnotacion.Text = string.Empty;
             TxtIdPartido.Text = string.Empty;
             TxtIdJugador.Text = string.Empty;
-            TxtAsistencia.Text = string.Empty;
             TxtDescripcion.Text = string.Empty;
+        }
 
+        private void CmbCampeonato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbCampeonato.SelectedValue != null)
+            {
+                int idCampeonato = Convert.ToInt32(CmbCampeonato.SelectedValue);
+                CargarPartidos(idCampeonato);
+                CmbPartido.Enabled = true;
+
+                // Resetear y deshabilitar los ComboBox dependientes
+                CmbEquipo.DataSource = null;
+                CmbEquipo.Enabled = false;
+                CmbJugador.DataSource = null;
+                CmbJugador.Enabled = false;
+                CmbAsistencia.DataSource = null;
+                CmbAsistencia.Enabled = false;
+            }
+            else
+            {
+                ResetearComboBoxes();
+            }
+        }
+        private void ResetearComboBoxes()
+        {
+            CmbPartido.DataSource = null;
+            CmbPartido.Enabled = false;
+            CmbEquipo.DataSource = null;
+            CmbEquipo.Enabled = false;
+            CmbJugador.DataSource = null;
+            CmbJugador.Enabled = false;
+            CmbAsistencia.DataSource = null;
+            CmbAsistencia.Enabled = false;
+        }
+
+        private void CmbPartido_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbPartido.SelectedValue != null && CmbPartido.SelectedIndex != -1)
+            {
+                string idPartido = CmbPartido.SelectedValue.ToString();
+                CargarEquipos(idPartido);
+                CargarAsistencias(idPartido);
+                CmbEquipo.Enabled = true;
+
+                // Resetear ComboBox de jugadores y asistencias
+                CmbJugador.DataSource = null;
+                CmbJugador.Enabled = false;
+                /*CmbAsistencia.DataSource = null;
+                CmbAsistencia.Enabled = false;*/
+            }
+            else
+            {
+                ResetearComboBoxesDependientes();
+            }
+        }
+        private void ResetearComboBoxesDependientes()
+        {
+            CmbEquipo.DataSource = null;
+            CmbEquipo.Enabled = false;
+            CmbJugador.DataSource = null;
+            CmbJugador.Enabled = false;
+            CmbAsistencia.DataSource = null;
+            CmbAsistencia.Enabled = false;
+        }
+
+        private void CmbEquipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbEquipo.SelectedValue != null && CmbEquipo.SelectedIndex != -1)
+            {
+                string idEquipo = CmbEquipo.SelectedValue.ToString();
+                CargarJugadores(idEquipo);
+                CmbJugador.Enabled = true;
+                CmbAsistencia.Enabled = true;
+            }
+            else
+            {
+                CmbJugador.DataSource = null;
+                CmbJugador.Enabled = false;
+                CmbAsistencia.Enabled = false;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                TxtIdAnotaciones.Text = DgvAnotaciones.CurrentRow.Cells[0].Value.ToString();
+                TxtMinuto.Text = DgvAnotaciones.CurrentRow.Cells[1].Value.ToString();
+                CmbTipoAnotacion.Text = DgvAnotaciones.CurrentRow.Cells[2].Value.ToString();
+                CmbPartido.Text = DgvAnotaciones.CurrentRow.Cells[3].Value.ToString();
+                CmbJugador.Text = DgvAnotaciones.CurrentRow.Cells[4].Value.ToString();
+                CmbAsistencia.Text = DgvAnotaciones.CurrentRow.Cells[5].Value.ToString();
+                TxtDescripcion.Text = DgvAnotaciones.CurrentRow.Cells[6].Value.ToString();
+            }
+            catch
+            {
+            }
+        }
+
+        private void CmbJugador_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
+
+        private void BtnTablaMejoresJugs_Click(object sender, EventArgs e)
+        {
+            if (CmbCampeonato.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un campeonato.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DgvAnotaciones.Visible = false;
+            DgvJugs.Visible = true;
+
+            Conexion conexion = new Conexion();
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                try
+                {
+                    //string query = "SELECT * FROM vista_clasificacion WHERE fkidcampeonato = @fkidcampeonato";
+                    string query = "SELECT* FROM vista_goleadores_campeonato WHERE pkidcampeonato = @pkidcampeonato";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        int FkIdCampeonato = Convert.ToInt32(CmbCampeonato.SelectedValue);
+                        cmd.Parameters.AddWithValue("@pkidcampeonato", FkIdCampeonato);
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            DgvJugs.DataSource = dataTable;
+                        }
+                    }
+
+                    // Opcional: Ajustar el ancho de las columnas
+                    DgvJugs.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar la clasificación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
-    }
-
-
-
-  
-
-
+ }

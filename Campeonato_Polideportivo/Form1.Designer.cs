@@ -48,9 +48,6 @@ namespace Campeonato_Polideportivo
             this.BtnDeportista = new System.Windows.Forms.Button();
             this.BtnIndividual = new System.Windows.Forms.Button();
             this.PanelColectivo = new System.Windows.Forms.Panel();
-            this.BtnFaltas = new System.Windows.Forms.Button();
-            this.BtnAnotaciones = new System.Windows.Forms.Button();
-            this.BtnAsistencia = new System.Windows.Forms.Button();
             this.BtnCampeonato = new System.Windows.Forms.Button();
             this.BtnArbitro = new System.Windows.Forms.Button();
             this.BtnEntrenador = new System.Windows.Forms.Button();
@@ -65,6 +62,9 @@ namespace Campeonato_Polideportivo
             this.LblTitulo2 = new System.Windows.Forms.Label();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnFaltas = new System.Windows.Forms.Button();
+            this.BtnAnotaciones = new System.Windows.Forms.Button();
+            this.BtnAsistencia = new System.Windows.Forms.Button();
             this.PanelLateral.SuspendLayout();
             this.PanelRegistro.SuspendLayout();
             this.PanelPartido.SuspendLayout();
@@ -104,7 +104,7 @@ namespace Campeonato_Polideportivo
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button3.Location = new System.Drawing.Point(0, 1122);
+            this.button3.Location = new System.Drawing.Point(0, 1121);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button3.Size = new System.Drawing.Size(166, 45);
@@ -120,7 +120,7 @@ namespace Campeonato_Polideportivo
             this.PanelRegistro.Controls.Add(this.BtnEmpleados);
             this.PanelRegistro.Controls.Add(this.BtnUsuario);
             this.PanelRegistro.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelRegistro.Location = new System.Drawing.Point(0, 1038);
+            this.PanelRegistro.Location = new System.Drawing.Point(0, 1037);
             this.PanelRegistro.Name = "PanelRegistro";
             this.PanelRegistro.Size = new System.Drawing.Size(166, 84);
             this.PanelRegistro.TabIndex = 35;
@@ -168,7 +168,7 @@ namespace Campeonato_Polideportivo
             this.BtnRegistro.FlatAppearance.BorderSize = 0;
             this.BtnRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRegistro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnRegistro.Location = new System.Drawing.Point(0, 993);
+            this.BtnRegistro.Location = new System.Drawing.Point(0, 992);
             this.BtnRegistro.Name = "BtnRegistro";
             this.BtnRegistro.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.BtnRegistro.Size = new System.Drawing.Size(166, 45);
@@ -181,14 +181,17 @@ namespace Campeonato_Polideportivo
             // PanelPartido
             // 
             this.PanelPartido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.PanelPartido.Controls.Add(this.BtnFaltas);
+            this.PanelPartido.Controls.Add(this.BtnAnotaciones);
+            this.PanelPartido.Controls.Add(this.BtnAsistencia);
             this.PanelPartido.Controls.Add(this.BtnBeisbol);
             this.PanelPartido.Controls.Add(this.BtnVoleibol);
             this.PanelPartido.Controls.Add(this.BtnBasquetbol);
             this.PanelPartido.Controls.Add(this.BtnFutbol);
             this.PanelPartido.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelPartido.Location = new System.Drawing.Point(0, 827);
+            this.PanelPartido.Location = new System.Drawing.Point(0, 706);
             this.PanelPartido.Name = "PanelPartido";
-            this.PanelPartido.Size = new System.Drawing.Size(166, 166);
+            this.PanelPartido.Size = new System.Drawing.Size(166, 286);
             this.PanelPartido.TabIndex = 33;
             // 
             // BtnBeisbol
@@ -269,7 +272,7 @@ namespace Campeonato_Polideportivo
             this.BtnPartido.FlatAppearance.BorderSize = 0;
             this.BtnPartido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPartido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnPartido.Location = new System.Drawing.Point(0, 782);
+            this.BtnPartido.Location = new System.Drawing.Point(0, 661);
             this.BtnPartido.Name = "BtnPartido";
             this.BtnPartido.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.BtnPartido.Size = new System.Drawing.Size(166, 45);
@@ -286,7 +289,7 @@ namespace Campeonato_Polideportivo
             this.PanelIndividual.Controls.Add(this.BtnTorneo);
             this.PanelIndividual.Controls.Add(this.BtnDeportista);
             this.PanelIndividual.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelIndividual.Location = new System.Drawing.Point(0, 654);
+            this.PanelIndividual.Location = new System.Drawing.Point(0, 533);
             this.PanelIndividual.Name = "PanelIndividual";
             this.PanelIndividual.Size = new System.Drawing.Size(166, 128);
             this.PanelIndividual.TabIndex = 31;
@@ -351,7 +354,7 @@ namespace Campeonato_Polideportivo
             this.BtnIndividual.FlatAppearance.BorderSize = 0;
             this.BtnIndividual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIndividual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnIndividual.Location = new System.Drawing.Point(0, 609);
+            this.BtnIndividual.Location = new System.Drawing.Point(0, 488);
             this.BtnIndividual.Name = "BtnIndividual";
             this.BtnIndividual.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.BtnIndividual.Size = new System.Drawing.Size(166, 45);
@@ -364,9 +367,6 @@ namespace Campeonato_Polideportivo
             // PanelColectivo
             // 
             this.PanelColectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.PanelColectivo.Controls.Add(this.BtnFaltas);
-            this.PanelColectivo.Controls.Add(this.BtnAnotaciones);
-            this.PanelColectivo.Controls.Add(this.BtnAsistencia);
             this.PanelColectivo.Controls.Add(this.BtnCampeonato);
             this.PanelColectivo.Controls.Add(this.BtnArbitro);
             this.PanelColectivo.Controls.Add(this.BtnEntrenador);
@@ -375,62 +375,8 @@ namespace Campeonato_Polideportivo
             this.PanelColectivo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelColectivo.Location = new System.Drawing.Point(0, 280);
             this.PanelColectivo.Name = "PanelColectivo";
-            this.PanelColectivo.Size = new System.Drawing.Size(166, 329);
+            this.PanelColectivo.Size = new System.Drawing.Size(166, 208);
             this.PanelColectivo.TabIndex = 27;
-            // 
-            // BtnFaltas
-            // 
-            this.BtnFaltas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.BtnFaltas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnFaltas.FlatAppearance.BorderSize = 0;
-            this.BtnFaltas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.BtnFaltas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnFaltas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.BtnFaltas.Location = new System.Drawing.Point(0, 280);
-            this.BtnFaltas.Name = "BtnFaltas";
-            this.BtnFaltas.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BtnFaltas.Size = new System.Drawing.Size(166, 40);
-            this.BtnFaltas.TabIndex = 35;
-            this.BtnFaltas.Text = "Faltas";
-            this.BtnFaltas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnFaltas.UseVisualStyleBackColor = false;
-            this.BtnFaltas.Click += new System.EventHandler(this.BtnFaltas_Click_1);
-            // 
-            // BtnAnotaciones
-            // 
-            this.BtnAnotaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.BtnAnotaciones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnAnotaciones.FlatAppearance.BorderSize = 0;
-            this.BtnAnotaciones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.BtnAnotaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAnotaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.BtnAnotaciones.Location = new System.Drawing.Point(0, 240);
-            this.BtnAnotaciones.Name = "BtnAnotaciones";
-            this.BtnAnotaciones.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BtnAnotaciones.Size = new System.Drawing.Size(166, 40);
-            this.BtnAnotaciones.TabIndex = 34;
-            this.BtnAnotaciones.Text = "Anotaciones";
-            this.BtnAnotaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAnotaciones.UseVisualStyleBackColor = false;
-            this.BtnAnotaciones.Click += new System.EventHandler(this.BtnAnotaciones_Click_1);
-            // 
-            // BtnAsistencia
-            // 
-            this.BtnAsistencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.BtnAsistencia.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnAsistencia.FlatAppearance.BorderSize = 0;
-            this.BtnAsistencia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.BtnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAsistencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.BtnAsistencia.Location = new System.Drawing.Point(0, 200);
-            this.BtnAsistencia.Name = "BtnAsistencia";
-            this.BtnAsistencia.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BtnAsistencia.Size = new System.Drawing.Size(166, 40);
-            this.BtnAsistencia.TabIndex = 33;
-            this.BtnAsistencia.Text = "Asistencia";
-            this.BtnAsistencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAsistencia.UseVisualStyleBackColor = false;
-            this.BtnAsistencia.Click += new System.EventHandler(this.BtnAsistencia_Click_1);
             // 
             // BtnCampeonato
             // 
@@ -641,6 +587,57 @@ namespace Campeonato_Polideportivo
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // BtnFaltas
+            // 
+            this.BtnFaltas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.BtnFaltas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnFaltas.FlatAppearance.BorderSize = 0;
+            this.BtnFaltas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.BtnFaltas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnFaltas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.BtnFaltas.Location = new System.Drawing.Point(0, 240);
+            this.BtnFaltas.Name = "BtnFaltas";
+            this.BtnFaltas.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.BtnFaltas.Size = new System.Drawing.Size(166, 40);
+            this.BtnFaltas.TabIndex = 38;
+            this.BtnFaltas.Text = "Faltas";
+            this.BtnFaltas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnFaltas.UseVisualStyleBackColor = false;
+            // 
+            // BtnAnotaciones
+            // 
+            this.BtnAnotaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.BtnAnotaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnAnotaciones.FlatAppearance.BorderSize = 0;
+            this.BtnAnotaciones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.BtnAnotaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAnotaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.BtnAnotaciones.Location = new System.Drawing.Point(0, 200);
+            this.BtnAnotaciones.Name = "BtnAnotaciones";
+            this.BtnAnotaciones.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.BtnAnotaciones.Size = new System.Drawing.Size(166, 40);
+            this.BtnAnotaciones.TabIndex = 37;
+            this.BtnAnotaciones.Text = "Anotaciones";
+            this.BtnAnotaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAnotaciones.UseVisualStyleBackColor = false;
+            // 
+            // BtnAsistencia
+            // 
+            this.BtnAsistencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.BtnAsistencia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnAsistencia.FlatAppearance.BorderSize = 0;
+            this.BtnAsistencia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.BtnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAsistencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.BtnAsistencia.Location = new System.Drawing.Point(0, 160);
+            this.BtnAsistencia.Name = "BtnAsistencia";
+            this.BtnAsistencia.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.BtnAsistencia.Size = new System.Drawing.Size(166, 40);
+            this.BtnAsistencia.TabIndex = 36;
+            this.BtnAsistencia.Text = "Asistencia";
+            this.BtnAsistencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAsistencia.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -687,9 +684,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnArbitro;
         private System.Windows.Forms.Button BtnEntrenador;
         private System.Windows.Forms.Button BtnCampeonato;
-        private System.Windows.Forms.Button BtnFaltas;
-        private System.Windows.Forms.Button BtnAnotaciones;
-        private System.Windows.Forms.Button BtnAsistencia;
         private System.Windows.Forms.Panel PanelPartido;
         private System.Windows.Forms.Button BtnBeisbol;
         private System.Windows.Forms.Button BtnVoleibol;
@@ -706,6 +700,9 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnUsuario;
         private System.Windows.Forms.Button BtnRegistro;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BtnFaltas;
+        private System.Windows.Forms.Button BtnAnotaciones;
+        private System.Windows.Forms.Button BtnAsistencia;
     }
 }
 

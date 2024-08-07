@@ -35,6 +35,15 @@ namespace Campeonato_Polideportivo
             CmbGanadorEmpate.DropDownStyle = ComboBoxStyle.DropDownList;
             Limpiar();
 
+            NudPosesionLocal.Minimum = 0; //Establecemos el valor de los NUD para que esten parejos
+            NudPosesionLocal.Maximum = 100;
+            NudPosesionLocal.Value = 50;
+            NudPosesionVisitante.Minimum = 0;
+            NudPosesionVisitante.Maximum = 100;
+            NudPosesionVisitante.Value = 50;
+            NudPosesionLocal.ValueChanged += NudPosesionLocal_ValueChanged; //Se crean los eventos cuando uno sube el otro baja
+            NudPosesionVisitante.ValueChanged += NudPosesionVisitante_ValueChanged;
+
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
@@ -946,6 +955,12 @@ namespace Campeonato_Polideportivo
         }
         private void BtnClasificacion_Click(object sender, EventArgs e)
         {
+            if (CmbCampeonato.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un campeonato.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DgvFutbol.Visible = false;
             DgvClasificacion.Visible = true;
 
@@ -978,6 +993,19 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show($"Error al cargar la clasificación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void NudPosesionLocal_ValueChanged(object sender, EventArgs e)
+        {
+            NudPosesionVisitante.ValueChanged -= NudPosesionVisitante_ValueChanged;
+            NudPosesionVisitante.Value = 100 - NudPosesionLocal.Value;
+            NudPosesionVisitante.ValueChanged += NudPosesionVisitante_ValueChanged;
+        }
+
+        private void NudPosesionVisitante_ValueChanged(object sender, EventArgs e)
+        {
+            NudPosesionLocal.ValueChanged -= NudPosesionLocal_ValueChanged;
+            NudPosesionLocal.Value = 100 - NudPosesionVisitante.Value;
+            NudPosesionLocal.ValueChanged += NudPosesionLocal_ValueChanged;
         }
 
         private void FormFutbol_Load(object sender, EventArgs e)
