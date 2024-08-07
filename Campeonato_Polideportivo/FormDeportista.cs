@@ -127,6 +127,7 @@ namespace Campeonato_Polideportivo
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     // Crear la consulta SQL para actualizar datos
                     string query = "UPDATE deportista SET nombre = @nombre, apellido = @apellido, fechanacimiento = @fechanacimiento, nacionalidad = @nacionalidad, sexo= @sexo, fotografia=@fotografia WHERE pkidjugador = @pkidjugador";
 
@@ -243,6 +244,7 @@ namespace Campeonato_Polideportivo
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     // Crear la consulta SQL para eliminar datos
                     string query = "DELETE FROM deportista WHERE pkidjugador = @pkidjugador";
 

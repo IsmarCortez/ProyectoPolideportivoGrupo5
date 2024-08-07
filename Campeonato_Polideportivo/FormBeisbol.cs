@@ -53,7 +53,7 @@ namespace Campeonato_Polideportivo
                 LEFT JOIN partido p ON e.pkidequipo = p.fkequipolocalid OR e.pkidequipo = p.fkequipovisid
                 LEFT JOIN campeonato c ON p.fkidcampeonato = c.pkidcampeonato
                 LEFT JOIN deporte d ON c.fkiddeporte = d.pkiddeporte
-                WHERE d.nombre = 'Beisbol' OR d.nombre IS NULL
+                WHERE d.nombre = 'Béisbol' OR d.nombre IS NULL
                 ORDER BY e.nombre";
 
             try
@@ -378,6 +378,7 @@ namespace Campeonato_Polideportivo
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 MySqlTransaction transaction = conn.BeginTransaction();
                 try
                 {
@@ -603,6 +604,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion(); //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     string query = @"
@@ -708,6 +710,7 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     if (CmbGanadorEmpate.SelectedIndex == 0)
@@ -960,6 +963,7 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     // Iniciar una transacción para asegurar la integridad de los datos

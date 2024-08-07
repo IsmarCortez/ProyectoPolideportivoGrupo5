@@ -216,8 +216,9 @@ namespace Campeonato_Polideportivo
             }
 
             Conexion conexion = new Conexion();
+            
             MySqlConnection conn = conexion.getConexion();
-
+            conn.Open();
             string query = "INSERT INTO asistencia (minuto, fkidjugador) VALUES (@minuto, @fkidjugador)";
 
             try
@@ -270,7 +271,7 @@ namespace Campeonato_Polideportivo
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
-
+            conn.Open();
             string query = "UPDATE asistencia SET minuto = @minuto, fkidjugador = @fkidjugador WHERE pkidasistencia = @pkidasistencia";
 
             try
@@ -318,7 +319,7 @@ namespace Campeonato_Polideportivo
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
-
+            conn.Open();
             string query = "DELETE FROM asistencia WHERE pkidasistencia = @pkidasistencia";
 
             try

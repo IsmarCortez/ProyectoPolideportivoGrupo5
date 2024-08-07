@@ -470,6 +470,7 @@ namespace Campeonato_Polideportivo
             {
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     string query = "SELECT * FROM anotaciones";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -670,6 +671,7 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     //string query = "SELECT * FROM vista_clasificacion WHERE fkidcampeonato = @fkidcampeonato";
