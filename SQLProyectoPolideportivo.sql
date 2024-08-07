@@ -1,8 +1,6 @@
 CREATE DATABASE PoliDB;
 USE PoliDB;
 
-
-
 CREATE TABLE deporte (
     pkiddeporte INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
@@ -194,7 +192,6 @@ CREATE TABLE partido (
     empate varchar(150),
     fkidcampeonato INT NOT NULL,
     fkidfase INT NOT NULL,
-    /*id_equipo INT NOT NULL,*/
     fkidarbitro INT NOT NULL,
     PRIMARY KEY (pkidpartido),
     FOREIGN KEY (fkidcampeonato) REFERENCES campeonato(pkidcampeonato),
@@ -661,6 +658,30 @@ SELECT
     sexo AS Sexo
 FROM
     deportista;
+    
+-- VISTA PARA LOS GOLEADORES
+CREATE VIEW vista_goleadores_campeonato AS
+SELECT 
+    c.pkidcampeonato,
+    c.nombre AS nombre_campeonato,
+    j.pkidjugador,
+    j.nombre AS nombre_jugador,
+    j.apellido AS apellido_jugador,
+    e.nombre AS nombre_equipo,
+    COUNT(a.pkidanotaciones) AS goles
+FROM 
+    campeonato c
+    JOIN partido p ON c.pkidcampeonato = p.fkidcampeonato
+    JOIN anotaciones a ON p.pkidpartido = a.fkidpartido
+    JOIN jugador j ON a.fkidjugador = j.pkidjugador
+    JOIN equipo e ON j.fkidequipo = e.pkidequipo
+WHERE 
+    a.tipoanotacion = 'Gol'  -- Asumiendo que existe este tipo de anotación
+GROUP BY 
+    c.pkidcampeonato, j.pkidjugador, e.pkidequipo
+ORDER BY 
+    c.pkidcampeonato, goles DESC;
+    
  
 -- DE ACA PARA ABAJO COMO TAL SOLO HAY INGRESO DE DATOS PREDETERMINADOS 
 -- cree los privilegios     
@@ -672,6 +693,13 @@ INSERT INTO Privilegios (Privilegios) VALUES ('Ver, Editar y Eliminar');
 INSERT INTO Permisos (Permisos) VALUES ('Usuario Estándar');
 INSERT INTO Permisos (Permisos) VALUES ('Gerente');
 INSERT INTO Permisos (Permisos) VALUES ('Administrador');
+
+-- Deportes
+INSERT INTO deporte (nombre, tipo) VALUES
+('Fútbol', 'Equipo'),
+('Voleibol', 'Equipo'),
+('Béisbol', 'Equipo'),
+('Baloncesto', 'Equipo');
 
 -- DE ACA PARA ABAJO SOLO HAY SELECTS E INGRESO DE DATOS DE PRUEBA 
     

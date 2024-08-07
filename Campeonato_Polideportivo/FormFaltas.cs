@@ -19,38 +19,51 @@ namespace Campeonato_Polideportivo
         public FormFaltas()
         {
             InitializeComponent();
-            CargarPartidos();
+            // Desactivar manejadores de eventos
+            CmbCampeonato.SelectedIndexChanged -= CmbCampeonato_SelectedIndexChanged;
+            CmbPartido.SelectedIndexChanged -= CmbPartido_SelectedIndexChanged;
+            CmbEquipo.SelectedIndexChanged -= CmbEquipo_SelectedIndexChanged;
+            CargarCampeonatos();
+            //CargarPartidos();
             CargarArbitros();
             CargarTarjetas();
             CargarTipoFalta();
-            CmbPartido.SelectedIndexChanged += CmbPartido_SelectedIndexChanged; //Para que salgan los dos equipos
-            CmbEquipo.SelectedIndexChanged += CmbEquipo_SelectedIndexChanged; //Para que salgan los jugadores
             CmbTarjeta.DropDownStyle = ComboBoxStyle.DropDownList;//para que no cambien el contenido
             CmbFalta.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbEquipo.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbPartido.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbArbitro.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbJugador.DropDownStyle = ComboBoxStyle.DropDownList;
+            CmbCampeonato.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbTarjeta.SelectedIndex = -1;
             CmbFalta.SelectedIndex = -1;
             CmbPartido.SelectedIndex = -1;
             CmbArbitro.SelectedIndex = -1;
             CmbEquipo.SelectedIndex = -1;
+            CmbCampeonato.SelectedIndex = -1;
+            CmbPartido.SelectedIndex = -1;
+            CmbJugador.SelectedIndex = -1;
+            // Deshabilitar los ComboBox que dependen de una selección previa
+            CmbPartido.Enabled = false;
             CmbEquipo.Enabled = false;
-            CmbArbitro.Enabled = false;
-
+            CmbJugador.Enabled = false;
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
+
+            // Reactivar manejadores de eventos
+            CmbCampeonato.SelectedIndexChanged += CmbCampeonato_SelectedIndexChanged;
+            CmbPartido.SelectedIndexChanged += CmbPartido_SelectedIndexChanged;
+            CmbEquipo.SelectedIndexChanged += CmbEquipo_SelectedIndexChanged;
         }
 
-        private void CargarPartidos()
+        private void CargarCampeonatos()
         {
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            string query = "SELECT pkidpartido FROM partido";
+            string query = "SELECT pkidcampeonato, nombre FROM campeonato";
 
             try
             {
@@ -58,13 +71,61 @@ namespace Campeonato_Polideportivo
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
-                CmbPartido.DataSource = dt;
-                CmbPartido.DisplayMember = "pkidpartido";
-                CmbPartido.ValueMember = "pkidpartido";
+                CmbCampeonato.DataSource = dt;
+                CmbCampeonato.DisplayMember = "nombre";
+                CmbCampeonato.ValueMember = "pkidcampeonato";
+
+                // Configurar el ComboBox para que no tenga ningún elemento seleccionado inicialmente
+                CmbCampeonato.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message);
+                MessageBox.Show("Ocurrió un error al cargar los campeonatos: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void CargarPartidos(int idCampeonato)
+        {
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
+
+            string query = @"
+                SELECT 
+                    p.pkidpartido,
+                    CONCAT(el.nombre, ' vs ', ev.nombre) AS equipos
+                FROM 
+                    partido p
+                JOIN 
+                    equipo el ON p.fkequipolocalid = el.pkidequipo
+                JOIN 
+                    equipo ev ON p.fkequipovisid = ev.pkidequipo
+                WHERE 
+                    p.fkidcampeonato = @idCampeonato";
+
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    CmbPartido.DataSource = dt;
+                    CmbPartido.DisplayMember = "equipos";
+                    CmbPartido.ValueMember = "pkidpartido";
+
+                    // Configurar el ComboBox para que no tenga ningún elemento seleccionado inicialmente
+                    CmbPartido.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los partidos: " + ex.Message);
             }
             finally
             {
@@ -114,7 +175,11 @@ namespace Campeonato_Polideportivo
 
                     CmbEquipo.DataSource = equipos;
                     CmbEquipo.DisplayMember = "nombre";
-                    CmbEquipo.ValueMember = "pkidequipo"; 
+                    CmbEquipo.ValueMember = "pkidequipo";
+
+                    // Resetear ComboBox de jugadores
+                    CmbJugador.DataSource = null;
+                    CmbJugador.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -144,14 +209,23 @@ namespace Campeonato_Polideportivo
 
                     if (dt.Rows.Count == 0)
                     {
+                        CmbJugador.DataSource = null;
+                        CmbJugador.Enabled = false;
                         MessageBox.Show("No se encontraron jugadores para el equipo seleccionado.");
                     }
-                    dt.Columns.Add("nombreCompleto", typeof(string), "nombre + ' ' + apellido");
+                    else
+                    {
+                        dt.Columns.Add("nombreCompleto", typeof(string), "nombre + ' ' + apellido");
+                        CmbJugador.DataSource = dt;
+                        CmbJugador.DisplayMember = "nombreCompleto";
+                        CmbJugador.ValueMember = "pkidjugador";
+                        CmbJugador.Enabled = true;
+                    }
 
                     // Configurar ComboBox
-                    CmbJugador.DataSource = dt;
+                    /*CmbJugador.DataSource = dt;
                     CmbJugador.DisplayMember = "nombreCompleto";
-                    CmbJugador.ValueMember = "pkidjugador";
+                    CmbJugador.ValueMember = "pkidjugador";*/
                 }
             }
             catch (Exception ex)
@@ -199,28 +273,42 @@ namespace Campeonato_Polideportivo
 
         private void CmbPartido_SelectedIndexChanged(object sender, EventArgs e) //metodo para que al seleccionar un dato se muestre en el otro combobox
         {
-            if (CmbPartido.SelectedValue != null) 
+            if (CmbPartido.SelectedValue != null && CmbPartido.SelectedIndex != -1)
             {
-                string id_partido = CmbPartido.SelectedValue.ToString();
-                CargarEquipos(id_partido);
-            }
-            if (CmbPartido.SelectedIndex != -1)
-            {
+                string idPartido = CmbPartido.SelectedValue.ToString();
+                CargarEquipos(idPartido);
                 CmbEquipo.Enabled = true;
-            }
 
+                // Resetear ComboBox de jugadores
+                CmbJugador.DataSource = null;
+                CmbJugador.Enabled = false;
+            }
+            else
+            {
+                ResetearComboBoxesDependientes();
+            }
+        }
+
+        private void ResetearComboBoxesDependientes()
+        {
+            CmbEquipo.DataSource = null;
+            CmbEquipo.Enabled = false;
+            CmbJugador.DataSource = null;
+            CmbJugador.Enabled = false;
         }
 
         private void CmbEquipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CmbEquipo.SelectedValue != null)
+            if (CmbEquipo.SelectedValue != null && CmbEquipo.SelectedIndex != -1)
             {
-                string id_equipo = CmbEquipo.SelectedValue.ToString();
-                CargarJugadores(id_equipo);
-            }
-            if (CmbPartido.SelectedIndex != -1)
-            {
+                string idEquipo = CmbEquipo.SelectedValue.ToString();
+                CargarJugadores(idEquipo);
                 CmbJugador.Enabled = true;
+            }
+            else
+            {
+                CmbJugador.DataSource = null;
+                CmbJugador.Enabled = false;
             }
         }
 
@@ -557,7 +645,7 @@ namespace Campeonato_Polideportivo
             }
         }
 
-       
+
 
         private void FormFaltas_Load(object sender, EventArgs e)
         {
@@ -607,5 +695,51 @@ namespace Campeonato_Polideportivo
                 BtnEliminar.Visible = false;
             }
         }
+
+        private void CmbCampeonato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbCampeonato.SelectedItem != null)
+            {
+                DataRowView drv = CmbCampeonato.SelectedItem as DataRowView;
+                if (drv != null)
+                {
+                    if (drv["pkidcampeonato"] != DBNull.Value)
+                    {
+                        int idCampeonato = Convert.ToInt32(drv["pkidcampeonato"]);
+                        CargarPartidos(idCampeonato);
+                        CmbPartido.Enabled = true;
+
+                        // Resetear y deshabilitar los ComboBox dependientes
+                        CmbEquipo.DataSource = null;
+                        CmbEquipo.Enabled = false;
+                        CmbJugador.DataSource = null;
+                        CmbJugador.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("El ID del campeonato es nulo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ResetearComboBoxes();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El item seleccionado no es del tipo esperado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ResetearComboBoxes();
+                }
+            }
+            else
+            {
+                ResetearComboBoxes();
+            }
+        }
+        private void ResetearComboBoxes()
+        {
+            CmbPartido.DataSource = null;
+            CmbPartido.Enabled = false;
+            CmbEquipo.DataSource = null;
+            CmbEquipo.Enabled = false;
+            CmbJugador.DataSource = null;
+            CmbJugador.Enabled = false;
+        }
     }
-}
+ }

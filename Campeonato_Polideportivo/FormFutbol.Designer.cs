@@ -480,13 +480,17 @@ namespace Campeonato_Polideportivo
             // 
             // BtnClasificacion
             // 
-            this.BtnClasificacion.Location = new System.Drawing.Point(821, 12);
+            this.BtnClasificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.BtnClasificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnClasificacion.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
+            this.BtnClasificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnClasificacion.Location = new System.Drawing.Point(794, 12);
             this.BtnClasificacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnClasificacion.Name = "BtnClasificacion";
-            this.BtnClasificacion.Size = new System.Drawing.Size(129, 34);
+            this.BtnClasificacion.Size = new System.Drawing.Size(156, 44);
             this.BtnClasificacion.TabIndex = 91;
-            this.BtnClasificacion.Text = "Clasificación";
-            this.BtnClasificacion.UseVisualStyleBackColor = true;
+            this.BtnClasificacion.Text = "CLASIFICACION";
+            this.BtnClasificacion.UseVisualStyleBackColor = false;
             this.BtnClasificacion.Click += new System.EventHandler(this.BtnClasificacion_Click);
             // 
             // DgvClasificacion
