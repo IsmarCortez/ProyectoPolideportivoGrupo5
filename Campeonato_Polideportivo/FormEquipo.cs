@@ -27,26 +27,22 @@ namespace Campeonato_Polideportivo
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();
-
-            int id_equipo = int.Parse(TxtIdEquipo.Text);
             string nombre = TxtNombreEquipo.Text;
             string estadio = TxtEstadio.Text;
             string ciudad = TxtCiudad.Text;
 
-            //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
                 conn.Open();
                 try
                 {
-                    // SQL insertar datos
-                    string query = "INSERT INTO equipo (pkidequipo, nombre, estadio, ciudad) VALUES (@pkidequipo, @nombre, @estadio, @ciudad)";
+                    // Consulta SQL para insertar datos sin el ID
+                    string query = "INSERT INTO equipo (nombre, estadio, ciudad) VALUES (@nombre, @estadio, @ciudad)";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@pkidequipo", id_equipo);
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@estadio", estadio);
                         cmd.Parameters.AddWithValue("@ciudad", ciudad);
@@ -64,8 +60,8 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show($"Error: {ex.Message}");
                 }
             }
-
         }
+
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
@@ -187,7 +183,7 @@ namespace Campeonato_Polideportivo
                         adapter.Fill(dt);
 
                         // Asignar el DataTable como el origen de datos del DataGridView
-                        dataGridView1.DataSource = dt;
+                        DgwEquipo.DataSource = dt;
                     }
                 }
             }
@@ -231,7 +227,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnLimpiar.Visible = true;
                 BtnModificar.Visible = false;
@@ -262,6 +258,26 @@ namespace Campeonato_Polideportivo
                 BtnLimpiar.Visible = false;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+            }
+        }
+
+        private void TxtIdEquipo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                TxtIdEquipo.Text = DgwEquipo.CurrentRow.Cells[0].Value.ToString();
+                TxtNombreEquipo.Text = DgwEquipo.CurrentRow.Cells[1].Value.ToString();
+                TxtEstadio.Text = DgwEquipo.CurrentRow.Cells[2].Value.ToString();
+                TxtCiudad.Text = DgwEquipo.CurrentRow.Cells[3].Value.ToString();
+               
+            }
+            catch
+            {
             }
         }
     }
