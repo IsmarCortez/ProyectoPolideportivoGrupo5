@@ -14,7 +14,7 @@ namespace Campeonato_Polideportivo
         private string server = "localhost"; //nombre del servidor 
         private string database = "PoliDB"; //nombre de la base de datos
         private string user = "root"; //nombre del usuario
-        private string password = "1970"; //contraseña del usuario
+        private string password = "1234"; //contraseña del usuario
         private string Conector; //variable para almacenar la conexion
 
         public Conexion() //Constructor para mandar a llamar los parametros establecidos 

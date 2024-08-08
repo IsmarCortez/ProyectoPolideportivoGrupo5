@@ -362,7 +362,44 @@ namespace Campeonato_Polideportivo
 
         private void GridVer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                TxtId.Text = GridVer.CurrentRow.Cells[0].Value.ToString();
+                TxtNombre.Text = GridVer.CurrentRow.Cells[1].Value.ToString();
+                TxtApellido.Text = GridVer.CurrentRow.Cells[2].Value.ToString();
+                TxtPosicion.Text = GridVer.CurrentRow.Cells[3].Value.ToString();
+                TxtNumero.Text = GridVer.CurrentRow.Cells[4].Value.ToString();
+                TxtNacionalidad.Text = GridVer.CurrentRow.Cells[5].Value.ToString();
+                TxtTitular.Text = GridVer.CurrentRow.Cells[6].Value.ToString();
+                TxtGoles.Text = GridVer.CurrentRow.Cells[7].Value.ToString();
+                TxtFecha.Text = GridVer.CurrentRow.Cells[8].Value.ToString();
+                PicFotografia.SizeMode = PictureBoxSizeMode.Zoom;
+                if (e.RowIndex >= 0 && GridVer.Columns.Contains("fotografia"))
+                {
+                    DataGridViewRow row = GridVer.Rows[e.RowIndex];
+                    if (row.Cells["fotografia"].Value != DBNull.Value)
+                    {
+                        byte[] imageBytes = (byte[])row.Cells["fotografia"].Value;
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
 
+                            PicFotografia.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        PicFotografia.Image = null;
+                    }
+                }
+
+
+
+
+            }
+            catch
+            {
+
+            }
         }
 
         private void BtnSeleccionarFoto_Click_1(object sender, EventArgs e)

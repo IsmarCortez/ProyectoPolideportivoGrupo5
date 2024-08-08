@@ -63,27 +63,41 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
-            int jugadorId;
-            if (!int.TryParse(TxtIdAsistencia.Text, out jugadorId))
+            
+
+            int asistenciaId;
+            int.TryParse(TxtIdAsistencia.Text, out asistenciaId);
+
+            int equipoId = -1;
+            int jugadorId = -1;
+
+            if (CmbEquipo.SelectedValue != null)
             {
-                MessageBox.Show("ID inválido.");
-                return;
+                int.TryParse(CmbEquipo.SelectedValue.ToString(), out equipoId);
+            }
+
+            if (CmbJugador.SelectedValue != null)
+            {
+                int.TryParse(CmbJugador.SelectedValue.ToString(), out jugadorId);
             }
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            //string query = "SELECT pkidasistencia, minuto FROM asistencia WHERE fkidjugador = @fkidjugador";
-            //string query = "SELECT pkidasistencia, minuto, fkidjugador FROM asistencia WHERE pkidasistencia = @pkidasistencia";
-            string query = "SELECT a.pkidasistencia, a.minuto, j.apellido " +
-                   "FROM asistencia a " +
-                   "JOIN jugador j ON a.fkidjugador = j.pkidjugador " +
-                   "WHERE a.pkidasistencia = @pkidasistencia";
+            string query = "SELECT a.pkidasistencia, a.minuto, j.apellido, e.nombre AS equipo " +
+                           "FROM asistencia a " +
+                           "JOIN jugador j ON a.fkidjugador = j.pkidjugador " +
+                           "JOIN equipo e ON j.fkidequipo = e.pkidequipo " +
+                           "WHERE (@pkidasistencia = -1 OR a.pkidasistencia = @pkidasistencia) " +
+                           "AND (@equipoId = -1 OR e.pkidequipo = @equipoId) " +
+                           "AND (@jugadorId = -1 OR j.pkidjugador = @jugadorId)";
 
             try
             {
                 MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@pkidasistencia", jugadorId);
+                command.Parameters.AddWithValue("@pkidasistencia", asistenciaId == 0 ? -1 : asistenciaId);
+                command.Parameters.AddWithValue("@equipoId", equipoId);
+                command.Parameters.AddWithValue("@jugadorId", jugadorId);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dt = new DataTable();
