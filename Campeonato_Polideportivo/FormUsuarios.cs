@@ -146,5 +146,10 @@ namespace Campeonato_Polideportivo
                 }
             }
         }
+
+        private void Usuarios_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

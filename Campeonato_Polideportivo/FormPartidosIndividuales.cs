@@ -51,7 +51,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
