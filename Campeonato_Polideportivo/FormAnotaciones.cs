@@ -297,13 +297,34 @@ namespace Campeonato_Polideportivo
             }
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();
-
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             try
             {
+                
                 // Datos de entrada del usuario
                 string Minuto = TxtMinuto.Text;
                 string tipoAnotacion = CmbTipoAnotacion.Text;
@@ -336,7 +357,9 @@ namespace Campeonato_Polideportivo
                         cmd.ExecuteNonQuery();
 
                         // Mostrar mensaje de éxito
+                        bitacora.RegistrarEvento("Ingresó una nueva anotación", usuarioId);
                         MessageBox.Show("Datos ingresados correctamente.");
+
                     }
                 }
                 // Habilitar el TextBox del ID de anotaciones para permitir futuras modificaciones
@@ -363,9 +386,11 @@ namespace Campeonato_Polideportivo
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();  // Conexión a la base de datos
-
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 // Variables
                 string Minuto = TxtMinuto.Text;
                 string tipoAnotacion = CmbTipoAnotacion.Text;
@@ -400,6 +425,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mensaje de datos modificados correctamente
+                            bitacora.RegistrarEvento("Modificó una anotación", usuarioId);
                             MessageBox.Show("Datos modificados correctamente.");
                         }
                         else
@@ -421,6 +447,8 @@ namespace Campeonato_Polideportivo
         {
             // Conexión a la base de datos
             Conexion conexion = new Conexion();
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
 
             try
             {
@@ -435,6 +463,7 @@ namespace Campeonato_Polideportivo
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
+                        usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                         // Agregar el parámetro con su valor
                         cmd.Parameters.AddWithValue("@pkidanotaciones", pkidAnotaciones);
 
@@ -444,6 +473,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mensaje de datos eliminados correctamente
+                            bitacora.RegistrarEvento("Eliminó una anotación", usuarioId);
                             MessageBox.Show("Datos eliminados correctamente.");
                         }
                         else
@@ -552,6 +582,7 @@ namespace Campeonato_Polideportivo
             TxtIdPartido.Text = string.Empty;
             TxtIdJugador.Text = string.Empty;
             TxtDescripcion.Text = string.Empty;
+            
         }
 
         private void CmbCampeonato_SelectedIndexChanged(object sender, EventArgs e)

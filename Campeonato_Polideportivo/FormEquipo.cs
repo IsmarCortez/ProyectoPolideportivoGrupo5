@@ -23,9 +23,30 @@ namespace Campeonato_Polideportivo
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
         }
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             string nombre = TxtNombreEquipo.Text;
             string estadio = TxtEstadio.Text;
@@ -51,6 +72,7 @@ namespace Campeonato_Polideportivo
                         cmd.ExecuteNonQuery();
 
                         // Mostrar mensaje de éxito
+                        bitacora.RegistrarEvento("Ingresó un nuevo equipo", usuarioId);
                         MessageBox.Show("Datos ingresados correctamente.");
                     }
                 }
@@ -65,6 +87,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
 
             try
@@ -92,6 +117,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mostrar mensaje de que si se elimino
+                            bitacora.RegistrarEvento("Eliminó un equipo", usuarioId);
                             MessageBox.Show("Datos eliminados correctamente.");
                         }
                         else
@@ -111,6 +137,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             try
             {
@@ -143,6 +172,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Modificó un equipo", usuarioId);
                             MessageBox.Show("Datos modificados correctamente.");
                         }
                         else

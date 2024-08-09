@@ -20,6 +20,7 @@ namespace Campeonato_Polideportivo
             InitializeComponent();
             Design(); //Se manda a llamar la función luego de inicializar los componentes
             this.Load += new EventHandler(Form1_Load); //evento para poner el programa en pantalla completa
+            this.FormClosing += new FormClosingEventHandler(Form1_FormClosing);
         }
         private void Design() //Es una función para ocultar los paneles secundarios en el panel principal
         {
@@ -102,7 +103,7 @@ namespace Campeonato_Polideportivo
                 return 0; // Nivel de acceso no determinado
             }
         }
-
+       
         private void Form1_Load(object sender, EventArgs e)
         {
             // Maximizar la ventana
@@ -436,6 +437,43 @@ namespace Campeonato_Polideportivo
         private void BtnFaltas_Click_2(object sender, EventArgs e)
         {
             abrirForm(new FormFaltas());
+        }
+
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+        private void BtnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Form4login mainForm = new Form4login(); // Crea una instancia del formulario principal
+            mainForm.Show(); // Muestra el formulario principal
+            this.Hide(); // Oculta el formulario de inicio de sesión
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
+            bitacora.RegistrarEvento("Cerró Sesión", usuarioId);
+        }
+       
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            Application.Exit();
+       
         }
     }
 }

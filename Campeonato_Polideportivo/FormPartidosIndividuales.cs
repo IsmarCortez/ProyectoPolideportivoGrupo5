@@ -30,6 +30,8 @@ namespace Campeonato_Polideportivo
 
         private void FormPartidosIndividuales_Load(object sender, EventArgs e)
         {
+
+
             CmbLocal.Text = "Seleccione un deportista local..";
             CmbVis.Text = "Seleccione un deportista visitante..";
             CmbTorneo.Text = "Seleccione un Torneo";
@@ -126,9 +128,31 @@ namespace Campeonato_Polideportivo
             CargarComboBox(CmbTorneo, "SELECT pkidtorneo, nombre FROM torneo");
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             var selectedLocal = (KeyValuePair<int, string>)CmbLocal.SelectedItem;
             var selectedVis = (KeyValuePair<int, string>)CmbVis.SelectedItem;
             var selectedTorneo = (KeyValuePair<int, string>)CmbTorneo.SelectedItem;
@@ -149,6 +173,7 @@ namespace Campeonato_Polideportivo
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido individual", usuarioId);
                             MessageBox.Show("Datos insertados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             limpiar();
                         }
@@ -177,23 +202,34 @@ namespace Campeonato_Polideportivo
         private void BtnVer_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();
+
+            string query = "SELECT * FROM VistaPartidosIndividuales";
+
             using (MySqlConnection conn = conexion.getConexion())
             {
                 try
                 {
-                    conn.Open();
-                    string query = "SELECT * FROM partidosindividuales";
-                    using (MySqlCommand command = new MySqlCommand(query, conn))
-                    {
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        GridVer.DataSource = dataTable;
-                    }
+                   conn.Open(); // Abrir la conexión
+
+                    // Crear un adaptador de datos para ejecutar la consulta
+                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, conn);
+
+                    // Crear un DataTable para almacenar los datos
+                    DataTable dataTable = new DataTable();
+
+                    // Llenar el DataTable con los datos obtenidos
+                    dataAdapter.Fill(dataTable);
+
+                    // Asignar el DataTable al DataGridView
+                    GridVer.DataSource = dataTable;
+
+                    // Opcional: Ajustar automáticamente el ancho de las columnas
+                    GridVer.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Mostrar mensaje de error
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
@@ -210,6 +246,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             var selectedLocal = (KeyValuePair<int, string>)CmbLocal.SelectedItem;
             var selectedVis = (KeyValuePair<int, string>)CmbVis.SelectedItem;
             var selectedTorneo = (KeyValuePair<int, string>)CmbTorneo.SelectedItem;
@@ -231,6 +270,7 @@ namespace Campeonato_Polideportivo
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
+                            bitacora.RegistrarEvento("Modificó un partido individual", usuarioId);
                             MessageBox.Show("Datos modificados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             limpiar();
                         }
@@ -249,7 +289,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
 
             Conexion conexion = new Conexion();
 
@@ -276,6 +318,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mostrar mensaje de que si se elimino
+                            bitacora.RegistrarEvento("Eliminó un partido individual", usuarioId);
                             MessageBox.Show("Datos eliminados correctamente.");
                         }
                         else

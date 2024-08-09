@@ -1,6 +1,8 @@
 CREATE DATABASE PoliDB;
 USE PoliDB;
 
+
+
 CREATE TABLE deporte (
     pkiddeporte INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
@@ -105,7 +107,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE bitacora (
     pkidbitacora INT NOT NULL AUTO_INCREMENT,
-    fecha DATE,
+    fecha DATETIME,
     accion VARCHAR(150),
     fkidusuario INT NOT NULL,
     PRIMARY KEY (pkidbitacora),
@@ -330,7 +332,7 @@ CREATE TABLE faltas (
 );
 
 CREATE TABLE Empleado (
-    pkidempleado INT NOT NULL,
+    pkidempleado INT NOT NULL auto_increment, 
     nombre      VARCHAR(150),
     apellido    VARCHAR(150),
     puesto      VARCHAR(150),
@@ -682,6 +684,34 @@ GROUP BY
 ORDER BY 
     c.pkidcampeonato, goles DESC;
     
+-- VISTA DE BITACORA
+CREATE VIEW VistaBitacora AS
+SELECT
+    b.pkidbitacora AS IdBitacora,
+    b.fecha AS Fecha,
+    b.accion AS Accion,
+    u.usuario AS NombreUsuario
+FROM
+    bitacora b
+JOIN
+    usuario u ON b.fkidusuario = u.pkidusuario;
+    
+-- VISTA DE PARTIDOS INDIVIDUALES
+CREATE VIEW VistaPartidosIndividuales AS
+SELECT 
+    p.pkidsesion,
+    d1.nombre AS nombre_deportista_local,
+    d2.nombre AS nombre_deportista_visitante,
+    t.nombre AS nombre_torneo
+FROM 
+    partidosindividuales p
+INNER JOIN 
+    deportista d1 ON p.fkdeportistalocal = d1.pkidjugador
+INNER JOIN 
+    deportista d2 ON p.fkdeportistavisitante = d2.pkidjugador
+INNER JOIN 
+    torneo t ON p.fkidtorneo = t.pkidtorneo;
+    
  
 -- DE ACA PARA ABAJO COMO TAL SOLO HAY INGRESO DE DATOS PREDETERMINADOS 
 -- cree los privilegios     
@@ -703,7 +733,7 @@ INSERT INTO deporte (nombre, tipo) VALUES
 
 -- DE ACA PARA ABAJO SOLO HAY SELECTS E INGRESO DE DATOS DE PRUEBA 
     
-
+select * from empleado;
    
     -- Para ingresar un partido se haria de esta forma
 /*INSERT INTO partido (fechahora, fkequipolocalid, fkequipovisid, estadopartido, empate, fkidcampeonato, fkidfase, fkidarbitro)
@@ -717,18 +747,16 @@ SELECT * FROM vista_clasificacion WHERE fkidcampeonato = 1; -- Se manda a llamar
 
 
 
+UPDATE usuario
+SET contrasenia = SHA2('1234', 256)
+WHERE pkidusuario = 1;
 
 
 
 
-
-
-
-
-
-use polidb;
 
 SELECT * FROM usuario;
+SELECT * FROM bitacora;
 SELECT * FROM permisos;
 SELECT * FROM privilegios;
 select * from sexo;

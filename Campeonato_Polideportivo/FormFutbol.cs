@@ -256,9 +256,30 @@ namespace Campeonato_Polideportivo
 
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
 
             //Partido
@@ -313,6 +334,7 @@ namespace Campeonato_Polideportivo
 
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de futball", usuarioId);
                             MessageBox.Show("Datos ingresados a partido correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -616,6 +638,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             CamposVacios();
             //Partido
@@ -685,6 +710,7 @@ namespace Campeonato_Polideportivo
                                     cmd2.ExecuteNonQuery();
 
                                     // Mostrar mensaje de éxito
+                                    bitacora.RegistrarEvento("Modificó un partido de futball", usuarioId);
                                     MessageBox.Show("Datos modificados a futbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
@@ -880,6 +906,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
 
             // Obtener el ID del partido que se desea eliminar
@@ -921,6 +950,7 @@ namespace Campeonato_Polideportivo
 
                                 if (rowsAffected > 0)
                                 {
+                                    bitacora.RegistrarEvento("Eliminó un partido de futbol", usuarioId);
                                     MessageBox.Show("Datos eliminados correctamente.", "Datos eliminados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Limpiar();
                                 }

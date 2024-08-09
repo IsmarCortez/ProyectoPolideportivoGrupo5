@@ -126,6 +126,17 @@ namespace Campeonato_Polideportivo
 
         private void FormAsistencia_Load(object sender, EventArgs e)
         {
+            CmbEquipo.TabIndex = 0;
+            CmbJugador.TabIndex = 1;
+            TxtMinuto.TabIndex = 2;
+            TxtIdAsistencia.TabIndex = 3;
+            BtnIngresar.TabIndex = 4;
+            BtnVer.TabIndex = 5;
+            BtnModificar.TabIndex = 6;
+            BtnEliminar.TabIndex = 7;
+
+            DgvAsistencia.TabStop = false;
+
             CmbEquipo.Text = "Seleccione un equipo...";
 
             // Maximizar la ventana
@@ -218,10 +229,33 @@ namespace Campeonato_Polideportivo
             }
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             string minuto = TxtMinuto.Text;
             int idJugador;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
 
             if (!int.TryParse(CmbJugador.SelectedValue.ToString(), out idJugador))
             {
@@ -245,6 +279,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Ingresó una nueva asistencia", usuarioId);
                     MessageBox.Show("Asistencia registrada exitosamente.");
                     TxtIdAsistencia.Clear();
                     TxtMinuto.Clear();
@@ -270,6 +305,8 @@ namespace Campeonato_Polideportivo
         {
             string minuto = TxtMinuto.Text;
             int idAsistencia, idJugador;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
 
             if (!int.TryParse(TxtIdAsistencia.Text, out idAsistencia))
             {
@@ -290,6 +327,7 @@ namespace Campeonato_Polideportivo
 
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@minuto", minuto);
                 cmd.Parameters.AddWithValue("@fkidjugador", idJugador);
@@ -299,6 +337,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Modificó una asistencia", usuarioId);
                     MessageBox.Show("Asistencia modificada exitosamente.");
                     TxtIdAsistencia.Clear();
                     TxtMinuto.Clear();
@@ -325,6 +364,8 @@ namespace Campeonato_Polideportivo
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             int asistenciaId;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             if (!int.TryParse(TxtIdAsistencia.Text, out asistenciaId))
             {
                 MessageBox.Show("ID inválido.");
@@ -338,6 +379,7 @@ namespace Campeonato_Polideportivo
 
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@pkidasistencia", asistenciaId);
 
@@ -345,6 +387,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Eliminó una asistencia", usuarioId);
                     MessageBox.Show("Asistencia eliminada exitosamente.");
                     TxtIdAsistencia.Clear();
                     TxtMinuto.Clear();

@@ -8,18 +8,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
 
 namespace Campeonato_Polideportivo
 {
     public partial class Usuarios : Form
     {
+        private string connectionString;
         public Usuarios()
         {
             InitializeComponent();
         }
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+
+        private string GetSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            
             Conexion conexion = new Conexion();
 
             // Recoge los datos de los TextBox
@@ -27,6 +64,7 @@ namespace Campeonato_Polideportivo
             string contrasenia = txtContrasenia.Text;
             string correo = txtCorreo.Text;
             string permiso = cmbPermisos.Text;
+            string confirmar = txtConfirmacion.Text;
 
             // Definir valores predeterminados para permisos y privilegios
             int fkpermisos = 1;
@@ -57,6 +95,7 @@ namespace Campeonato_Polideportivo
             {
                 try
                 {
+                    usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                     conn.Open(); // Abre la conexión aquí
 
                     // Verifica si el usuario ya existe
@@ -81,15 +120,29 @@ namespace Campeonato_Polideportivo
 
                     using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@usuario", usuario);
-                        cmd.Parameters.AddWithValue("@correo", correo);
-                        cmd.Parameters.AddWithValue("@contrasenia", contrasenia);
-                        cmd.Parameters.AddWithValue("@fkpermisos", fkpermisos);
-                        cmd.Parameters.AddWithValue("@fkprivilegios", fkprivilegios);
-                        cmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now.ToString("yyyy-MM-dd"));
+                        if (contrasenia == confirmar)
+                        {
+                            string contraseniaEncriptada = GetSHA256Hash(contrasenia);
+                            cmd.Parameters.AddWithValue("@usuario", usuario);
+                            cmd.Parameters.AddWithValue("@correo", correo);
+                            cmd.Parameters.AddWithValue("@contrasenia", contraseniaEncriptada);
+                            cmd.Parameters.AddWithValue("@fkpermisos", fkpermisos);
+                            cmd.Parameters.AddWithValue("@fkprivilegios", fkprivilegios);
+                            cmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now.ToString("yyyy-MM-dd"));
 
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Usuario insertado exitosamente");
+                            cmd.ExecuteNonQuery();
+                            bitacora.RegistrarEvento("Creó un nuevo usuario", usuarioId);
+                            MessageBox.Show("Usuario insertado exitosamente");
+                            txtUsuario.Text = string.Empty;
+                            txtContrasenia.Text = string.Empty;
+                            txtCorreo.Text = string.Empty;
+                            txtConfirmacion.Text = string.Empty;
+                            cmbPermisos.Text = string.Empty;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Las contraseñas no coinciden");
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -98,10 +151,7 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show("Error: " + ex.Message);
                 }
 
-                txtUsuario.Text = string.Empty;
-                txtContrasenia.Text = string.Empty;
-                txtCorreo.Text = string.Empty;
-                cmbPermisos.Text = string.Empty;
+                
             }
         }
 
@@ -147,9 +197,25 @@ namespace Campeonato_Polideportivo
             }
         }
 
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
         private void Usuarios_Load(object sender, EventArgs e)
         {
+            txtUsuario.TabIndex = 0;
+            txtContrasenia.TabIndex = 1;
+            txtConfirmacion.TabIndex = 2;
+            txtCorreo.TabIndex = 3;
+            btnRegistrar.TabIndex = 4;
+            BtnVer.TabIndex = 5;
 
+            dgvUsuarios.TabStop = false;
+        }
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+                      
         }
     }
 }

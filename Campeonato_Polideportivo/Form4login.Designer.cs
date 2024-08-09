@@ -33,14 +33,14 @@ namespace Campeonato_Polideportivo
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelForm = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.llblAdmin = new System.Windows.Forms.LinkLabel();
             this.llblCuenta = new System.Windows.Forms.LinkLabel();
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.TxtContrasenia = new System.Windows.Forms.TextBox();
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.LblLogin = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelForm.SuspendLayout();
@@ -52,9 +52,8 @@ namespace Campeonato_Polideportivo
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(267, 654);
+            this.panel1.Size = new System.Drawing.Size(200, 531);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -63,9 +62,8 @@ namespace Campeonato_Polideportivo
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::Campeonato_Polideportivo.Properties.Resources.logotipo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(267, 654);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 531);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -81,23 +79,49 @@ namespace Campeonato_Polideportivo
             this.PanelForm.Controls.Add(this.TxtUsuario);
             this.PanelForm.Controls.Add(this.LblLogin);
             this.PanelForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelForm.Location = new System.Drawing.Point(267, 0);
-            this.PanelForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelForm.Location = new System.Drawing.Point(200, 0);
             this.PanelForm.Name = "PanelForm";
-            this.PanelForm.Size = new System.Drawing.Size(917, 654);
+            this.PanelForm.Size = new System.Drawing.Size(688, 531);
             this.PanelForm.TabIndex = 1;
             this.PanelForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.label2.Location = new System.Drawing.Point(100, 213);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 26);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Contraseña";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.label1.Location = new System.Drawing.Point(100, 139);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 26);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Usuario";
             // 
             // llblAdmin
             // 
             this.llblAdmin.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
-            this.llblAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.llblAdmin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.llblAdmin.AutoSize = true;
             this.llblAdmin.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llblAdmin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.llblAdmin.Location = new System.Drawing.Point(792, 622);
+            this.llblAdmin.Location = new System.Drawing.Point(312, 377);
+            this.llblAdmin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.llblAdmin.Name = "llblAdmin";
-            this.llblAdmin.Size = new System.Drawing.Size(98, 22);
+            this.llblAdmin.Size = new System.Drawing.Size(83, 17);
             this.llblAdmin.TabIndex = 18;
             this.llblAdmin.TabStop = true;
             this.llblAdmin.Text = "Administrador";
@@ -110,9 +134,10 @@ namespace Campeonato_Polideportivo
             this.llblCuenta.AutoSize = true;
             this.llblCuenta.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llblCuenta.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.llblCuenta.Location = new System.Drawing.Point(425, 430);
+            this.llblCuenta.Location = new System.Drawing.Point(303, 347);
+            this.llblCuenta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.llblCuenta.Name = "llblCuenta";
-            this.llblCuenta.Size = new System.Drawing.Size(134, 22);
+            this.llblCuenta.Size = new System.Drawing.Size(109, 17);
             this.llblCuenta.TabIndex = 17;
             this.llblCuenta.TabStop = true;
             this.llblCuenta.Text = "No tengo una cuenta";
@@ -128,10 +153,10 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnIngresar.Location = new System.Drawing.Point(139, 353);
-            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnIngresar.Location = new System.Drawing.Point(104, 287);
+            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(665, 41);
+            this.BtnIngresar.Size = new System.Drawing.Size(499, 33);
             this.BtnIngresar.TabIndex = 15;
             this.BtnIngresar.Text = "INGRESAR";
             this.BtnIngresar.UseVisualStyleBackColor = false;
@@ -143,10 +168,10 @@ namespace Campeonato_Polideportivo
             this.TxtContrasenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.TxtContrasenia.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtContrasenia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
-            this.TxtContrasenia.Location = new System.Drawing.Point(284, 258);
-            this.TxtContrasenia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtContrasenia.Location = new System.Drawing.Point(213, 210);
+            this.TxtContrasenia.Margin = new System.Windows.Forms.Padding(2);
             this.TxtContrasenia.Name = "TxtContrasenia";
-            this.TxtContrasenia.Size = new System.Drawing.Size(520, 36);
+            this.TxtContrasenia.Size = new System.Drawing.Size(391, 31);
             this.TxtContrasenia.TabIndex = 8;
             this.TxtContrasenia.UseSystemPasswordChar = true;
             this.TxtContrasenia.TextChanged += new System.EventHandler(this.TxtContrasenia_TextChanged);
@@ -157,10 +182,10 @@ namespace Campeonato_Polideportivo
             this.TxtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.TxtUsuario.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
-            this.TxtUsuario.Location = new System.Drawing.Point(284, 171);
-            this.TxtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtUsuario.Location = new System.Drawing.Point(213, 139);
+            this.TxtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.TxtUsuario.Name = "TxtUsuario";
-            this.TxtUsuario.Size = new System.Drawing.Size(520, 36);
+            this.TxtUsuario.Size = new System.Drawing.Size(391, 31);
             this.TxtUsuario.TabIndex = 7;
             // 
             // LblLogin
@@ -169,50 +194,28 @@ namespace Campeonato_Polideportivo
             this.LblLogin.AutoSize = true;
             this.LblLogin.Font = new System.Drawing.Font("Haettenschweiler", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.LblLogin.Location = new System.Drawing.Point(447, 74);
+            this.LblLogin.Location = new System.Drawing.Point(322, 63);
+            this.LblLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblLogin.Name = "LblLogin";
-            this.LblLogin.Size = new System.Drawing.Size(81, 40);
+            this.LblLogin.Size = new System.Drawing.Size(64, 32);
             this.LblLogin.TabIndex = 6;
             this.LblLogin.Text = "LOGIN";
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.label1.Location = new System.Drawing.Point(133, 171);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 32);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Usuario";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.label2.Location = new System.Drawing.Point(133, 262);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 32);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Contraseña";
-            // 
             // Form4login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(1184, 654);
+            this.ClientSize = new System.Drawing.Size(888, 531);
             this.Controls.Add(this.PanelForm);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1197, 590);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(902, 487);
             this.Name = "Form4login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form4login_FormClosing);
             this.Load += new System.EventHandler(this.Form4login_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

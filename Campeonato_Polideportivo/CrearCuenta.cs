@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
 
 namespace Campeonato_Polideportivo
 {
@@ -21,6 +22,19 @@ namespace Campeonato_Polideportivo
             this.Load += new EventHandler(CrearCuenta_Load); //evento para poner el programa en pantalla completa
         }
 
+        private string GetSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             // Crea una nueva instancia de la clase Conexion
@@ -30,6 +44,7 @@ namespace Campeonato_Polideportivo
             string usuario = txtUsuario.Text;
             string contrasenia = txtContrasenia.Text;
             string correo = txtCorreo.Text;
+            string confirmacion = txtConfirmacion.Text;
 
             // Usa la conexión dentro de un bloque using
             using (MySqlConnection conn = conexion.getConexion())
@@ -60,13 +75,26 @@ namespace Campeonato_Polideportivo
 
                     using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@usuario", usuario);
-                        cmd.Parameters.AddWithValue("@correo", correo);
-                        cmd.Parameters.AddWithValue("@contrasenia", contrasenia);
-                        cmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now.ToString("yyyy-MM-dd"));
+                        if (confirmacion == contrasenia)
+                        {
+                            string contraseniaEncriptada = GetSHA256Hash(contrasenia);
+                            cmd.Parameters.AddWithValue("@usuario", usuario);
+                            cmd.Parameters.AddWithValue("@correo", correo);
+                            cmd.Parameters.AddWithValue("@contrasenia", contraseniaEncriptada);
+                            cmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now.ToString("yyyy-MM-dd"));
 
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Usuario insertado exitosamente");
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Usuario insertado exitosamente");
+                            txtConfirmacion.Text = string.Empty;
+                            txtUsuario.Text = string.Empty;
+                            txtContrasenia.Text = string.Empty;
+                            txtCorreo.Text = string.Empty;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Las contraseñas no coiciden intentelo nuevamente");
+                            txtConfirmacion.Text = string.Empty;
+                        }
                     }
                 }
                 catch (Exception ex)
