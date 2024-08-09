@@ -339,9 +339,31 @@ namespace Campeonato_Polideportivo
                 return;
             }
         }
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
 
             //Obtenemos los datos del form y declaramos variables
@@ -408,6 +430,7 @@ namespace Campeonato_Polideportivo
 
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de voleyball", usuarioId);
                             MessageBox.Show("Datos ingresados a partido correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -440,6 +463,7 @@ namespace Campeonato_Polideportivo
                             cmd.ExecuteNonQuery();
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de voleyball", usuarioId);
                             MessageBox.Show("Datos ingresados a voleibol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
@@ -477,6 +501,7 @@ namespace Campeonato_Polideportivo
                             FkIdPartido = Convert.ToInt32(cmd.ExecuteScalar());
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de voleyball", usuarioId);
                             MessageBox.Show("Datos ingresados a partido correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -509,6 +534,7 @@ namespace Campeonato_Polideportivo
                             cmd.ExecuteNonQuery();
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de voleyball", usuarioId);
                             MessageBox.Show("Datos ingresados a voleibol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
@@ -546,6 +572,7 @@ namespace Campeonato_Polideportivo
                             FkIdPartido = Convert.ToInt32(cmd.ExecuteScalar());
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de voleyball", usuarioId);
                             MessageBox.Show("Datos ingresados a partido correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -578,6 +605,7 @@ namespace Campeonato_Polideportivo
                             cmd.ExecuteNonQuery();
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de voleyball", usuarioId);
                             MessageBox.Show("Datos ingresados a voleibol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
@@ -687,6 +715,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             CamposVacios();
             //Obtenemos los datos del form y declaramos variables
@@ -777,11 +808,13 @@ namespace Campeonato_Polideportivo
                                     cmd2.ExecuteNonQuery();
 
                                     // Mostrar mensaje de éxito
+                                    bitacora.RegistrarEvento("Modificó un partido de voleyball", usuarioId);
                                     MessageBox.Show("Datos modificados a voleibol correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
                                 if (rowsAffected > 0)
                                 {
+                                    bitacora.RegistrarEvento("Modificó un partido de voleyball", usuarioId);
                                     MessageBox.Show("Datos modificados a partido correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
@@ -855,11 +888,13 @@ namespace Campeonato_Polideportivo
                                     cmd2.ExecuteNonQuery();
 
                                     // Mostrar mensaje de éxito
+                                    bitacora.RegistrarEvento("Modificó un partido de voleyball", usuarioId);
                                     MessageBox.Show("Datos modificados a voleibol correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
                                 if (rowsAffected > 0)
                                 {
+                                    bitacora.RegistrarEvento("Modificó un partido de voleyball", usuarioId);
                                     MessageBox.Show("Datos modificados a partido correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
@@ -933,11 +968,13 @@ namespace Campeonato_Polideportivo
                                     cmd2.ExecuteNonQuery();
 
                                     // Mostrar mensaje de éxito
+                                    bitacora.RegistrarEvento("Modificó un partido de voleyball", usuarioId);
                                     MessageBox.Show("Datos modificados a voleibol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
                                 if (rowsAffected > 0)
                                 {
+                                    bitacora.RegistrarEvento("Modificó un partido de voleyball", usuarioId);
                                     MessageBox.Show("Datos modificados a partido correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
@@ -967,6 +1004,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             // Verificar que el campo TxtIdPartido no esté vacío y contenga un número válido
             if (string.IsNullOrWhiteSpace(TxtIdPartido.Text) || !int.TryParse(TxtIdPartido.Text, out int IdPartido))
             {
@@ -1013,6 +1053,7 @@ namespace Campeonato_Polideportivo
 
                                 if (rowsAffected > 0)
                                 {
+                                    bitacora.RegistrarEvento("Ingresó un nuevo deporte", usuarioId);
                                     MessageBox.Show("Datos eliminados correctamente.", "Datos eliminados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Limpiar();
                                 }

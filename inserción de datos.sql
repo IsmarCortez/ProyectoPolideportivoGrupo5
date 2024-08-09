@@ -76,23 +76,23 @@ select * FROM partido;
 
 -- Inserciones para la tabla 'futbol'
 INSERT INTO futbol (golesequipolocal, golesequipovisitante, tirosequipolocal, tirosequipovisitante, posesionequipolocal, posesionequipovisitante, fkidpartido) VALUES
-(3, 2, 10, 8, 60, 40, 2),
-(1, 1, 5, 5, 50, 50, 3);
+(3, 2, 10, 8, 60, 40, 1),
+(1, 1, 5, 5, 50, 50, 2);
 
 -- Inserciones para la tabla 'volleyball'
 INSERT INTO volleyball (setsganadosequipolocal, setsganadosequipovisitante, puntostotalesequipol, puntostotalesequipovi, ataquesequipolocal, ataquesequipovisitante, bloqueosequipolocal, bloqueosequipovisitante, servicioserradoslocal, servicioserradosvis, recepcionesequipolocal, recepcionesequipovisitante, defensasequipolocal, defensasequipovisitante, acesequipolocal, acesequipovisitante, fkidpartido) VALUES
-(3, 2, 75, 60, 20, 18, 10, 8, 5, 4, 30, 28, 12, 10, 6, 5, 2),
-(2, 3, 60, 75, 18, 20, 8, 10, 4, 5, 28, 30, 10, 12, 5, 6, 3);
+(3, 2, 75, 60, 20, 18, 10, 8, 5, 4, 30, 28, 12, 10, 6, 5, 1),
+(2, 3, 60, 75, 18, 20, 8, 10, 4, 5, 28, 30, 10, 12, 5, 6, 2);
 
 -- Inserciones para la tabla 'baseball'
 INSERT INTO baseball (carrerasequipolocal, carrerasequipovisitante, hitsequipolocal, hitsequipovisitante, erroresequipolocal, erroresequipovisitante, homerunsequipolocal, homerunsequipovisitante, ponchesequipolocal, ponchesequipovisitante, basesrobadasequipolocal, basesrobadasequipovi, lanzamientosstrikelocal, lanzamientosstrikevis, entradasjugadas, fkidpartido) VALUES
-(5, 3, 10, 8, 1, 2, 2, 1, 7, 6, 3, 2, 50, 45, 9, 2),
-(3, 5, 8, 10, 2, 1, 1, 2, 6, 7, 2, 3, 45, 50, 9, 3);
+(5, 3, 10, 8, 1, 2, 2, 1, 7, 6, 3, 2, 50, 45, 9, 1),
+(3, 5, 8, 10, 2, 1, 1, 2, 6, 7, 2, 3, 45, 50, 9, 2);
 
 -- Inserciones para la tabla 'basketball'
 INSERT INTO basketball (puntosequipolocal, puntosequipovisitante, rebotesequipolocal, rebotesequipovisitante, asistenciasequipolocal, asistenciasequipovisitante, robosequipolocal, robosequipovisitante, bloqueosequipolocal1, bloqueosequipovisitante1, perdidasequipolocal, perdidasequipovisitante, faltasequipolocal1, faltasequipovisitante2, fkidpartido) VALUES
-(100, 98, 45, 40, 25, 20, 15, 10, 5, 4, 10, 8, 20, 18, 2),
-(98, 100, 40, 45, 20, 25, 10, 15, 4, 5, 8, 10, 18, 20, 3);
+(100, 98, 45, 40, 25, 20, 15, 10, 5, 4, 10, 8, 20, 18, 1),
+(98, 100, 40, 45, 20, 25, 10, 15, 4, 5, 8, 10, 18, 20, 2);
 
 
 -- Inserciones para la tabla 'asistencia'
@@ -103,8 +103,8 @@ INSERT INTO asistencia (minuto, fkidjugador) VALUES
 select * from asistencia;
 -- Inserciones para la tabla 'anotaciones'
 INSERT INTO anotaciones (minuto, tipoanotacion, fkidjugador, fkidpartido, fkidasistencia, descripcion) VALUES
-('85', 'Gol', 1, 2, 1, 'Descripción de la anotación 1'),
-('90', 'Gol', 2, 3, 2, 'Descripción de la anotación 2');
+('85', 'Gol', 1, 1, 1, 'Descripción de la anotación 1'),
+('90', 'Gol', 2, 2, 2, 'Descripción de la anotación 2');
 -- Inserciones para la tabla 'partidosindividuales'
 INSERT INTO partidosindividuales (fkdeportistalocal, fkdeportistavisitante, fkidtorneo) VALUES
 (1, 2, 1),
@@ -112,8 +112,8 @@ INSERT INTO partidosindividuales (fkdeportistalocal, fkdeportistavisitante, fkid
 
 -- Inserciones para la tabla 'faltas'
 INSERT INTO faltas (minuto, tarjeta, tipofalta, descripcion, fecha, fkidpartido, fkidjugador, fkidarbitro) VALUES
-('30', 'Amarilla', 'Falta leve', 'Descripción de la falta 1', '2024-07-01', 2, 1, 1),
-('45', 'Roja', 'Falta grave', 'Descripción de la falta 2', '2024-07-02', 3, 2, 2);
+('30', 'Amarilla', 'Falta leve', 'Descripción de la falta 1', '2024-07-01', 1, 1, 1),
+('45', 'Roja', 'Falta grave', 'Descripción de la falta 2', '2024-07-02', 2, 2, 2);
 
 -- Inserciones para la tabla 'Empleado'
 INSERT INTO Empleado (pkidempleado, nombre, apellido, puesto, fkidusuario) VALUES
@@ -144,12 +144,13 @@ INSERT INTO Telefono_Empleado (fkidtelefono, fkidempleado) VALUES
 INSERT INTO clasificacion (fkidequipo, fkidcampeonato, puntos, partidos_jugados, victorias, empates, derrotas) VALUES
 (1, 1, 10, 5, 3, 1, 1),
 (2, 2, 8, 5, 2, 2, 1);
+select * from clasificacion;
 
 -- inserte el administrador de manera manual
 INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES 
 ('Alejandro', 'alejandro@gmail.com', '1234', 3, 3, '2024-08-01');
-INSERT INTO Empleado (pkidempleado, nombre, apellido, puesto, fkidusuario) VALUES 
-(1, 'Alejandro', 'Boch', 'Administrador', 1);
+INSERT INTO Empleado (nombre, apellido, puesto, fkidusuario) VALUES 
+('Alejandro', 'Boch', 'Administrador', 1);
 INSERT INTO Direccionempleado (Calle, Avenida, Zona, Departamento, CodigoPostal, NumeroCasa) VALUES
 ('5ta', '9na', '1', 'Guatemala', '11001', '13');  
 INSERT INTO Direccion_Empleado (fkiddireccion, fkidempleado)  VALUES (1,1);
@@ -157,5 +158,5 @@ INSERT INTO Telefonoempleado (telefono) VALUES ('55335918');
 INSERT INTO Telefono_Empleado (fkidtelefono, fkidempleado) VALUES (1,1);
 
 INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES 
-('Katy', 'katy@gmail.com', '4321', 3, 3, '2024-08-01');
+('Katy', 'katy@gmail.com', '4321', 1, 1, '2024-08-01');
 

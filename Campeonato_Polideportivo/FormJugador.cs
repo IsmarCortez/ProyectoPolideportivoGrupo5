@@ -50,9 +50,30 @@ namespace Campeonato_Polideportivo
                 conn.Close();
             }
         }
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             string nombre = TxtNombre.Text;
             string apellido = TxtApellido.Text;
             string posicion = TxtPosicion.Text;
@@ -92,6 +113,7 @@ namespace Campeonato_Polideportivo
 
                     if (result > 0)
                     {
+                        bitacora.RegistrarEvento("Ingresó un nuevo jugador", usuarioId);
                         MessageBox.Show("Jugador insertado exitosamente.");
                     }
                     else
@@ -118,6 +140,9 @@ namespace Campeonato_Polideportivo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             int idJugador;
             if (!int.TryParse(TxtId.Text, out idJugador))
             {
@@ -167,6 +192,7 @@ namespace Campeonato_Polideportivo
 
                     if (result > 0)
                     {
+                        bitacora.RegistrarEvento("Modificó un jugador", usuarioId);
                         MessageBox.Show("Jugador modificado exitosamente.");
                     }
                     else
@@ -193,6 +219,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             int idJugador;
             if (!int.TryParse(TxtId.Text, out idJugador))
             {
@@ -215,6 +244,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Eliminó un jugador", usuarioId);
                     MessageBox.Show("Jugador eliminado exitosamente.");
                 }
                 else

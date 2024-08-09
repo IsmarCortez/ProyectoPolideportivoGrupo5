@@ -22,13 +22,36 @@ namespace Campeonato_Polideportivo
             usuarioValidator = new UsuarioValidator(connectionString);
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             string nombre = TxtNombre.Text;
             string apellido = TxtApellido.Text;
             DateTime fechaNacimiento = DtpFechaNacimiento.Value;
             string nacionalidad = TxtNacionalidad.Text;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
 
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())
@@ -44,10 +67,12 @@ namespace Campeonato_Polideportivo
 
                     try
                     {
+                        
                         int result = command.ExecuteNonQuery();
 
                         if (result > 0)
                         {
+                            bitacora.RegistrarEvento("Ingresó un nuevo arbitro", usuarioId);
                             MessageBox.Show("Árbitro ingresado exitosamente.");
                         }
                         else
@@ -67,6 +92,8 @@ namespace Campeonato_Polideportivo
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             int idArbitro;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             if (!int.TryParse(TxtId.Text, out idArbitro))
             {
                 MessageBox.Show("ID inválido.");
@@ -80,6 +107,7 @@ namespace Campeonato_Polideportivo
 
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@id_arbitro", TxtId.Text);
 
@@ -88,6 +116,7 @@ namespace Campeonato_Polideportivo
                 if (result > 0)
                 {
                     MessageBox.Show("Árbitro eliminado exitosamente.");
+                    bitacora.RegistrarEvento("Eliminó un arbitro", usuarioId);
                 }
                 else
                 {
@@ -106,10 +135,12 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             Conexion conexion = new Conexion();
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 // Obtener los datos de los TextBoxes
                 string nombre = TxtNombre.Text;
                 string apellido = TxtApellido.Text;
@@ -159,6 +190,7 @@ namespace Campeonato_Polideportivo
 
                             if (rowsAffected > 0)
                             {
+                                bitacora.RegistrarEvento("Modificó un Arbitro", usuarioId);
                                 MessageBox.Show("Datos modificados correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else

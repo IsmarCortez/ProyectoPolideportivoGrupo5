@@ -27,10 +27,31 @@ namespace Campeonato_Polideportivo
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
         }
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -47,6 +68,7 @@ namespace Campeonato_Polideportivo
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
+                            bitacora.RegistrarEvento("Ingresó un nuevo deporte", usuarioId);
                             MessageBox.Show("Datos insertados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -181,6 +203,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click_1(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -197,6 +222,7 @@ namespace Campeonato_Polideportivo
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
+                            bitacora.RegistrarEvento("Modificó un campeonato", usuarioId);
                             MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -222,6 +248,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click_1(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -236,6 +265,7 @@ namespace Campeonato_Polideportivo
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
+                            bitacora.RegistrarEvento("Eliminó un deporte", usuarioId);
                             MessageBox.Show("Registro eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             CargarComboBox(); // Recarga el ComboBox después de eliminar
                         }
