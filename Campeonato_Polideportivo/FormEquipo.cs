@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Diagnostics; // Para Process y ProcessStartInfo
+using System.IO; // Para Path
+
+
 namespace Campeonato_Polideportivo
 {
     public partial class FormEquipo : Form
@@ -239,7 +243,24 @@ namespace Campeonato_Polideportivo
        
         private void FormEquipo_Load(object sender, EventArgs e)
         {
-           
+
+            TxtIdEquipo.TabIndex = 0;
+            TxtNombreEquipo.TabIndex = 1;
+            TxtEstadio.TabIndex = 2;
+            TxtCiudad.TabIndex = 3;
+
+            //desactivar dataGridView1
+            DgwEquipo.TabStop = false;
+
+            // Desactivar TabStop para los botones para que no reciban el foco con Tab
+            BtnIngresar.TabStop = false;
+            BtnModificar.TabStop = false;
+            BtnEliminar.TabStop = false;
+            BtnLimpiar.TabStop = false;
+            BtnVer.TabStop = false;
+            BtnAyuda.TabStop = false;
+
+
             // Maximizar la ventana
             this.WindowState = FormWindowState.Maximized;
 
@@ -309,6 +330,45 @@ namespace Campeonato_Polideportivo
             catch
             {
             }
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 11;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
+
         }
     }
 }

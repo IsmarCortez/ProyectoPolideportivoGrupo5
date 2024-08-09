@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
-
+using System.Diagnostics; // Para Process y ProcessStartInfo
+using System.IO; // Para Path
 
 namespace Campeonato_Polideportivo
 {
@@ -525,6 +526,29 @@ namespace Campeonato_Polideportivo
 
         private void FormAnotaciones_Load(object sender, EventArgs e)
         {
+            TxtIdAnotaciones.TabIndex = 0;
+            TxtMinuto.TabIndex = 1;
+            CmbTipoAnotacion.TabIndex = 2;
+            CmbCampeonato.TabIndex = 3;
+            CmbPartido.TabIndex = 4;
+            CmbEquipo.TabIndex = 5;
+            CmbJugador.TabIndex = 6;
+            CmbAsistencia.TabIndex = 7;
+            TxtDescripcion.TabIndex = 8;
+
+            // Asegurarse de que el DataGridView no reciba el foco con Tab
+            DgvAnotaciones.TabStop = false;
+
+            // Desactivar TabStop para los botones para que no reciban el foco con Tab
+            BtnIngresar.TabStop = false;
+            BtnModificar.TabStop = false;
+            BtnEliminar.TabStop = false;
+            BtnLimpiar.TabStop = false;
+            BtnVer.TabStop = false;
+            BtnTablaMejoresJugs.TabStop = false;
+            BtnAyuda.TabStop = false;
+
+
             // Maximizar la ventana
             this.WindowState = FormWindowState.Maximized;
 
@@ -728,6 +752,48 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show($"Error al cargar la clasificación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 82;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
+
+
+
         }
     }
  }
