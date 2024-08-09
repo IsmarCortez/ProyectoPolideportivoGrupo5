@@ -337,15 +337,6 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
             }
 
-
-
-
-
-
-
-
-
-
         }
     }
 }
