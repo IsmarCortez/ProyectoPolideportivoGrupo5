@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Fernando García 0901-21-581
 namespace Campeonato_Polideportivo
 {
     public partial class FormCampeonato : Form
@@ -379,6 +379,12 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtIdCampeonato.Enabled = false;
+                TxtNombre.Enabled = false;
+                TxtTemporada.Enabled = false;
+                DtpFechaInicio.Enabled = false;
+                DtpFechaFin.Enabled = false;
+                CmbDeporte.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

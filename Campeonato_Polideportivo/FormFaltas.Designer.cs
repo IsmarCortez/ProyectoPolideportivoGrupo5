@@ -71,10 +71,10 @@ namespace Campeonato_Polideportivo
             this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnVer.Location = new System.Drawing.Point(311, 553);
-            this.BtnVer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnVer.Location = new System.Drawing.Point(233, 449);
+            this.BtnVer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnVer.Name = "BtnVer";
-            this.BtnVer.Size = new System.Drawing.Size(173, 41);
+            this.BtnVer.Size = new System.Drawing.Size(130, 33);
             this.BtnVer.TabIndex = 88;
             this.BtnVer.Text = "VER";
             this.BtnVer.UseVisualStyleBackColor = false;
@@ -90,10 +90,10 @@ namespace Campeonato_Polideportivo
             this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnEliminar.Location = new System.Drawing.Point(733, 553);
-            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnEliminar.Location = new System.Drawing.Point(550, 449);
+            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(173, 41);
+            this.BtnEliminar.Size = new System.Drawing.Size(130, 33);
             this.BtnEliminar.TabIndex = 87;
             this.BtnEliminar.Text = "ELIMINAR";
             this.BtnEliminar.UseVisualStyleBackColor = false;
@@ -109,10 +109,10 @@ namespace Campeonato_Polideportivo
             this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnModificar.Location = new System.Drawing.Point(521, 553);
-            this.BtnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnModificar.Location = new System.Drawing.Point(391, 449);
+            this.BtnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(173, 41);
+            this.BtnModificar.Size = new System.Drawing.Size(130, 33);
             this.BtnModificar.TabIndex = 86;
             this.BtnModificar.Text = "MODIFICAR";
             this.BtnModificar.UseVisualStyleBackColor = false;
@@ -128,10 +128,10 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnIngresar.Location = new System.Drawing.Point(101, 553);
-            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnIngresar.Location = new System.Drawing.Point(76, 449);
+            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(173, 41);
+            this.BtnIngresar.Size = new System.Drawing.Size(130, 33);
             this.BtnIngresar.TabIndex = 85;
             this.BtnIngresar.Text = "INGRESAR";
             this.BtnIngresar.UseVisualStyleBackColor = false;
@@ -139,55 +139,59 @@ namespace Campeonato_Polideportivo
             // 
             // TxtMinuto
             // 
-            this.TxtMinuto.Location = new System.Drawing.Point(153, 120);
-            this.TxtMinuto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtMinuto.Location = new System.Drawing.Point(115, 98);
+            this.TxtMinuto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TxtMinuto.Name = "TxtMinuto";
-            this.TxtMinuto.Size = new System.Drawing.Size(249, 22);
+            this.TxtMinuto.Size = new System.Drawing.Size(188, 20);
             this.TxtMinuto.TabIndex = 83;
             // 
             // TxtIdFaltas
             // 
             this.TxtIdFaltas.Enabled = false;
-            this.TxtIdFaltas.Location = new System.Drawing.Point(153, 82);
-            this.TxtIdFaltas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtIdFaltas.Location = new System.Drawing.Point(115, 67);
+            this.TxtIdFaltas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TxtIdFaltas.Name = "TxtIdFaltas";
-            this.TxtIdFaltas.Size = new System.Drawing.Size(100, 22);
+            this.TxtIdFaltas.Size = new System.Drawing.Size(76, 20);
             this.TxtIdFaltas.TabIndex = 82;
             this.TxtIdFaltas.Visible = false;
             // 
             // LblTipoFalta
             // 
             this.LblTipoFalta.AutoSize = true;
-            this.LblTipoFalta.Location = new System.Drawing.Point(57, 200);
+            this.LblTipoFalta.Location = new System.Drawing.Point(43, 162);
+            this.LblTipoFalta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblTipoFalta.Name = "LblTipoFalta";
-            this.LblTipoFalta.Size = new System.Drawing.Size(91, 17);
+            this.LblTipoFalta.Size = new System.Drawing.Size(69, 13);
             this.LblTipoFalta.TabIndex = 77;
             this.LblTipoFalta.Text = "Tipo de Falta";
             // 
             // LblTarjeta
             // 
             this.LblTarjeta.AutoSize = true;
-            this.LblTarjeta.Location = new System.Drawing.Point(59, 162);
+            this.LblTarjeta.Location = new System.Drawing.Point(44, 132);
+            this.LblTarjeta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblTarjeta.Name = "LblTarjeta";
-            this.LblTarjeta.Size = new System.Drawing.Size(53, 17);
+            this.LblTarjeta.Size = new System.Drawing.Size(40, 13);
             this.LblTarjeta.TabIndex = 76;
             this.LblTarjeta.Text = "Tarjeta";
             // 
             // LblMinuto
             // 
             this.LblMinuto.AutoSize = true;
-            this.LblMinuto.Location = new System.Drawing.Point(59, 120);
+            this.LblMinuto.Location = new System.Drawing.Point(44, 98);
+            this.LblMinuto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblMinuto.Name = "LblMinuto";
-            this.LblMinuto.Size = new System.Drawing.Size(50, 17);
+            this.LblMinuto.Size = new System.Drawing.Size(39, 13);
             this.LblMinuto.TabIndex = 75;
             this.LblMinuto.Text = "Minuto";
             // 
             // LblIdCampeonato
             // 
             this.LblIdCampeonato.AutoSize = true;
-            this.LblIdCampeonato.Location = new System.Drawing.Point(59, 85);
+            this.LblIdCampeonato.Location = new System.Drawing.Point(44, 69);
+            this.LblIdCampeonato.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblIdCampeonato.Name = "LblIdCampeonato";
-            this.LblIdCampeonato.Size = new System.Drawing.Size(21, 17);
+            this.LblIdCampeonato.Size = new System.Drawing.Size(18, 13);
             this.LblIdCampeonato.TabIndex = 74;
             this.LblIdCampeonato.Text = "ID";
             this.LblIdCampeonato.Visible = false;
@@ -195,10 +199,10 @@ namespace Campeonato_Polideportivo
             // CmbFalta
             // 
             this.CmbFalta.FormattingEnabled = true;
-            this.CmbFalta.Location = new System.Drawing.Point(153, 200);
-            this.CmbFalta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbFalta.Location = new System.Drawing.Point(115, 162);
+            this.CmbFalta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CmbFalta.Name = "CmbFalta";
-            this.CmbFalta.Size = new System.Drawing.Size(249, 24);
+            this.CmbFalta.Size = new System.Drawing.Size(188, 21);
             this.CmbFalta.TabIndex = 73;
             this.CmbFalta.Text = "Selecciona un tipo de falta...";
             // 
@@ -208,9 +212,10 @@ namespace Campeonato_Polideportivo
             this.LblFaltas.AutoSize = true;
             this.LblFaltas.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblFaltas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.LblFaltas.Location = new System.Drawing.Point(421, 20);
+            this.LblFaltas.Location = new System.Drawing.Point(316, 16);
+            this.LblFaltas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblFaltas.Name = "LblFaltas";
-            this.LblFaltas.Size = new System.Drawing.Size(135, 50);
+            this.LblFaltas.Size = new System.Drawing.Size(109, 40);
             this.LblFaltas.TabIndex = 72;
             this.LblFaltas.Text = "FALTAS";
             // 
@@ -221,96 +226,101 @@ namespace Campeonato_Polideportivo
             this.DgvFaltas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgvFaltas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvFaltas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.DgvFaltas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvFaltas.Location = new System.Drawing.Point(431, 98);
-            this.DgvFaltas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DgvFaltas.Location = new System.Drawing.Point(323, 80);
+            this.DgvFaltas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DgvFaltas.Name = "DgvFaltas";
             this.DgvFaltas.ReadOnly = true;
             this.DgvFaltas.RowHeadersWidth = 51;
             this.DgvFaltas.RowTemplate.Height = 24;
-            this.DgvFaltas.Size = new System.Drawing.Size(521, 411);
+            this.DgvFaltas.Size = new System.Drawing.Size(391, 334);
             this.DgvFaltas.TabIndex = 71;
             this.DgvFaltas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFaltas_CellContentClick);
             // 
             // CmbTarjeta
             // 
             this.CmbTarjeta.FormattingEnabled = true;
-            this.CmbTarjeta.Location = new System.Drawing.Point(153, 160);
-            this.CmbTarjeta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbTarjeta.Location = new System.Drawing.Point(115, 130);
+            this.CmbTarjeta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CmbTarjeta.Name = "CmbTarjeta";
-            this.CmbTarjeta.Size = new System.Drawing.Size(249, 24);
+            this.CmbTarjeta.Size = new System.Drawing.Size(188, 21);
             this.CmbTarjeta.TabIndex = 89;
             this.CmbTarjeta.Text = "Selecciona una tarjeta...";
             // 
             // TxtDescripcion
             // 
-            this.TxtDescripcion.Location = new System.Drawing.Point(153, 240);
-            this.TxtDescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtDescripcion.Location = new System.Drawing.Point(115, 195);
+            this.TxtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TxtDescripcion.Name = "TxtDescripcion";
-            this.TxtDescripcion.Size = new System.Drawing.Size(249, 22);
+            this.TxtDescripcion.Size = new System.Drawing.Size(188, 20);
             this.TxtDescripcion.TabIndex = 91;
             // 
             // LblDescripcion
             // 
             this.LblDescripcion.AutoSize = true;
-            this.LblDescripcion.Location = new System.Drawing.Point(59, 240);
+            this.LblDescripcion.Location = new System.Drawing.Point(44, 195);
+            this.LblDescripcion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblDescripcion.Name = "LblDescripcion";
-            this.LblDescripcion.Size = new System.Drawing.Size(82, 17);
+            this.LblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.LblDescripcion.TabIndex = 90;
             this.LblDescripcion.Text = "Descripción";
             // 
             // DtpFecha
             // 
-            this.DtpFecha.Location = new System.Drawing.Point(153, 280);
-            this.DtpFecha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DtpFecha.Location = new System.Drawing.Point(115, 228);
+            this.DtpFecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DtpFecha.Name = "DtpFecha";
-            this.DtpFecha.Size = new System.Drawing.Size(249, 22);
+            this.DtpFecha.Size = new System.Drawing.Size(188, 20);
             this.DtpFecha.TabIndex = 93;
             // 
             // LblFecha
             // 
             this.LblFecha.AutoSize = true;
-            this.LblFecha.Location = new System.Drawing.Point(59, 280);
+            this.LblFecha.Location = new System.Drawing.Point(44, 228);
+            this.LblFecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblFecha.Name = "LblFecha";
-            this.LblFecha.Size = new System.Drawing.Size(47, 17);
+            this.LblFecha.Size = new System.Drawing.Size(37, 13);
             this.LblFecha.TabIndex = 92;
             this.LblFecha.Text = "Fecha";
             // 
             // LblIdPartido
             // 
             this.LblIdPartido.AutoSize = true;
-            this.LblIdPartido.Location = new System.Drawing.Point(59, 362);
+            this.LblIdPartido.Location = new System.Drawing.Point(44, 294);
+            this.LblIdPartido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblIdPartido.Name = "LblIdPartido";
-            this.LblIdPartido.Size = new System.Drawing.Size(53, 17);
+            this.LblIdPartido.Size = new System.Drawing.Size(40, 13);
             this.LblIdPartido.TabIndex = 94;
             this.LblIdPartido.Text = "Partido";
             // 
             // LblIdJugador
             // 
             this.LblIdJugador.AutoSize = true;
-            this.LblIdJugador.Location = new System.Drawing.Point(51, 446);
+            this.LblIdJugador.Location = new System.Drawing.Point(38, 362);
+            this.LblIdJugador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblIdJugador.Name = "LblIdJugador";
-            this.LblIdJugador.Size = new System.Drawing.Size(60, 17);
+            this.LblIdJugador.Size = new System.Drawing.Size(45, 13);
             this.LblIdJugador.TabIndex = 96;
             this.LblIdJugador.Text = "Jugador";
             // 
             // LblEquipo
             // 
             this.LblEquipo.AutoSize = true;
-            this.LblEquipo.Location = new System.Drawing.Point(57, 402);
+            this.LblEquipo.Location = new System.Drawing.Point(43, 327);
+            this.LblEquipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblEquipo.Name = "LblEquipo";
-            this.LblEquipo.Size = new System.Drawing.Size(52, 17);
+            this.LblEquipo.Size = new System.Drawing.Size(40, 13);
             this.LblEquipo.TabIndex = 98;
             this.LblEquipo.Text = "Equipo";
             // 
             // CmbPartido
             // 
             this.CmbPartido.FormattingEnabled = true;
-            this.CmbPartido.Location = new System.Drawing.Point(153, 359);
-            this.CmbPartido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbPartido.Location = new System.Drawing.Point(115, 292);
+            this.CmbPartido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CmbPartido.Name = "CmbPartido";
-            this.CmbPartido.Size = new System.Drawing.Size(249, 24);
+            this.CmbPartido.Size = new System.Drawing.Size(188, 21);
             this.CmbPartido.TabIndex = 100;
             this.CmbPartido.Text = "Selecciona un partido...";
             this.CmbPartido.SelectedIndexChanged += new System.EventHandler(this.CmbPartido_SelectedIndexChanged);
@@ -319,10 +329,10 @@ namespace Campeonato_Polideportivo
             // 
             this.CmbEquipo.Enabled = false;
             this.CmbEquipo.FormattingEnabled = true;
-            this.CmbEquipo.Location = new System.Drawing.Point(153, 400);
-            this.CmbEquipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbEquipo.Location = new System.Drawing.Point(115, 325);
+            this.CmbEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CmbEquipo.Name = "CmbEquipo";
-            this.CmbEquipo.Size = new System.Drawing.Size(249, 24);
+            this.CmbEquipo.Size = new System.Drawing.Size(188, 21);
             this.CmbEquipo.TabIndex = 101;
             this.CmbEquipo.Text = "Selecciona un equipo...";
             this.CmbEquipo.SelectedIndexChanged += new System.EventHandler(this.CmbEquipo_SelectedIndexChanged);
@@ -331,10 +341,10 @@ namespace Campeonato_Polideportivo
             // 
             this.CmbJugador.Enabled = false;
             this.CmbJugador.FormattingEnabled = true;
-            this.CmbJugador.Location = new System.Drawing.Point(153, 442);
-            this.CmbJugador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbJugador.Location = new System.Drawing.Point(115, 359);
+            this.CmbJugador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CmbJugador.Name = "CmbJugador";
-            this.CmbJugador.Size = new System.Drawing.Size(249, 24);
+            this.CmbJugador.Size = new System.Drawing.Size(188, 21);
             this.CmbJugador.TabIndex = 102;
             this.CmbJugador.Text = "Selecciona un jugador...";
             this.CmbJugador.SelectedIndexChanged += new System.EventHandler(this.CmbJugador_SelectedIndexChanged);
@@ -342,29 +352,30 @@ namespace Campeonato_Polideportivo
             // CmbArbitro
             // 
             this.CmbArbitro.FormattingEnabled = true;
-            this.CmbArbitro.Location = new System.Drawing.Point(153, 485);
-            this.CmbArbitro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbArbitro.Location = new System.Drawing.Point(115, 394);
+            this.CmbArbitro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CmbArbitro.Name = "CmbArbitro";
-            this.CmbArbitro.Size = new System.Drawing.Size(249, 24);
+            this.CmbArbitro.Size = new System.Drawing.Size(188, 21);
             this.CmbArbitro.TabIndex = 104;
             this.CmbArbitro.Text = "Selecciona un arbitro...";
             // 
             // LblArbitro
             // 
             this.LblArbitro.AutoSize = true;
-            this.LblArbitro.Location = new System.Drawing.Point(59, 485);
+            this.LblArbitro.Location = new System.Drawing.Point(44, 394);
+            this.LblArbitro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblArbitro.Name = "LblArbitro";
-            this.LblArbitro.Size = new System.Drawing.Size(50, 17);
+            this.LblArbitro.Size = new System.Drawing.Size(37, 13);
             this.LblArbitro.TabIndex = 103;
             this.LblArbitro.Text = "Arbitro";
             // 
             // CmbCampeonato
             // 
             this.CmbCampeonato.FormattingEnabled = true;
-            this.CmbCampeonato.Location = new System.Drawing.Point(153, 320);
-            this.CmbCampeonato.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbCampeonato.Location = new System.Drawing.Point(115, 260);
+            this.CmbCampeonato.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CmbCampeonato.Name = "CmbCampeonato";
-            this.CmbCampeonato.Size = new System.Drawing.Size(249, 24);
+            this.CmbCampeonato.Size = new System.Drawing.Size(188, 21);
             this.CmbCampeonato.TabIndex = 106;
             this.CmbCampeonato.Text = "Selecciona un campeonato...";
             this.CmbCampeonato.SelectedIndexChanged += new System.EventHandler(this.CmbCampeonato_SelectedIndexChanged);
@@ -372,9 +383,10 @@ namespace Campeonato_Polideportivo
             // LblCampeonato
             // 
             this.LblCampeonato.AutoSize = true;
-            this.LblCampeonato.Location = new System.Drawing.Point(59, 323);
+            this.LblCampeonato.Location = new System.Drawing.Point(44, 262);
+            this.LblCampeonato.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblCampeonato.Name = "LblCampeonato";
-            this.LblCampeonato.Size = new System.Drawing.Size(88, 17);
+            this.LblCampeonato.Size = new System.Drawing.Size(67, 13);
             this.LblCampeonato.TabIndex = 105;
             this.LblCampeonato.Text = "Campeonato";
             // 
@@ -385,10 +397,10 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnAyuda.Location = new System.Drawing.Point(907, 29);
-            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Location = new System.Drawing.Point(680, 24);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnAyuda.Name = "BtnAyuda";
-            this.BtnAyuda.Size = new System.Drawing.Size(45, 41);
+            this.BtnAyuda.Size = new System.Drawing.Size(34, 33);
             this.BtnAyuda.TabIndex = 326;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
@@ -396,10 +408,10 @@ namespace Campeonato_Polideportivo
             // 
             // FormFaltas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(995, 654);
+            this.ClientSize = new System.Drawing.Size(746, 531);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.CmbCampeonato);
             this.Controls.Add(this.LblCampeonato);
@@ -429,7 +441,7 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.CmbFalta);
             this.Controls.Add(this.LblFaltas);
             this.Controls.Add(this.DgvFaltas);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormFaltas";
             this.Text = "FormFaltas";
             this.Load += new System.EventHandler(this.FormFaltas_Load);

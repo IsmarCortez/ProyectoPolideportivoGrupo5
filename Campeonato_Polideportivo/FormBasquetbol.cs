@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+// Código hecho por Ismar Cortéz 0901-21-506
 namespace Campeonato_Polideportivo
 {
     public partial class FormBasquetbol : Form
@@ -318,6 +318,32 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtIdBasquet.Enabled = false;
+                TxtIdPartido.Enabled = false;
+                DtpFecha.Enabled = false;
+                CmbEstadoPartido.Enabled = false;
+                CmbGanadorEmpate.Enabled = false;
+                CmbCampeonato.Enabled = false;
+                CmbFase.Enabled = false;
+                CmbArbitro.Enabled = false;
+                CmbEquipoLocal.Enabled = false;
+                NudPuntosLocal.Enabled = false;
+                NudRebotesLocal.Enabled = false;
+                NudAsistenciasLocal.Enabled = false;
+                NudRobosLocal.Enabled = false;
+                NudBloqueosLocal.Enabled = false;
+                NudPerdidasLocal.Enabled = false;
+                NudFaltasLocal.Enabled = false;
+                CmbEquipoVisitante.Enabled = false;
+                NudPuntosVisitante.Enabled = false;
+                NudRebotesVisitante.Enabled = false;
+                NudAsistenciasVisitante.Enabled = false;
+                NudRebotesVisitante.Enabled = false;
+                NudAsistenciasVisitante.Enabled = false;
+                NudRobosVisitante.Enabled = false;
+                NudBloqueosVisitante.Enabled = false;
+                NudPerdidasVisitante.Enabled = false;
+                NudFaltasVisitante.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

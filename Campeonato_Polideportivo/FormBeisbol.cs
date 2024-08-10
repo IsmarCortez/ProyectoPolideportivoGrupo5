@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+// Código hecho Marco Monroy 0901-21-843
 namespace Campeonato_Polideportivo
 {
     public partial class FormBeisbol : Form
@@ -318,6 +318,29 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtIdPartido.Enabled = false;
+                DtpFecha.Enabled = false;
+                CmbEstadoPartido.Enabled = false;
+                CmbGanadorEmpate.Enabled = false;
+                CmbCampeonato.Enabled = false;
+                CmbFase.Enabled = false;
+                CmbArbitro.Enabled = false;
+                CmbEquipoLocal.Enabled = false;
+                CmbEquipoVisitante.Enabled = false;
+                NudCarrerasLocal.Enabled = false;
+                NudCarrerasVisitante.Enabled = false;
+                NudHitsLocal.Enabled = false;
+                NudHitsVisitante.Enabled = false;
+                NudErroresLocal.Enabled = false;
+                NudErroresVisitante.Enabled = false;
+                NudHomerunsLocal.Enabled = false;
+                NudHomerunsVisitante.Enabled = false;
+                NudPonchesLocal.Enabled = false;
+                NudPonchesVisitante.Enabled = false;
+                NudBasesRobadasLocal.Enabled = false;
+                NudBasesRobadasVisitante.Enabled = false;
+                NudLanzamientosLocal.Enabled = false;
+                NudLanzamientosVisitante.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

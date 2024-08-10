@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
-
+// Código hecho por Fernando García - 0901-21-581 y Brandon Boch - 0901-21-130393
 namespace Campeonato_Polideportivo
 {
 
@@ -18,6 +18,7 @@ namespace Campeonato_Polideportivo
         private Bitacora bitacora;
         private string connectionString;
         private Conexion FormConexion; //Variable creada para conectar la base de datos al iniciar
+        private static bool isClosingConfirmed = false;
         public Form4login()
         {
             InitializeComponent();
@@ -27,7 +28,8 @@ namespace Campeonato_Polideportivo
             // Asociar el evento KeyPress
             TxtContrasenia.KeyPress += TxtContrasenia_KeyPress;
             bitacora = new Bitacora(connectionString);
-            this.FormClosing += new FormClosingEventHandler(Form4login_FormClosing);
+            this.FormClosing -= Form4login_FormClosing; // Elimina cualquier suscripción previa
+            this.FormClosing += Form4login_FormClosing; // Agrega la suscripción
         }
 
         private void TxtUsuario_Enter(object sender, EventArgs e)
@@ -57,9 +59,12 @@ namespace Campeonato_Polideportivo
 
         private void Form4login_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized; //maximiza el programa
-            FormConexion = new Conexion();  //Se manda a llamar la conexion
-            this.Load += new EventHandler(Form4login_Load);
+            this.WindowState = FormWindowState.Maximized;
+            FormConexion = new Conexion();
+
+            // Asegúrate de que HasConfirmedExit se inicialice como false
+            GlobalState.HasConfirmedExit = false;
+            isClosingConfirmed = false;
         }
 
         private Form FormActivo = null; //Se cierra el formulario activo
@@ -78,7 +83,7 @@ namespace Campeonato_Polideportivo
 
         }
 
-  
+
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -107,7 +112,7 @@ namespace Campeonato_Polideportivo
         {
             // Crea una nueva instancia de la clase Conexion
             Conexion conexion = new Conexion();
-            
+
 
             // Recoge los datos de los TextBox
             GlobalVariables.usuario = TxtUsuario.Text;
@@ -225,29 +230,45 @@ namespace Campeonato_Polideportivo
                 // Evita el beep cuando se presiona Enter
                 e.Handled = true;
                 // Llama al método del botón como si se hubiera hecho clic en él
-                BtnIngresar_Click_1( sender,  e);
+                BtnIngresar_Click_1(sender, e);
             }
         }
         public static class GlobalState
         {
             public static bool HasConfirmedExit = false;
         }
+
         private void Form4login_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!GlobalState.HasConfirmedExit)
+            Console.WriteLine($"FormClosing triggered. Reason: {e.CloseReason}, isClosingConfirmed: {isClosingConfirmed}");
+
+            if (e.CloseReason == CloseReason.UserClosing && !isClosingConfirmed)
             {
-                DialogResult result = MessageBox.Show("¿Estás seguro de que quieres salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.No)
+                e.Cancel = true; // Cancela el cierre por defecto
+
+                // Muestra el mensaje de confirmación en el hilo de la UI
+                this.Invoke((MethodInvoker)delegate
                 {
-                    e.Cancel = true; // Cancela el cierre del formulario
-                }
-                else
-                {
-                    GlobalState.HasConfirmedExit = true; // Marca que el mensaje ha sido mostrado
-                    Application.Exit(); // Asegúrate de que toda la aplicación se cierre
-                }
+                    DialogResult result = MessageBox.Show(
+                        "¿Estás seguro de que quieres salir?",
+                        "Confirmar salida",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        isClosingConfirmed = true;
+                        Console.WriteLine("El usuario acepto la salida.");
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        Console.WriteLine("El usuario cancelo la salida.");
+                    }
+                });
             }
         }
+
     }
     public static class GlobalVariables
     {
@@ -258,4 +279,3 @@ namespace Campeonato_Polideportivo
         public static int userId { get; set; }
     }
 }
-

@@ -109,6 +109,13 @@ namespace Campeonato_Polideportivo
                         Form1 obj = new Form1();
                         obj.Show();
                         this.Hide();
+                        // Obtener el formulario padre
+                        Form parentForm = this.ParentForm;
+                        if (parentForm != null)
+                        {
+                            // Ocultar el formulario padre
+                            parentForm.Hide();
+                        }
                     }
                     else
                     {
@@ -152,5 +159,5 @@ namespace Campeonato_Polideportivo
         }
 
     }
-   
+
 }

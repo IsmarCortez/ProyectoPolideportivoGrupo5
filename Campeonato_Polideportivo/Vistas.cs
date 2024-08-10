@@ -14,7 +14,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
-
+// Código hecho por Brandon Boch 0901-21-13093
 namespace Campeonato_Polideportivo
 {
     public partial class Vistas : Form

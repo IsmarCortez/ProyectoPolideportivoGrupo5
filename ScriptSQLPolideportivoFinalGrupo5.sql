@@ -1,7 +1,7 @@
 CREATE DATABASE PoliDB;
 USE PoliDB;
 
-
+DROP database PoliDB;
 
 CREATE TABLE deporte (
     pkiddeporte INT NOT NULL AUTO_INCREMENT,
@@ -175,8 +175,8 @@ CREATE TABLE jugador (
     posicion VARCHAR(150),
     numero INT,
     nacionalidad VARCHAR(150),
-    titular CHAR(1),
-    fotografia BLOB,
+    titular CHAR(2),
+    fotografia LONGBLOB,
     fkidequipo INT NOT NULL,
     cantanotaciones INT,
     PRIMARY KEY (pkidjugador),
@@ -742,18 +742,9 @@ SET @ultimo_partido = LAST_INSERT_ID();
 CALL actualizar_clasificacion(@ultimo_partido);
 SELECT * FROM vista_clasificacion WHERE fkidcampeonato = 1; -- Se manda a llamar la vista de esta forma*/
 
-
-
-
-
-
 UPDATE usuario
-SET contrasenia = SHA2('1234', 256)
+SET contrasenia = SHA2('123', 256)
 WHERE pkidusuario = 1;
-
-
-
-
 
 SELECT * FROM usuario;
 SELECT * FROM bitacora;
@@ -766,4 +757,17 @@ SELECT * FROM Telefonoempleado;
 SELECT * FROM Direccionempleado;
 SELECT * FROM Direccion_Empleado;
 SELECT * FROM Telefono_Empleado;
+
+
+/**INGRESO PARA RISKO**/
+
+/*El correspondiente Script es para el ingreso inicial de Risko al sistema. En donde al inicia el sistema, luego de crear la base de datos de
+arriba, se ejecuta este script para poder ingresar al sistema.*/
+
+INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion, iniciosesion)
+VALUES ('Auditoria', 'riskoacs2024@gmail.com', '1970', 3, 3, '2024-08-09 10:00:00', TRUE);
+
+UPDATE usuario
+SET contrasenia = SHA2('1970', 256)
+WHERE pkidusuario = 1;
 

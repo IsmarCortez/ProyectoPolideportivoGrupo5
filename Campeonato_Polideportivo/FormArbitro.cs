@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-
+// Código hecho por Marco Monroy 0901-21-843
 namespace Campeonato_Polideportivo
 {
 
@@ -304,6 +304,11 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtId.Enabled = false;
+                TxtNombre.Enabled = false;
+                TxtApellido.Enabled = false;
+                DtpFechaNacimiento.Enabled = false;
+                TxtNacionalidad.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {
