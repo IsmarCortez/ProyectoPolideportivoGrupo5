@@ -248,6 +248,26 @@ namespace Campeonato_Polideportivo
                 }
             }
         }
+        public static class GlobalState
+        {
+            public static bool HasConfirmedExit = false;
+        }
+        private void Form4login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!GlobalState.HasConfirmedExit)
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de que quieres salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true; // Cancela el cierre del formulario
+                }
+                else
+                {
+                    GlobalState.HasConfirmedExit = true; // Marca que el mensaje ha sido mostrado
+                    Application.Exit(); // Asegúrate de que toda la aplicación se cierre
+                }
+            }
+        }
     }
     public static class GlobalVariables
     {

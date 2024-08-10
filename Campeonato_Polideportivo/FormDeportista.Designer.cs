@@ -109,7 +109,11 @@ namespace Campeonato_Polideportivo
             this.LblFotografia.AutoSize = true;
             this.LblFotografia.Location = new System.Drawing.Point(43, 330);
             this.LblFotografia.Name = "LblFotografia";
+<<<<<<< HEAD
             this.LblFotografia.Size = new System.Drawing.Size(72, 17);
+=======
+            this.LblFotografia.Size = new System.Drawing.Size(68, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFotografia.TabIndex = 188;
             this.LblFotografia.Text = "Fotografia";
             // 
@@ -118,7 +122,11 @@ namespace Campeonato_Polideportivo
             this.LblSexo.AutoSize = true;
             this.LblSexo.Location = new System.Drawing.Point(43, 276);
             this.LblSexo.Name = "LblSexo";
+<<<<<<< HEAD
             this.LblSexo.Size = new System.Drawing.Size(39, 17);
+=======
+            this.LblSexo.Size = new System.Drawing.Size(38, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblSexo.TabIndex = 190;
             this.LblSexo.Text = "Sexo";
             // 
@@ -127,7 +135,11 @@ namespace Campeonato_Polideportivo
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(43, 225);
             this.LblNacionalidad.Name = "LblNacionalidad";
+<<<<<<< HEAD
             this.LblNacionalidad.Size = new System.Drawing.Size(90, 17);
+=======
+            this.LblNacionalidad.Size = new System.Drawing.Size(88, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNacionalidad.TabIndex = 187;
             this.LblNacionalidad.Text = "Nacionalidad";
             // 
@@ -136,7 +148,11 @@ namespace Campeonato_Polideportivo
             this.LblFechaNacimiento.AutoSize = true;
             this.LblFechaNacimiento.Location = new System.Drawing.Point(43, 177);
             this.LblFechaNacimiento.Name = "LblFechaNacimiento";
+<<<<<<< HEAD
             this.LblFechaNacimiento.Size = new System.Drawing.Size(141, 17);
+=======
+            this.LblFechaNacimiento.Size = new System.Drawing.Size(135, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFechaNacimiento.TabIndex = 184;
             this.LblFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
@@ -145,7 +161,11 @@ namespace Campeonato_Polideportivo
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(43, 133);
             this.LblApellido.Name = "LblApellido";
+<<<<<<< HEAD
             this.LblApellido.Size = new System.Drawing.Size(58, 17);
+=======
+            this.LblApellido.Size = new System.Drawing.Size(57, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblApellido.TabIndex = 183;
             this.LblApellido.Text = "Apellido";
             // 
@@ -154,7 +174,11 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(43, 102);
             this.LblNombre.Name = "LblNombre";
+<<<<<<< HEAD
             this.LblNombre.Size = new System.Drawing.Size(58, 17);
+=======
+            this.LblNombre.Size = new System.Drawing.Size(56, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNombre.TabIndex = 181;
             this.LblNombre.Text = "Nombre";
             // 
@@ -242,7 +266,11 @@ namespace Campeonato_Polideportivo
             this.LblDeportista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblDeportista.Location = new System.Drawing.Point(619, 30);
             this.LblDeportista.Name = "LblDeportista";
+<<<<<<< HEAD
             this.LblDeportista.Size = new System.Drawing.Size(203, 50);
+=======
+            this.LblDeportista.Size = new System.Drawing.Size(200, 50);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblDeportista.TabIndex = 175;
             this.LblDeportista.Text = "DEPORTISTA";
             // 
@@ -327,7 +355,7 @@ namespace Campeonato_Polideportivo
             this.fotografia.MinimumWidth = 6;
             this.fotografia.Name = "fotografia";
             this.fotografia.ReadOnly = true;
-            this.fotografia.Width = 78;
+            this.fotografia.Width = 74;
             // 
             // BtnFoto
             // 
@@ -353,7 +381,11 @@ namespace Campeonato_Polideportivo
             this.LblIdDeportista.AutoSize = true;
             this.LblIdDeportista.Location = new System.Drawing.Point(45, 63);
             this.LblIdDeportista.Name = "LblIdDeportista";
+<<<<<<< HEAD
             this.LblIdDeportista.Size = new System.Drawing.Size(79, 17);
+=======
+            this.LblIdDeportista.Size = new System.Drawing.Size(75, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblIdDeportista.TabIndex = 203;
             this.LblIdDeportista.Text = "Id_Jugador";
             this.LblIdDeportista.Visible = false;

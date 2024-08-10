@@ -54,6 +54,7 @@ namespace Campeonato_Polideportivo
             DateTime fechaNacimiento = DtpFechaNacimiento.Value;
             string nacionalidad = TxtNacionalidad.Text;
             usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
+<<<<<<< HEAD
 
             // Verificar si contiene dígitos
             if (nombre.Any(char.IsDigit))
@@ -71,6 +72,8 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show("La nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+=======
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
 
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())

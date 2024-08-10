@@ -108,10 +108,17 @@ namespace Campeonato_Polideportivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblCiudad.AutoSize = true;
             this.LblCiudad.Font = new System.Drawing.Font("Haettenschweiler", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.LblCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblCiudad.Location = new System.Drawing.Point(112, 239);
             this.LblCiudad.Name = "LblCiudad";
             this.LblCiudad.Size = new System.Drawing.Size(61, 26);
+=======
+            this.LblCiudad.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.LblCiudad.Location = new System.Drawing.Point(112, 239);
+            this.LblCiudad.Name = "LblCiudad";
+            this.LblCiudad.Size = new System.Drawing.Size(55, 24);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblCiudad.TabIndex = 52;
             this.LblCiudad.Text = "Ciudad";
             // 
@@ -121,10 +128,17 @@ namespace Campeonato_Polideportivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblEstadio.AutoSize = true;
             this.LblEstadio.Font = new System.Drawing.Font("Haettenschweiler", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.LblEstadio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblEstadio.Location = new System.Drawing.Point(112, 210);
             this.LblEstadio.Name = "LblEstadio";
             this.LblEstadio.Size = new System.Drawing.Size(67, 26);
+=======
+            this.LblEstadio.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.LblEstadio.Location = new System.Drawing.Point(112, 210);
+            this.LblEstadio.Name = "LblEstadio";
+            this.LblEstadio.Size = new System.Drawing.Size(61, 24);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblEstadio.TabIndex = 51;
             this.LblEstadio.Text = "Estadio";
             // 
@@ -134,10 +148,17 @@ namespace Campeonato_Polideportivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblNombreEquipo.AutoSize = true;
             this.LblNombreEquipo.Font = new System.Drawing.Font("Haettenschweiler", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.LblNombreEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblNombreEquipo.Location = new System.Drawing.Point(112, 177);
             this.LblNombreEquipo.Name = "LblNombreEquipo";
             this.LblNombreEquipo.Size = new System.Drawing.Size(144, 26);
+=======
+            this.LblNombreEquipo.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.LblNombreEquipo.Location = new System.Drawing.Point(112, 177);
+            this.LblNombreEquipo.Name = "LblNombreEquipo";
+            this.LblNombreEquipo.Size = new System.Drawing.Size(132, 24);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNombreEquipo.TabIndex = 50;
             this.LblNombreEquipo.Text = "Nombre de Equipo";
             // 
@@ -147,10 +168,17 @@ namespace Campeonato_Polideportivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblIdEquipo.AutoSize = true;
             this.LblIdEquipo.Font = new System.Drawing.Font("Haettenschweiler", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.LblIdEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblIdEquipo.Location = new System.Drawing.Point(112, 143);
             this.LblIdEquipo.Name = "LblIdEquipo";
             this.LblIdEquipo.Size = new System.Drawing.Size(82, 26);
+=======
+            this.LblIdEquipo.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.LblIdEquipo.Location = new System.Drawing.Point(112, 143);
+            this.LblIdEquipo.Name = "LblIdEquipo";
+            this.LblIdEquipo.Size = new System.Drawing.Size(75, 24);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblIdEquipo.TabIndex = 49;
             this.LblIdEquipo.Text = "Id_Equipo";
             this.LblIdEquipo.Visible = false;
@@ -217,10 +245,17 @@ namespace Campeonato_Polideportivo
             this.LblDeportes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblDeportes.AutoSize = true;
             this.LblDeportes.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.LblDeportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblDeportes.Location = new System.Drawing.Point(435, 28);
             this.LblDeportes.Name = "LblDeportes";
             this.LblDeportes.Size = new System.Drawing.Size(126, 50);
+=======
+            this.LblDeportes.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.LblDeportes.Location = new System.Drawing.Point(435, 28);
+            this.LblDeportes.Name = "LblDeportes";
+            this.LblDeportes.Size = new System.Drawing.Size(124, 50);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblDeportes.TabIndex = 45;
             this.LblDeportes.Text = "EQUIPO";
             // 
@@ -275,10 +310,17 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+<<<<<<< HEAD
             this.BtnAyuda.Location = new System.Drawing.Point(978, 11);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(62, 41);
+=======
+            this.BtnAyuda.Location = new System.Drawing.Point(308, 418);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(173, 41);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 60;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
@@ -288,7 +330,11 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+=======
+            this.BackColor = System.Drawing.Color.LightBlue;
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.ClientSize = new System.Drawing.Size(1052, 567);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.pictureBox1);

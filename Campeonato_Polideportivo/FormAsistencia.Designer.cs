@@ -133,7 +133,7 @@ namespace Campeonato_Polideportivo
             this.LblAsistencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblAsistencia.Location = new System.Drawing.Point(396, 52);
             this.LblAsistencia.Name = "LblAsistencia";
-            this.LblAsistencia.Size = new System.Drawing.Size(199, 50);
+            this.LblAsistencia.Size = new System.Drawing.Size(196, 50);
             this.LblAsistencia.TabIndex = 50;
             this.LblAsistencia.Text = "ASISTENCIA";
             // 
@@ -187,7 +187,7 @@ namespace Campeonato_Polideportivo
             this.LblIdAsistencia.Location = new System.Drawing.Point(300, 498);
             this.LblIdAsistencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblIdAsistencia.Name = "LblIdAsistencia";
-            this.LblIdAsistencia.Size = new System.Drawing.Size(88, 17);
+            this.LblIdAsistencia.Size = new System.Drawing.Size(84, 16);
             this.LblIdAsistencia.TabIndex = 58;
             this.LblIdAsistencia.Text = "ID asistencia";
             // 
@@ -207,7 +207,7 @@ namespace Campeonato_Polideportivo
             this.LblMinuto.Location = new System.Drawing.Point(300, 239);
             this.LblMinuto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblMinuto.Name = "LblMinuto";
-            this.LblMinuto.Size = new System.Drawing.Size(50, 17);
+            this.LblMinuto.Size = new System.Drawing.Size(46, 16);
             this.LblMinuto.TabIndex = 60;
             this.LblMinuto.Text = "Minuto";
             // 
@@ -218,10 +218,17 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAyuda.ForeColor = System.Drawing.Color.Transparent;
+<<<<<<< HEAD
             this.BtnAyuda.Location = new System.Drawing.Point(937, 11);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(46, 39);
+=======
+            this.BtnAyuda.Location = new System.Drawing.Point(810, 33);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(173, 39);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 114;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
