@@ -536,17 +536,17 @@ namespace Campeonato_Polideportivo
             CmbAsistencia.TabIndex = 7;
             TxtDescripcion.TabIndex = 8;
 
-            // Asegurarse de que el DataGridView no reciba el foco con Tab
-            DgvAnotaciones.TabStop = false;
 
-            // Desactivar TabStop para los botones para que no reciban el foco con Tab
-            BtnIngresar.TabStop = false;
-            BtnModificar.TabStop = false;
-            BtnEliminar.TabStop = false;
-            BtnLimpiar.TabStop = false;
-            BtnVer.TabStop = false;
-            BtnTablaMejoresJugs.TabStop = false;
-            BtnAyuda.TabStop = false;
+            BtnIngresar.TabIndex = 9;
+            BtnVer.TabIndex = 10;
+            BtnLimpiar.TabIndex = 11;
+            BtnModificar.TabIndex = 12;
+            BtnEliminar.TabIndex = 13;
+
+            BtnTablaMejoresJugs.TabIndex = 14;
+            BtnAyuda.TabIndex = 15;
+
+            DgvAnotaciones.TabStop = false;
 
 
             // Maximizar la ventana

@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,8 +66,8 @@ namespace Campeonato_Polideportivo
                     {
                         command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
                         command.Parameters.AddWithValue("@temporada", TxtTemporada.Text);
-                        command.Parameters.AddWithValue("@fechainicio", dateTimePickerFechaInicio.Value);
-                        command.Parameters.AddWithValue("@fechafin", dateTimePickerFechafin.Value);
+                        command.Parameters.AddWithValue("@fechainicio", DtpFechaInicio.Value);
+                        command.Parameters.AddWithValue("@fechafin", DtpFechafin.Value);
                         command.Parameters.AddWithValue("@fkiddeporte", fkiddeporte);
 
                         int rowsAffected = command.ExecuteNonQuery();
@@ -128,8 +130,8 @@ namespace Campeonato_Polideportivo
             TxtId.Text = string.Empty;
             TxtNombre.Text = string.Empty;
             TxtTemporada.Text = string.Empty;
-            dateTimePickerFechaInicio.Value = DateTime.Now;
-            dateTimePickerFechafin.Text = string.Empty;
+            DtpFechaInicio.Value = DateTime.Now;
+            DtpFechafin.Text = string.Empty;
             CmbDeporte.Text = "";
             // TxtSexo.Text = string.Empty;
             //PicFotografia.Image = null;
@@ -160,7 +162,7 @@ namespace Campeonato_Polideportivo
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        GridVer.DataSource = dataTable;
+                        DgvTorneo.DataSource = dataTable;
                     }
                 }
                 catch (Exception ex)
@@ -172,11 +174,11 @@ namespace Campeonato_Polideportivo
 
         private void GridVer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            TxtId.Text = GridVer.CurrentRow.Cells[0].Value.ToString();
-            TxtNombre.Text = GridVer.CurrentRow.Cells[1].Value.ToString();
-            TxtTemporada.Text = GridVer.CurrentRow.Cells[2].Value.ToString();
-            dateTimePickerFechaInicio.Text = GridVer.CurrentRow.Cells[3].Value.ToString();
-            dateTimePickerFechafin.Text = GridVer.CurrentRow.Cells[4].Value.ToString();
+            TxtId.Text = DgvTorneo.CurrentRow.Cells[0].Value.ToString();
+            TxtNombre.Text = DgvTorneo.CurrentRow.Cells[1].Value.ToString();
+            TxtTemporada.Text = DgvTorneo.CurrentRow.Cells[2].Value.ToString();
+            DtpFechaInicio.Text = DgvTorneo.CurrentRow.Cells[3].Value.ToString();
+            DtpFechafin.Text = DgvTorneo.CurrentRow.Cells[4].Value.ToString();
             // TxtFechaNacimiento.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
            // CmbDeporte.Text = GridVer.CurrentRow.Cells[5].Value.ToString();
 
@@ -207,8 +209,8 @@ namespace Campeonato_Polideportivo
                         command.Parameters.AddWithValue("@pkidtorneo", TxtId.Text);
                         command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
                         command.Parameters.AddWithValue("@temporada", TxtTemporada.Text);
-                        command.Parameters.AddWithValue("@fechainicio", dateTimePickerFechaInicio.Value);
-                        command.Parameters.AddWithValue("@fechafin", dateTimePickerFechafin.Value);
+                        command.Parameters.AddWithValue("@fechainicio", DtpFechaInicio.Value);
+                        command.Parameters.AddWithValue("@fechafin", DtpFechafin.Value);
                         command.Parameters.AddWithValue("@fkiddeporte", fkiddeporte);
 
                         int rowsAffected = command.ExecuteNonQuery();
@@ -284,6 +286,29 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+
+            TxtNombre.TabIndex = 0;
+            TxtTemporada.TabIndex = 1;
+            DtpFechaInicio.TabIndex = 2;
+            DtpFechafin.TabIndex = 3;
+            CmbDeporte.TabIndex = 4;
+            BtnIngresar.TabIndex = 5;
+            BtnVer.TabIndex = 6;
+            BtnModificar.TabIndex = 7;
+            BtnEliminar.TabIndex = 8;
+            BtnAyuda.TabIndex = 9;
+
+            DgvTorneo.TabStop = false;
+
+            // Configurar DateTimePicker de fecha de inicio
+            DtpFechaInicio.MinDate = DateTime.Today;    
+            //DtpFechaInicio.MaxDate = DateTime.Today.AddYears(1);     
+            // Configurar DateTimePicker de fecha de fin
+            DtpFechafin.MinDate = DateTime.Today;     
+            DtpFechafin.MaxDate = DateTime.Today.AddYears(1); 
+            // Asociar eventos ValueChanged
+            DtpFechaInicio.ValueChanged += DtpFechaInicio_ValueChanged; 
+            DtpFechafin.ValueChanged += DtpFechafin_ValueChanged;
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
@@ -333,6 +358,69 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show($"Error: {ex.Message}");
             }
             limpiar();
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 42;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+        }
+
+        private void DtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            if (DtpFechaInicio.Value < DateTime.Today)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser anterior a hoy.", "Fecha no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning); DtpFechaInicio.Value = DateTime.Today; // Restablecer a la fecha mínima permitida
+                                                                                                                                                                                            }     
+            // Actualizar la fecha mínima del DateTimePicker de fecha de fin asegurándose que
+            //MinDate <= MaxDate
+            DateTime nuevaFechaMin = DtpFechaInicio.Value; 
+            if (nuevaFechaMin > DtpFechafin.MaxDate) { 
+                DtpFechafin.MaxDate = nuevaFechaMin.AddYears(1); 
+            } DtpFechafin.MinDate = nuevaFechaMin;
+
+            }
+
+        private void DtpFechafin_ValueChanged(object sender, EventArgs e)
+        {
+
+
+            if (DtpFechafin.Value > DtpFechaInicio.Value.AddYears(1))
+            {
+                MessageBox.Show("La fecha de fin no puede ser más de un año después de la fecha de inicio.", "Fecha no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                DtpFechafin.Value = DtpFechaInicio.Value.AddYears(1); // Restablecer a la fecha máxima permitida }
+            }
         }
     }
 }

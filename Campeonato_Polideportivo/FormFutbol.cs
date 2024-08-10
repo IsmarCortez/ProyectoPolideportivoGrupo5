@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -1091,6 +1093,75 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+
+            DtpFecha.MinDate = DateTime.Today;
+
+
+            DtpFecha.TabIndex = 0;
+            CmbEstadoPartido.TabIndex = 1;
+            CmbGanadorEmpate.TabIndex = 2;
+            CmbCampeonato.TabIndex = 3;
+            CmbFase.TabIndex = 4;
+            CmbArbitro.TabIndex = 5;
+            CmbEquipoLocal.TabIndex = 6;
+            NudGolesLocal.TabIndex = 7;
+            NudTirosLocal.TabIndex = 8;
+            NudPosesionLocal.TabIndex = 9;
+            CmbEquipoVisitante.TabIndex = 10;
+            NudGolesVisitante.TabIndex = 11;
+            NudTirosVisitante.TabIndex = 12;
+            NudPosesionVisitante.TabIndex = 13;
+            BtnIngresar.TabIndex = 14;
+            BtnVer.TabIndex = 15;
+            BtnModificar.TabIndex = 16;
+            BtnEliminar.TabIndex = 17;
+            BtnClasificacion.TabIndex = 18;
+            BtnAyuda.TabIndex = 19;
+            DgvClasificacion.TabStop = false;
+
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 51;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
+        }
+
+        private void DtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

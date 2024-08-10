@@ -52,7 +52,7 @@ namespace Campeonato_Polideportivo
                 return builder.ToString();
             }
         }
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void BtnRegistrar_Click(object sender, EventArgs e)
         {
             Bitacora bitacora = new Bitacora(connectionString);
             int usuarioId;
@@ -60,11 +60,11 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
 
             // Recoge los datos de los TextBox
-            string usuario = txtUsuario.Text;
-            string contrasenia = txtContrasenia.Text;
-            string correo = txtCorreo.Text;
-            string permiso = cmbPermisos.Text;
-            string confirmar = txtConfirmacion.Text;
+            string usuario = TxtUsuario.Text;
+            string contrasenia = TxtContrasenia.Text;
+            string correo = TxtCorreo.Text;
+            string permiso = CmbPermisos.Text;
+            string confirmar = TxtConfirmacion.Text;
 
             // Definir valores predeterminados para permisos y privilegios
             int fkpermisos = 1;
@@ -133,11 +133,11 @@ namespace Campeonato_Polideportivo
                             cmd.ExecuteNonQuery();
                             bitacora.RegistrarEvento("Creó un nuevo usuario", usuarioId);
                             MessageBox.Show("Usuario insertado exitosamente");
-                            txtUsuario.Text = string.Empty;
-                            txtContrasenia.Text = string.Empty;
-                            txtCorreo.Text = string.Empty;
-                            txtConfirmacion.Text = string.Empty;
-                            cmbPermisos.Text = string.Empty;
+                            TxtUsuario.Text = string.Empty;
+                            TxtContrasenia.Text = string.Empty;
+                            TxtCorreo.Text = string.Empty;
+                            TxtConfirmacion.Text = string.Empty;
+                            CmbPermisos.Text = string.Empty;
                         }
                         else
                         {
@@ -184,10 +184,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvUsuarios.DataSource = dataTable;
+                    DgvUsuarios.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvUsuarios.AutoResizeColumns();
+                    DgvUsuarios.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -204,14 +204,14 @@ namespace Campeonato_Polideportivo
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            txtUsuario.TabIndex = 0;
-            txtContrasenia.TabIndex = 1;
-            txtConfirmacion.TabIndex = 2;
-            txtCorreo.TabIndex = 3;
-            btnRegistrar.TabIndex = 4;
-            BtnVer.TabIndex = 5;
-
-            dgvUsuarios.TabStop = false;
+            TxtUsuario.TabIndex = 0;
+            TxtContrasenia.TabIndex = 1;
+            TxtConfirmacion.TabIndex = 2;
+            TxtCorreo.TabIndex = 3;
+            CmbPermisos.TabIndex = 4;
+            BtnRegistrar.TabIndex = 5;
+            BtnVer.TabIndex = 6;
+            DgvUsuarios.TabStop = false;
         }
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

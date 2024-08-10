@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +83,17 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+
+            CmbLocal.TabIndex = 0;
+            CmbVis.TabIndex = 1;
+            CmbTorneo.TabIndex = 2;
+            BtnIngresar.TabIndex = 3;
+            BtnVer.TabIndex = 4;
+            BtnModificar.TabIndex = 5;
+            BtnEliminar.TabIndex = 6;
+            BtnAyuda.TabIndex = 7;
+
+            DgvPartidosIndividuales.TabStop = false;
         }
 
         private void CargarComboBox(ComboBox comboBox, string query)
@@ -221,10 +234,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    GridVer.DataSource = dataTable;
+                    DgvPartidosIndividuales.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    GridVer.AutoResizeColumns();
+                    DgvPartidosIndividuales.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -236,10 +249,10 @@ namespace Campeonato_Polideportivo
 
         private void GridVer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            TxtId.Text = GridVer.CurrentRow.Cells[0].Value.ToString();
-            CmbLocal.Text = GridVer.CurrentRow.Cells[1].Value.ToString();
-            CmbVis.Text = GridVer.CurrentRow.Cells[2].Value.ToString();
-            CmbTorneo.Text = GridVer.CurrentRow.Cells[3].Value.ToString();
+            TxtId.Text = DgvPartidosIndividuales.CurrentRow.Cells[0].Value.ToString();
+            CmbLocal.Text = DgvPartidosIndividuales.CurrentRow.Cells[1].Value.ToString();
+            CmbVis.Text = DgvPartidosIndividuales.CurrentRow.Cells[2].Value.ToString();
+            CmbTorneo.Text = DgvPartidosIndividuales.CurrentRow.Cells[3].Value.ToString();
 
 
         }
@@ -335,6 +348,43 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show($"Error: {ex.Message}");
             }
             limpiar();
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 47;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
         }
     }
 
