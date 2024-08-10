@@ -69,7 +69,7 @@ namespace Campeonato_Polideportivo
             this.LblCampeonato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblCampeonato.Location = new System.Drawing.Point(357, 22);
             this.LblCampeonato.Name = "LblCampeonato";
-            this.LblCampeonato.Size = new System.Drawing.Size(223, 50);
+            this.LblCampeonato.Size = new System.Drawing.Size(226, 50);
             this.LblCampeonato.TabIndex = 50;
             this.LblCampeonato.Text = "CAMPEONATO";
             // 
@@ -97,7 +97,7 @@ namespace Campeonato_Polideportivo
             this.LblIdCampeonato.AutoSize = true;
             this.LblIdCampeonato.Location = new System.Drawing.Point(51, 129);
             this.LblIdCampeonato.Name = "LblIdCampeonato";
-            this.LblIdCampeonato.Size = new System.Drawing.Size(20, 16);
+            this.LblIdCampeonato.Size = new System.Drawing.Size(21, 17);
             this.LblIdCampeonato.TabIndex = 56;
             this.LblIdCampeonato.Text = "ID";
             this.LblIdCampeonato.Visible = false;
@@ -107,7 +107,7 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(51, 175);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(56, 16);
+            this.LblNombre.Size = new System.Drawing.Size(58, 17);
             this.LblNombre.TabIndex = 57;
             this.LblNombre.Text = "Nombre";
             // 
@@ -116,7 +116,7 @@ namespace Campeonato_Polideportivo
             this.LblTemporada.AutoSize = true;
             this.LblTemporada.Location = new System.Drawing.Point(51, 222);
             this.LblTemporada.Name = "LblTemporada";
-            this.LblTemporada.Size = new System.Drawing.Size(79, 16);
+            this.LblTemporada.Size = new System.Drawing.Size(81, 17);
             this.LblTemporada.TabIndex = 58;
             this.LblTemporada.Text = "Temporada";
             // 
@@ -125,7 +125,7 @@ namespace Campeonato_Polideportivo
             this.LblFechaInicio.AutoSize = true;
             this.LblFechaInicio.Location = new System.Drawing.Point(51, 270);
             this.LblFechaInicio.Name = "LblFechaInicio";
-            this.LblFechaInicio.Size = new System.Drawing.Size(79, 16);
+            this.LblFechaInicio.Size = new System.Drawing.Size(83, 17);
             this.LblFechaInicio.TabIndex = 59;
             this.LblFechaInicio.Text = "Fecha Inicio";
             // 
@@ -134,7 +134,7 @@ namespace Campeonato_Polideportivo
             this.LblFechaFin.AutoSize = true;
             this.LblFechaFin.Location = new System.Drawing.Point(51, 324);
             this.LblFechaFin.Name = "LblFechaFin";
-            this.LblFechaFin.Size = new System.Drawing.Size(66, 16);
+            this.LblFechaFin.Size = new System.Drawing.Size(70, 17);
             this.LblFechaFin.TabIndex = 60;
             this.LblFechaFin.Text = "Fecha Fin";
             // 
@@ -143,7 +143,7 @@ namespace Campeonato_Polideportivo
             this.LblDeporte.AutoSize = true;
             this.LblDeporte.Location = new System.Drawing.Point(51, 383);
             this.LblDeporte.Name = "LblDeporte";
-            this.LblDeporte.Size = new System.Drawing.Size(56, 16);
+            this.LblDeporte.Size = new System.Drawing.Size(59, 17);
             this.LblDeporte.TabIndex = 61;
             this.LblDeporte.Text = "Deporte";
             // 

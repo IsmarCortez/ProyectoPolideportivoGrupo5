@@ -62,11 +62,7 @@ namespace Campeonato_Polideportivo
             this.LblIDTorneo.AutoSize = true;
             this.LblIDTorneo.Location = new System.Drawing.Point(29, 308);
             this.LblIDTorneo.Name = "LblIDTorneo";
-<<<<<<< HEAD
             this.LblIDTorneo.Size = new System.Drawing.Size(75, 17);
-=======
-            this.LblIDTorneo.Size = new System.Drawing.Size(71, 16);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblIDTorneo.TabIndex = 238;
             this.LblIDTorneo.Text = "ID_Torneo";
             // 
@@ -75,11 +71,7 @@ namespace Campeonato_Polideportivo
             this.LblDeportistaVisitante.AutoSize = true;
             this.LblDeportistaVisitante.Location = new System.Drawing.Point(29, 272);
             this.LblDeportistaVisitante.Name = "LblDeportistaVisitante";
-<<<<<<< HEAD
             this.LblDeportistaVisitante.Size = new System.Drawing.Size(131, 17);
-=======
-            this.LblDeportistaVisitante.Size = new System.Drawing.Size(123, 16);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblDeportistaVisitante.TabIndex = 237;
             this.LblDeportistaVisitante.Text = "Deportista Visitante";
             // 
@@ -88,11 +80,7 @@ namespace Campeonato_Polideportivo
             this.LblIDSesion.AutoSize = true;
             this.LblIDSesion.Location = new System.Drawing.Point(29, 207);
             this.LblIDSesion.Name = "LblIDSesion";
-<<<<<<< HEAD
             this.LblIDSesion.Size = new System.Drawing.Size(72, 17);
-=======
-            this.LblIDSesion.Size = new System.Drawing.Size(69, 16);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblIDSesion.TabIndex = 236;
             this.LblIDSesion.Text = "ID_Sesion";
             this.LblIDSesion.Visible = false;
@@ -102,11 +90,7 @@ namespace Campeonato_Polideportivo
             this.LblDeportistaLocal.AutoSize = true;
             this.LblDeportistaLocal.Location = new System.Drawing.Point(29, 241);
             this.LblDeportistaLocal.Name = "LblDeportistaLocal";
-<<<<<<< HEAD
             this.LblDeportistaLocal.Size = new System.Drawing.Size(111, 17);
-=======
-            this.LblDeportistaLocal.Size = new System.Drawing.Size(105, 16);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblDeportistaLocal.TabIndex = 235;
             this.LblDeportistaLocal.Text = "Deportista Local";
             // 
@@ -194,11 +178,7 @@ namespace Campeonato_Polideportivo
             this.LblPartidosIndividual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblPartidosIndividual.Location = new System.Drawing.Point(477, 62);
             this.LblPartidosIndividual.Name = "LblPartidosIndividual";
-<<<<<<< HEAD
             this.LblPartidosIndividual.Size = new System.Drawing.Size(382, 50);
-=======
-            this.LblPartidosIndividual.Size = new System.Drawing.Size(377, 50);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblPartidosIndividual.TabIndex = 229;
             this.LblPartidosIndividual.Text = "PARTIDOS INDIVIDUALES";
             // 
@@ -252,17 +232,10 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-<<<<<<< HEAD
-            this.BtnAyuda.Location = new System.Drawing.Point(948, 11);
+            this.BtnAyuda.Location = new System.Drawing.Point(933, 31);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
-            this.BtnAyuda.Size = new System.Drawing.Size(45, 45);
-=======
-            this.BtnAyuda.Location = new System.Drawing.Point(948, 62);
-            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnAyuda.Name = "BtnAyuda";
-            this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 41);
             this.BtnAyuda.TabIndex = 330;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;

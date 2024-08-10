@@ -30,33 +30,7 @@ namespace Campeonato_Polideportivo
         }
 
         private int ObtenerIdUsuario(string nombreUsuario)
-<<<<<<< HEAD
-=======
         {
-            Conexion conexion = new Conexion();
-            int usuarioId = 0;
-            Bitacora bitacora = new Bitacora(connectionString);
-            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
-
-            using (MySqlConnection conn = conexion.getConexion())
-            {
-                conn.Open();
-                using (var command = new MySqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
-                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
-                }
-            }
-
-            return usuarioId;
-        }
-
-        private void BtnIngresar_Click(object sender, EventArgs e)
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
-        {
-            Bitacora bitacora = new Bitacora(connectionString);
-            int usuarioId;
-            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             int usuarioId = 0;
             Bitacora bitacora = new Bitacora(connectionString);
@@ -195,7 +169,6 @@ namespace Campeonato_Polideportivo
             Bitacora bitacora = new Bitacora(connectionString);
             int usuarioId;
             usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
-<<<<<<< HEAD
             // Verificar si contiene dígitos
             if (TxtNombre.Text.Any(char.IsDigit))
             {
@@ -217,8 +190,6 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show("El sexo no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-=======
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             Conexion conexion = new Conexion();
             try
             {

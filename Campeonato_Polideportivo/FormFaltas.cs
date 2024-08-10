@@ -386,6 +386,7 @@ namespace Campeonato_Polideportivo
             int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
             int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
             int IdArbitro = Convert.ToInt32(CmbArbitro.SelectedValue);
+            CamposVacios();
             //Solo permitie digitos
             if (!Minuto.All(char.IsDigit))
             {
@@ -398,7 +399,6 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show("El texto de descripcion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            CamposVacios();
 
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())

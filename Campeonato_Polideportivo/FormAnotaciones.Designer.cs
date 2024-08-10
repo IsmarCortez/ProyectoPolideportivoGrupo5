@@ -67,21 +67,13 @@ namespace Campeonato_Polideportivo
             // BtnEliminar
             // 
             this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
             this.BtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-=======
-            this.BtnEliminar.BackColor = System.Drawing.Color.LightBlue;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnEliminar.FlatAppearance.BorderSize = 0;
             this.BtnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.BtnEliminar.ForeColor = System.Drawing.Color.White;
-=======
-            this.BtnEliminar.ForeColor = System.Drawing.Color.Black;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnEliminar.Location = new System.Drawing.Point(735, 545);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminar.Name = "BtnEliminar";
@@ -94,21 +86,13 @@ namespace Campeonato_Polideportivo
             // BtnModificar
             // 
             this.BtnModificar.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
             this.BtnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-=======
-            this.BtnModificar.BackColor = System.Drawing.Color.LightBlue;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnModificar.FlatAppearance.BorderSize = 0;
             this.BtnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.BtnModificar.ForeColor = System.Drawing.Color.White;
-=======
-            this.BtnModificar.ForeColor = System.Drawing.Color.Black;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnModificar.Location = new System.Drawing.Point(522, 545);
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnModificar.Name = "BtnModificar";
@@ -121,21 +105,13 @@ namespace Campeonato_Polideportivo
             // BtnIngresar
             // 
             this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
             this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-=======
-            this.BtnIngresar.BackColor = System.Drawing.Color.LightBlue;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnIngresar.FlatAppearance.BorderSize = 0;
             this.BtnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.BtnIngresar.ForeColor = System.Drawing.Color.White;
-=======
-            this.BtnIngresar.ForeColor = System.Drawing.Color.Black;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnIngresar.Location = new System.Drawing.Point(429, 488);
             this.BtnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnIngresar.Name = "BtnIngresar";
@@ -153,7 +129,7 @@ namespace Campeonato_Polideportivo
             this.LblAnotaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblAnotaciones.Location = new System.Drawing.Point(400, 47);
             this.LblAnotaciones.Name = "LblAnotaciones";
-            this.LblAnotaciones.Size = new System.Drawing.Size(226, 50);
+            this.LblAnotaciones.Size = new System.Drawing.Size(229, 50);
             this.LblAnotaciones.TabIndex = 57;
             this.LblAnotaciones.Text = "ANOTACIONES";
             // 
@@ -301,17 +277,10 @@ namespace Campeonato_Polideportivo
             // BtnVer
             // 
             this.BtnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
             this.BtnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVer.ForeColor = System.Drawing.Color.White;
-=======
-            this.BtnVer.BackColor = System.Drawing.Color.LightBlue;
-            this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnVer.ForeColor = System.Drawing.Color.Black;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnVer.Location = new System.Drawing.Point(636, 488);
             this.BtnVer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnVer.Name = "BtnVer";
@@ -324,21 +293,13 @@ namespace Campeonato_Polideportivo
             // BtnLimpiar
             // 
             this.BtnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
             this.BtnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-=======
-            this.BtnLimpiar.BackColor = System.Drawing.Color.LightBlue;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnLimpiar.FlatAppearance.BorderSize = 0;
             this.BtnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLimpiar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.BtnLimpiar.ForeColor = System.Drawing.Color.White;
-=======
-            this.BtnLimpiar.ForeColor = System.Drawing.Color.Black;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnLimpiar.Location = new System.Drawing.Point(838, 485);
             this.BtnLimpiar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnLimpiar.Name = "BtnLimpiar";
@@ -432,17 +393,10 @@ namespace Campeonato_Polideportivo
             // BtnTablaMejoresJugs
             // 
             this.BtnTablaMejoresJugs.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
             this.BtnTablaMejoresJugs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnTablaMejoresJugs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnTablaMejoresJugs.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnTablaMejoresJugs.ForeColor = System.Drawing.Color.White;
-=======
-            this.BtnTablaMejoresJugs.BackColor = System.Drawing.Color.LightBlue;
-            this.BtnTablaMejoresJugs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnTablaMejoresJugs.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnTablaMejoresJugs.ForeColor = System.Drawing.Color.Black;
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnTablaMejoresJugs.Location = new System.Drawing.Point(140, 475);
             this.BtnTablaMejoresJugs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnTablaMejoresJugs.Name = "BtnTablaMejoresJugs";
@@ -476,17 +430,10 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAyuda.ForeColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
             this.BtnAyuda.Location = new System.Drawing.Point(997, 11);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(50, 39);
-=======
-            this.BtnAyuda.Location = new System.Drawing.Point(140, 560);
-            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnAyuda.Name = "BtnAyuda";
-            this.BtnAyuda.Size = new System.Drawing.Size(173, 39);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 113;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
