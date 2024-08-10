@@ -71,10 +71,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -112,10 +112,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -153,10 +153,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -194,10 +194,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -235,10 +235,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -276,10 +276,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -317,10 +317,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -358,10 +358,10 @@ namespace Campeonato_Polideportivo
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -425,7 +425,7 @@ public void ExportarDataGridViewAPdf(DataGridView dataGridView, string nombreArc
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 bitacora.RegistrarEvento("Generó un PDF de una vista", usuarioId);
-                ExportarDataGridViewAPdf(dgvVistas, saveFileDialog.FileName);
+                ExportarDataGridViewAPdf(DgvVistas, saveFileDialog.FileName);
                 MessageBox.Show("Datos exportados correctamente a PDF.", "Exportar a PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -458,10 +458,10 @@ public void ExportarDataGridViewAPdf(DataGridView dataGridView, string nombreArc
                     dataAdapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataGridView
-                    dgvVistas.DataSource = dataTable;
+                    DgvVistas.DataSource = dataTable;
 
                     // Opcional: Ajustar automáticamente el ancho de las columnas
-                    dgvVistas.AutoResizeColumns();
+                    DgvVistas.AutoResizeColumns();
                 }
                 catch (Exception ex)
                 {
@@ -542,6 +542,17 @@ public void ExportarDataGridViewAPdf(DataGridView dataGridView, string nombreArc
                 BtnSuspendido.Visible = false;
                 BtnPerJugador.Visible = false;
             }
+            BtnEquipos.TabIndex = 0;
+            BtnJugador.TabIndex = 1;
+            BtnSuspendido.TabIndex = 2;
+            BtnBitacora.TabIndex = 3;
+            BtnPerJugador.TabIndex = 4;
+            BtnPdf.TabIndex = 5;
+            BtnFutbol.TabIndex = 6;
+            BtnBasket.TabIndex = 7;
+            BtnBaseball.TabIndex = 8;
+            BtnVoleybol.TabIndex = 9;
+            DgvVistas.TabStop = false;
         }
     }
 }

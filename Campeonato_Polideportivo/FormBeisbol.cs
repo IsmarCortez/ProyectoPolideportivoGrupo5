@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -340,6 +342,39 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+
+            DtpFecha.MinDate = DateTime.Today;
+
+            DtpFecha.TabIndex = 0;
+            CmbEstadoPartido.TabIndex = 1;
+            CmbGanadorEmpate.TabIndex = 2;
+            CmbCampeonato.TabIndex = 3;
+            CmbFase.TabIndex = 4;
+            CmbArbitro.TabIndex = 5;
+            CmbEquipoLocal.TabIndex = 6;
+            NudCarrerasLocal.TabIndex = 7;
+            NudHitsLocal.TabIndex = 8;
+            NudErroresLocal.TabIndex = 9;
+            NudHomerunsLocal.TabIndex = 10;
+            NudPonchesLocal.TabIndex = 11;
+            NudBasesRobadasLocal.TabIndex = 12;
+            NudLanzamientosLocal.TabIndex = 13;
+            CmbEquipoVisitante.TabIndex = 14;
+            NudCarrerasVisitante.TabIndex = 15;
+            NudHitsVisitante.TabIndex = 16;
+            NudErroresVisitante.TabIndex = 17;
+            NudHomerunsVisitante.TabIndex = 18;
+            NudPonchesVisitante.TabIndex = 19;
+            NudBasesRobadasVisitante.TabIndex = 20;
+            NudLanzamientosVisitante.TabIndex = 21;
+            BtnIngresar.TabIndex = 22;
+            BtnVer.TabIndex = 23;
+            BtnModificar.TabIndex = 24;
+            BtnEliminar.TabIndex = 25;
+            BtnAyuda.TabIndex = 26;
+            DgvBeisbol.TabStop = false;
+
+
         }
 
         private int ObtenerIdUsuario(string nombreUsuario)
@@ -1107,6 +1142,48 @@ namespace Campeonato_Polideportivo
             catch
             {
             }
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 72;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+        }
+
+        private void DtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

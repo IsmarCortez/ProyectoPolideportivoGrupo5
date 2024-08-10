@@ -217,7 +217,7 @@ namespace Campeonato_Polideportivo
                         adapter.Fill(dt);
 
                         // Asignar el DataTable como el origen de datos del DataGridView
-                        DgwEquipo.DataSource = dt;
+                        DgvEquipo.DataSource = dt;
                     }
                 }
             }
@@ -250,15 +250,15 @@ namespace Campeonato_Polideportivo
             TxtCiudad.TabIndex = 3;
 
             //desactivar dataGridView1
-            DgwEquipo.TabStop = false;
+            DgvEquipo.TabStop = false;
 
             // Desactivar TabStop para los botones para que no reciban el foco con Tab
-            BtnIngresar.TabStop = false;
-            BtnModificar.TabStop = false;
-            BtnEliminar.TabStop = false;
-            BtnLimpiar.TabStop = false;
-            BtnVer.TabStop = false;
-            BtnAyuda.TabStop = false;
+            BtnIngresar.TabIndex = 4;
+            BtnModificar.TabIndex = 5;
+            BtnEliminar.TabIndex = 6;
+            BtnLimpiar.TabIndex = 7;
+            BtnVer.TabIndex = 8;
+            BtnAyuda.TabIndex = 9;
 
 
             // Maximizar la ventana
@@ -310,6 +310,20 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+            
+            TxtIdEquipo.TabIndex = 0;
+            TxtNombreEquipo.TabIndex = 1;
+            TxtEstadio.TabIndex = 2;
+            TxtCiudad.TabIndex = 3;
+
+            BtnIngresar.TabIndex= 4;
+            BtnModificar.TabIndex = 5;
+            BtnEliminar.TabIndex = 6;
+            BtnLimpiar.TabIndex = 7;
+            BtnVer.TabIndex = 8;
+            //desactivar dataGridView1
+            DgvEquipo.TabStop = false;
+
         }
 
         private void TxtIdEquipo_TextChanged(object sender, EventArgs e)
@@ -321,10 +335,10 @@ namespace Campeonato_Polideportivo
         {
             try
             {
-                TxtIdEquipo.Text = DgwEquipo.CurrentRow.Cells[0].Value.ToString();
-                TxtNombreEquipo.Text = DgwEquipo.CurrentRow.Cells[1].Value.ToString();
-                TxtEstadio.Text = DgwEquipo.CurrentRow.Cells[2].Value.ToString();
-                TxtCiudad.Text = DgwEquipo.CurrentRow.Cells[3].Value.ToString();
+                TxtIdEquipo.Text = DgvEquipo.CurrentRow.Cells[0].Value.ToString();
+                TxtNombreEquipo.Text = DgvEquipo.CurrentRow.Cells[1].Value.ToString();
+                TxtEstadio.Text = DgvEquipo.CurrentRow.Cells[2].Value.ToString();
+                TxtCiudad.Text = DgvEquipo.CurrentRow.Cells[3].Value.ToString();
                
             }
             catch

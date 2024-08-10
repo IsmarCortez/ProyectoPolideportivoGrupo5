@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,7 +176,7 @@ namespace Campeonato_Polideportivo
                         adapter.Fill(dt);
 
                         // Asignar el DataTable como el origen de datos del DataGridView
-                        DgwCampeonato.DataSource = dt;
+                        DgvCampeonato.DataSource = dt;
                     }
                 }
 
@@ -268,12 +270,12 @@ namespace Campeonato_Polideportivo
         {
             try
             {
-                TxtIdCampeonato.Text = DgwCampeonato.CurrentRow.Cells[0].Value.ToString();
-                TxtNombre.Text = DgwCampeonato.CurrentRow.Cells[1].Value.ToString();
-                TxtTemporada.Text = DgwCampeonato.CurrentRow.Cells[2].Value.ToString();
-                DtpFechaInicio.Text = DgwCampeonato.CurrentRow.Cells[3].Value.ToString();
-                DtpFechaFin.Text = DgwCampeonato.CurrentRow.Cells[4].Value.ToString();
-                CmbDeporte.Text = DgwCampeonato.CurrentRow.Cells[5].Value.ToString();
+                TxtIdCampeonato.Text = DgvCampeonato.CurrentRow.Cells[0].Value.ToString();
+                TxtNombre.Text = DgvCampeonato.CurrentRow.Cells[1].Value.ToString();
+                TxtTemporada.Text = DgvCampeonato.CurrentRow.Cells[2].Value.ToString();
+                DtpFechaInicio.Text = DgvCampeonato.CurrentRow.Cells[3].Value.ToString();
+                DtpFechaFin.Text = DgvCampeonato.CurrentRow.Cells[4].Value.ToString();
+                CmbDeporte.Text = DgvCampeonato.CurrentRow.Cells[5].Value.ToString();
             }
             catch
             {
@@ -388,6 +390,55 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = false;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+            }
+
+            TxtNombre.TabIndex = 0;
+            TxtTemporada.TabIndex = 1;
+            DtpFechaInicio.TabIndex = 2;
+            DtpFechaFin.TabIndex = 3;
+            CmbDeporte.TabIndex = 4;
+            BtnIngresar.TabIndex = 5;
+            BtnVer.TabIndex = 6;
+            BtnModificar.TabIndex = 7;
+            BtnEliminar.TabIndex = 8;
+            BtnAyuda.TabIndex = 9;
+            DgvCampeonato.TabStop = false;
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 33;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
             }
         }
     }

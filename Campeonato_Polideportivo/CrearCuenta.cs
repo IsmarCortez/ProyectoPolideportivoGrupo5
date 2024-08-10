@@ -35,16 +35,16 @@ namespace Campeonato_Polideportivo
                 return builder.ToString();
             }
         }
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void BtnRegistrar_Click(object sender, EventArgs e)
         {
             // Crea una nueva instancia de la clase Conexion
             Conexion conexion = new Conexion();
 
             // Recoge los datos de los TextBox
-            string usuario = txtUsuario.Text;
-            string contrasenia = txtContrasenia.Text;
-            string correo = txtCorreo.Text;
-            string confirmacion = txtConfirmacion.Text;
+            string usuario = TxtUsuario.Text;
+            string contrasenia = TxtContrasenia.Text;
+            string correo = TxtCorreo.Text;
+            string confirmacion = TxtConfirmacion.Text;
 
             // Usa la conexión dentro de un bloque using
             using (MySqlConnection conn = conexion.getConexion())
@@ -85,15 +85,15 @@ namespace Campeonato_Polideportivo
 
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Usuario insertado exitosamente");
-                            txtConfirmacion.Text = string.Empty;
-                            txtUsuario.Text = string.Empty;
-                            txtContrasenia.Text = string.Empty;
-                            txtCorreo.Text = string.Empty;
+                            TxtConfirmacion.Text = string.Empty;
+                            TxtUsuario.Text = string.Empty;
+                            TxtContrasenia.Text = string.Empty;
+                            TxtCorreo.Text = string.Empty;
                         }
                         else
                         {
                             MessageBox.Show("Las contraseñas no coiciden intentelo nuevamente");
-                            txtConfirmacion.Text = string.Empty;
+                            TxtConfirmacion.Text = string.Empty;
                         }
                     }
                 }
@@ -105,14 +105,18 @@ namespace Campeonato_Polideportivo
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void CrearCuenta_Load(object sender, EventArgs e)
         {
-
+            TxtUsuario.TabIndex = 0;
+            TxtContrasenia.TabIndex = 1;
+            TxtConfirmacion.TabIndex = 2;
+            TxtCorreo.TabIndex = 3;
+            BtnRegistrar.TabIndex = 4;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -22,6 +23,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
+
         }
 
         private void CargarEquipos()
@@ -86,7 +88,7 @@ namespace Campeonato_Polideportivo
             int fkidequipo;
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))
             {
-                DateTime fechaNacimiento = TxtFecha.Value;
+                DateTime fechaNacimiento = DtpFechaNacimiento.Value;
 
                 Conexion conexion = new Conexion();
 
@@ -162,7 +164,7 @@ namespace Campeonato_Polideportivo
             int fkidequipo;
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))
             {
-                DateTime fechaNacimiento = TxtFecha.Value;
+                DateTime fechaNacimiento = DtpFechaNacimiento.Value;
 
                 Conexion conexion = new Conexion();
                 MySqlConnection conn = conexion.getConexion();
@@ -312,7 +314,7 @@ namespace Campeonato_Polideportivo
                         TxtNacionalidad.Text = row["nacionalidad"].ToString();
                         TxtTitular.Text = row["titular"].ToString();
                         TxtGoles.Text = row["cantanotaciones"].ToString();
-                        TxtFecha.Value = Convert.ToDateTime(row["fechanacimiento"]);
+                        DtpFechaNacimiento.Value = Convert.ToDateTime(row["fechanacimiento"]);
 
                         if (row["fotografia"] != DBNull.Value)
                         {
@@ -327,7 +329,7 @@ namespace Campeonato_Polideportivo
                             PicFotografia.Image = null;
                         }
                     }
-                    GridVer.DataSource = dt;
+                    DgvFutbolista.DataSource = dt;
                 }
                 else
                 {
@@ -394,19 +396,19 @@ namespace Campeonato_Polideportivo
         {
             try
             {
-                TxtId.Text = GridVer.CurrentRow.Cells[0].Value.ToString();
-                TxtNombre.Text = GridVer.CurrentRow.Cells[1].Value.ToString();
-                TxtApellido.Text = GridVer.CurrentRow.Cells[2].Value.ToString();
-                TxtPosicion.Text = GridVer.CurrentRow.Cells[3].Value.ToString();
-                TxtNumero.Text = GridVer.CurrentRow.Cells[4].Value.ToString();
-                TxtNacionalidad.Text = GridVer.CurrentRow.Cells[5].Value.ToString();
-                TxtTitular.Text = GridVer.CurrentRow.Cells[6].Value.ToString();
-                TxtGoles.Text = GridVer.CurrentRow.Cells[7].Value.ToString();
-                TxtFecha.Text = GridVer.CurrentRow.Cells[8].Value.ToString();
+                TxtId.Text = DgvFutbolista.CurrentRow.Cells[0].Value.ToString();
+                TxtNombre.Text = DgvFutbolista.CurrentRow.Cells[1].Value.ToString();
+                TxtApellido.Text = DgvFutbolista.CurrentRow.Cells[2].Value.ToString();
+                TxtPosicion.Text = DgvFutbolista.CurrentRow.Cells[3].Value.ToString();
+                TxtNumero.Text = DgvFutbolista.CurrentRow.Cells[4].Value.ToString();
+                TxtNacionalidad.Text = DgvFutbolista.CurrentRow.Cells[5].Value.ToString();
+                TxtTitular.Text = DgvFutbolista.CurrentRow.Cells[6].Value.ToString();
+                TxtGoles.Text = DgvFutbolista.CurrentRow.Cells[7].Value.ToString();
+                DtpFechaNacimiento.Text = DgvFutbolista.CurrentRow.Cells[8].Value.ToString();
                 PicFotografia.SizeMode = PictureBoxSizeMode.Zoom;
-                if (e.RowIndex >= 0 && GridVer.Columns.Contains("fotografia"))
+                if (e.RowIndex >= 0 && DgvFutbolista.Columns.Contains("fotografia"))
                 {
-                    DataGridViewRow row = GridVer.Rows[e.RowIndex];
+                    DataGridViewRow row = DgvFutbolista.Rows[e.RowIndex];
                     if (row.Cells["fotografia"].Value != DBNull.Value)
                     {
                         byte[] imageBytes = (byte[])row.Cells["fotografia"].Value;
@@ -495,6 +497,73 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+
+            CmbEquipo.TabIndex = 0;
+            TxtNombre.TabIndex = 1;
+            TxtApellido.TabIndex = 2;
+            DtpFechaNacimiento.TabIndex = 3;
+            TxtPosicion.TabIndex = 4;
+            TxtNumero.TabIndex = 5;
+            TxtNacionalidad.TabIndex = 6;
+            TxtTitular.TabIndex = 7;
+            BtnSeleccionarFoto.TabIndex = 8;
+            TxtGoles.TabIndex = 9;
+            BtnIngresar.TabIndex = 10;
+            BtnVer.TabIndex = 11;
+            BtnModificar.TabIndex = 12;
+            BtnEliminar.TabIndex = 13;
+            BtnAyuda.TabIndex = 14;
+
+            DgvFutbolista.TabStop = false;
+
+            // DateTimePicker para la fecha de nacimiento
+            DtpFechaNacimiento.MaxDate = DateTime.Today.AddYears(-18); // Máximo 18 años antes de hoy
+            DtpFechaNacimiento.MinDate = DateTime.Today.AddYears(-80); // Mínimo 80 años antes de hoy
+            DtpFechaNacimiento.ValueChanged += DtpFechaNacimiento_ValueChanged;
+
+
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 16;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+        }
+
+        private void DtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = DtpFechaNacimiento.Value; DateTime minDate = DateTime.Today.AddYears(-80); DateTime maxDate = DateTime.Today.AddYears(-18); if (selectedDate < minDate || selectedDate > maxDate) { MessageBox.Show("Por favor, seleccione una fecha de nacimiento que esté dentro de los últimos 18 a 80 años.", "Fecha de nacimiento fuera de rango", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
     }
 }

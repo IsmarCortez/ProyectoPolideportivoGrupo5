@@ -34,11 +34,11 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.CmbEquipo = new System.Windows.Forms.ComboBox();
             this.LblEntrenador = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DgvEntrenador = new System.Windows.Forms.DataGridView();
             this.BtnVer = new System.Windows.Forms.Button();
             this.LblNombre = new System.Windows.Forms.Label();
             this.LblApellido = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblFechaNacimiento = new System.Windows.Forms.Label();
             this.LblNacionalidad = new System.Windows.Forms.Label();
             this.LblEquipo = new System.Windows.Forms.Label();
             this.TxtNombre = new System.Windows.Forms.TextBox();
@@ -47,7 +47,8 @@ namespace Campeonato_Polideportivo
             this.LblIdEntrenador = new System.Windows.Forms.Label();
             this.TxtID = new System.Windows.Forms.TextBox();
             this.DtpEntrenador = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.BtnAyuda = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvEntrenador)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnEliminar
@@ -122,27 +123,27 @@ namespace Campeonato_Polideportivo
             this.LblEntrenador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblEntrenador.Location = new System.Drawing.Point(381, 51);
             this.LblEntrenador.Name = "LblEntrenador";
-            this.LblEntrenador.Size = new System.Drawing.Size(216, 50);
+            this.LblEntrenador.Size = new System.Drawing.Size(213, 50);
             this.LblEntrenador.TabIndex = 36;
             this.LblEntrenador.Text = "ENTRENADOR";
             // 
-            // dataGridView1
+            // DgvEntrenador
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvEntrenador.AllowUserToAddRows = false;
+            this.DgvEntrenador.AllowUserToDeleteRows = false;
+            this.DgvEntrenador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(445, 133);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(538, 367);
-            this.dataGridView1.TabIndex = 35;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.DgvEntrenador.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvEntrenador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvEntrenador.Location = new System.Drawing.Point(445, 133);
+            this.DgvEntrenador.Name = "DgvEntrenador";
+            this.DgvEntrenador.ReadOnly = true;
+            this.DgvEntrenador.RowHeadersWidth = 51;
+            this.DgvEntrenador.RowTemplate.Height = 24;
+            this.DgvEntrenador.Size = new System.Drawing.Size(538, 367);
+            this.DgvEntrenador.TabIndex = 35;
+            this.DgvEntrenador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // BtnVer
             // 
@@ -167,7 +168,7 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(62, 133);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(58, 17);
+            this.LblNombre.Size = new System.Drawing.Size(56, 16);
             this.LblNombre.TabIndex = 43;
             this.LblNombre.Text = "Nombre";
             // 
@@ -176,25 +177,25 @@ namespace Campeonato_Polideportivo
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(62, 201);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(58, 17);
+            this.LblApellido.Size = new System.Drawing.Size(57, 16);
             this.LblApellido.TabIndex = 44;
             this.LblApellido.Text = "Apellido";
             // 
-            // label3
+            // LblFechaNacimiento
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 265);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 17);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "Fecha de Nacimiento";
+            this.LblFechaNacimiento.AutoSize = true;
+            this.LblFechaNacimiento.Location = new System.Drawing.Point(12, 265);
+            this.LblFechaNacimiento.Name = "LblFechaNacimiento";
+            this.LblFechaNacimiento.Size = new System.Drawing.Size(135, 16);
+            this.LblFechaNacimiento.TabIndex = 45;
+            this.LblFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
             // LblNacionalidad
             // 
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(30, 323);
             this.LblNacionalidad.Name = "LblNacionalidad";
-            this.LblNacionalidad.Size = new System.Drawing.Size(90, 17);
+            this.LblNacionalidad.Size = new System.Drawing.Size(88, 16);
             this.LblNacionalidad.TabIndex = 46;
             this.LblNacionalidad.Text = "Nacionalidad";
             // 
@@ -203,7 +204,7 @@ namespace Campeonato_Polideportivo
             this.LblEquipo.AutoSize = true;
             this.LblEquipo.Location = new System.Drawing.Point(55, 387);
             this.LblEquipo.Name = "LblEquipo";
-            this.LblEquipo.Size = new System.Drawing.Size(52, 17);
+            this.LblEquipo.Size = new System.Drawing.Size(50, 16);
             this.LblEquipo.TabIndex = 47;
             this.LblEquipo.Text = "Equipo";
             // 
@@ -233,9 +234,10 @@ namespace Campeonato_Polideportivo
             this.LblIdEntrenador.AutoSize = true;
             this.LblIdEntrenador.Location = new System.Drawing.Point(30, 82);
             this.LblIdEntrenador.Name = "LblIdEntrenador";
-            this.LblIdEntrenador.Size = new System.Drawing.Size(96, 17);
+            this.LblIdEntrenador.Size = new System.Drawing.Size(89, 16);
             this.LblIdEntrenador.TabIndex = 52;
             this.LblIdEntrenador.Text = "ID Entrenador";
+            this.LblIdEntrenador.Visible = false;
             // 
             // TxtID
             // 
@@ -244,6 +246,7 @@ namespace Campeonato_Polideportivo
             this.TxtID.Name = "TxtID";
             this.TxtID.Size = new System.Drawing.Size(100, 22);
             this.TxtID.TabIndex = 53;
+            this.TxtID.Visible = false;
             // 
             // DtpEntrenador
             // 
@@ -252,11 +255,28 @@ namespace Campeonato_Polideportivo
             this.DtpEntrenador.Size = new System.Drawing.Size(263, 22);
             this.DtpEntrenador.TabIndex = 54;
             // 
+            // BtnAyuda
+            // 
+            this.BtnAyuda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
+            this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnAyuda.Location = new System.Drawing.Point(926, 51);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
+            this.BtnAyuda.TabIndex = 325;
+            this.BtnAyuda.Text = "?";
+            this.BtnAyuda.UseVisualStyleBackColor = false;
+            this.BtnAyuda.Click += new System.EventHandler(this.BtnAyuda_Click);
+            // 
             // FormEntrenador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 653);
+            this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.DtpEntrenador);
             this.Controls.Add(this.TxtID);
             this.Controls.Add(this.LblIdEntrenador);
@@ -265,7 +285,7 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.TxtNombre);
             this.Controls.Add(this.LblEquipo);
             this.Controls.Add(this.LblNacionalidad);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LblFechaNacimiento);
             this.Controls.Add(this.LblApellido);
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.BtnVer);
@@ -274,11 +294,11 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.BtnIngresar);
             this.Controls.Add(this.CmbEquipo);
             this.Controls.Add(this.LblEntrenador);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DgvEntrenador);
             this.Name = "FormEntrenador";
             this.Text = "FormEntrenador";
             this.Load += new System.EventHandler(this.FormEntrenador_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvEntrenador)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,11 +311,11 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.ComboBox CmbEquipo;
         private System.Windows.Forms.Label LblEntrenador;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DgvEntrenador;
         private System.Windows.Forms.Button BtnVer;
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.Label LblApellido;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblFechaNacimiento;
         private System.Windows.Forms.Label LblNacionalidad;
         private System.Windows.Forms.Label LblEquipo;
         private System.Windows.Forms.TextBox TxtNombre;
@@ -304,5 +324,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Label LblIdEntrenador;
         private System.Windows.Forms.TextBox TxtID;
         private System.Windows.Forms.DateTimePicker DtpEntrenador;
+        private System.Windows.Forms.Button BtnAyuda;
     }
 }

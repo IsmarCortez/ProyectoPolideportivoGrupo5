@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -218,11 +219,11 @@ namespace Campeonato_Polideportivo
         {
             try
             {
-                TxtId.Text = DgwArbitro.CurrentRow.Cells[0].Value.ToString();
-                TxtNombre.Text = DgwArbitro.CurrentRow.Cells[1].Value.ToString();
-                TxtApellido.Text = DgwArbitro.CurrentRow.Cells[2].Value.ToString();
-                DtpFechaNacimiento.Text = DgwArbitro.CurrentRow.Cells[3].Value.ToString();
-                TxtNacionalidad.Text = DgwArbitro.CurrentRow.Cells[4].Value.ToString();
+                TxtId.Text = DgvArbitro.CurrentRow.Cells[0].Value.ToString();
+                TxtNombre.Text = DgvArbitro.CurrentRow.Cells[1].Value.ToString();
+                TxtApellido.Text = DgvArbitro.CurrentRow.Cells[2].Value.ToString();
+                DtpFechaNacimiento.Text = DgvArbitro.CurrentRow.Cells[3].Value.ToString();
+                TxtNacionalidad.Text = DgvArbitro.CurrentRow.Cells[4].Value.ToString();
             }
             catch
             {
@@ -249,7 +250,7 @@ namespace Campeonato_Polideportivo
                     adapter.Fill(dt);
 
                     // Asignar el DataTable como el origen de datos del DataGridView
-                    DgwArbitro.DataSource = dt;
+                    DgvArbitro.DataSource = dt;
                 }
             }
 
@@ -309,6 +310,55 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+            TxtNombre.TabIndex = 0;
+            TxtApellido.TabIndex = 1;
+            DtpFechaNacimiento.TabIndex = 2;
+            TxtNacionalidad.TabIndex = 3;
+            BtnIngresar.TabIndex = 4;
+            BtnVer.TabIndex = 5;
+            BtnModificar.TabIndex = 6;
+            BtnEliminar.TabIndex = 7;
+            BtnAyuda.TabIndex = 8;
+            DgvArbitro.TabStop = false;
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 28;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
 
         }
     }

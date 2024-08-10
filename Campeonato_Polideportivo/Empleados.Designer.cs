@@ -30,29 +30,29 @@ namespace Campeonato_Polideportivo
         private void InitializeComponent()
         {
             this.LblCampeonato = new System.Windows.Forms.Label();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblApellido = new System.Windows.Forms.Label();
-            this.lblPuesto = new System.Windows.Forms.Label();
-            this.lblIdUsuario = new System.Windows.Forms.Label();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.cmbPuesto = new System.Windows.Forms.ComboBox();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblCalle = new System.Windows.Forms.Label();
-            this.lblAvenida = new System.Windows.Forms.Label();
-            this.lblZona = new System.Windows.Forms.Label();
-            this.lblDepartamento = new System.Windows.Forms.Label();
-            this.lblCodPostal = new System.Windows.Forms.Label();
-            this.lblNumCasa = new System.Windows.Forms.Label();
-            this.txtCalle = new System.Windows.Forms.TextBox();
-            this.txtAvenida = new System.Windows.Forms.TextBox();
-            this.txtZona = new System.Windows.Forms.TextBox();
-            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
-            this.txtCodPostal = new System.Windows.Forms.TextBox();
-            this.txtNumCasa = new System.Windows.Forms.TextBox();
-            this.btnIngresar = new System.Windows.Forms.Button();
+            this.LblNombre = new System.Windows.Forms.Label();
+            this.LblApellido = new System.Windows.Forms.Label();
+            this.LblPuesto = new System.Windows.Forms.Label();
+            this.LblIdUsuario = new System.Windows.Forms.Label();
+            this.LblTelefono = new System.Windows.Forms.Label();
+            this.TxtNombre = new System.Windows.Forms.TextBox();
+            this.TxtApellido = new System.Windows.Forms.TextBox();
+            this.CmbPuesto = new System.Windows.Forms.ComboBox();
+            this.TxtUsuario = new System.Windows.Forms.TextBox();
+            this.TxtTelefono = new System.Windows.Forms.TextBox();
+            this.LblCalle = new System.Windows.Forms.Label();
+            this.LblAvenida = new System.Windows.Forms.Label();
+            this.LblZona = new System.Windows.Forms.Label();
+            this.LblDepartamento = new System.Windows.Forms.Label();
+            this.LblCodPostal = new System.Windows.Forms.Label();
+            this.LblNumCasa = new System.Windows.Forms.Label();
+            this.TxtCalle = new System.Windows.Forms.TextBox();
+            this.TxtAvenida = new System.Windows.Forms.TextBox();
+            this.TxtZona = new System.Windows.Forms.TextBox();
+            this.CmbDepartamento = new System.Windows.Forms.ComboBox();
+            this.TxtCodPostal = new System.Windows.Forms.TextBox();
+            this.TxtNumCasa = new System.Windows.Forms.TextBox();
+            this.BtnIngresar = new System.Windows.Forms.Button();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.BtnVer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
@@ -64,196 +64,214 @@ namespace Campeonato_Polideportivo
             this.LblCampeonato.AutoSize = true;
             this.LblCampeonato.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCampeonato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.LblCampeonato.Location = new System.Drawing.Point(284, 34);
-            this.LblCampeonato.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblCampeonato.Location = new System.Drawing.Point(379, 42);
             this.LblCampeonato.Name = "LblCampeonato";
-            this.LblCampeonato.Size = new System.Drawing.Size(231, 40);
+            this.LblCampeonato.Size = new System.Drawing.Size(281, 50);
             this.LblCampeonato.TabIndex = 52;
             this.LblCampeonato.Text = "NUEVO EMPLEADO";
             // 
-            // lblNombre
+            // LblNombre
             // 
-            this.lblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(28, 105);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(47, 13);
-            this.lblNombre.TabIndex = 79;
-            this.lblNombre.Text = "Nombre:";
+            this.LblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblNombre.AutoSize = true;
+            this.LblNombre.Location = new System.Drawing.Point(37, 129);
+            this.LblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblNombre.Name = "LblNombre";
+            this.LblNombre.Size = new System.Drawing.Size(59, 16);
+            this.LblNombre.TabIndex = 79;
+            this.LblNombre.Text = "Nombre:";
             // 
-            // lblApellido
+            // LblApellido
             // 
-            this.lblApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(28, 140);
-            this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(47, 13);
-            this.lblApellido.TabIndex = 80;
-            this.lblApellido.Text = "Apellido:";
+            this.LblApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblApellido.AutoSize = true;
+            this.LblApellido.Location = new System.Drawing.Point(37, 172);
+            this.LblApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblApellido.Name = "LblApellido";
+            this.LblApellido.Size = new System.Drawing.Size(60, 16);
+            this.LblApellido.TabIndex = 80;
+            this.LblApellido.Text = "Apellido:";
             // 
-            // lblPuesto
+            // LblPuesto
             // 
-            this.lblPuesto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblPuesto.AutoSize = true;
-            this.lblPuesto.Location = new System.Drawing.Point(28, 180);
-            this.lblPuesto.Name = "lblPuesto";
-            this.lblPuesto.Size = new System.Drawing.Size(43, 13);
-            this.lblPuesto.TabIndex = 81;
-            this.lblPuesto.Text = "Puesto:";
+            this.LblPuesto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblPuesto.AutoSize = true;
+            this.LblPuesto.Location = new System.Drawing.Point(37, 222);
+            this.LblPuesto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblPuesto.Name = "LblPuesto";
+            this.LblPuesto.Size = new System.Drawing.Size(52, 16);
+            this.LblPuesto.TabIndex = 81;
+            this.LblPuesto.Text = "Puesto:";
             // 
-            // lblIdUsuario
+            // LblIdUsuario
             // 
-            this.lblIdUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblIdUsuario.AutoSize = true;
-            this.lblIdUsuario.Location = new System.Drawing.Point(28, 214);
-            this.lblIdUsuario.Name = "lblIdUsuario";
-            this.lblIdUsuario.Size = new System.Drawing.Size(100, 13);
-            this.lblIdUsuario.TabIndex = 82;
-            this.lblIdUsuario.Text = "Usuario encargado:";
+            this.LblIdUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblIdUsuario.AutoSize = true;
+            this.LblIdUsuario.Location = new System.Drawing.Point(37, 263);
+            this.LblIdUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblIdUsuario.Name = "LblIdUsuario";
+            this.LblIdUsuario.Size = new System.Drawing.Size(126, 16);
+            this.LblIdUsuario.TabIndex = 82;
+            this.LblIdUsuario.Text = "Usuario encargado:";
             // 
-            // lblTelefono
+            // LblTelefono
             // 
-            this.lblTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(28, 245);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(52, 13);
-            this.lblTelefono.TabIndex = 83;
-            this.lblTelefono.Text = "Teléfono:";
+            this.LblTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblTelefono.AutoSize = true;
+            this.LblTelefono.Location = new System.Drawing.Point(37, 302);
+            this.LblTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblTelefono.Name = "LblTelefono";
+            this.LblTelefono.Size = new System.Drawing.Size(64, 16);
+            this.LblTelefono.TabIndex = 83;
+            this.LblTelefono.Text = "Teléfono:";
             // 
-            // txtNombre
+            // TxtNombre
             // 
-            this.txtNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNombre.Location = new System.Drawing.Point(157, 102);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(227, 20);
-            this.txtNombre.TabIndex = 85;
+            this.TxtNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtNombre.Location = new System.Drawing.Point(209, 126);
+            this.TxtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNombre.Name = "TxtNombre";
+            this.TxtNombre.Size = new System.Drawing.Size(301, 22);
+            this.TxtNombre.TabIndex = 85;
             // 
-            // txtApellido
+            // TxtApellido
             // 
-            this.txtApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtApellido.Location = new System.Drawing.Point(157, 137);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(227, 20);
-            this.txtApellido.TabIndex = 86;
+            this.TxtApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtApellido.Location = new System.Drawing.Point(209, 169);
+            this.TxtApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtApellido.Name = "TxtApellido";
+            this.TxtApellido.Size = new System.Drawing.Size(301, 22);
+            this.TxtApellido.TabIndex = 86;
             // 
-            // cmbPuesto
+            // CmbPuesto
             // 
-            this.cmbPuesto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbPuesto.FormattingEnabled = true;
-            this.cmbPuesto.Items.AddRange(new object[] {
+            this.CmbPuesto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CmbPuesto.FormattingEnabled = true;
+            this.CmbPuesto.Items.AddRange(new object[] {
             "Administrador",
             "Gerente"});
-            this.cmbPuesto.Location = new System.Drawing.Point(157, 177);
-            this.cmbPuesto.Name = "cmbPuesto";
-            this.cmbPuesto.Size = new System.Drawing.Size(227, 21);
-            this.cmbPuesto.TabIndex = 87;
+            this.CmbPuesto.Location = new System.Drawing.Point(209, 218);
+            this.CmbPuesto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbPuesto.Name = "CmbPuesto";
+            this.CmbPuesto.Size = new System.Drawing.Size(301, 24);
+            this.CmbPuesto.TabIndex = 87;
             // 
-            // txtUsuario
+            // TxtUsuario
             // 
-            this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtUsuario.Location = new System.Drawing.Point(157, 211);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(227, 20);
-            this.txtUsuario.TabIndex = 88;
+            this.TxtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtUsuario.Location = new System.Drawing.Point(209, 260);
+            this.TxtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtUsuario.Name = "TxtUsuario";
+            this.TxtUsuario.Size = new System.Drawing.Size(301, 22);
+            this.TxtUsuario.TabIndex = 88;
             // 
-            // txtTelefono
+            // TxtTelefono
             // 
-            this.txtTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTelefono.Location = new System.Drawing.Point(157, 242);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(227, 20);
-            this.txtTelefono.TabIndex = 89;
+            this.TxtTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtTelefono.Location = new System.Drawing.Point(209, 298);
+            this.TxtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtTelefono.Name = "TxtTelefono";
+            this.TxtTelefono.Size = new System.Drawing.Size(301, 22);
+            this.TxtTelefono.TabIndex = 89;
             // 
-            // lblCalle
+            // LblCalle
             // 
-            this.lblCalle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCalle.AutoSize = true;
-            this.lblCalle.Location = new System.Drawing.Point(415, 102);
-            this.lblCalle.Name = "lblCalle";
-            this.lblCalle.Size = new System.Drawing.Size(33, 13);
-            this.lblCalle.TabIndex = 90;
-            this.lblCalle.Text = "Calle:";
+            this.LblCalle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblCalle.AutoSize = true;
+            this.LblCalle.Location = new System.Drawing.Point(553, 126);
+            this.LblCalle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblCalle.Name = "LblCalle";
+            this.LblCalle.Size = new System.Drawing.Size(41, 16);
+            this.LblCalle.TabIndex = 90;
+            this.LblCalle.Text = "Calle:";
             // 
-            // lblAvenida
+            // LblAvenida
             // 
-            this.lblAvenida.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAvenida.AutoSize = true;
-            this.lblAvenida.Location = new System.Drawing.Point(415, 133);
-            this.lblAvenida.Name = "lblAvenida";
-            this.lblAvenida.Size = new System.Drawing.Size(49, 13);
-            this.lblAvenida.TabIndex = 91;
-            this.lblAvenida.Text = "Avenida:";
+            this.LblAvenida.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblAvenida.AutoSize = true;
+            this.LblAvenida.Location = new System.Drawing.Point(553, 164);
+            this.LblAvenida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblAvenida.Name = "LblAvenida";
+            this.LblAvenida.Size = new System.Drawing.Size(60, 16);
+            this.LblAvenida.TabIndex = 91;
+            this.LblAvenida.Text = "Avenida:";
             // 
-            // lblZona
+            // LblZona
             // 
-            this.lblZona.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblZona.AutoSize = true;
-            this.lblZona.Location = new System.Drawing.Point(415, 168);
-            this.lblZona.Name = "lblZona";
-            this.lblZona.Size = new System.Drawing.Size(35, 13);
-            this.lblZona.TabIndex = 92;
-            this.lblZona.Text = "Zona:";
+            this.LblZona.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblZona.AutoSize = true;
+            this.LblZona.Location = new System.Drawing.Point(553, 207);
+            this.LblZona.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblZona.Name = "LblZona";
+            this.LblZona.Size = new System.Drawing.Size(41, 16);
+            this.LblZona.TabIndex = 92;
+            this.LblZona.Text = "Zona:";
             // 
-            // lblDepartamento
+            // LblDepartamento
             // 
-            this.lblDepartamento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDepartamento.AutoSize = true;
-            this.lblDepartamento.Location = new System.Drawing.Point(415, 208);
-            this.lblDepartamento.Name = "lblDepartamento";
-            this.lblDepartamento.Size = new System.Drawing.Size(77, 13);
-            this.lblDepartamento.TabIndex = 93;
-            this.lblDepartamento.Text = "Departamento:";
+            this.LblDepartamento.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblDepartamento.AutoSize = true;
+            this.LblDepartamento.Location = new System.Drawing.Point(553, 256);
+            this.LblDepartamento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblDepartamento.Name = "LblDepartamento";
+            this.LblDepartamento.Size = new System.Drawing.Size(96, 16);
+            this.LblDepartamento.TabIndex = 93;
+            this.LblDepartamento.Text = "Departamento:";
             // 
-            // lblCodPostal
+            // LblCodPostal
             // 
-            this.lblCodPostal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCodPostal.AutoSize = true;
-            this.lblCodPostal.Location = new System.Drawing.Point(415, 242);
-            this.lblCodPostal.Name = "lblCodPostal";
-            this.lblCodPostal.Size = new System.Drawing.Size(74, 13);
-            this.lblCodPostal.TabIndex = 94;
-            this.lblCodPostal.Text = "Código postal:";
+            this.LblCodPostal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblCodPostal.AutoSize = true;
+            this.LblCodPostal.Location = new System.Drawing.Point(553, 298);
+            this.LblCodPostal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblCodPostal.Name = "LblCodPostal";
+            this.LblCodPostal.Size = new System.Drawing.Size(94, 16);
+            this.LblCodPostal.TabIndex = 94;
+            this.LblCodPostal.Text = "Código postal:";
             // 
-            // lblNumCasa
+            // LblNumCasa
             // 
-            this.lblNumCasa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNumCasa.AutoSize = true;
-            this.lblNumCasa.Location = new System.Drawing.Point(415, 273);
-            this.lblNumCasa.Name = "lblNumCasa";
-            this.lblNumCasa.Size = new System.Drawing.Size(89, 13);
-            this.lblNumCasa.TabIndex = 95;
-            this.lblNumCasa.Text = "Número de Casa:";
+            this.LblNumCasa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblNumCasa.AutoSize = true;
+            this.LblNumCasa.Location = new System.Drawing.Point(553, 336);
+            this.LblNumCasa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblNumCasa.Name = "LblNumCasa";
+            this.LblNumCasa.Size = new System.Drawing.Size(112, 16);
+            this.LblNumCasa.TabIndex = 95;
+            this.LblNumCasa.Text = "Número de Casa:";
             // 
-            // txtCalle
+            // TxtCalle
             // 
-            this.txtCalle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCalle.Location = new System.Drawing.Point(507, 99);
-            this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(227, 20);
-            this.txtCalle.TabIndex = 96;
+            this.TxtCalle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtCalle.Location = new System.Drawing.Point(676, 122);
+            this.TxtCalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtCalle.Name = "TxtCalle";
+            this.TxtCalle.Size = new System.Drawing.Size(301, 22);
+            this.TxtCalle.TabIndex = 96;
             // 
-            // txtAvenida
+            // TxtAvenida
             // 
-            this.txtAvenida.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAvenida.Location = new System.Drawing.Point(507, 130);
-            this.txtAvenida.Name = "txtAvenida";
-            this.txtAvenida.Size = new System.Drawing.Size(227, 20);
-            this.txtAvenida.TabIndex = 97;
+            this.TxtAvenida.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtAvenida.Location = new System.Drawing.Point(676, 160);
+            this.TxtAvenida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtAvenida.Name = "TxtAvenida";
+            this.TxtAvenida.Size = new System.Drawing.Size(301, 22);
+            this.TxtAvenida.TabIndex = 97;
             // 
-            // txtZona
+            // TxtZona
             // 
-            this.txtZona.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtZona.Location = new System.Drawing.Point(507, 165);
-            this.txtZona.Name = "txtZona";
-            this.txtZona.Size = new System.Drawing.Size(227, 20);
-            this.txtZona.TabIndex = 98;
+            this.TxtZona.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtZona.Location = new System.Drawing.Point(676, 203);
+            this.TxtZona.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtZona.Name = "TxtZona";
+            this.TxtZona.Size = new System.Drawing.Size(301, 22);
+            this.TxtZona.TabIndex = 98;
             // 
-            // cmbDepartamento
+            // CmbDepartamento
             // 
-            this.cmbDepartamento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbDepartamento.FormattingEnabled = true;
-            this.cmbDepartamento.Items.AddRange(new object[] {
+            this.CmbDepartamento.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CmbDepartamento.FormattingEnabled = true;
+            this.CmbDepartamento.Items.AddRange(new object[] {
             "Alta Verapaz",
             "Baja Verapaz",
             "Chimaltenango",
@@ -276,54 +294,58 @@ namespace Campeonato_Polideportivo
             "Suchitepéquez",
             "Totonicapán",
             "Zacapa"});
-            this.cmbDepartamento.Location = new System.Drawing.Point(507, 205);
-            this.cmbDepartamento.Name = "cmbDepartamento";
-            this.cmbDepartamento.Size = new System.Drawing.Size(227, 21);
-            this.cmbDepartamento.TabIndex = 99;
+            this.CmbDepartamento.Location = new System.Drawing.Point(676, 252);
+            this.CmbDepartamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbDepartamento.Name = "CmbDepartamento";
+            this.CmbDepartamento.Size = new System.Drawing.Size(301, 24);
+            this.CmbDepartamento.TabIndex = 99;
             // 
-            // txtCodPostal
+            // TxtCodPostal
             // 
-            this.txtCodPostal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCodPostal.Location = new System.Drawing.Point(507, 239);
-            this.txtCodPostal.Name = "txtCodPostal";
-            this.txtCodPostal.Size = new System.Drawing.Size(227, 20);
-            this.txtCodPostal.TabIndex = 100;
+            this.TxtCodPostal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtCodPostal.Location = new System.Drawing.Point(676, 294);
+            this.TxtCodPostal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtCodPostal.Name = "TxtCodPostal";
+            this.TxtCodPostal.Size = new System.Drawing.Size(301, 22);
+            this.TxtCodPostal.TabIndex = 100;
             // 
-            // txtNumCasa
+            // TxtNumCasa
             // 
-            this.txtNumCasa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNumCasa.Location = new System.Drawing.Point(507, 270);
-            this.txtNumCasa.Name = "txtNumCasa";
-            this.txtNumCasa.Size = new System.Drawing.Size(227, 20);
-            this.txtNumCasa.TabIndex = 101;
+            this.TxtNumCasa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtNumCasa.Location = new System.Drawing.Point(676, 332);
+            this.TxtNumCasa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNumCasa.Name = "TxtNumCasa";
+            this.TxtNumCasa.Size = new System.Drawing.Size(301, 22);
+            this.TxtNumCasa.TabIndex = 101;
             // 
-            // btnIngresar
+            // BtnIngresar
             // 
-            this.btnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.btnIngresar.FlatAppearance.BorderSize = 0;
-            this.btnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnIngresar.Location = new System.Drawing.Point(604, 312);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(130, 33);
-            this.btnIngresar.TabIndex = 102;
-            this.btnIngresar.Text = "INGRESAR";
-            this.btnIngresar.UseVisualStyleBackColor = false;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.BtnIngresar.FlatAppearance.BorderSize = 0;
+            this.BtnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnIngresar.Location = new System.Drawing.Point(805, 384);
+            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnIngresar.Name = "BtnIngresar";
+            this.BtnIngresar.Size = new System.Drawing.Size(173, 41);
+            this.BtnIngresar.TabIndex = 102;
+            this.BtnIngresar.Text = "INGRESAR";
+            this.BtnIngresar.UseVisualStyleBackColor = false;
+            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // dgvEmpleados
             // 
             this.dgvEmpleados.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleados.Location = new System.Drawing.Point(31, 312);
+            this.dgvEmpleados.Location = new System.Drawing.Point(41, 384);
+            this.dgvEmpleados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.RowHeadersWidth = 51;
-            this.dgvEmpleados.Size = new System.Drawing.Size(556, 144);
+            this.dgvEmpleados.Size = new System.Drawing.Size(741, 177);
             this.dgvEmpleados.TabIndex = 103;
             // 
             // BtnVer
@@ -336,10 +358,10 @@ namespace Campeonato_Polideportivo
             this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnVer.Location = new System.Drawing.Point(604, 349);
-            this.BtnVer.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnVer.Location = new System.Drawing.Point(805, 430);
+            this.BtnVer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnVer.Name = "BtnVer";
-            this.BtnVer.Size = new System.Drawing.Size(130, 33);
+            this.BtnVer.Size = new System.Drawing.Size(173, 41);
             this.BtnVer.TabIndex = 104;
             this.BtnVer.Text = "VER";
             this.BtnVer.UseVisualStyleBackColor = false;
@@ -347,35 +369,36 @@ namespace Campeonato_Polideportivo
             // 
             // Empleados
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 531);
+            this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnVer);
             this.Controls.Add(this.dgvEmpleados);
-            this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.txtNumCasa);
-            this.Controls.Add(this.txtCodPostal);
-            this.Controls.Add(this.cmbDepartamento);
-            this.Controls.Add(this.txtZona);
-            this.Controls.Add(this.txtAvenida);
-            this.Controls.Add(this.txtCalle);
-            this.Controls.Add(this.lblNumCasa);
-            this.Controls.Add(this.lblCodPostal);
-            this.Controls.Add(this.lblDepartamento);
-            this.Controls.Add(this.lblZona);
-            this.Controls.Add(this.lblAvenida);
-            this.Controls.Add(this.lblCalle);
-            this.Controls.Add(this.txtTelefono);
-            this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.cmbPuesto);
-            this.Controls.Add(this.txtApellido);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.lblTelefono);
-            this.Controls.Add(this.lblIdUsuario);
-            this.Controls.Add(this.lblPuesto);
-            this.Controls.Add(this.lblApellido);
-            this.Controls.Add(this.lblNombre);
+            this.Controls.Add(this.BtnIngresar);
+            this.Controls.Add(this.TxtNumCasa);
+            this.Controls.Add(this.TxtCodPostal);
+            this.Controls.Add(this.CmbDepartamento);
+            this.Controls.Add(this.TxtZona);
+            this.Controls.Add(this.TxtAvenida);
+            this.Controls.Add(this.TxtCalle);
+            this.Controls.Add(this.LblNumCasa);
+            this.Controls.Add(this.LblCodPostal);
+            this.Controls.Add(this.LblDepartamento);
+            this.Controls.Add(this.LblZona);
+            this.Controls.Add(this.LblAvenida);
+            this.Controls.Add(this.LblCalle);
+            this.Controls.Add(this.TxtTelefono);
+            this.Controls.Add(this.TxtUsuario);
+            this.Controls.Add(this.CmbPuesto);
+            this.Controls.Add(this.TxtApellido);
+            this.Controls.Add(this.TxtNombre);
+            this.Controls.Add(this.LblTelefono);
+            this.Controls.Add(this.LblIdUsuario);
+            this.Controls.Add(this.LblPuesto);
+            this.Controls.Add(this.LblApellido);
+            this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.LblCampeonato);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Empleados";
             this.Text = "Empleados";
             this.Load += new System.EventHandler(this.Empleados_Load);
@@ -388,29 +411,29 @@ namespace Campeonato_Polideportivo
         #endregion
 
         private System.Windows.Forms.Label LblCampeonato;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblApellido;
-        private System.Windows.Forms.Label lblPuesto;
-        private System.Windows.Forms.Label lblIdUsuario;
-        private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.ComboBox cmbPuesto;
-        private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.Label lblCalle;
-        private System.Windows.Forms.Label lblAvenida;
-        private System.Windows.Forms.Label lblZona;
-        private System.Windows.Forms.Label lblDepartamento;
-        private System.Windows.Forms.Label lblCodPostal;
-        private System.Windows.Forms.Label lblNumCasa;
-        private System.Windows.Forms.TextBox txtCalle;
-        private System.Windows.Forms.TextBox txtAvenida;
-        private System.Windows.Forms.TextBox txtZona;
-        private System.Windows.Forms.ComboBox cmbDepartamento;
-        private System.Windows.Forms.TextBox txtCodPostal;
-        private System.Windows.Forms.TextBox txtNumCasa;
-        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.Label LblNombre;
+        private System.Windows.Forms.Label LblApellido;
+        private System.Windows.Forms.Label LblPuesto;
+        private System.Windows.Forms.Label LblIdUsuario;
+        private System.Windows.Forms.Label LblTelefono;
+        private System.Windows.Forms.TextBox TxtNombre;
+        private System.Windows.Forms.TextBox TxtApellido;
+        private System.Windows.Forms.ComboBox CmbPuesto;
+        private System.Windows.Forms.TextBox TxtUsuario;
+        private System.Windows.Forms.TextBox TxtTelefono;
+        private System.Windows.Forms.Label LblCalle;
+        private System.Windows.Forms.Label LblAvenida;
+        private System.Windows.Forms.Label LblZona;
+        private System.Windows.Forms.Label LblDepartamento;
+        private System.Windows.Forms.Label LblCodPostal;
+        private System.Windows.Forms.Label LblNumCasa;
+        private System.Windows.Forms.TextBox TxtCalle;
+        private System.Windows.Forms.TextBox TxtAvenida;
+        private System.Windows.Forms.TextBox TxtZona;
+        private System.Windows.Forms.ComboBox CmbDepartamento;
+        private System.Windows.Forms.TextBox TxtCodPostal;
+        private System.Windows.Forms.TextBox TxtNumCasa;
+        private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.DataGridView dgvEmpleados;
         private System.Windows.Forms.Button BtnVer;
     }

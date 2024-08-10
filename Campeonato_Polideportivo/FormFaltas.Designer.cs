@@ -56,7 +56,8 @@ namespace Campeonato_Polideportivo
             this.CmbArbitro = new System.Windows.Forms.ComboBox();
             this.LblArbitro = new System.Windows.Forms.Label();
             this.CmbCampeonato = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblCampeonato = new System.Windows.Forms.Label();
+            this.BtnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvFaltas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,13 +153,14 @@ namespace Campeonato_Polideportivo
             this.TxtIdFaltas.Name = "TxtIdFaltas";
             this.TxtIdFaltas.Size = new System.Drawing.Size(100, 22);
             this.TxtIdFaltas.TabIndex = 82;
+            this.TxtIdFaltas.Visible = false;
             // 
             // LblTipoFalta
             // 
             this.LblTipoFalta.AutoSize = true;
             this.LblTipoFalta.Location = new System.Drawing.Point(57, 200);
             this.LblTipoFalta.Name = "LblTipoFalta";
-            this.LblTipoFalta.Size = new System.Drawing.Size(91, 17);
+            this.LblTipoFalta.Size = new System.Drawing.Size(87, 16);
             this.LblTipoFalta.TabIndex = 77;
             this.LblTipoFalta.Text = "Tipo de Falta";
             // 
@@ -167,7 +169,7 @@ namespace Campeonato_Polideportivo
             this.LblTarjeta.AutoSize = true;
             this.LblTarjeta.Location = new System.Drawing.Point(59, 162);
             this.LblTarjeta.Name = "LblTarjeta";
-            this.LblTarjeta.Size = new System.Drawing.Size(53, 17);
+            this.LblTarjeta.Size = new System.Drawing.Size(50, 16);
             this.LblTarjeta.TabIndex = 76;
             this.LblTarjeta.Text = "Tarjeta";
             // 
@@ -176,7 +178,7 @@ namespace Campeonato_Polideportivo
             this.LblMinuto.AutoSize = true;
             this.LblMinuto.Location = new System.Drawing.Point(59, 120);
             this.LblMinuto.Name = "LblMinuto";
-            this.LblMinuto.Size = new System.Drawing.Size(50, 17);
+            this.LblMinuto.Size = new System.Drawing.Size(46, 16);
             this.LblMinuto.TabIndex = 75;
             this.LblMinuto.Text = "Minuto";
             // 
@@ -185,9 +187,10 @@ namespace Campeonato_Polideportivo
             this.LblIdCampeonato.AutoSize = true;
             this.LblIdCampeonato.Location = new System.Drawing.Point(59, 85);
             this.LblIdCampeonato.Name = "LblIdCampeonato";
-            this.LblIdCampeonato.Size = new System.Drawing.Size(21, 17);
+            this.LblIdCampeonato.Size = new System.Drawing.Size(20, 16);
             this.LblIdCampeonato.TabIndex = 74;
             this.LblIdCampeonato.Text = "ID";
+            this.LblIdCampeonato.Visible = false;
             // 
             // CmbFalta
             // 
@@ -207,7 +210,7 @@ namespace Campeonato_Polideportivo
             this.LblFaltas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblFaltas.Location = new System.Drawing.Point(421, 20);
             this.LblFaltas.Name = "LblFaltas";
-            this.LblFaltas.Size = new System.Drawing.Size(135, 50);
+            this.LblFaltas.Size = new System.Drawing.Size(134, 50);
             this.LblFaltas.TabIndex = 72;
             this.LblFaltas.Text = "FALTAS";
             // 
@@ -253,7 +256,7 @@ namespace Campeonato_Polideportivo
             this.LblDescripcion.AutoSize = true;
             this.LblDescripcion.Location = new System.Drawing.Point(59, 240);
             this.LblDescripcion.Name = "LblDescripcion";
-            this.LblDescripcion.Size = new System.Drawing.Size(82, 17);
+            this.LblDescripcion.Size = new System.Drawing.Size(79, 16);
             this.LblDescripcion.TabIndex = 90;
             this.LblDescripcion.Text = "Descripción";
             // 
@@ -270,7 +273,7 @@ namespace Campeonato_Polideportivo
             this.LblFecha.AutoSize = true;
             this.LblFecha.Location = new System.Drawing.Point(59, 280);
             this.LblFecha.Name = "LblFecha";
-            this.LblFecha.Size = new System.Drawing.Size(47, 17);
+            this.LblFecha.Size = new System.Drawing.Size(45, 16);
             this.LblFecha.TabIndex = 92;
             this.LblFecha.Text = "Fecha";
             // 
@@ -279,7 +282,7 @@ namespace Campeonato_Polideportivo
             this.LblIdPartido.AutoSize = true;
             this.LblIdPartido.Location = new System.Drawing.Point(59, 362);
             this.LblIdPartido.Name = "LblIdPartido";
-            this.LblIdPartido.Size = new System.Drawing.Size(53, 17);
+            this.LblIdPartido.Size = new System.Drawing.Size(50, 16);
             this.LblIdPartido.TabIndex = 94;
             this.LblIdPartido.Text = "Partido";
             // 
@@ -288,7 +291,7 @@ namespace Campeonato_Polideportivo
             this.LblIdJugador.AutoSize = true;
             this.LblIdJugador.Location = new System.Drawing.Point(51, 446);
             this.LblIdJugador.Name = "LblIdJugador";
-            this.LblIdJugador.Size = new System.Drawing.Size(60, 17);
+            this.LblIdJugador.Size = new System.Drawing.Size(57, 16);
             this.LblIdJugador.TabIndex = 96;
             this.LblIdJugador.Text = "Jugador";
             // 
@@ -297,7 +300,7 @@ namespace Campeonato_Polideportivo
             this.LblEquipo.AutoSize = true;
             this.LblEquipo.Location = new System.Drawing.Point(57, 402);
             this.LblEquipo.Name = "LblEquipo";
-            this.LblEquipo.Size = new System.Drawing.Size(52, 17);
+            this.LblEquipo.Size = new System.Drawing.Size(50, 16);
             this.LblEquipo.TabIndex = 98;
             this.LblEquipo.Text = "Equipo";
             // 
@@ -351,7 +354,7 @@ namespace Campeonato_Polideportivo
             this.LblArbitro.AutoSize = true;
             this.LblArbitro.Location = new System.Drawing.Point(59, 485);
             this.LblArbitro.Name = "LblArbitro";
-            this.LblArbitro.Size = new System.Drawing.Size(50, 17);
+            this.LblArbitro.Size = new System.Drawing.Size(46, 16);
             this.LblArbitro.TabIndex = 103;
             this.LblArbitro.Text = "Arbitro";
             // 
@@ -366,22 +369,39 @@ namespace Campeonato_Polideportivo
             this.CmbCampeonato.Text = "Selecciona un campeonato...";
             this.CmbCampeonato.SelectedIndexChanged += new System.EventHandler(this.CmbCampeonato_SelectedIndexChanged);
             // 
-            // label1
+            // LblCampeonato
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 323);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 17);
-            this.label1.TabIndex = 105;
-            this.label1.Text = "Campeonato";
+            this.LblCampeonato.AutoSize = true;
+            this.LblCampeonato.Location = new System.Drawing.Point(59, 323);
+            this.LblCampeonato.Name = "LblCampeonato";
+            this.LblCampeonato.Size = new System.Drawing.Size(85, 16);
+            this.LblCampeonato.TabIndex = 105;
+            this.LblCampeonato.Text = "Campeonato";
+            // 
+            // BtnAyuda
+            // 
+            this.BtnAyuda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
+            this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnAyuda.Location = new System.Drawing.Point(907, 37);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
+            this.BtnAyuda.TabIndex = 326;
+            this.BtnAyuda.Text = "?";
+            this.BtnAyuda.UseVisualStyleBackColor = false;
+            this.BtnAyuda.Click += new System.EventHandler(this.BtnAyuda_Click);
             // 
             // FormFaltas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 654);
+            this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.CmbCampeonato);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblCampeonato);
             this.Controls.Add(this.CmbArbitro);
             this.Controls.Add(this.LblArbitro);
             this.Controls.Add(this.CmbJugador);
@@ -447,6 +467,7 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.ComboBox CmbArbitro;
         private System.Windows.Forms.Label LblArbitro;
         private System.Windows.Forms.ComboBox CmbCampeonato;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblCampeonato;
+        private System.Windows.Forms.Button BtnAyuda;
     }
 }

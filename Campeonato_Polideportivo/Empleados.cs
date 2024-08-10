@@ -19,7 +19,7 @@ namespace Campeonato_Polideportivo
         public Empleados()
         {
             InitializeComponent();
-            txtUsuario.Text = GlobalVariables.usuario;
+            TxtUsuario.Text = GlobalVariables.usuario;
 
         }
 
@@ -28,10 +28,10 @@ namespace Campeonato_Polideportivo
             dgvEmpleados.TabStop = false;
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void BtnIngresar_Click(object sender, EventArgs e)
         {
             //GlobalVariables.userId = 0;
-            string nom = txtNombre.Text;
+            string nom = TxtNombre.Text;
             Bitacora bitacora = new Bitacora(connectionString);
             int usuarioId;
             usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
@@ -50,16 +50,16 @@ namespace Campeonato_Polideportivo
             }
 
 
-            txtNombre.Text = string.Empty;
-            txtApellido.Text = string.Empty;
-            cmbPuesto.Text = string.Empty;
-            txtTelefono.Text = string.Empty;
-            txtCalle.Text = string.Empty;
-            txtAvenida.Text = string.Empty;
-            txtZona.Text = string.Empty;
-            cmbDepartamento.Text = string.Empty;
-            txtCodPostal.Text = string.Empty;
-            txtNumCasa.Text = string.Empty;
+            TxtNombre.Text = string.Empty;
+            TxtApellido.Text = string.Empty;
+            CmbPuesto.Text = string.Empty;
+            TxtTelefono.Text = string.Empty;
+            TxtCalle.Text = string.Empty;
+            TxtAvenida.Text = string.Empty;
+            TxtZona.Text = string.Empty;
+            CmbDepartamento.Text = string.Empty;
+            TxtCodPostal.Text = string.Empty;
+            TxtNumCasa.Text = string.Empty;
 
         }
 
@@ -67,16 +67,16 @@ namespace Campeonato_Polideportivo
         {
             Conexion conexion = new Conexion();
 
-            string nom = txtNombre.Text;
-            string apellido = txtApellido.Text;
-            string puesto = cmbPuesto.Text;
-            string telefono = txtTelefono.Text;
-            string calle = txtCalle.Text;
-            string avenida = txtAvenida.Text;
-            string zona = txtZona.Text;
-            string departamento = cmbDepartamento.Text;
-            string codpostal = txtCodPostal.Text;
-            string numcasa = txtNumCasa.Text;
+            string nom = TxtNombre.Text;
+            string apellido = TxtApellido.Text;
+            string puesto = CmbPuesto.Text;
+            string telefono = TxtTelefono.Text;
+            string calle = TxtCalle.Text;
+            string avenida = TxtAvenida.Text;
+            string zona = TxtZona.Text;
+            string departamento = CmbDepartamento.Text;
+            string codpostal = TxtCodPostal.Text;
+            string numcasa = TxtNumCasa.Text;
 
             using (MySqlConnection conn = conexion.getConexion())
             {

@@ -30,40 +30,40 @@ namespace Campeonato_Polideportivo
         private void InitializeComponent()
         {
             this.NudAcesVisitante = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblAcesVisitante = new System.Windows.Forms.Label();
             this.NudDefensaVisitante = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LblDefensaVisitante = new System.Windows.Forms.Label();
             this.NudRecepcionesVisitante = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
+            this.LblRecepcionesVisitante = new System.Windows.Forms.Label();
             this.NudServiciosErradosVisitante = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
+            this.LblServiciosErradosVisitante = new System.Windows.Forms.Label();
             this.NudBloqueosVisitante = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
+            this.LblBloqueosVisitante = new System.Windows.Forms.Label();
             this.NudAtaquesVisitante = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
+            this.LblAtaqueVisitante = new System.Windows.Forms.Label();
             this.NudPuntosVisitante = new System.Windows.Forms.NumericUpDown();
             this.NudSetsVisitante = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
+            this.LblPuntosVisitante = new System.Windows.Forms.Label();
             this.CmbEquipoVisitante = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.LblSetsVisitante = new System.Windows.Forms.Label();
+            this.LblEquipoVisitante = new System.Windows.Forms.Label();
             this.NudAcesLocal = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
+            this.LblAcesLocal = new System.Windows.Forms.Label();
             this.NudDefensaLocal = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
+            this.LblDefensaLocal = new System.Windows.Forms.Label();
             this.NudRecepcionesLocal = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblRecepcionesLocal = new System.Windows.Forms.Label();
             this.NudServiciosErradosLocal = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblServiciosLocal = new System.Windows.Forms.Label();
             this.NudBloqueosLocal = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblBloqueosLocal = new System.Windows.Forms.Label();
             this.TxtIdVolley = new System.Windows.Forms.TextBox();
             this.LblIdFutbol = new System.Windows.Forms.Label();
             this.NudAtaquesLocal = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
+            this.LblAtaquesLocal = new System.Windows.Forms.Label();
             this.NudPuntosLocal = new System.Windows.Forms.NumericUpDown();
             this.NudSetsLocal = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
+            this.LblPuntosLocal = new System.Windows.Forms.Label();
             this.CmbEquipoLocal = new System.Windows.Forms.ComboBox();
             this.CmbArbitro = new System.Windows.Forms.ComboBox();
             this.CmbFase = new System.Windows.Forms.ComboBox();
@@ -72,13 +72,13 @@ namespace Campeonato_Polideportivo
             this.CmbEstadoPartido = new System.Windows.Forms.ComboBox();
             this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.TxtIdPartido = new System.Windows.Forms.TextBox();
-            this.TxtGoles = new System.Windows.Forms.Label();
+            this.LblSetsLocal = new System.Windows.Forms.Label();
             this.LblGanadorEmpate = new System.Windows.Forms.Label();
             this.LblArbitro = new System.Windows.Forms.Label();
             this.LblFase = new System.Windows.Forms.Label();
             this.LblCampeonato = new System.Windows.Forms.Label();
             this.LblEstadoPartido = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblEquipoLocal = new System.Windows.Forms.Label();
             this.LblIdPartido = new System.Windows.Forms.Label();
             this.LblFecha = new System.Windows.Forms.Label();
             this.BtnEliminar = new System.Windows.Forms.Button();
@@ -87,6 +87,7 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.LblVoleibol = new System.Windows.Forms.Label();
             this.DgvVoleibol = new System.Windows.Forms.DataGridView();
+            this.BtnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NudAcesVisitante)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudDefensaVisitante)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudRecepcionesVisitante)).BeginInit();
@@ -114,14 +115,14 @@ namespace Campeonato_Polideportivo
             this.NudAcesVisitante.TabIndex = 217;
             this.NudAcesVisitante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label3
+            // LblAcesVisitante
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(691, 258);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 17);
-            this.label3.TabIndex = 216;
-            this.label3.Text = "Aces";
+            this.LblAcesVisitante.AutoSize = true;
+            this.LblAcesVisitante.Location = new System.Drawing.Point(691, 258);
+            this.LblAcesVisitante.Name = "LblAcesVisitante";
+            this.LblAcesVisitante.Size = new System.Drawing.Size(38, 16);
+            this.LblAcesVisitante.TabIndex = 216;
+            this.LblAcesVisitante.Text = "Aces";
             // 
             // NudDefensaVisitante
             // 
@@ -131,14 +132,14 @@ namespace Campeonato_Polideportivo
             this.NudDefensaVisitante.TabIndex = 215;
             this.NudDefensaVisitante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label8
+            // LblDefensaVisitante
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(691, 230);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 17);
-            this.label8.TabIndex = 214;
-            this.label8.Text = "Defensa";
+            this.LblDefensaVisitante.AutoSize = true;
+            this.LblDefensaVisitante.Location = new System.Drawing.Point(691, 230);
+            this.LblDefensaVisitante.Name = "LblDefensaVisitante";
+            this.LblDefensaVisitante.Size = new System.Drawing.Size(58, 16);
+            this.LblDefensaVisitante.TabIndex = 214;
+            this.LblDefensaVisitante.Text = "Defensa";
             // 
             // NudRecepcionesVisitante
             // 
@@ -148,14 +149,14 @@ namespace Campeonato_Polideportivo
             this.NudRecepcionesVisitante.TabIndex = 213;
             this.NudRecepcionesVisitante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label10
+            // LblRecepcionesVisitante
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(691, 202);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 17);
-            this.label10.TabIndex = 212;
-            this.label10.Text = "Recepciones";
+            this.LblRecepcionesVisitante.AutoSize = true;
+            this.LblRecepcionesVisitante.Location = new System.Drawing.Point(691, 202);
+            this.LblRecepcionesVisitante.Name = "LblRecepcionesVisitante";
+            this.LblRecepcionesVisitante.Size = new System.Drawing.Size(88, 16);
+            this.LblRecepcionesVisitante.TabIndex = 212;
+            this.LblRecepcionesVisitante.Text = "Recepciones";
             // 
             // NudServiciosErradosVisitante
             // 
@@ -165,14 +166,14 @@ namespace Campeonato_Polideportivo
             this.NudServiciosErradosVisitante.TabIndex = 211;
             this.NudServiciosErradosVisitante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label12
+            // LblServiciosErradosVisitante
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(691, 174);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 17);
-            this.label12.TabIndex = 210;
-            this.label12.Text = "Servicios Errados";
+            this.LblServiciosErradosVisitante.AutoSize = true;
+            this.LblServiciosErradosVisitante.Location = new System.Drawing.Point(691, 174);
+            this.LblServiciosErradosVisitante.Name = "LblServiciosErradosVisitante";
+            this.LblServiciosErradosVisitante.Size = new System.Drawing.Size(114, 16);
+            this.LblServiciosErradosVisitante.TabIndex = 210;
+            this.LblServiciosErradosVisitante.Text = "Servicios Errados";
             // 
             // NudBloqueosVisitante
             // 
@@ -182,14 +183,14 @@ namespace Campeonato_Polideportivo
             this.NudBloqueosVisitante.TabIndex = 209;
             this.NudBloqueosVisitante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label13
+            // LblBloqueosVisitante
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(691, 146);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 17);
-            this.label13.TabIndex = 208;
-            this.label13.Text = "Bloqueos";
+            this.LblBloqueosVisitante.AutoSize = true;
+            this.LblBloqueosVisitante.Location = new System.Drawing.Point(691, 146);
+            this.LblBloqueosVisitante.Name = "LblBloqueosVisitante";
+            this.LblBloqueosVisitante.Size = new System.Drawing.Size(65, 16);
+            this.LblBloqueosVisitante.TabIndex = 208;
+            this.LblBloqueosVisitante.Text = "Bloqueos";
             // 
             // NudAtaquesVisitante
             // 
@@ -199,14 +200,14 @@ namespace Campeonato_Polideportivo
             this.NudAtaquesVisitante.TabIndex = 207;
             this.NudAtaquesVisitante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label14
+            // LblAtaqueVisitante
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(691, 118);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 17);
-            this.label14.TabIndex = 206;
-            this.label14.Text = "Ataques";
+            this.LblAtaqueVisitante.AutoSize = true;
+            this.LblAtaqueVisitante.Location = new System.Drawing.Point(691, 118);
+            this.LblAtaqueVisitante.Name = "LblAtaqueVisitante";
+            this.LblAtaqueVisitante.Size = new System.Drawing.Size(57, 16);
+            this.LblAtaqueVisitante.TabIndex = 206;
+            this.LblAtaqueVisitante.Text = "Ataques";
             // 
             // NudPuntosVisitante
             // 
@@ -224,14 +225,14 @@ namespace Campeonato_Polideportivo
             this.NudSetsVisitante.TabIndex = 204;
             this.NudSetsVisitante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label15
+            // LblPuntosVisitante
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(691, 86);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 17);
-            this.label15.TabIndex = 203;
-            this.label15.Text = "Puntos";
+            this.LblPuntosVisitante.AutoSize = true;
+            this.LblPuntosVisitante.Location = new System.Drawing.Point(691, 86);
+            this.LblPuntosVisitante.Name = "LblPuntosVisitante";
+            this.LblPuntosVisitante.Size = new System.Drawing.Size(48, 16);
+            this.LblPuntosVisitante.TabIndex = 203;
+            this.LblPuntosVisitante.Text = "Puntos";
             // 
             // CmbEquipoVisitante
             // 
@@ -241,24 +242,24 @@ namespace Campeonato_Polideportivo
             this.CmbEquipoVisitante.Size = new System.Drawing.Size(131, 24);
             this.CmbEquipoVisitante.TabIndex = 202;
             // 
-            // label16
+            // LblSetsVisitante
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(691, 56);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(36, 17);
-            this.label16.TabIndex = 201;
-            this.label16.Text = "Sets";
+            this.LblSetsVisitante.AutoSize = true;
+            this.LblSetsVisitante.Location = new System.Drawing.Point(691, 56);
+            this.LblSetsVisitante.Name = "LblSetsVisitante";
+            this.LblSetsVisitante.Size = new System.Drawing.Size(34, 16);
+            this.LblSetsVisitante.TabIndex = 201;
+            this.LblSetsVisitante.Text = "Sets";
             // 
-            // label17
+            // LblEquipoVisitante
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(691, 23);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(126, 17);
-            this.label17.TabIndex = 200;
-            this.label17.Text = "Equipo Visitante";
+            this.LblEquipoVisitante.AutoSize = true;
+            this.LblEquipoVisitante.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEquipoVisitante.Location = new System.Drawing.Point(691, 23);
+            this.LblEquipoVisitante.Name = "LblEquipoVisitante";
+            this.LblEquipoVisitante.Size = new System.Drawing.Size(120, 16);
+            this.LblEquipoVisitante.TabIndex = 200;
+            this.LblEquipoVisitante.Text = "Equipo Visitante";
             // 
             // NudAcesLocal
             // 
@@ -268,14 +269,14 @@ namespace Campeonato_Polideportivo
             this.NudAcesLocal.TabIndex = 199;
             this.NudAcesLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label7
+            // LblAcesLocal
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(384, 255);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 17);
-            this.label7.TabIndex = 198;
-            this.label7.Text = "Aces";
+            this.LblAcesLocal.AutoSize = true;
+            this.LblAcesLocal.Location = new System.Drawing.Point(384, 255);
+            this.LblAcesLocal.Name = "LblAcesLocal";
+            this.LblAcesLocal.Size = new System.Drawing.Size(38, 16);
+            this.LblAcesLocal.TabIndex = 198;
+            this.LblAcesLocal.Text = "Aces";
             // 
             // NudDefensaLocal
             // 
@@ -285,14 +286,14 @@ namespace Campeonato_Polideportivo
             this.NudDefensaLocal.TabIndex = 197;
             this.NudDefensaLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label6
+            // LblDefensaLocal
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(384, 227);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 17);
-            this.label6.TabIndex = 196;
-            this.label6.Text = "Defensa";
+            this.LblDefensaLocal.AutoSize = true;
+            this.LblDefensaLocal.Location = new System.Drawing.Point(384, 227);
+            this.LblDefensaLocal.Name = "LblDefensaLocal";
+            this.LblDefensaLocal.Size = new System.Drawing.Size(58, 16);
+            this.LblDefensaLocal.TabIndex = 196;
+            this.LblDefensaLocal.Text = "Defensa";
             // 
             // NudRecepcionesLocal
             // 
@@ -302,14 +303,14 @@ namespace Campeonato_Polideportivo
             this.NudRecepcionesLocal.TabIndex = 195;
             this.NudRecepcionesLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label5
+            // LblRecepcionesLocal
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(384, 199);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 17);
-            this.label5.TabIndex = 194;
-            this.label5.Text = "Recepciones";
+            this.LblRecepcionesLocal.AutoSize = true;
+            this.LblRecepcionesLocal.Location = new System.Drawing.Point(384, 199);
+            this.LblRecepcionesLocal.Name = "LblRecepcionesLocal";
+            this.LblRecepcionesLocal.Size = new System.Drawing.Size(88, 16);
+            this.LblRecepcionesLocal.TabIndex = 194;
+            this.LblRecepcionesLocal.Text = "Recepciones";
             // 
             // NudServiciosErradosLocal
             // 
@@ -319,14 +320,14 @@ namespace Campeonato_Polideportivo
             this.NudServiciosErradosLocal.TabIndex = 193;
             this.NudServiciosErradosLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label4
+            // LblServiciosLocal
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(384, 171);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 17);
-            this.label4.TabIndex = 192;
-            this.label4.Text = "Servicios Errados";
+            this.LblServiciosLocal.AutoSize = true;
+            this.LblServiciosLocal.Location = new System.Drawing.Point(384, 171);
+            this.LblServiciosLocal.Name = "LblServiciosLocal";
+            this.LblServiciosLocal.Size = new System.Drawing.Size(114, 16);
+            this.LblServiciosLocal.TabIndex = 192;
+            this.LblServiciosLocal.Text = "Servicios Errados";
             // 
             // NudBloqueosLocal
             // 
@@ -336,14 +337,14 @@ namespace Campeonato_Polideportivo
             this.NudBloqueosLocal.TabIndex = 191;
             this.NudBloqueosLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label1
+            // LblBloqueosLocal
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(384, 143);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 17);
-            this.label1.TabIndex = 190;
-            this.label1.Text = "Bloqueos";
+            this.LblBloqueosLocal.AutoSize = true;
+            this.LblBloqueosLocal.Location = new System.Drawing.Point(384, 143);
+            this.LblBloqueosLocal.Name = "LblBloqueosLocal";
+            this.LblBloqueosLocal.Size = new System.Drawing.Size(65, 16);
+            this.LblBloqueosLocal.TabIndex = 190;
+            this.LblBloqueosLocal.Text = "Bloqueos";
             // 
             // TxtIdVolley
             // 
@@ -352,15 +353,17 @@ namespace Campeonato_Polideportivo
             this.TxtIdVolley.Name = "TxtIdVolley";
             this.TxtIdVolley.Size = new System.Drawing.Size(52, 22);
             this.TxtIdVolley.TabIndex = 189;
+            this.TxtIdVolley.Visible = false;
             // 
             // LblIdFutbol
             // 
             this.LblIdFutbol.AutoSize = true;
             this.LblIdFutbol.Location = new System.Drawing.Point(41, 17);
             this.LblIdFutbol.Name = "LblIdFutbol";
-            this.LblIdFutbol.Size = new System.Drawing.Size(63, 17);
+            this.LblIdFutbol.Size = new System.Drawing.Size(61, 16);
             this.LblIdFutbol.TabIndex = 188;
             this.LblIdFutbol.Text = "ID Volley";
+            this.LblIdFutbol.Visible = false;
             // 
             // NudAtaquesLocal
             // 
@@ -370,14 +373,14 @@ namespace Campeonato_Polideportivo
             this.NudAtaquesLocal.TabIndex = 187;
             this.NudAtaquesLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label11
+            // LblAtaquesLocal
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(384, 115);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 17);
-            this.label11.TabIndex = 186;
-            this.label11.Text = "Ataques";
+            this.LblAtaquesLocal.AutoSize = true;
+            this.LblAtaquesLocal.Location = new System.Drawing.Point(384, 115);
+            this.LblAtaquesLocal.Name = "LblAtaquesLocal";
+            this.LblAtaquesLocal.Size = new System.Drawing.Size(57, 16);
+            this.LblAtaquesLocal.TabIndex = 186;
+            this.LblAtaquesLocal.Text = "Ataques";
             // 
             // NudPuntosLocal
             // 
@@ -395,14 +398,14 @@ namespace Campeonato_Polideportivo
             this.NudSetsLocal.TabIndex = 184;
             this.NudSetsLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label9
+            // LblPuntosLocal
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(384, 83);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 17);
-            this.label9.TabIndex = 183;
-            this.label9.Text = "Puntos";
+            this.LblPuntosLocal.AutoSize = true;
+            this.LblPuntosLocal.Location = new System.Drawing.Point(384, 83);
+            this.LblPuntosLocal.Name = "LblPuntosLocal";
+            this.LblPuntosLocal.Size = new System.Drawing.Size(48, 16);
+            this.LblPuntosLocal.TabIndex = 183;
+            this.LblPuntosLocal.Text = "Puntos";
             // 
             // CmbEquipoLocal
             // 
@@ -458,6 +461,7 @@ namespace Campeonato_Polideportivo
             this.DtpFecha.Name = "DtpFecha";
             this.DtpFecha.Size = new System.Drawing.Size(164, 22);
             this.DtpFecha.TabIndex = 176;
+            this.DtpFecha.ValueChanged += new System.EventHandler(this.DtpFecha_ValueChanged);
             // 
             // TxtIdPartido
             // 
@@ -466,22 +470,23 @@ namespace Campeonato_Polideportivo
             this.TxtIdPartido.Name = "TxtIdPartido";
             this.TxtIdPartido.Size = new System.Drawing.Size(164, 22);
             this.TxtIdPartido.TabIndex = 175;
+            this.TxtIdPartido.Visible = false;
             // 
-            // TxtGoles
+            // LblSetsLocal
             // 
-            this.TxtGoles.AutoSize = true;
-            this.TxtGoles.Location = new System.Drawing.Point(384, 53);
-            this.TxtGoles.Name = "TxtGoles";
-            this.TxtGoles.Size = new System.Drawing.Size(36, 17);
-            this.TxtGoles.TabIndex = 173;
-            this.TxtGoles.Text = "Sets";
+            this.LblSetsLocal.AutoSize = true;
+            this.LblSetsLocal.Location = new System.Drawing.Point(384, 53);
+            this.LblSetsLocal.Name = "LblSetsLocal";
+            this.LblSetsLocal.Size = new System.Drawing.Size(34, 16);
+            this.LblSetsLocal.TabIndex = 173;
+            this.LblSetsLocal.Text = "Sets";
             // 
             // LblGanadorEmpate
             // 
             this.LblGanadorEmpate.AutoSize = true;
             this.LblGanadorEmpate.Location = new System.Drawing.Point(41, 149);
             this.LblGanadorEmpate.Name = "LblGanadorEmpate";
-            this.LblGanadorEmpate.Size = new System.Drawing.Size(127, 17);
+            this.LblGanadorEmpate.Size = new System.Drawing.Size(120, 16);
             this.LblGanadorEmpate.TabIndex = 172;
             this.LblGanadorEmpate.Text = "Ganador o empate";
             // 
@@ -490,7 +495,7 @@ namespace Campeonato_Polideportivo
             this.LblArbitro.AutoSize = true;
             this.LblArbitro.Location = new System.Drawing.Point(41, 244);
             this.LblArbitro.Name = "LblArbitro";
-            this.LblArbitro.Size = new System.Drawing.Size(50, 17);
+            this.LblArbitro.Size = new System.Drawing.Size(46, 16);
             this.LblArbitro.TabIndex = 174;
             this.LblArbitro.Text = "Arbitro";
             // 
@@ -499,7 +504,7 @@ namespace Campeonato_Polideportivo
             this.LblFase.AutoSize = true;
             this.LblFase.Location = new System.Drawing.Point(41, 210);
             this.LblFase.Name = "LblFase";
-            this.LblFase.Size = new System.Drawing.Size(39, 17);
+            this.LblFase.Size = new System.Drawing.Size(38, 16);
             this.LblFase.TabIndex = 171;
             this.LblFase.Text = "Fase";
             // 
@@ -508,7 +513,7 @@ namespace Campeonato_Polideportivo
             this.LblCampeonato.AutoSize = true;
             this.LblCampeonato.Location = new System.Drawing.Point(41, 182);
             this.LblCampeonato.Name = "LblCampeonato";
-            this.LblCampeonato.Size = new System.Drawing.Size(88, 17);
+            this.LblCampeonato.Size = new System.Drawing.Size(85, 16);
             this.LblCampeonato.TabIndex = 170;
             this.LblCampeonato.Text = "Campeonato";
             // 
@@ -517,35 +522,36 @@ namespace Campeonato_Polideportivo
             this.LblEstadoPartido.AutoSize = true;
             this.LblEstadoPartido.Location = new System.Drawing.Point(41, 116);
             this.LblEstadoPartido.Name = "LblEstadoPartido";
-            this.LblEstadoPartido.Size = new System.Drawing.Size(101, 17);
+            this.LblEstadoPartido.Size = new System.Drawing.Size(96, 16);
             this.LblEstadoPartido.TabIndex = 169;
             this.LblEstadoPartido.Text = "Estado Partido";
             // 
-            // label2
+            // LblEquipoLocal
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(384, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 17);
-            this.label2.TabIndex = 168;
-            this.label2.Text = "Equipo Local";
+            this.LblEquipoLocal.AutoSize = true;
+            this.LblEquipoLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEquipoLocal.Location = new System.Drawing.Point(384, 20);
+            this.LblEquipoLocal.Name = "LblEquipoLocal";
+            this.LblEquipoLocal.Size = new System.Drawing.Size(98, 16);
+            this.LblEquipoLocal.TabIndex = 168;
+            this.LblEquipoLocal.Text = "Equipo Local";
             // 
             // LblIdPartido
             // 
             this.LblIdPartido.AutoSize = true;
             this.LblIdPartido.Location = new System.Drawing.Point(41, 53);
             this.LblIdPartido.Name = "LblIdPartido";
-            this.LblIdPartido.Size = new System.Drawing.Size(70, 17);
+            this.LblIdPartido.Size = new System.Drawing.Size(66, 16);
             this.LblIdPartido.TabIndex = 167;
             this.LblIdPartido.Text = "ID Partido";
+            this.LblIdPartido.Visible = false;
             // 
             // LblFecha
             // 
             this.LblFecha.AutoSize = true;
             this.LblFecha.Location = new System.Drawing.Point(41, 81);
             this.LblFecha.Name = "LblFecha";
-            this.LblFecha.Size = new System.Drawing.Size(47, 17);
+            this.LblFecha.Size = new System.Drawing.Size(45, 16);
             this.LblFecha.TabIndex = 166;
             this.LblFecha.Text = "Fecha";
             // 
@@ -559,7 +565,7 @@ namespace Campeonato_Polideportivo
             this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnEliminar.Location = new System.Drawing.Point(765, 593);
+            this.BtnEliminar.Location = new System.Drawing.Point(734, 593);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(174, 41);
             this.BtnEliminar.TabIndex = 165;
@@ -628,7 +634,7 @@ namespace Campeonato_Polideportivo
             this.LblVoleibol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblVoleibol.Location = new System.Drawing.Point(179, 0);
             this.LblVoleibol.Name = "LblVoleibol";
-            this.LblVoleibol.Size = new System.Drawing.Size(159, 50);
+            this.LblVoleibol.Size = new System.Drawing.Size(157, 50);
             this.LblVoleibol.TabIndex = 161;
             this.LblVoleibol.Text = "VOLEIBOL";
             // 
@@ -648,46 +654,63 @@ namespace Campeonato_Polideportivo
             this.DgvVoleibol.TabIndex = 160;
             this.DgvVoleibol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVoleibol_CellContentClick);
             // 
+            // BtnAyuda
+            // 
+            this.BtnAyuda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
+            this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnAyuda.Location = new System.Drawing.Point(938, 593);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
+            this.BtnAyuda.TabIndex = 332;
+            this.BtnAyuda.Text = "?";
+            this.BtnAyuda.UseVisualStyleBackColor = false;
+            this.BtnAyuda.Click += new System.EventHandler(this.BtnAyuda_Click);
+            // 
             // FormVoleibol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 654);
+            this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.NudAcesVisitante);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LblAcesVisitante);
             this.Controls.Add(this.NudDefensaVisitante);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LblDefensaVisitante);
             this.Controls.Add(this.NudRecepcionesVisitante);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.LblRecepcionesVisitante);
             this.Controls.Add(this.NudServiciosErradosVisitante);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.LblServiciosErradosVisitante);
             this.Controls.Add(this.NudBloqueosVisitante);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.LblBloqueosVisitante);
             this.Controls.Add(this.NudAtaquesVisitante);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.LblAtaqueVisitante);
             this.Controls.Add(this.NudPuntosVisitante);
             this.Controls.Add(this.NudSetsVisitante);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.LblPuntosVisitante);
             this.Controls.Add(this.CmbEquipoVisitante);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label17);
+            this.Controls.Add(this.LblSetsVisitante);
+            this.Controls.Add(this.LblEquipoVisitante);
             this.Controls.Add(this.NudAcesLocal);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.LblAcesLocal);
             this.Controls.Add(this.NudDefensaLocal);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.LblDefensaLocal);
             this.Controls.Add(this.NudRecepcionesLocal);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.LblRecepcionesLocal);
             this.Controls.Add(this.NudServiciosErradosLocal);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.LblServiciosLocal);
             this.Controls.Add(this.NudBloqueosLocal);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblBloqueosLocal);
             this.Controls.Add(this.TxtIdVolley);
             this.Controls.Add(this.LblIdFutbol);
             this.Controls.Add(this.NudAtaquesLocal);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.LblAtaquesLocal);
             this.Controls.Add(this.NudPuntosLocal);
             this.Controls.Add(this.NudSetsLocal);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.LblPuntosLocal);
             this.Controls.Add(this.CmbEquipoLocal);
             this.Controls.Add(this.CmbArbitro);
             this.Controls.Add(this.CmbFase);
@@ -696,13 +719,13 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.CmbEstadoPartido);
             this.Controls.Add(this.DtpFecha);
             this.Controls.Add(this.TxtIdPartido);
-            this.Controls.Add(this.TxtGoles);
+            this.Controls.Add(this.LblSetsLocal);
             this.Controls.Add(this.LblGanadorEmpate);
             this.Controls.Add(this.LblArbitro);
             this.Controls.Add(this.LblFase);
             this.Controls.Add(this.LblCampeonato);
             this.Controls.Add(this.LblEstadoPartido);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblEquipoLocal);
             this.Controls.Add(this.LblIdPartido);
             this.Controls.Add(this.LblFecha);
             this.Controls.Add(this.BtnEliminar);
@@ -740,40 +763,40 @@ namespace Campeonato_Polideportivo
         #endregion
 
         private System.Windows.Forms.NumericUpDown NudAcesVisitante;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblAcesVisitante;
         private System.Windows.Forms.NumericUpDown NudDefensaVisitante;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label LblDefensaVisitante;
         private System.Windows.Forms.NumericUpDown NudRecepcionesVisitante;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label LblRecepcionesVisitante;
         private System.Windows.Forms.NumericUpDown NudServiciosErradosVisitante;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label LblServiciosErradosVisitante;
         private System.Windows.Forms.NumericUpDown NudBloqueosVisitante;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label LblBloqueosVisitante;
         private System.Windows.Forms.NumericUpDown NudAtaquesVisitante;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label LblAtaqueVisitante;
         private System.Windows.Forms.NumericUpDown NudPuntosVisitante;
         private System.Windows.Forms.NumericUpDown NudSetsVisitante;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label LblPuntosVisitante;
         private System.Windows.Forms.ComboBox CmbEquipoVisitante;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label LblSetsVisitante;
+        private System.Windows.Forms.Label LblEquipoVisitante;
         private System.Windows.Forms.NumericUpDown NudAcesLocal;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LblAcesLocal;
         private System.Windows.Forms.NumericUpDown NudDefensaLocal;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label LblDefensaLocal;
         private System.Windows.Forms.NumericUpDown NudRecepcionesLocal;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LblRecepcionesLocal;
         private System.Windows.Forms.NumericUpDown NudServiciosErradosLocal;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblServiciosLocal;
         private System.Windows.Forms.NumericUpDown NudBloqueosLocal;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblBloqueosLocal;
         private System.Windows.Forms.TextBox TxtIdVolley;
         private System.Windows.Forms.Label LblIdFutbol;
         private System.Windows.Forms.NumericUpDown NudAtaquesLocal;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label LblAtaquesLocal;
         private System.Windows.Forms.NumericUpDown NudPuntosLocal;
         private System.Windows.Forms.NumericUpDown NudSetsLocal;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label LblPuntosLocal;
         private System.Windows.Forms.ComboBox CmbEquipoLocal;
         private System.Windows.Forms.ComboBox CmbArbitro;
         private System.Windows.Forms.ComboBox CmbFase;
@@ -782,13 +805,13 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.ComboBox CmbEstadoPartido;
         private System.Windows.Forms.DateTimePicker DtpFecha;
         private System.Windows.Forms.TextBox TxtIdPartido;
-        private System.Windows.Forms.Label TxtGoles;
+        private System.Windows.Forms.Label LblSetsLocal;
         private System.Windows.Forms.Label LblGanadorEmpate;
         private System.Windows.Forms.Label LblArbitro;
         private System.Windows.Forms.Label LblFase;
         private System.Windows.Forms.Label LblCampeonato;
         private System.Windows.Forms.Label LblEstadoPartido;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblEquipoLocal;
         private System.Windows.Forms.Label LblIdPartido;
         private System.Windows.Forms.Label LblFecha;
         private System.Windows.Forms.Button BtnEliminar;
@@ -797,5 +820,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.Label LblVoleibol;
         private System.Windows.Forms.DataGridView DgvVoleibol;
+        private System.Windows.Forms.Button BtnAyuda;
     }
 }

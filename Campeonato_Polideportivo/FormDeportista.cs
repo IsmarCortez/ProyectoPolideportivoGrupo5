@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -65,7 +66,7 @@ namespace Campeonato_Polideportivo
                     {
                         command.Parameters.AddWithValue("@nombre", TxtNombre.Text);
                         command.Parameters.AddWithValue("@apellido", TxtApellido.Text);
-                        command.Parameters.AddWithValue("@fechanacimiento", dateTimePickerDepor.Value);
+                        command.Parameters.AddWithValue("@fechanacimiento", DtpFechaNacimiento.Value);
                         command.Parameters.AddWithValue("@nacionalidad", TxtNacionalidad.Text);
                         command.Parameters.AddWithValue("@sexo", TxtSexo.Text);
                         command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value);
@@ -131,7 +132,7 @@ namespace Campeonato_Polideportivo
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
 
-                        GridVer.DataSource = dataTable;
+                        DgvDeportista.DataSource = dataTable;
                     }
                 }
                 catch (Exception ex)
@@ -164,7 +165,7 @@ namespace Campeonato_Polideportivo
                         cmd.Parameters.AddWithValue("@pkidjugador", textID.Text);
                         cmd.Parameters.AddWithValue("@nombre", TxtNombre.Text);
                         cmd.Parameters.AddWithValue("@apellido", TxtApellido.Text);
-                        cmd.Parameters.AddWithValue("@fechanacimiento", dateTimePickerDepor.Value);
+                        cmd.Parameters.AddWithValue("@fechanacimiento", DtpFechaNacimiento.Value);
                         cmd.Parameters.AddWithValue("@nacionalidad", TxtNacionalidad.Text);
                         cmd.Parameters.AddWithValue("@sexo", TxtSexo.Text);
                         cmd.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value);
@@ -213,7 +214,7 @@ namespace Campeonato_Polideportivo
             textID.Text = string.Empty;
             TxtNombre.Text = string.Empty;
             TxtApellido.Text = string.Empty;
-            dateTimePickerDepor.Value = DateTime.Now;
+            DtpFechaNacimiento.Value = DateTime.Now;
             TxtNacionalidad.Text = string.Empty;
             TxtSexo.Text = string.Empty;
             PicFotografia.Image = null;
@@ -224,19 +225,19 @@ namespace Campeonato_Polideportivo
         {
             try
             {
-                textID.Text = GridVer.CurrentRow.Cells[0].Value.ToString();
-                TxtNombre.Text = GridVer.CurrentRow.Cells[1].Value.ToString();
-                TxtApellido.Text = GridVer.CurrentRow.Cells[2].Value.ToString();
-                dateTimePickerDepor.Text = GridVer.CurrentRow.Cells[3].Value.ToString();
+                textID.Text = DgvDeportista.CurrentRow.Cells[0].Value.ToString();
+                TxtNombre.Text = DgvDeportista.CurrentRow.Cells[1].Value.ToString();
+                TxtApellido.Text = DgvDeportista.CurrentRow.Cells[2].Value.ToString();
+                DtpFechaNacimiento.Text = DgvDeportista.CurrentRow.Cells[3].Value.ToString();
                 // TxtFechaNacimiento.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                TxtNacionalidad.Text = GridVer.CurrentRow.Cells[4].Value.ToString();
-                TxtSexo.Text = GridVer.CurrentRow.Cells[5].Value.ToString();
+                TxtNacionalidad.Text = DgvDeportista.CurrentRow.Cells[4].Value.ToString();
+                TxtSexo.Text = DgvDeportista.CurrentRow.Cells[5].Value.ToString();
                 //PicFotografia.Text = GridVer.CurrentRow.Cells[6].Value.ToString();
 
                 PicFotografia.SizeMode = PictureBoxSizeMode.Zoom;
-                if (e.RowIndex >= 0 && GridVer.Columns.Contains("fotografia"))
+                if (e.RowIndex >= 0 && DgvDeportista.Columns.Contains("fotografia"))
                 {
-                    DataGridViewRow row = GridVer.Rows[e.RowIndex];
+                    DataGridViewRow row = DgvDeportista.Rows[e.RowIndex];
                     if (row.Cells["fotografia"].Value != DBNull.Value)
                     {
                         byte[] imageBytes = (byte[])row.Cells["fotografia"].Value;
@@ -359,6 +360,58 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+
+            TxtNombre.TabIndex = 0;
+            TxtApellido.TabIndex = 1;
+            DtpFechaNacimiento.TabIndex = 2;
+            TxtNacionalidad.TabIndex = 3;
+            TxtSexo.TabIndex = 4;
+            BtnFoto.TabIndex = 5;
+            BtnIngresar.TabIndex = 6;
+            BtnVer.TabIndex = 7;
+            BtnModificar.TabIndex = 8;
+            BtnEliminar.TabIndex = 9;
+            BtnAyuda.TabIndex = 10;
+            DgvDeportista.TabStop = false;
+
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 37;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
         }
     }
 }
