@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Ismar Cortéz 0901-21-506 Marco Monroy 0901-21-843
 namespace Campeonato_Polideportivo
 {
 
@@ -378,6 +378,12 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtNombre.Enabled = false;
+                TxtApellido.Enabled = false;
+                DtpFechaNacimiento.Enabled = false;
+                TxtNacionalidad.Enabled = false;
+                TxtSexo.Enabled = false;
+                BtnFoto.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

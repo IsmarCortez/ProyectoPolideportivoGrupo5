@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-
+// Código hecho por Brandon Boch 0901-21-13093
 namespace Campeonato_Polideportivo
 {
     public class UsuarioValidator

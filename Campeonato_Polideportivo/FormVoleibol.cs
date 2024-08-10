@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+// Código hecho por Marco Monroy 0901-21-843
 namespace Campeonato_Polideportivo
 {
     public partial class FormVoleibol : Form
@@ -67,6 +67,31 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtIdPartido.Enabled = false;
+                DtpFecha.Enabled = false;
+                CmbEstadoPartido.Enabled = false;
+                CmbGanadorEmpate.Enabled = false;
+                CmbCampeonato.Enabled = false;
+                CmbFase.Enabled = false;
+                CmbArbitro.Enabled = false;
+                CmbEquipoLocal.Enabled = false;
+                CmbEquipoVisitante.Enabled = false;
+                NudSetsLocal.Enabled = false;
+                NudSetsVisitante.Enabled = false;
+                NudPuntosLocal.Enabled = false;
+                NudPuntosVisitante.Enabled = false;
+                NudAtaquesLocal.Enabled = false;
+                NudAtaquesVisitante.Enabled = false;
+                NudBloqueosLocal.Enabled = false;
+                NudBloqueosVisitante.Enabled = false;
+                NudServiciosErradosLocal.Enabled = false;
+                NudServiciosErradosVisitante.Enabled = false;
+                NudRecepcionesLocal.Enabled = false;
+                NudRecepcionesVisitante.Enabled = false;
+                NudDefensaLocal.Enabled = false;
+                NudDefensaVisitante.Enabled = false;
+                NudAcesLocal.Enabled = false;
+                NudAcesVisitante.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

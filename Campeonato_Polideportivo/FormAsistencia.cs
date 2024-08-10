@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
-
+// Código hecho por Gabriela Suc 0901-21-1278
 namespace Campeonato_Polideportivo
 {
     public partial class FormAsistencia : Form
@@ -161,6 +161,8 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtMinuto.Enabled = false;
+                TxtIdAsistencia.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {
@@ -169,7 +171,7 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
-            }
+                            }
             else if (nivelDeAcceso == 3)
             {
                 BtnIngresar.Visible = true;

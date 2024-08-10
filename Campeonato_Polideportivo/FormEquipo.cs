@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Diagnostics; // Para Process y ProcessStartInfo
 using System.IO; // Para Path
 
-
+// Código hecho por Kateryn De León 0901-21-4866
 namespace Campeonato_Polideportivo
 {
     public partial class FormEquipo : Form
@@ -315,6 +315,9 @@ namespace Campeonato_Polideportivo
                 BtnLimpiar.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtNombreEquipo.Enabled = false;
+                TxtEstadio.Enabled = false;
+                TxtCiudad.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

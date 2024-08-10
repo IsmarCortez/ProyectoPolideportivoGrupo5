@@ -49,38 +49,41 @@ namespace Campeonato_Polideportivo
             // 
             // TxtId
             // 
-            this.TxtId.Location = new System.Drawing.Point(176, 204);
-            this.TxtId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtId.Location = new System.Drawing.Point(132, 166);
+            this.TxtId.Margin = new System.Windows.Forms.Padding(2);
             this.TxtId.Name = "TxtId";
             this.TxtId.ReadOnly = true;
-            this.TxtId.Size = new System.Drawing.Size(171, 22);
+            this.TxtId.Size = new System.Drawing.Size(129, 20);
             this.TxtId.TabIndex = 246;
             this.TxtId.Visible = false;
             // 
             // LblIDTorneo
             // 
             this.LblIDTorneo.AutoSize = true;
-            this.LblIDTorneo.Location = new System.Drawing.Point(29, 308);
+            this.LblIDTorneo.Location = new System.Drawing.Point(22, 250);
+            this.LblIDTorneo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblIDTorneo.Name = "LblIDTorneo";
-            this.LblIDTorneo.Size = new System.Drawing.Size(75, 17);
+            this.LblIDTorneo.Size = new System.Drawing.Size(41, 13);
             this.LblIDTorneo.TabIndex = 238;
-            this.LblIDTorneo.Text = "ID_Torneo";
+            this.LblIDTorneo.Text = "Torneo";
             // 
             // LblDeportistaVisitante
             // 
             this.LblDeportistaVisitante.AutoSize = true;
-            this.LblDeportistaVisitante.Location = new System.Drawing.Point(29, 272);
+            this.LblDeportistaVisitante.Location = new System.Drawing.Point(22, 221);
+            this.LblDeportistaVisitante.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblDeportistaVisitante.Name = "LblDeportistaVisitante";
-            this.LblDeportistaVisitante.Size = new System.Drawing.Size(131, 17);
+            this.LblDeportistaVisitante.Size = new System.Drawing.Size(98, 13);
             this.LblDeportistaVisitante.TabIndex = 237;
             this.LblDeportistaVisitante.Text = "Deportista Visitante";
             // 
             // LblIDSesion
             // 
             this.LblIDSesion.AutoSize = true;
-            this.LblIDSesion.Location = new System.Drawing.Point(29, 207);
+            this.LblIDSesion.Location = new System.Drawing.Point(22, 168);
+            this.LblIDSesion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblIDSesion.Name = "LblIDSesion";
-            this.LblIDSesion.Size = new System.Drawing.Size(72, 17);
+            this.LblIDSesion.Size = new System.Drawing.Size(56, 13);
             this.LblIDSesion.TabIndex = 236;
             this.LblIDSesion.Text = "ID_Sesion";
             this.LblIDSesion.Visible = false;
@@ -88,9 +91,10 @@ namespace Campeonato_Polideportivo
             // LblDeportistaLocal
             // 
             this.LblDeportistaLocal.AutoSize = true;
-            this.LblDeportistaLocal.Location = new System.Drawing.Point(29, 241);
+            this.LblDeportistaLocal.Location = new System.Drawing.Point(22, 196);
+            this.LblDeportistaLocal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblDeportistaLocal.Name = "LblDeportistaLocal";
-            this.LblDeportistaLocal.Size = new System.Drawing.Size(111, 17);
+            this.LblDeportistaLocal.Size = new System.Drawing.Size(84, 13);
             this.LblDeportistaLocal.TabIndex = 235;
             this.LblDeportistaLocal.Text = "Deportista Local";
             // 
@@ -104,10 +108,10 @@ namespace Campeonato_Polideportivo
             this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnEliminar.Location = new System.Drawing.Point(820, 512);
-            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnEliminar.Location = new System.Drawing.Point(615, 416);
+            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(173, 41);
+            this.BtnEliminar.Size = new System.Drawing.Size(130, 33);
             this.BtnEliminar.TabIndex = 234;
             this.BtnEliminar.Text = "ELIMINAR";
             this.BtnEliminar.UseVisualStyleBackColor = false;
@@ -123,10 +127,10 @@ namespace Campeonato_Polideportivo
             this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnModificar.Location = new System.Drawing.Point(595, 512);
-            this.BtnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnModificar.Location = new System.Drawing.Point(446, 416);
+            this.BtnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(173, 41);
+            this.BtnModificar.Size = new System.Drawing.Size(130, 33);
             this.BtnModificar.TabIndex = 233;
             this.BtnModificar.Text = "MODIFICAR";
             this.BtnModificar.UseVisualStyleBackColor = false;
@@ -142,10 +146,10 @@ namespace Campeonato_Polideportivo
             this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnVer.Location = new System.Drawing.Point(353, 512);
-            this.BtnVer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnVer.Location = new System.Drawing.Point(265, 416);
+            this.BtnVer.Margin = new System.Windows.Forms.Padding(2);
             this.BtnVer.Name = "BtnVer";
-            this.BtnVer.Size = new System.Drawing.Size(173, 41);
+            this.BtnVer.Size = new System.Drawing.Size(130, 33);
             this.BtnVer.TabIndex = 232;
             this.BtnVer.Text = "VER";
             this.BtnVer.UseVisualStyleBackColor = false;
@@ -161,10 +165,10 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnIngresar.Location = new System.Drawing.Point(144, 512);
-            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnIngresar.Location = new System.Drawing.Point(108, 416);
+            this.BtnIngresar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(173, 41);
+            this.BtnIngresar.Size = new System.Drawing.Size(130, 33);
             this.BtnIngresar.TabIndex = 231;
             this.BtnIngresar.Text = "INGRESAR";
             this.BtnIngresar.UseVisualStyleBackColor = false;
@@ -176,9 +180,10 @@ namespace Campeonato_Polideportivo
             this.LblPartidosIndividual.AutoSize = true;
             this.LblPartidosIndividual.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPartidosIndividual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.LblPartidosIndividual.Location = new System.Drawing.Point(477, 62);
+            this.LblPartidosIndividual.Location = new System.Drawing.Point(358, 50);
+            this.LblPartidosIndividual.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblPartidosIndividual.Name = "LblPartidosIndividual";
-            this.LblPartidosIndividual.Size = new System.Drawing.Size(382, 50);
+            this.LblPartidosIndividual.Size = new System.Drawing.Size(310, 40);
             this.LblPartidosIndividual.TabIndex = 229;
             this.LblPartidosIndividual.Text = "PARTIDOS INDIVIDUALES";
             // 
@@ -187,42 +192,42 @@ namespace Campeonato_Polideportivo
             this.DgvPartidosIndividuales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgvPartidosIndividuales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvPartidosIndividuales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.DgvPartidosIndividuales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvPartidosIndividuales.Location = new System.Drawing.Point(353, 158);
-            this.DgvPartidosIndividuales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DgvPartidosIndividuales.Location = new System.Drawing.Point(265, 128);
+            this.DgvPartidosIndividuales.Margin = new System.Windows.Forms.Padding(2);
             this.DgvPartidosIndividuales.Name = "DgvPartidosIndividuales";
             this.DgvPartidosIndividuales.RowHeadersWidth = 51;
             this.DgvPartidosIndividuales.RowTemplate.Height = 24;
-            this.DgvPartidosIndividuales.Size = new System.Drawing.Size(640, 336);
+            this.DgvPartidosIndividuales.Size = new System.Drawing.Size(480, 273);
             this.DgvPartidosIndividuales.TabIndex = 228;
             this.DgvPartidosIndividuales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVer_CellContentClick);
             // 
             // CmbLocal
             // 
             this.CmbLocal.FormattingEnabled = true;
-            this.CmbLocal.Location = new System.Drawing.Point(176, 238);
-            this.CmbLocal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbLocal.Location = new System.Drawing.Point(132, 193);
+            this.CmbLocal.Margin = new System.Windows.Forms.Padding(2);
             this.CmbLocal.Name = "CmbLocal";
-            this.CmbLocal.Size = new System.Drawing.Size(171, 24);
+            this.CmbLocal.Size = new System.Drawing.Size(129, 21);
             this.CmbLocal.TabIndex = 250;
             // 
             // CmbVis
             // 
             this.CmbVis.FormattingEnabled = true;
-            this.CmbVis.Location = new System.Drawing.Point(176, 270);
-            this.CmbVis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbVis.Location = new System.Drawing.Point(132, 219);
+            this.CmbVis.Margin = new System.Windows.Forms.Padding(2);
             this.CmbVis.Name = "CmbVis";
-            this.CmbVis.Size = new System.Drawing.Size(171, 24);
+            this.CmbVis.Size = new System.Drawing.Size(129, 21);
             this.CmbVis.TabIndex = 251;
             // 
             // CmbTorneo
             // 
             this.CmbTorneo.FormattingEnabled = true;
-            this.CmbTorneo.Location = new System.Drawing.Point(176, 308);
-            this.CmbTorneo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmbTorneo.Location = new System.Drawing.Point(132, 250);
+            this.CmbTorneo.Margin = new System.Windows.Forms.Padding(2);
             this.CmbTorneo.Name = "CmbTorneo";
-            this.CmbTorneo.Size = new System.Drawing.Size(171, 24);
+            this.CmbTorneo.Size = new System.Drawing.Size(129, 21);
             this.CmbTorneo.TabIndex = 252;
             // 
             // BtnAyuda
@@ -232,10 +237,10 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.BtnAyuda.Location = new System.Drawing.Point(933, 31);
-            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Location = new System.Drawing.Point(700, 25);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAyuda.Name = "BtnAyuda";
-            this.BtnAyuda.Size = new System.Drawing.Size(45, 41);
+            this.BtnAyuda.Size = new System.Drawing.Size(34, 33);
             this.BtnAyuda.TabIndex = 330;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
@@ -243,10 +248,10 @@ namespace Campeonato_Polideportivo
             // 
             // FormPartidosIndividuales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1005, 654);
+            this.ClientSize = new System.Drawing.Size(754, 531);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.CmbTorneo);
             this.Controls.Add(this.CmbVis);
@@ -262,7 +267,7 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.BtnIngresar);
             this.Controls.Add(this.LblPartidosIndividual);
             this.Controls.Add(this.DgvPartidosIndividuales);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormPartidosIndividuales";
             this.Text = "FormPartidosIndividuales";
             this.Load += new System.EventHandler(this.FormPartidosIndividuales_Load);

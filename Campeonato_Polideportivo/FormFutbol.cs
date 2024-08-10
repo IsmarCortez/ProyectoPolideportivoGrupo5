@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Fernando Garía 0901-21-581
 namespace Campeonato_Polideportivo
 {
     public partial class FormFutbol : Form
@@ -1069,6 +1069,19 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                DtpFecha.Enabled = false;
+                CmbEstadoPartido.Enabled = false;
+                CmbGanadorEmpate.Enabled = false;
+                CmbFase.Enabled = false;
+                CmbArbitro.Enabled = false;
+                CmbEquipoLocal.Enabled = false;
+                CmbEquipoVisitante.Enabled = false;
+                NudGolesLocal.Enabled = false;
+                NudGolesVisitante.Enabled = false;
+                NudTirosLocal.Enabled = false;
+                NudTirosVisitante.Enabled = false;
+                NudPosesionLocal.Enabled = false;
+                NudPosesionVisitante.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

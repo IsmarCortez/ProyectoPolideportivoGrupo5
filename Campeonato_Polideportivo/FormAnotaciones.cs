@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Diagnostics; // Para Process y ProcessStartInfo
 using System.IO; // Para Path
-
+// Código hecho por Kateryn De León 0901-21-4866
 namespace Campeonato_Polideportivo
 {
     public partial class FormAnotaciones : Form
@@ -593,6 +593,15 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtIdAnotaciones.Enabled = false;
+                TxtMinuto.Enabled = false;
+                CmbTipoAnotacion.Enabled = false;
+                CmbCampeonato.Enabled = false;
+                CmbPartido.Enabled = false;
+                CmbEquipo.Enabled = false;
+                CmbJugador.Enabled = false;
+                CmbAsistencia.Enabled = false;
+                TxtDescripcion.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

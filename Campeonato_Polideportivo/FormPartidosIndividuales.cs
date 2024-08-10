@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Gabriela Suc 0901-21-1278
 namespace Campeonato_Polideportivo
 {
     public partial class FormPartidosIndividuales : Form
@@ -59,6 +59,9 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                CmbLocal.Enabled = false;
+                CmbVis.Enabled = false;
+                CmbTorneo.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

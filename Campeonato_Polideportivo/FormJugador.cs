@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+// Código hecho por Marco Monroy 0901-21-843
 namespace Campeonato_Polideportivo
 {
     public partial class FormJugador : Form
@@ -165,6 +165,7 @@ namespace Campeonato_Polideportivo
             {
                 MessageBox.Show("Error al obtener el equipo seleccionado.");
             }
+            Limpiar();
 
         }
 
@@ -270,10 +271,20 @@ namespace Campeonato_Polideportivo
             {
                 MessageBox.Show("Error al obtener el equipo seleccionado.");
             }
+            Limpiar();
         }
+        
 
-
-
+        private void Limpiar()
+        {
+            TxtNombre.Clear();
+            TxtApellido.Clear();
+            TxtPosicion.Clear();
+            TxtNumero.Clear();
+            TxtNacionalidad.Clear();
+            TxtTitular.Clear();
+            TxtGoles.Clear();
+        }
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             Bitacora bitacora = new Bitacora(connectionString);
@@ -317,6 +328,7 @@ namespace Campeonato_Polideportivo
             {
                 conn.Close();
             }
+            Limpiar();
         }
 
 
@@ -326,33 +338,28 @@ namespace Campeonato_Polideportivo
             MySqlConnection conn = conexion.getConexion();
             conn.Open();
 
-            string query;
-            MySqlCommand command = new MySqlCommand();
+            string query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia FROM jugador";
+            MySqlCommand command = new MySqlCommand(query, conn);
 
             if (!string.IsNullOrEmpty(TxtId.Text))
             {
                 int idJugador;
-                if (!int.TryParse(TxtId.Text, out idJugador))
+                if (int.TryParse(TxtId.Text, out idJugador))
+                {
+                    query += " WHERE pkidjugador = @pkidjugador";
+                    command.CommandText = query;
+                    command.Parameters.AddWithValue("@pkidjugador", idJugador);
+                }
+                else
                 {
                     MessageBox.Show("ID inválido.");
+                    conn.Close();
                     return;
                 }
-
-                query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
-                        "FROM jugador WHERE pkidjugador = @pkidjugador";
-                command.Parameters.AddWithValue("@pkidjugador", idJugador);
-            }
-            else
-            {
-                query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
-                        "FROM jugador";
             }
 
             try
             {
-                command.Connection = conn;
-                command.CommandText = query;
-
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -388,7 +395,7 @@ namespace Campeonato_Polideportivo
                 }
                 else
                 {
-                    MessageBox.Show("Jugador no encontrado.");
+                    MessageBox.Show("No hay jugadores ingresados");
                 }
             }
             catch (Exception ex)
@@ -399,7 +406,7 @@ namespace Campeonato_Polideportivo
             {
                 conn.Close();
             }
-
+         
         }
 
 
@@ -528,6 +535,16 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtNombre.Enabled = false;
+                TxtApellido.Enabled = false;
+                DtpFechaNacimiento.Enabled = false;
+                TxtPosicion.Enabled = false;
+                TxtNumero.Enabled = false;
+                TxtNacionalidad.Enabled = false;
+                TxtTitular.Enabled = false;
+                BtnSeleccionarFoto.Enabled = false;
+                TxtGoles.Enabled = false;
+                CmbEquipo.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

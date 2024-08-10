@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Ismar Cortéz 0901-21-506
 namespace Campeonato_Polideportivo
 {
     public partial class FormDeporte : Form

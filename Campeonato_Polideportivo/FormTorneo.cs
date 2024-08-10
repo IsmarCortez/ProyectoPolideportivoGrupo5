@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Ismar Cortéz 0901-21-506
 namespace Campeonato_Polideportivo
 {
     public partial class FormTorneo : Form
@@ -274,6 +274,11 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtNombre.Enabled = false;
+                TxtTemporada.Enabled = false;
+                DtpFechaInicio.Enabled = false;
+                DtpFechafin.Enabled = false;
+                CmbDeporte.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

@@ -8,19 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+// Código hecho por Fernando García 0901-21-581
 namespace Campeonato_Polideportivo
 {
     public partial class Form1 : Form
     {
         private Conexion FormConexion;
         private string connectionString;
+        private static bool isClosingConfirmed = false;
         public Form1()
         {
             InitializeComponent();
             Design(); //Se manda a llamar la función luego de inicializar los componentes
             this.Load += new EventHandler(Form1_Load); //evento para poner el programa en pantalla completa
-            this.FormClosing += new FormClosingEventHandler(Form1_FormClosing);
+            this.FormClosing -= Form1_FormClosing; // Elimina cualquier suscripción previa
+            this.FormClosing += Form1_FormClosing; // Agrega la suscripción
         }
         private void Design() //Es una función para ocultar los paneles secundarios en el panel principal
         {
@@ -32,7 +34,7 @@ namespace Campeonato_Polideportivo
         private void OcultarSubMenu()//Función para ocultar los paneles en caso esten abiertos 
         {
 
-           if (PanelColectivo.Visible == true)
+            if (PanelColectivo.Visible == true)
                 PanelColectivo.Visible = false;
             if (PanelIndividual.Visible == true)
                 PanelIndividual.Visible = false;
@@ -86,7 +88,7 @@ namespace Campeonato_Polideportivo
                                 {
                                     return 1; // Nivel de acceso bajo (ocultar ambos botones)
                                 }
-                                else if (fkpermisos == 2 && fkprivilegios == 2) 
+                                else if (fkpermisos == 2 && fkprivilegios == 2)
                                 {
                                     return 2; // Nivel de acceso medio/alto (mostrar BtnRegistro, ocultar button3)
                                 }
@@ -103,7 +105,7 @@ namespace Campeonato_Polideportivo
                 return 0; // Nivel de acceso no determinado
             }
         }
-       
+
         private void Form1_Load(object sender, EventArgs e)
         {
             // Maximizar la ventana
@@ -178,7 +180,7 @@ namespace Campeonato_Polideportivo
 
 
         private Form FormActivo = null; //Se cierra el formulario activo
-        private void abrirForm(Form Form1) 
+        private void abrirForm(Form Form1)
         {
             if (FormActivo != null) // si existe un formulario activo
                 FormActivo.Close(); // se cierra
@@ -198,7 +200,7 @@ namespace Campeonato_Polideportivo
             MostrarSubMenu(PanelColectivo);
         }
 
-       
+
         private void TxtTitulo_TextChanged(object sender, EventArgs e)
         {
 
@@ -467,12 +469,39 @@ namespace Campeonato_Polideportivo
             usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             bitacora.RegistrarEvento("Cerró Sesión", usuarioId);
         }
-       
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            Application.Exit();
-       
+            Console.WriteLine($"FormClosing triggered. Reason: {e.CloseReason}, isClosingConfirmed: {isClosingConfirmed}");
+
+            if (e.CloseReason == CloseReason.UserClosing && !isClosingConfirmed)
+            {
+                e.Cancel = true; // Cancela el cierre por defecto
+
+                // Muestra el mensaje de confirmación en el hilo de la UI
+                this.Invoke((MethodInvoker)delegate
+                {
+                    DialogResult result = MessageBox.Show(
+                        "¿Estás seguro de que quieres salir?",
+                        "Confirmar salida",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        isClosingConfirmed = true;
+                        Console.WriteLine("El usuario acepto la salida.");
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        Console.WriteLine("El usuario cancelo la salida.");
+                    }
+                });
+            }
+
         }
     }
 }
+

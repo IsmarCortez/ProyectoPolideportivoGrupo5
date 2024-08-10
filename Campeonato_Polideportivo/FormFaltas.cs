@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Fernando García 0901-21-581
 namespace Campeonato_Polideportivo
 {
     public partial class FormFaltas : Form
@@ -733,6 +733,12 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtMinuto.Enabled = false;
+                CmbTarjeta.Enabled = false;
+                CmbFalta.Enabled = false;
+                TxtDescripcion.Enabled = false;
+                DtpFecha.Enabled = false;
+                CmbArbitro.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {

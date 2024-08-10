@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+// Código hecho por Fernando García 0901-21-581
 namespace Campeonato_Polideportivo
 {
     public partial class FormEntrenador : Form
@@ -56,6 +56,11 @@ namespace Campeonato_Polideportivo
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
+                TxtNombre.Enabled = false;
+                TxtApellido.Enabled = false;
+                DtpEntrenador.Enabled = false;
+                TxtNacionalidad.Enabled = false;
+                CmbEquipo.Enabled = false;
             }
             else if (nivelDeAcceso == 2)
             {
