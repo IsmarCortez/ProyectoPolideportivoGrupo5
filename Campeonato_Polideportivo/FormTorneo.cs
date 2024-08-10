@@ -53,6 +53,17 @@ namespace Campeonato_Polideportivo
             usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             var selectedDeporte = (KeyValuePair<int, string>)CmbDeporte.SelectedItem;
             int fkiddeporte = selectedDeporte.Key;
+            //Solo permite texto
+            if (TxtNombre.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (TxtTemporada.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de temporada no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())
@@ -196,6 +207,17 @@ namespace Campeonato_Polideportivo
             usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             var selectedDeporte = (KeyValuePair<int, string>)CmbDeporte.SelectedItem;
             int fkiddeporte = selectedDeporte.Key;
+            //Solo permite texto
+            if (TxtNombre.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (TxtTemporada.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de temporada no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())

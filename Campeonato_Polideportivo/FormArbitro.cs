@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -53,6 +54,26 @@ namespace Campeonato_Polideportivo
             DateTime fechaNacimiento = DtpFechaNacimiento.Value;
             string nacionalidad = TxtNacionalidad.Text;
             usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
+<<<<<<< HEAD
+
+            // Verificar si contiene dígitos
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }         
+            if (apellido.Any(char.IsDigit))
+            {
+                MessageBox.Show("El apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (nacionalidad.Any(char.IsDigit))
+            {
+                MessageBox.Show("La nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+=======
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
 
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())

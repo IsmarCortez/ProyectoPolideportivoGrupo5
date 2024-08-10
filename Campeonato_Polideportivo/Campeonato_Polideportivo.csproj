@@ -251,12 +251,6 @@
     <Compile Include="FormJugador.Designer.cs">
       <DependentUpon>FormJugador.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOtrosPartidos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormOtrosPartidos.Designer.cs">
-      <DependentUpon>FormOtrosPartidos.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormPartidosIndividuales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,9 +337,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormJugador.resx">
       <DependentUpon>FormJugador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormOtrosPartidos.resx">
-      <DependentUpon>FormOtrosPartidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPartidosIndividuales.resx">
       <DependentUpon>FormPartidosIndividuales.cs</DependentUpon>

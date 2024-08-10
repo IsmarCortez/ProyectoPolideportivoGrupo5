@@ -186,7 +186,11 @@ namespace Campeonato_Polideportivo
             this.LblFechaNacimiento.AutoSize = true;
             this.LblFechaNacimiento.Location = new System.Drawing.Point(12, 265);
             this.LblFechaNacimiento.Name = "LblFechaNacimiento";
+<<<<<<< HEAD
+            this.LblFechaNacimiento.Size = new System.Drawing.Size(141, 17);
+=======
             this.LblFechaNacimiento.Size = new System.Drawing.Size(135, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFechaNacimiento.TabIndex = 45;
             this.LblFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
@@ -262,10 +266,17 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+<<<<<<< HEAD
+            this.BtnAyuda.Location = new System.Drawing.Point(926, 20);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 40);
+=======
             this.BtnAyuda.Location = new System.Drawing.Point(926, 51);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 325;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
@@ -275,6 +286,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 653);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.DtpEntrenador);

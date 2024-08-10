@@ -55,6 +55,22 @@ namespace Campeonato_Polideportivo
             string nombre = TxtNombreEquipo.Text;
             string estadio = TxtEstadio.Text;
             string ciudad = TxtCiudad.Text;
+            // Verificar si contiene dígitos
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (estadio.Any(char.IsDigit))
+            {
+                MessageBox.Show("El estadio no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (ciudad.Any(char.IsDigit))
+            {
+                MessageBox.Show("La ciudad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -152,7 +168,22 @@ namespace Campeonato_Polideportivo
                 string nombre = TxtNombreEquipo.Text;
                 string estadio = TxtEstadio.Text;
                 string ciudad = TxtCiudad.Text;
-
+                // Verificar si contiene dígitos
+                if (nombre.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (estadio.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El estadio no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (ciudad.Any(char.IsDigit))
+                {
+                    MessageBox.Show("La ciudad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {

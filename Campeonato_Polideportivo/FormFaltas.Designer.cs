@@ -374,7 +374,11 @@ namespace Campeonato_Polideportivo
             this.LblCampeonato.AutoSize = true;
             this.LblCampeonato.Location = new System.Drawing.Point(59, 323);
             this.LblCampeonato.Name = "LblCampeonato";
+<<<<<<< HEAD
+            this.LblCampeonato.Size = new System.Drawing.Size(88, 17);
+=======
             this.LblCampeonato.Size = new System.Drawing.Size(85, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblCampeonato.TabIndex = 105;
             this.LblCampeonato.Text = "Campeonato";
             // 
@@ -385,10 +389,17 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+<<<<<<< HEAD
+            this.BtnAyuda.Location = new System.Drawing.Point(907, 33);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 37);
+=======
             this.BtnAyuda.Location = new System.Drawing.Point(907, 37);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 326;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
@@ -398,6 +409,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.CmbCampeonato);

@@ -285,6 +285,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.BtnVer);

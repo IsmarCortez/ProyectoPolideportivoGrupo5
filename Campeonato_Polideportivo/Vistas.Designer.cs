@@ -49,7 +49,11 @@ namespace Campeonato_Polideportivo
             this.DgvVistas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DgvVistas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvVistas.Location = new System.Drawing.Point(17, 255);
+<<<<<<< HEAD
+            this.DgvVistas.Margin = new System.Windows.Forms.Padding(4);
+=======
             this.DgvVistas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.DgvVistas.Name = "DgvVistas";
             this.DgvVistas.RowHeadersWidth = 51;
             this.DgvVistas.Size = new System.Drawing.Size(961, 244);
@@ -63,7 +67,11 @@ namespace Campeonato_Polideportivo
             this.LblVistas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblVistas.Location = new System.Drawing.Point(333, 47);
             this.LblVistas.Name = "LblVistas";
+<<<<<<< HEAD
+            this.LblVistas.Size = new System.Drawing.Size(322, 50);
+=======
             this.LblVistas.Size = new System.Drawing.Size(315, 50);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblVistas.TabIndex = 176;
             this.LblVistas.Text = "VISTAS Y REPORTES";
             // 
@@ -261,6 +269,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnBitacora);
             this.Controls.Add(this.BtnPdf);
@@ -274,7 +283,11 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.BtnEquipos);
             this.Controls.Add(this.LblVistas);
             this.Controls.Add(this.DgvVistas);
+<<<<<<< HEAD
+            this.Margin = new System.Windows.Forms.Padding(4);
+=======
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.Name = "Vistas";
             this.Text = "Vistas";
             this.Load += new System.EventHandler(this.Vistas_Load);

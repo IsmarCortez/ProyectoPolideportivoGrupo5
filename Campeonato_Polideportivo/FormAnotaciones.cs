@@ -304,6 +304,22 @@ namespace Campeonato_Polideportivo
             int usuarioId = 0;
             Bitacora bitacora = new Bitacora(connectionString);
             string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+<<<<<<< HEAD
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+=======
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
 
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -332,8 +348,20 @@ namespace Campeonato_Polideportivo
                 int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
                 int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
                 int IdAsistencia = Convert.ToInt32(CmbAsistencia.SelectedValue);
-                string Descripcion = TxtDescripcion.Text;               
-                
+                string Descripcion = TxtDescripcion.Text;
+
+                //Solo permitie digitos
+                if (!Minuto.All(char.IsDigit))
+                {
+                    MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                //Solo permite texto
+                if (Descripcion.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El texto de descripcion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Conexión a la base de datos
                 using (MySqlConnection conn = conexion.getConexion())
@@ -399,6 +427,16 @@ namespace Campeonato_Polideportivo
                 int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
                 int IdAsistencia = Convert.ToInt32(CmbAsistencia.SelectedValue);
                 string Descripcion = TxtDescripcion.Text;
+                if (!Minuto.All(char.IsDigit))
+                {
+                    MessageBox.Show("El texto solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (Descripcion.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El texto no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Conexión a la base de datos
                 using (MySqlConnection conn = conexion.getConexion())

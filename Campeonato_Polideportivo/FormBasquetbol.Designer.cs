@@ -106,7 +106,11 @@ namespace Campeonato_Polideportivo
             this.LblFaltasVisitante.AutoSize = true;
             this.LblFaltasVisitante.Location = new System.Drawing.Point(692, 284);
             this.LblFaltasVisitante.Name = "LblFaltasVisitante";
+<<<<<<< HEAD
+            this.LblFaltasVisitante.Size = new System.Drawing.Size(46, 17);
+=======
             this.LblFaltasVisitante.Size = new System.Drawing.Size(44, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFaltasVisitante.TabIndex = 271;
             this.LblFaltasVisitante.Text = "Faltas";
             // 
@@ -115,7 +119,11 @@ namespace Campeonato_Polideportivo
             this.LblPerdidasVisitante.AutoSize = true;
             this.LblPerdidasVisitante.Location = new System.Drawing.Point(692, 256);
             this.LblPerdidasVisitante.Name = "LblPerdidasVisitante";
+<<<<<<< HEAD
+            this.LblPerdidasVisitante.Size = new System.Drawing.Size(64, 17);
+=======
             this.LblPerdidasVisitante.Size = new System.Drawing.Size(62, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblPerdidasVisitante.TabIndex = 270;
             this.LblPerdidasVisitante.Text = "Perdidas";
             // 
@@ -124,7 +132,11 @@ namespace Campeonato_Polideportivo
             this.LblBloqueosVisitante.AutoSize = true;
             this.LblBloqueosVisitante.Location = new System.Drawing.Point(692, 228);
             this.LblBloqueosVisitante.Name = "LblBloqueosVisitante";
+<<<<<<< HEAD
+            this.LblBloqueosVisitante.Size = new System.Drawing.Size(67, 17);
+=======
             this.LblBloqueosVisitante.Size = new System.Drawing.Size(65, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblBloqueosVisitante.TabIndex = 269;
             this.LblBloqueosVisitante.Text = "Bloqueos";
             // 
@@ -133,7 +145,11 @@ namespace Campeonato_Polideportivo
             this.LblRobosVisitante.AutoSize = true;
             this.LblRobosVisitante.Location = new System.Drawing.Point(692, 199);
             this.LblRobosVisitante.Name = "LblRobosVisitante";
+<<<<<<< HEAD
+            this.LblRobosVisitante.Size = new System.Drawing.Size(49, 17);
+=======
             this.LblRobosVisitante.Size = new System.Drawing.Size(48, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblRobosVisitante.TabIndex = 268;
             this.LblRobosVisitante.Text = "Robos";
             // 
@@ -142,7 +158,11 @@ namespace Campeonato_Polideportivo
             this.LblAsistenciasVisitante.AutoSize = true;
             this.LblAsistenciasVisitante.Location = new System.Drawing.Point(692, 172);
             this.LblAsistenciasVisitante.Name = "LblAsistenciasVisitante";
+<<<<<<< HEAD
+            this.LblAsistenciasVisitante.Size = new System.Drawing.Size(79, 17);
+=======
             this.LblAsistenciasVisitante.Size = new System.Drawing.Size(76, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblAsistenciasVisitante.TabIndex = 267;
             this.LblAsistenciasVisitante.Text = "Asistencias";
             // 
@@ -151,7 +171,11 @@ namespace Campeonato_Polideportivo
             this.LblRebotesVisitante.AutoSize = true;
             this.LblRebotesVisitante.Location = new System.Drawing.Point(692, 140);
             this.LblRebotesVisitante.Name = "LblRebotesVisitante";
+<<<<<<< HEAD
+            this.LblRebotesVisitante.Size = new System.Drawing.Size(61, 17);
+=======
             this.LblRebotesVisitante.Size = new System.Drawing.Size(59, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblRebotesVisitante.TabIndex = 266;
             this.LblRebotesVisitante.Text = "Rebotes";
             // 
@@ -160,7 +184,11 @@ namespace Campeonato_Polideportivo
             this.LblPuntosVisitante.AutoSize = true;
             this.LblPuntosVisitante.Location = new System.Drawing.Point(692, 110);
             this.LblPuntosVisitante.Name = "LblPuntosVisitante";
+<<<<<<< HEAD
+            this.LblPuntosVisitante.Size = new System.Drawing.Size(52, 17);
+=======
             this.LblPuntosVisitante.Size = new System.Drawing.Size(48, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblPuntosVisitante.TabIndex = 265;
             this.LblPuntosVisitante.Text = "Puntos";
             // 
@@ -243,7 +271,11 @@ namespace Campeonato_Polideportivo
             this.LblVisitante.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblVisitante.Location = new System.Drawing.Point(692, 78);
             this.LblVisitante.Name = "LblVisitante";
+<<<<<<< HEAD
+            this.LblVisitante.Size = new System.Drawing.Size(126, 17);
+=======
             this.LblVisitante.Size = new System.Drawing.Size(120, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblVisitante.TabIndex = 256;
             this.LblVisitante.Text = "Equipo Visitante";
             // 
@@ -261,7 +293,11 @@ namespace Campeonato_Polideportivo
             this.LblFaltas.AutoSize = true;
             this.LblFaltas.Location = new System.Drawing.Point(384, 286);
             this.LblFaltas.Name = "LblFaltas";
+<<<<<<< HEAD
+            this.LblFaltas.Size = new System.Drawing.Size(46, 17);
+=======
             this.LblFaltas.Size = new System.Drawing.Size(44, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFaltas.TabIndex = 254;
             this.LblFaltas.Text = "Faltas";
             // 
@@ -279,7 +315,11 @@ namespace Campeonato_Polideportivo
             this.LblPerdidas.AutoSize = true;
             this.LblPerdidas.Location = new System.Drawing.Point(384, 258);
             this.LblPerdidas.Name = "LblPerdidas";
+<<<<<<< HEAD
+            this.LblPerdidas.Size = new System.Drawing.Size(64, 17);
+=======
             this.LblPerdidas.Size = new System.Drawing.Size(62, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblPerdidas.TabIndex = 252;
             this.LblPerdidas.Text = "Perdidas";
             // 
@@ -297,7 +337,11 @@ namespace Campeonato_Polideportivo
             this.LblBloqueos.AutoSize = true;
             this.LblBloqueos.Location = new System.Drawing.Point(384, 230);
             this.LblBloqueos.Name = "LblBloqueos";
+<<<<<<< HEAD
+            this.LblBloqueos.Size = new System.Drawing.Size(67, 17);
+=======
             this.LblBloqueos.Size = new System.Drawing.Size(65, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblBloqueos.TabIndex = 250;
             this.LblBloqueos.Text = "Bloqueos";
             // 
@@ -315,7 +359,11 @@ namespace Campeonato_Polideportivo
             this.LblRobos.AutoSize = true;
             this.LblRobos.Location = new System.Drawing.Point(384, 202);
             this.LblRobos.Name = "LblRobos";
+<<<<<<< HEAD
+            this.LblRobos.Size = new System.Drawing.Size(49, 17);
+=======
             this.LblRobos.Size = new System.Drawing.Size(48, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblRobos.TabIndex = 248;
             this.LblRobos.Text = "Robos";
             // 
@@ -334,7 +382,11 @@ namespace Campeonato_Polideportivo
             this.LblIdBasquet.AutoSize = true;
             this.LblIdBasquet.Location = new System.Drawing.Point(39, 46);
             this.LblIdBasquet.Name = "LblIdBasquet";
+<<<<<<< HEAD
+            this.LblIdBasquet.Size = new System.Drawing.Size(77, 17);
+=======
             this.LblIdBasquet.Size = new System.Drawing.Size(73, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblIdBasquet.TabIndex = 246;
             this.LblIdBasquet.Text = "ID Basquet";
             this.LblIdBasquet.Visible = false;
@@ -353,7 +405,11 @@ namespace Campeonato_Polideportivo
             this.LblAsistencias.AutoSize = true;
             this.LblAsistencias.Location = new System.Drawing.Point(384, 174);
             this.LblAsistencias.Name = "LblAsistencias";
+<<<<<<< HEAD
+            this.LblAsistencias.Size = new System.Drawing.Size(79, 17);
+=======
             this.LblAsistencias.Size = new System.Drawing.Size(76, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblAsistencias.TabIndex = 244;
             this.LblAsistencias.Text = "Asistencias";
             // 
@@ -380,7 +436,11 @@ namespace Campeonato_Polideportivo
             this.LblRebotes.AutoSize = true;
             this.LblRebotes.Location = new System.Drawing.Point(384, 142);
             this.LblRebotes.Name = "LblRebotes";
+<<<<<<< HEAD
+            this.LblRebotes.Size = new System.Drawing.Size(61, 17);
+=======
             this.LblRebotes.Size = new System.Drawing.Size(59, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblRebotes.TabIndex = 241;
             this.LblRebotes.Text = "Rebotes";
             // 
@@ -461,7 +521,11 @@ namespace Campeonato_Polideportivo
             this.LblPuntos.AutoSize = true;
             this.LblPuntos.Location = new System.Drawing.Point(384, 112);
             this.LblPuntos.Name = "LblPuntos";
+<<<<<<< HEAD
+            this.LblPuntos.Size = new System.Drawing.Size(52, 17);
+=======
             this.LblPuntos.Size = new System.Drawing.Size(48, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblPuntos.TabIndex = 231;
             this.LblPuntos.Text = "Puntos";
             // 
@@ -516,7 +580,11 @@ namespace Campeonato_Polideportivo
             this.LblLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLocal.Location = new System.Drawing.Point(384, 79);
             this.LblLocal.Name = "LblLocal";
+<<<<<<< HEAD
+            this.LblLocal.Size = new System.Drawing.Size(102, 17);
+=======
             this.LblLocal.Size = new System.Drawing.Size(98, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblLocal.TabIndex = 226;
             this.LblLocal.Text = "Equipo Local";
             // 
@@ -660,6 +728,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.LblFaltasVisitante);

@@ -163,7 +163,11 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(29, 126);
             this.LblNombre.Name = "LblNombre";
+<<<<<<< HEAD
+            this.LblNombre.Size = new System.Drawing.Size(58, 17);
+=======
             this.LblNombre.Size = new System.Drawing.Size(56, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNombre.TabIndex = 35;
             this.LblNombre.Text = "Nombre";
             this.LblNombre.Click += new System.EventHandler(this.label1_Click);
@@ -182,7 +186,11 @@ namespace Campeonato_Polideportivo
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(29, 158);
             this.LblApellido.Name = "LblApellido";
+<<<<<<< HEAD
+            this.LblApellido.Size = new System.Drawing.Size(58, 17);
+=======
             this.LblApellido.Size = new System.Drawing.Size(57, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblApellido.TabIndex = 35;
             this.LblApellido.Text = "Apellido";
             this.LblApellido.Click += new System.EventHandler(this.label1_Click);
@@ -192,7 +200,11 @@ namespace Campeonato_Polideportivo
             this.LblFechaNacimiento.AutoSize = true;
             this.LblFechaNacimiento.Location = new System.Drawing.Point(29, 194);
             this.LblFechaNacimiento.Name = "LblFechaNacimiento";
+<<<<<<< HEAD
+            this.LblFechaNacimiento.Size = new System.Drawing.Size(141, 17);
+=======
             this.LblFechaNacimiento.Size = new System.Drawing.Size(135, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFechaNacimiento.TabIndex = 35;
             this.LblFechaNacimiento.Text = "Fecha de Nacimiento";
             this.LblFechaNacimiento.Click += new System.EventHandler(this.label1_Click);
@@ -202,7 +214,11 @@ namespace Campeonato_Polideportivo
             this.LblPosicion.AutoSize = true;
             this.LblPosicion.Location = new System.Drawing.Point(29, 224);
             this.LblPosicion.Name = "LblPosicion";
+<<<<<<< HEAD
+            this.LblPosicion.Size = new System.Drawing.Size(61, 17);
+=======
             this.LblPosicion.Size = new System.Drawing.Size(59, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblPosicion.TabIndex = 35;
             this.LblPosicion.Text = "Posicion";
             this.LblPosicion.Click += new System.EventHandler(this.label1_Click);
@@ -212,7 +228,11 @@ namespace Campeonato_Polideportivo
             this.LblNumero.AutoSize = true;
             this.LblNumero.Location = new System.Drawing.Point(29, 254);
             this.LblNumero.Name = "LblNumero";
+<<<<<<< HEAD
+            this.LblNumero.Size = new System.Drawing.Size(58, 17);
+=======
             this.LblNumero.Size = new System.Drawing.Size(55, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNumero.TabIndex = 35;
             this.LblNumero.Text = "Numero";
             this.LblNumero.Click += new System.EventHandler(this.label1_Click);
@@ -222,7 +242,11 @@ namespace Campeonato_Polideportivo
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(29, 282);
             this.LblNacionalidad.Name = "LblNacionalidad";
+<<<<<<< HEAD
+            this.LblNacionalidad.Size = new System.Drawing.Size(90, 17);
+=======
             this.LblNacionalidad.Size = new System.Drawing.Size(88, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNacionalidad.TabIndex = 35;
             this.LblNacionalidad.Text = "Nacionalidad";
             this.LblNacionalidad.Click += new System.EventHandler(this.label1_Click);
@@ -232,7 +256,11 @@ namespace Campeonato_Polideportivo
             this.LblTitular.AutoSize = true;
             this.LblTitular.Location = new System.Drawing.Point(29, 316);
             this.LblTitular.Name = "LblTitular";
+<<<<<<< HEAD
+            this.LblTitular.Size = new System.Drawing.Size(48, 17);
+=======
             this.LblTitular.Size = new System.Drawing.Size(44, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblTitular.TabIndex = 35;
             this.LblTitular.Text = "Titular";
             this.LblTitular.Click += new System.EventHandler(this.label1_Click);
@@ -242,7 +270,11 @@ namespace Campeonato_Polideportivo
             this.LblFotografia.AutoSize = true;
             this.LblFotografia.Location = new System.Drawing.Point(29, 354);
             this.LblFotografia.Name = "LblFotografia";
+<<<<<<< HEAD
+            this.LblFotografia.Size = new System.Drawing.Size(72, 17);
+=======
             this.LblFotografia.Size = new System.Drawing.Size(68, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFotografia.TabIndex = 35;
             this.LblFotografia.Text = "Fotografia";
             this.LblFotografia.Click += new System.EventHandler(this.label1_Click);
@@ -325,7 +357,11 @@ namespace Campeonato_Polideportivo
             this.LblId.AutoSize = true;
             this.LblId.Location = new System.Drawing.Point(29, 92);
             this.LblId.Name = "LblId";
+<<<<<<< HEAD
+            this.LblId.Size = new System.Drawing.Size(21, 17);
+=======
             this.LblId.Size = new System.Drawing.Size(20, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblId.TabIndex = 35;
             this.LblId.Text = "ID";
             this.LblId.Visible = false;
@@ -388,10 +424,17 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+<<<<<<< HEAD
+            this.BtnAyuda.Location = new System.Drawing.Point(926, 11);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 45);
+=======
             this.BtnAyuda.Location = new System.Drawing.Point(883, 66);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 328;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
@@ -401,6 +444,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.TxtGoles);

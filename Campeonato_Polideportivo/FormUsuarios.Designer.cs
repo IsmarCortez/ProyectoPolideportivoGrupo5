@@ -81,7 +81,11 @@ namespace Campeonato_Polideportivo
             this.LblPermisos.Location = new System.Drawing.Point(241, 289);
             this.LblPermisos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblPermisos.Name = "LblPermisos";
+<<<<<<< HEAD
+            this.LblPermisos.Size = new System.Drawing.Size(70, 17);
+=======
             this.LblPermisos.Size = new System.Drawing.Size(67, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblPermisos.TabIndex = 67;
             this.LblPermisos.Text = "Permisos:";
             // 
@@ -92,7 +96,11 @@ namespace Campeonato_Polideportivo
             this.LblCorreo.Location = new System.Drawing.Point(241, 247);
             this.LblCorreo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblCorreo.Name = "LblCorreo";
+<<<<<<< HEAD
+            this.LblCorreo.Size = new System.Drawing.Size(129, 17);
+=======
             this.LblCorreo.Size = new System.Drawing.Size(121, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblCorreo.TabIndex = 65;
             this.LblCorreo.Text = "Correo Electrónico:";
             // 
@@ -103,7 +111,11 @@ namespace Campeonato_Polideportivo
             this.LblContrasenia.Location = new System.Drawing.Point(241, 174);
             this.LblContrasenia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblContrasenia.Name = "LblContrasenia";
+<<<<<<< HEAD
+            this.LblContrasenia.Size = new System.Drawing.Size(85, 17);
+=======
             this.LblContrasenia.Size = new System.Drawing.Size(79, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblContrasenia.TabIndex = 64;
             this.LblContrasenia.Text = "Contraseña:";
             // 
@@ -114,7 +126,11 @@ namespace Campeonato_Polideportivo
             this.LblNomUsuario.Location = new System.Drawing.Point(241, 138);
             this.LblNomUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNomUsuario.Name = "LblNomUsuario";
+<<<<<<< HEAD
+            this.LblNomUsuario.Size = new System.Drawing.Size(135, 17);
+=======
             this.LblNomUsuario.Size = new System.Drawing.Size(128, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNomUsuario.TabIndex = 63;
             this.LblNomUsuario.Text = "Nombre de Usuario:";
             // 
@@ -135,7 +151,11 @@ namespace Campeonato_Polideportivo
             // BtnRegistrar
             // 
             this.BtnRegistrar.Anchor = System.Windows.Forms.AnchorStyles.None;
+<<<<<<< HEAD
+            this.BtnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+=======
             this.BtnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnRegistrar.FlatAppearance.BorderSize = 0;
             this.BtnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -156,16 +176,23 @@ namespace Campeonato_Polideportivo
             this.LblNuevoUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblNuevoUsuario.AutoSize = true;
             this.LblNuevoUsuario.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
+            this.LblNuevoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.LblNuevoUsuario.Location = new System.Drawing.Point(393, 49);
+            this.LblNuevoUsuario.Name = "LblNuevoUsuario";
+            this.LblNuevoUsuario.Size = new System.Drawing.Size(260, 50);
+=======
             this.LblNuevoUsuario.Location = new System.Drawing.Point(429, 52);
             this.LblNuevoUsuario.Name = "LblNuevoUsuario";
             this.LblNuevoUsuario.Size = new System.Drawing.Size(254, 50);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNuevoUsuario.TabIndex = 73;
             this.LblNuevoUsuario.Text = "NUEVO USUARIO";
             // 
             // BtnVer
             // 
             this.BtnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.BtnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnVer.FlatAppearance.BorderSize = 0;
             this.BtnVer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -201,7 +228,11 @@ namespace Campeonato_Polideportivo
             this.LblContraseñaConfirmacion.Location = new System.Drawing.Point(241, 212);
             this.LblContraseñaConfirmacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblContraseñaConfirmacion.Name = "LblContraseñaConfirmacion";
+<<<<<<< HEAD
+            this.LblContraseñaConfirmacion.Size = new System.Drawing.Size(145, 17);
+=======
             this.LblContraseñaConfirmacion.Size = new System.Drawing.Size(135, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblContraseñaConfirmacion.TabIndex = 76;
             this.LblContraseñaConfirmacion.Text = "Confirma Contraseña:";
             // 
@@ -219,6 +250,10 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+=======
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.TxtConfirmacion);
             this.Controls.Add(this.LblContraseñaConfirmacion);

@@ -263,6 +263,12 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show("Jugador no seleccionado.");
                 return;
             }
+            // Verifica que solo tenga digitos
+            if (!minuto.All(char.IsDigit))
+            {
+                MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Conexion conexion = new Conexion();
             
@@ -318,6 +324,12 @@ namespace Campeonato_Polideportivo
             if (!int.TryParse(CmbJugador.SelectedValue.ToString(), out idJugador))
             {
                 MessageBox.Show("Jugador no seleccionado.");
+                return;
+            }
+            // Verifica que solo tenga digitos
+            if (!minuto.All(char.IsDigit))
+            {
+                MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

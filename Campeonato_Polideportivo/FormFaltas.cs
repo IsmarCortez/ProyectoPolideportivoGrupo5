@@ -386,6 +386,18 @@ namespace Campeonato_Polideportivo
             int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
             int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
             int IdArbitro = Convert.ToInt32(CmbArbitro.SelectedValue);
+            //Solo permitie digitos
+            if (!Minuto.All(char.IsDigit))
+            {
+                MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (Descripcion.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de descripcion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             CamposVacios();
 
             //  conexión mysql
@@ -517,6 +529,18 @@ namespace Campeonato_Polideportivo
                 int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
                 int IdArbitro = Convert.ToInt32(CmbArbitro.SelectedValue);
                 CamposVacios();
+                //Solo permitie digitos
+                if (!Minuto.All(char.IsDigit))
+                {
+                    MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                //Solo permite texto
+                if (Descripcion.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El texto de descripcion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())

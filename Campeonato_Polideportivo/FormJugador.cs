@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -86,6 +87,31 @@ namespace Campeonato_Polideportivo
             int goles;
             int.TryParse(TxtGoles.Text, out goles);
             int fkidequipo;
+            //Solo permite texto
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (apellido.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (posicion.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de posicion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (nacionalidad.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))
             {
                 DateTime fechaNacimiento = DtpFechaNacimiento.Value;
@@ -162,6 +188,30 @@ namespace Campeonato_Polideportivo
             int goles;
             int.TryParse(TxtGoles.Text, out goles);
             int fkidequipo;
+            //Solo permite texto
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (apellido.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (posicion.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de posicion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (nacionalidad.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))
             {
                 DateTime fechaNacimiento = DtpFechaNacimiento.Value;

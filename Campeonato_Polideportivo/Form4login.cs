@@ -225,7 +225,27 @@ namespace Campeonato_Polideportivo
                 // Evita el beep cuando se presiona Enter
                 e.Handled = true;
                 // Llama al método del botón como si se hubiera hecho clic en él
-                BtnIngresar_Click(sender, e);
+                BtnIngresar_Click_1( sender,  e);
+            }
+        }
+        public static class GlobalState
+        {
+            public static bool HasConfirmedExit = false;
+        }
+        private void Form4login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!GlobalState.HasConfirmedExit)
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de que quieres salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true; // Cancela el cierre del formulario
+                }
+                else
+                {
+                    GlobalState.HasConfirmedExit = true; // Marca que el mensaje ha sido mostrado
+                    Application.Exit(); // Asegúrate de que toda la aplicación se cierre
+                }
             }
         }
         public static class GlobalState

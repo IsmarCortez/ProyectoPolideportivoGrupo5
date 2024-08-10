@@ -106,7 +106,11 @@ namespace Campeonato_Polideportivo
             this.TxtLanzamientosVisitante.AutoSize = true;
             this.TxtLanzamientosVisitante.Location = new System.Drawing.Point(685, 275);
             this.TxtLanzamientosVisitante.Name = "TxtLanzamientosVisitante";
+<<<<<<< HEAD
+            this.TxtLanzamientosVisitante.Size = new System.Drawing.Size(96, 17);
+=======
             this.TxtLanzamientosVisitante.Size = new System.Drawing.Size(90, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtLanzamientosVisitante.TabIndex = 320;
             this.TxtLanzamientosVisitante.Text = "Lanzamientos";
             // 
@@ -115,7 +119,11 @@ namespace Campeonato_Polideportivo
             this.TxtBasesRobadasVisitante.AutoSize = true;
             this.TxtBasesRobadasVisitante.Location = new System.Drawing.Point(685, 247);
             this.TxtBasesRobadasVisitante.Name = "TxtBasesRobadasVisitante";
+<<<<<<< HEAD
+            this.TxtBasesRobadasVisitante.Size = new System.Drawing.Size(108, 17);
+=======
             this.TxtBasesRobadasVisitante.Size = new System.Drawing.Size(106, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtBasesRobadasVisitante.TabIndex = 319;
             this.TxtBasesRobadasVisitante.Text = "Bases Robadas";
             // 
@@ -124,7 +132,11 @@ namespace Campeonato_Polideportivo
             this.TxtPonchesVisitante.AutoSize = true;
             this.TxtPonchesVisitante.Location = new System.Drawing.Point(685, 219);
             this.TxtPonchesVisitante.Name = "TxtPonchesVisitante";
+<<<<<<< HEAD
+            this.TxtPonchesVisitante.Size = new System.Drawing.Size(63, 17);
+=======
             this.TxtPonchesVisitante.Size = new System.Drawing.Size(60, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtPonchesVisitante.TabIndex = 318;
             this.TxtPonchesVisitante.Text = "Ponches";
             // 
@@ -133,7 +145,11 @@ namespace Campeonato_Polideportivo
             this.TxtHomerunsVisitante.AutoSize = true;
             this.TxtHomerunsVisitante.Location = new System.Drawing.Point(685, 191);
             this.TxtHomerunsVisitante.Name = "TxtHomerunsVisitante";
+<<<<<<< HEAD
+            this.TxtHomerunsVisitante.Size = new System.Drawing.Size(73, 17);
+=======
             this.TxtHomerunsVisitante.Size = new System.Drawing.Size(69, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtHomerunsVisitante.TabIndex = 317;
             this.TxtHomerunsVisitante.Text = "Homeruns";
             // 
@@ -142,7 +158,11 @@ namespace Campeonato_Polideportivo
             this.TxtErroresVisitante.AutoSize = true;
             this.TxtErroresVisitante.Location = new System.Drawing.Point(685, 163);
             this.TxtErroresVisitante.Name = "TxtErroresVisitante";
+<<<<<<< HEAD
+            this.TxtErroresVisitante.Size = new System.Drawing.Size(55, 17);
+=======
             this.TxtErroresVisitante.Size = new System.Drawing.Size(51, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtErroresVisitante.TabIndex = 316;
             this.TxtErroresVisitante.Text = "Errores";
             // 
@@ -151,7 +171,11 @@ namespace Campeonato_Polideportivo
             this.TxtHitsVisitante.AutoSize = true;
             this.TxtHitsVisitante.Location = new System.Drawing.Point(685, 131);
             this.TxtHitsVisitante.Name = "TxtHitsVisitante";
+<<<<<<< HEAD
+            this.TxtHitsVisitante.Size = new System.Drawing.Size(32, 17);
+=======
             this.TxtHitsVisitante.Size = new System.Drawing.Size(30, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtHitsVisitante.TabIndex = 315;
             this.TxtHitsVisitante.Text = "Hits";
             // 
@@ -160,7 +184,11 @@ namespace Campeonato_Polideportivo
             this.TxtCarrerasVisitante.AutoSize = true;
             this.TxtCarrerasVisitante.Location = new System.Drawing.Point(685, 101);
             this.TxtCarrerasVisitante.Name = "TxtCarrerasVisitante";
+<<<<<<< HEAD
+            this.TxtCarrerasVisitante.Size = new System.Drawing.Size(63, 17);
+=======
             this.TxtCarrerasVisitante.Size = new System.Drawing.Size(59, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtCarrerasVisitante.TabIndex = 314;
             this.TxtCarrerasVisitante.Text = "Carreras";
             // 
@@ -251,7 +279,11 @@ namespace Campeonato_Polideportivo
             this.TxtLanzamientos.AutoSize = true;
             this.TxtLanzamientos.Location = new System.Drawing.Point(377, 274);
             this.TxtLanzamientos.Name = "TxtLanzamientos";
+<<<<<<< HEAD
+            this.TxtLanzamientos.Size = new System.Drawing.Size(96, 17);
+=======
             this.TxtLanzamientos.Size = new System.Drawing.Size(90, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtLanzamientos.TabIndex = 303;
             this.TxtLanzamientos.Text = "Lanzamientos";
             // 
@@ -268,7 +300,11 @@ namespace Campeonato_Polideportivo
             this.TxtBasesRobadas.AutoSize = true;
             this.TxtBasesRobadas.Location = new System.Drawing.Point(377, 246);
             this.TxtBasesRobadas.Name = "TxtBasesRobadas";
+<<<<<<< HEAD
+            this.TxtBasesRobadas.Size = new System.Drawing.Size(108, 17);
+=======
             this.TxtBasesRobadas.Size = new System.Drawing.Size(106, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtBasesRobadas.TabIndex = 301;
             this.TxtBasesRobadas.Text = "Bases Robadas";
             // 
@@ -285,7 +321,11 @@ namespace Campeonato_Polideportivo
             this.TxtPonches.AutoSize = true;
             this.TxtPonches.Location = new System.Drawing.Point(377, 218);
             this.TxtPonches.Name = "TxtPonches";
+<<<<<<< HEAD
+            this.TxtPonches.Size = new System.Drawing.Size(63, 17);
+=======
             this.TxtPonches.Size = new System.Drawing.Size(60, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtPonches.TabIndex = 299;
             this.TxtPonches.Text = "Ponches";
             // 
@@ -302,7 +342,11 @@ namespace Campeonato_Polideportivo
             this.TxtHomeruns.AutoSize = true;
             this.TxtHomeruns.Location = new System.Drawing.Point(377, 190);
             this.TxtHomeruns.Name = "TxtHomeruns";
+<<<<<<< HEAD
+            this.TxtHomeruns.Size = new System.Drawing.Size(73, 17);
+=======
             this.TxtHomeruns.Size = new System.Drawing.Size(69, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtHomeruns.TabIndex = 297;
             this.TxtHomeruns.Text = "Homeruns";
             // 
@@ -320,7 +364,11 @@ namespace Campeonato_Polideportivo
             this.LblIdBeisbol.AutoSize = true;
             this.LblIdBeisbol.Location = new System.Drawing.Point(32, 33);
             this.LblIdBeisbol.Name = "LblIdBeisbol";
+<<<<<<< HEAD
+            this.LblIdBeisbol.Size = new System.Drawing.Size(71, 17);
+=======
             this.LblIdBeisbol.Size = new System.Drawing.Size(69, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblIdBeisbol.TabIndex = 295;
             this.LblIdBeisbol.Text = "ID Béisbol";
             this.LblIdBeisbol.Visible = false;
@@ -338,7 +386,11 @@ namespace Campeonato_Polideportivo
             this.TxtErrores.AutoSize = true;
             this.TxtErrores.Location = new System.Drawing.Point(377, 162);
             this.TxtErrores.Name = "TxtErrores";
+<<<<<<< HEAD
+            this.TxtErrores.Size = new System.Drawing.Size(55, 17);
+=======
             this.TxtErrores.Size = new System.Drawing.Size(51, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtErrores.TabIndex = 293;
             this.TxtErrores.Text = "Errores";
             // 
@@ -363,7 +415,11 @@ namespace Campeonato_Polideportivo
             this.TxtHits.AutoSize = true;
             this.TxtHits.Location = new System.Drawing.Point(377, 130);
             this.TxtHits.Name = "TxtHits";
+<<<<<<< HEAD
+            this.TxtHits.Size = new System.Drawing.Size(32, 17);
+=======
             this.TxtHits.Size = new System.Drawing.Size(30, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtHits.TabIndex = 290;
             this.TxtHits.Text = "Hits";
             // 
@@ -437,7 +493,11 @@ namespace Campeonato_Polideportivo
             this.TxtCarreras.AutoSize = true;
             this.TxtCarreras.Location = new System.Drawing.Point(377, 100);
             this.TxtCarreras.Name = "TxtCarreras";
+<<<<<<< HEAD
+            this.TxtCarreras.Size = new System.Drawing.Size(63, 17);
+=======
             this.TxtCarreras.Size = new System.Drawing.Size(59, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.TxtCarreras.TabIndex = 280;
             this.TxtCarreras.Text = "Carreras";
             // 
@@ -633,6 +693,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.TxtLanzamientosVisitante);

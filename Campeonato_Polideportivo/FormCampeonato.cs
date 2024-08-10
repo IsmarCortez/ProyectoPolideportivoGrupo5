@@ -108,6 +108,18 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show("Por favor ingrese el nombre del deporte.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            //Solo permite texto
+            if (Nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (Temporada.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de temporada no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())

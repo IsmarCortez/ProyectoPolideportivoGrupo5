@@ -158,7 +158,11 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(36, 216);
             this.LblNombre.Name = "LblNombre";
+<<<<<<< HEAD
+            this.LblNombre.Size = new System.Drawing.Size(58, 17);
+=======
             this.LblNombre.Size = new System.Drawing.Size(56, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNombre.TabIndex = 50;
             this.LblNombre.Text = "Nombre";
             // 
@@ -167,7 +171,11 @@ namespace Campeonato_Polideportivo
             this.LblIdArbitro.AutoSize = true;
             this.LblIdArbitro.Location = new System.Drawing.Point(36, 184);
             this.LblIdArbitro.Name = "LblIdArbitro";
+<<<<<<< HEAD
+            this.LblIdArbitro.Size = new System.Drawing.Size(21, 17);
+=======
             this.LblIdArbitro.Size = new System.Drawing.Size(20, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblIdArbitro.TabIndex = 51;
             this.LblIdArbitro.Text = "ID";
             this.LblIdArbitro.Visible = false;
@@ -177,7 +185,11 @@ namespace Campeonato_Polideportivo
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(36, 263);
             this.LblApellido.Name = "LblApellido";
+<<<<<<< HEAD
+            this.LblApellido.Size = new System.Drawing.Size(58, 17);
+=======
             this.LblApellido.Size = new System.Drawing.Size(57, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblApellido.TabIndex = 52;
             this.LblApellido.Text = "Apellido";
             // 
@@ -186,7 +198,11 @@ namespace Campeonato_Polideportivo
             this.LblFecha.AutoSize = true;
             this.LblFecha.Location = new System.Drawing.Point(36, 310);
             this.LblFecha.Name = "LblFecha";
+<<<<<<< HEAD
+            this.LblFecha.Size = new System.Drawing.Size(141, 17);
+=======
             this.LblFecha.Size = new System.Drawing.Size(135, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFecha.TabIndex = 53;
             this.LblFecha.Text = "Fecha de Nacimiento";
             // 
@@ -195,7 +211,11 @@ namespace Campeonato_Polideportivo
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(36, 355);
             this.LblNacionalidad.Name = "LblNacionalidad";
+<<<<<<< HEAD
+            this.LblNacionalidad.Size = new System.Drawing.Size(90, 17);
+=======
             this.LblNacionalidad.Size = new System.Drawing.Size(88, 16);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblNacionalidad.TabIndex = 54;
             this.LblNacionalidad.Text = "Nacionalidad";
             // 
@@ -248,10 +268,17 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAyuda.ForeColor = System.Drawing.Color.Transparent;
+<<<<<<< HEAD
+            this.BtnAyuda.Location = new System.Drawing.Point(919, 20);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(52, 39);
+=======
             this.BtnAyuda.Location = new System.Drawing.Point(397, 595);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(173, 39);
+>>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 114;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
@@ -261,6 +288,7 @@ namespace Campeonato_Polideportivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
             this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.DtpFechaNacimiento);

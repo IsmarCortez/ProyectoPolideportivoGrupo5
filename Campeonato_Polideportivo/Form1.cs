@@ -400,7 +400,6 @@ namespace Campeonato_Polideportivo
 
         private void BtnOtros_Click_1(object sender, EventArgs e)
         {
-            abrirForm(new FormOtrosPartidos());
 
         }
 
