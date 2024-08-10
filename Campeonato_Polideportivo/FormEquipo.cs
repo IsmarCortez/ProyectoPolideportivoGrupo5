@@ -184,6 +184,7 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show("La ciudad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {

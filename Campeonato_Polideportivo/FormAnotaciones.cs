@@ -304,7 +304,6 @@ namespace Campeonato_Polideportivo
             int usuarioId = 0;
             Bitacora bitacora = new Bitacora(connectionString);
             string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
-<<<<<<< HEAD
 
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -318,21 +317,7 @@ namespace Campeonato_Polideportivo
 
             return usuarioId;
         }
-=======
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
 
-            using (MySqlConnection conn = conexion.getConexion())
-            {
-                conn.Open();
-                using (var command = new MySqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
-                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
-                }
-            }
-
-            return usuarioId;
-        }
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();

@@ -87,30 +87,33 @@ namespace Campeonato_Polideportivo
             int goles;
             int.TryParse(TxtGoles.Text, out goles);
             int fkidequipo;
-            //Solo permite texto
+            // Verificar si contiene dígitos
             if (nombre.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //Solo permite texto
             if (apellido.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //Solo permite texto
             if (posicion.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de posicion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La posición no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //Solo permite texto
             if (nacionalidad.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (titular.Any(char.IsDigit))
+            {
+                MessageBox.Show("El titular solo puede ser Si o No. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))
             {
@@ -188,28 +191,30 @@ namespace Campeonato_Polideportivo
             int goles;
             int.TryParse(TxtGoles.Text, out goles);
             int fkidequipo;
-            //Solo permite texto
+            // Verificar si contiene dígitos
             if (nombre.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //Solo permite texto
             if (apellido.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //Solo permite texto
             if (posicion.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de posicion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La posición no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //Solo permite texto
             if (nacionalidad.Any(char.IsDigit))
             {
-                MessageBox.Show("El texto de nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (titular.Any(char.IsDigit))
+            {
+                MessageBox.Show("El titular solo puede ser Si o No. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))

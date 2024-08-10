@@ -123,7 +123,7 @@ namespace Campeonato_Polideportivo
             this.LblEntrenador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblEntrenador.Location = new System.Drawing.Point(381, 51);
             this.LblEntrenador.Name = "LblEntrenador";
-            this.LblEntrenador.Size = new System.Drawing.Size(213, 50);
+            this.LblEntrenador.Size = new System.Drawing.Size(216, 50);
             this.LblEntrenador.TabIndex = 36;
             this.LblEntrenador.Text = "ENTRENADOR";
             // 
@@ -168,7 +168,7 @@ namespace Campeonato_Polideportivo
             this.LblNombre.AutoSize = true;
             this.LblNombre.Location = new System.Drawing.Point(62, 133);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(56, 16);
+            this.LblNombre.Size = new System.Drawing.Size(58, 17);
             this.LblNombre.TabIndex = 43;
             this.LblNombre.Text = "Nombre";
             // 
@@ -177,7 +177,7 @@ namespace Campeonato_Polideportivo
             this.LblApellido.AutoSize = true;
             this.LblApellido.Location = new System.Drawing.Point(62, 201);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(57, 16);
+            this.LblApellido.Size = new System.Drawing.Size(58, 17);
             this.LblApellido.TabIndex = 44;
             this.LblApellido.Text = "Apellido";
             // 
@@ -186,11 +186,7 @@ namespace Campeonato_Polideportivo
             this.LblFechaNacimiento.AutoSize = true;
             this.LblFechaNacimiento.Location = new System.Drawing.Point(12, 265);
             this.LblFechaNacimiento.Name = "LblFechaNacimiento";
-<<<<<<< HEAD
             this.LblFechaNacimiento.Size = new System.Drawing.Size(141, 17);
-=======
-            this.LblFechaNacimiento.Size = new System.Drawing.Size(135, 16);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.LblFechaNacimiento.TabIndex = 45;
             this.LblFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
@@ -199,7 +195,7 @@ namespace Campeonato_Polideportivo
             this.LblNacionalidad.AutoSize = true;
             this.LblNacionalidad.Location = new System.Drawing.Point(30, 323);
             this.LblNacionalidad.Name = "LblNacionalidad";
-            this.LblNacionalidad.Size = new System.Drawing.Size(88, 16);
+            this.LblNacionalidad.Size = new System.Drawing.Size(90, 17);
             this.LblNacionalidad.TabIndex = 46;
             this.LblNacionalidad.Text = "Nacionalidad";
             // 
@@ -208,7 +204,7 @@ namespace Campeonato_Polideportivo
             this.LblEquipo.AutoSize = true;
             this.LblEquipo.Location = new System.Drawing.Point(55, 387);
             this.LblEquipo.Name = "LblEquipo";
-            this.LblEquipo.Size = new System.Drawing.Size(50, 16);
+            this.LblEquipo.Size = new System.Drawing.Size(52, 17);
             this.LblEquipo.TabIndex = 47;
             this.LblEquipo.Text = "Equipo";
             // 
@@ -238,7 +234,7 @@ namespace Campeonato_Polideportivo
             this.LblIdEntrenador.AutoSize = true;
             this.LblIdEntrenador.Location = new System.Drawing.Point(30, 82);
             this.LblIdEntrenador.Name = "LblIdEntrenador";
-            this.LblIdEntrenador.Size = new System.Drawing.Size(89, 16);
+            this.LblIdEntrenador.Size = new System.Drawing.Size(96, 17);
             this.LblIdEntrenador.TabIndex = 52;
             this.LblIdEntrenador.Text = "ID Entrenador";
             this.LblIdEntrenador.Visible = false;
@@ -266,17 +262,10 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
             this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-<<<<<<< HEAD
             this.BtnAyuda.Location = new System.Drawing.Point(926, 20);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
             this.BtnAyuda.Size = new System.Drawing.Size(45, 40);
-=======
-            this.BtnAyuda.Location = new System.Drawing.Point(926, 51);
-            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnAyuda.Name = "BtnAyuda";
-            this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 325;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;

@@ -43,7 +43,7 @@ namespace Campeonato_Polideportivo
             this.LblDeportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblDeportes.Location = new System.Drawing.Point(407, 17);
             this.LblDeportes.Name = "LblDeportes";
-            this.LblDeportes.Size = new System.Drawing.Size(167, 50);
+            this.LblDeportes.Size = new System.Drawing.Size(170, 50);
             this.LblDeportes.TabIndex = 37;
             this.LblDeportes.Text = "DEPORTES";
             // 
@@ -72,11 +72,7 @@ namespace Campeonato_Polideportivo
             this.BtnAyuda.Location = new System.Drawing.Point(468, 534);
             this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAyuda.Name = "BtnAyuda";
-<<<<<<< HEAD
             this.BtnAyuda.Size = new System.Drawing.Size(45, 38);
-=======
-            this.BtnAyuda.Size = new System.Drawing.Size(45, 33);
->>>>>>> 8d353b13ca83f321132d3d10cee8f15da9bbaec0
             this.BtnAyuda.TabIndex = 323;
             this.BtnAyuda.Text = "?";
             this.BtnAyuda.UseVisualStyleBackColor = false;
