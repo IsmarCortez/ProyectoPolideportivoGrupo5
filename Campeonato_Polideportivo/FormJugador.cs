@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -22,6 +24,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
+
         }
 
         private void CargarEquipos()
@@ -50,9 +53,30 @@ namespace Campeonato_Polideportivo
                 conn.Close();
             }
         }
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             string nombre = TxtNombre.Text;
             string apellido = TxtApellido.Text;
             string posicion = TxtPosicion.Text;
@@ -63,13 +87,39 @@ namespace Campeonato_Polideportivo
             int goles;
             int.TryParse(TxtGoles.Text, out goles);
             int fkidequipo;
+            //Solo permite texto
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (apellido.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (posicion.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de posicion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (nacionalidad.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))
             {
-                DateTime fechaNacimiento = TxtFecha.Value;
+                DateTime fechaNacimiento = DtpFechaNacimiento.Value;
 
                 Conexion conexion = new Conexion();
-                MySqlConnection conn = conexion.getConexion();
 
+                MySqlConnection conn = conexion.getConexion();
+                conn.Open();
                 string query = "INSERT INTO jugador (nombre, apellido, posicion, numero, nacionalidad, titular, fotografia, fkidequipo, cantanotaciones, fechanacimiento) " +
                                "VALUES (@nombre, @apellido, @posicion, @numero, @nacionalidad, @titular, @fotografia, @fkidequipo, @cantanotaciones, @fechanacimiento)";
 
@@ -85,13 +135,13 @@ namespace Campeonato_Polideportivo
                     command.Parameters.AddWithValue("@fotografia", (object)fotoBytes ?? DBNull.Value); // Insertar la imagen o NULL
                     command.Parameters.AddWithValue("@fkidequipo", fkidequipo);
                     command.Parameters.AddWithValue("@cantanotaciones", goles);
-                    command.Parameters.AddWithValue("@fecha_nacimiento", fechaNacimiento);
-
+                    command.Parameters.AddWithValue("@fechanacimiento", fechaNacimiento);
 
                     int result = command.ExecuteNonQuery();
 
                     if (result > 0)
                     {
+                        bitacora.RegistrarEvento("Ingresó un nuevo jugador", usuarioId);
                         MessageBox.Show("Jugador insertado exitosamente.");
                     }
                     else
@@ -112,11 +162,15 @@ namespace Campeonato_Polideportivo
             {
                 MessageBox.Show("Error al obtener el equipo seleccionado.");
             }
+
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             int idJugador;
             if (!int.TryParse(TxtId.Text, out idJugador))
             {
@@ -134,12 +188,37 @@ namespace Campeonato_Polideportivo
             int goles;
             int.TryParse(TxtGoles.Text, out goles);
             int fkidequipo;
+            //Solo permite texto
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (apellido.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (posicion.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de posicion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Solo permite texto
+            if (nacionalidad.Any(char.IsDigit))
+            {
+                MessageBox.Show("El texto de nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (int.TryParse(CmbEquipo.SelectedValue.ToString(), out fkidequipo))
             {
-                DateTime fechaNacimiento = TxtFecha.Value;
+                DateTime fechaNacimiento = DtpFechaNacimiento.Value;
 
                 Conexion conexion = new Conexion();
                 MySqlConnection conn = conexion.getConexion();
+                conn.Open();
 
                 string query = "UPDATE jugador SET nombre = @nombre, apellido = @apellido, posicion = @posicion, numero = @numero, " +
                                "nacionalidad = @nacionalidad, titular = @titular, fotografia = @fotografia, fkidequipo = @fkidequipo, " +
@@ -165,6 +244,7 @@ namespace Campeonato_Polideportivo
 
                     if (result > 0)
                     {
+                        bitacora.RegistrarEvento("Modificó un jugador", usuarioId);
                         MessageBox.Show("Jugador modificado exitosamente.");
                     }
                     else
@@ -191,6 +271,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             int idJugador;
             if (!int.TryParse(TxtId.Text, out idJugador))
             {
@@ -200,6 +283,7 @@ namespace Campeonato_Polideportivo
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
+            conn.Open();
 
             string query = "DELETE FROM jugador WHERE pkidjugador = @pkidjugador";
 
@@ -212,6 +296,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Eliminó un jugador", usuarioId);
                     MessageBox.Show("Jugador eliminado exitosamente.");
                 }
                 else
@@ -232,23 +317,36 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
-            int idJugador;
-            if (!int.TryParse(TxtId.Text, out idJugador))
-            {
-                MessageBox.Show("ID inválido.");
-                return;
-            }
-
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
+            conn.Open();
 
-            string query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
-                           "FROM jugador WHERE pkidjugador = @pkidjugador";
+            string query;
+            MySqlCommand command = new MySqlCommand();
+
+            if (!string.IsNullOrEmpty(TxtId.Text))
+            {
+                int idJugador;
+                if (!int.TryParse(TxtId.Text, out idJugador))
+                {
+                    MessageBox.Show("ID inválido.");
+                    return;
+                }
+
+                query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
+                        "FROM jugador WHERE pkidjugador = @pkidjugador";
+                command.Parameters.AddWithValue("@pkidjugador", idJugador);
+            }
+            else
+            {
+                query = "SELECT pkidjugador, nombre, apellido, posicion, numero, nacionalidad, titular, cantanotaciones, fechanacimiento, fotografia " +
+                        "FROM jugador";
+            }
 
             try
             {
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@pkidjugador", idJugador);
+                command.Connection = conn;
+                command.CommandText = query;
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -256,31 +354,32 @@ namespace Campeonato_Polideportivo
 
                 if (dt.Rows.Count > 0)
                 {
-                    DataRow row = dt.Rows[0];
-                    TxtNombre.Text = row["nombre"].ToString();
-                    TxtApellido.Text = row["apellido"].ToString();
-                    TxtPosicion.Text = row["posicion"].ToString();
-                    TxtNumero.Text = row["numero"].ToString();
-                    TxtNacionalidad.Text = row["nacionalidad"].ToString();
-                    TxtTitular.Text = row["titular"].ToString();
-                    TxtGoles.Text = row["cantanotaciones"].ToString();
-                    TxtFecha.Value = Convert.ToDateTime(row["fechanacimiento"]);
-
-
-                    if (row["fotografia"] != DBNull.Value)
+                    if (!string.IsNullOrEmpty(TxtId.Text) && dt.Rows.Count == 1)
                     {
-                        byte[] fotoBytes = (byte[])row["fotografia"];
-                        using (MemoryStream ms = new MemoryStream(fotoBytes))
+                        DataRow row = dt.Rows[0];
+                        TxtNombre.Text = row["nombre"].ToString();
+                        TxtApellido.Text = row["apellido"].ToString();
+                        TxtPosicion.Text = row["posicion"].ToString();
+                        TxtNumero.Text = row["numero"].ToString();
+                        TxtNacionalidad.Text = row["nacionalidad"].ToString();
+                        TxtTitular.Text = row["titular"].ToString();
+                        TxtGoles.Text = row["cantanotaciones"].ToString();
+                        DtpFechaNacimiento.Value = Convert.ToDateTime(row["fechanacimiento"]);
+
+                        if (row["fotografia"] != DBNull.Value)
                         {
-                            PicFotografia.Image = Image.FromStream(ms);
+                            byte[] fotoBytes = (byte[])row["fotografia"];
+                            using (MemoryStream ms = new MemoryStream(fotoBytes))
+                            {
+                                PicFotografia.Image = Image.FromStream(ms);
+                            }
+                        }
+                        else
+                        {
+                            PicFotografia.Image = null;
                         }
                     }
-                    else
-                    {
-                        PicFotografia.Image = null;
-                    }
-
-                    GridVer.DataSource = dt;
+                    DgvFutbolista.DataSource = dt;
                 }
                 else
                 {
@@ -295,6 +394,7 @@ namespace Campeonato_Polideportivo
             {
                 conn.Close();
             }
+
         }
 
 
@@ -344,7 +444,44 @@ namespace Campeonato_Polideportivo
 
         private void GridVer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                TxtId.Text = DgvFutbolista.CurrentRow.Cells[0].Value.ToString();
+                TxtNombre.Text = DgvFutbolista.CurrentRow.Cells[1].Value.ToString();
+                TxtApellido.Text = DgvFutbolista.CurrentRow.Cells[2].Value.ToString();
+                TxtPosicion.Text = DgvFutbolista.CurrentRow.Cells[3].Value.ToString();
+                TxtNumero.Text = DgvFutbolista.CurrentRow.Cells[4].Value.ToString();
+                TxtNacionalidad.Text = DgvFutbolista.CurrentRow.Cells[5].Value.ToString();
+                TxtTitular.Text = DgvFutbolista.CurrentRow.Cells[6].Value.ToString();
+                TxtGoles.Text = DgvFutbolista.CurrentRow.Cells[7].Value.ToString();
+                DtpFechaNacimiento.Text = DgvFutbolista.CurrentRow.Cells[8].Value.ToString();
+                PicFotografia.SizeMode = PictureBoxSizeMode.Zoom;
+                if (e.RowIndex >= 0 && DgvFutbolista.Columns.Contains("fotografia"))
+                {
+                    DataGridViewRow row = DgvFutbolista.Rows[e.RowIndex];
+                    if (row.Cells["fotografia"].Value != DBNull.Value)
+                    {
+                        byte[] imageBytes = (byte[])row.Cells["fotografia"].Value;
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
 
+                            PicFotografia.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        PicFotografia.Image = null;
+                    }
+                }
+
+
+
+
+            }
+            catch
+            {
+
+            }
         }
 
         private void BtnSeleccionarFoto_Click_1(object sender, EventArgs e)
@@ -382,7 +519,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
@@ -410,6 +547,73 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+
+            CmbEquipo.TabIndex = 0;
+            TxtNombre.TabIndex = 1;
+            TxtApellido.TabIndex = 2;
+            DtpFechaNacimiento.TabIndex = 3;
+            TxtPosicion.TabIndex = 4;
+            TxtNumero.TabIndex = 5;
+            TxtNacionalidad.TabIndex = 6;
+            TxtTitular.TabIndex = 7;
+            BtnSeleccionarFoto.TabIndex = 8;
+            TxtGoles.TabIndex = 9;
+            BtnIngresar.TabIndex = 10;
+            BtnVer.TabIndex = 11;
+            BtnModificar.TabIndex = 12;
+            BtnEliminar.TabIndex = 13;
+            BtnAyuda.TabIndex = 14;
+
+            DgvFutbolista.TabStop = false;
+
+            // DateTimePicker para la fecha de nacimiento
+            DtpFechaNacimiento.MaxDate = DateTime.Today.AddYears(-18); // Máximo 18 años antes de hoy
+            DtpFechaNacimiento.MinDate = DateTime.Today.AddYears(-80); // Mínimo 80 años antes de hoy
+            DtpFechaNacimiento.ValueChanged += DtpFechaNacimiento_ValueChanged;
+
+
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 16;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+        }
+
+        private void DtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = DtpFechaNacimiento.Value; DateTime minDate = DateTime.Today.AddYears(-80); DateTime maxDate = DateTime.Today.AddYears(-18); if (selectedDate < minDate || selectedDate > maxDate) { MessageBox.Show("Por favor, seleccione una fecha de nacimiento que esté dentro de los últimos 18 a 80 años.", "Fecha de nacimiento fuera de rango", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
     }
 }

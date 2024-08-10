@@ -33,14 +33,14 @@ namespace Campeonato_Polideportivo
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelForm = new System.Windows.Forms.Panel();
-            this.llblAdmin = new System.Windows.Forms.LinkLabel();
-            this.llblCuenta = new System.Windows.Forms.LinkLabel();
+            this.LblContrasenia = new System.Windows.Forms.Label();
+            this.LblUsuario = new System.Windows.Forms.Label();
+            this.LblAdmin = new System.Windows.Forms.LinkLabel();
+            this.LblCuenta = new System.Windows.Forms.LinkLabel();
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.TxtContrasenia = new System.Windows.Forms.TextBox();
             this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.LblLogin = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelForm.SuspendLayout();
@@ -72,10 +72,10 @@ namespace Campeonato_Polideportivo
             // 
             // PanelForm
             // 
-            this.PanelForm.Controls.Add(this.label2);
-            this.PanelForm.Controls.Add(this.label1);
-            this.PanelForm.Controls.Add(this.llblAdmin);
-            this.PanelForm.Controls.Add(this.llblCuenta);
+            this.PanelForm.Controls.Add(this.LblContrasenia);
+            this.PanelForm.Controls.Add(this.LblUsuario);
+            this.PanelForm.Controls.Add(this.LblAdmin);
+            this.PanelForm.Controls.Add(this.LblCuenta);
             this.PanelForm.Controls.Add(this.BtnIngresar);
             this.PanelForm.Controls.Add(this.TxtContrasenia);
             this.PanelForm.Controls.Add(this.TxtUsuario);
@@ -88,35 +88,59 @@ namespace Campeonato_Polideportivo
             this.PanelForm.TabIndex = 1;
             this.PanelForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // llblAdmin
+            // LblContrasenia
             // 
-            this.llblAdmin.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
-            this.llblAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.llblAdmin.AutoSize = true;
-            this.llblAdmin.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llblAdmin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.llblAdmin.Location = new System.Drawing.Point(792, 622);
-            this.llblAdmin.Name = "llblAdmin";
-            this.llblAdmin.Size = new System.Drawing.Size(98, 22);
-            this.llblAdmin.TabIndex = 18;
-            this.llblAdmin.TabStop = true;
-            this.llblAdmin.Text = "Administrador";
-            this.llblAdmin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAdmin_LinkClicked_1);
+            this.LblContrasenia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblContrasenia.AutoSize = true;
+            this.LblContrasenia.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblContrasenia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.LblContrasenia.Location = new System.Drawing.Point(133, 262);
+            this.LblContrasenia.Name = "LblContrasenia";
+            this.LblContrasenia.Size = new System.Drawing.Size(122, 32);
+            this.LblContrasenia.TabIndex = 20;
+            this.LblContrasenia.Text = "Contraseña";
             // 
-            // llblCuenta
+            // LblUsuario
             // 
-            this.llblCuenta.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
-            this.llblCuenta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.llblCuenta.AutoSize = true;
-            this.llblCuenta.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llblCuenta.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.llblCuenta.Location = new System.Drawing.Point(425, 430);
-            this.llblCuenta.Name = "llblCuenta";
-            this.llblCuenta.Size = new System.Drawing.Size(134, 22);
-            this.llblCuenta.TabIndex = 17;
-            this.llblCuenta.TabStop = true;
-            this.llblCuenta.Text = "No tengo una cuenta";
-            this.llblCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblCuenta_LinkClicked);
+            this.LblUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblUsuario.AutoSize = true;
+            this.LblUsuario.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.LblUsuario.Location = new System.Drawing.Point(133, 171);
+            this.LblUsuario.Name = "LblUsuario";
+            this.LblUsuario.Size = new System.Drawing.Size(86, 32);
+            this.LblUsuario.TabIndex = 19;
+            this.LblUsuario.Text = "Usuario";
+            // 
+            // LblAdmin
+            // 
+            this.LblAdmin.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
+            this.LblAdmin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblAdmin.AutoSize = true;
+            this.LblAdmin.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAdmin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.LblAdmin.Location = new System.Drawing.Point(416, 464);
+            this.LblAdmin.Name = "LblAdmin";
+            this.LblAdmin.Size = new System.Drawing.Size(98, 22);
+            this.LblAdmin.TabIndex = 18;
+            this.LblAdmin.TabStop = true;
+            this.LblAdmin.Text = "Administrador";
+            this.LblAdmin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAdmin_LinkClicked_1);
+            // 
+            // LblCuenta
+            // 
+            this.LblCuenta.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
+            this.LblCuenta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblCuenta.AutoSize = true;
+            this.LblCuenta.Font = new System.Drawing.Font("Haettenschweiler", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCuenta.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.LblCuenta.Location = new System.Drawing.Point(404, 427);
+            this.LblCuenta.Name = "LblCuenta";
+            this.LblCuenta.Size = new System.Drawing.Size(134, 22);
+            this.LblCuenta.TabIndex = 17;
+            this.LblCuenta.TabStop = true;
+            this.LblCuenta.Text = "No tengo una cuenta";
+            this.LblCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblCuenta_LinkClicked);
             // 
             // BtnIngresar
             // 
@@ -169,35 +193,11 @@ namespace Campeonato_Polideportivo
             this.LblLogin.AutoSize = true;
             this.LblLogin.Font = new System.Drawing.Font("Haettenschweiler", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.LblLogin.Location = new System.Drawing.Point(447, 74);
+            this.LblLogin.Location = new System.Drawing.Point(429, 78);
             this.LblLogin.Name = "LblLogin";
-            this.LblLogin.Size = new System.Drawing.Size(81, 40);
+            this.LblLogin.Size = new System.Drawing.Size(80, 40);
             this.LblLogin.TabIndex = 6;
             this.LblLogin.Text = "LOGIN";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.label1.Location = new System.Drawing.Point(133, 171);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 32);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Usuario";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.label2.Location = new System.Drawing.Point(133, 262);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 32);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Contraseña";
             // 
             // Form4login
             // 
@@ -209,10 +209,11 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1197, 590);
+            this.MinimumSize = new System.Drawing.Size(1197, 589);
             this.Name = "Form4login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form4login_FormClosing);
             this.Load += new System.EventHandler(this.Form4login_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -227,13 +228,13 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel PanelForm;
-        private System.Windows.Forms.LinkLabel llblAdmin;
-        private System.Windows.Forms.LinkLabel llblCuenta;
+        private System.Windows.Forms.LinkLabel LblAdmin;
+        private System.Windows.Forms.LinkLabel LblCuenta;
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.TextBox TxtContrasenia;
         private System.Windows.Forms.TextBox TxtUsuario;
         private System.Windows.Forms.Label LblLogin;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblContrasenia;
+        private System.Windows.Forms.Label LblUsuario;
     }
 }

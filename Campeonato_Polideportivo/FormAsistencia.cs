@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.IO;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace Campeonato_Polideportivo
 {
@@ -63,27 +64,41 @@ namespace Campeonato_Polideportivo
 
         private void BtnVer_Click(object sender, EventArgs e)
         {
-            int jugadorId;
-            if (!int.TryParse(TxtIdAsistencia.Text, out jugadorId))
+            
+
+            int asistenciaId;
+            int.TryParse(TxtIdAsistencia.Text, out asistenciaId);
+
+            int equipoId = -1;
+            int jugadorId = -1;
+
+            if (CmbEquipo.SelectedValue != null)
             {
-                MessageBox.Show("ID inválido.");
-                return;
+                int.TryParse(CmbEquipo.SelectedValue.ToString(), out equipoId);
+            }
+
+            if (CmbJugador.SelectedValue != null)
+            {
+                int.TryParse(CmbJugador.SelectedValue.ToString(), out jugadorId);
             }
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
 
-            //string query = "SELECT pkidasistencia, minuto FROM asistencia WHERE fkidjugador = @fkidjugador";
-            //string query = "SELECT pkidasistencia, minuto, fkidjugador FROM asistencia WHERE pkidasistencia = @pkidasistencia";
-            string query = "SELECT a.pkidasistencia, a.minuto, j.apellido " +
-                   "FROM asistencia a " +
-                   "JOIN jugador j ON a.fkidjugador = j.pkidjugador " +
-                   "WHERE a.pkidasistencia = @pkidasistencia";
+            string query = "SELECT a.pkidasistencia, a.minuto, j.apellido, e.nombre AS equipo " +
+                           "FROM asistencia a " +
+                           "JOIN jugador j ON a.fkidjugador = j.pkidjugador " +
+                           "JOIN equipo e ON j.fkidequipo = e.pkidequipo " +
+                           "WHERE (@pkidasistencia = -1 OR a.pkidasistencia = @pkidasistencia) " +
+                           "AND (@equipoId = -1 OR e.pkidequipo = @equipoId) " +
+                           "AND (@jugadorId = -1 OR j.pkidjugador = @jugadorId)";
 
             try
             {
                 MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@pkidasistencia", jugadorId);
+                command.Parameters.AddWithValue("@pkidasistencia", asistenciaId == 0 ? -1 : asistenciaId);
+                command.Parameters.AddWithValue("@equipoId", equipoId);
+                command.Parameters.AddWithValue("@jugadorId", jugadorId);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -112,6 +127,17 @@ namespace Campeonato_Polideportivo
 
         private void FormAsistencia_Load(object sender, EventArgs e)
         {
+            CmbEquipo.TabIndex = 0;
+            CmbJugador.TabIndex = 1;
+            TxtMinuto.TabIndex = 2;
+            TxtIdAsistencia.TabIndex = 3;
+            BtnIngresar.TabIndex = 4;
+            BtnVer.TabIndex = 5;
+            BtnModificar.TabIndex = 6;
+            BtnEliminar.TabIndex = 7;
+
+            DgvAsistencia.TabStop = false;
+
             CmbEquipo.Text = "Seleccione un equipo...";
 
             // Maximizar la ventana
@@ -131,7 +157,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
@@ -204,20 +230,50 @@ namespace Campeonato_Polideportivo
             }
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             string minuto = TxtMinuto.Text;
             int idJugador;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
 
             if (!int.TryParse(CmbJugador.SelectedValue.ToString(), out idJugador))
             {
                 MessageBox.Show("Jugador no seleccionado.");
                 return;
             }
+            // Verifica que solo tenga digitos
+            if (!minuto.All(char.IsDigit))
+            {
+                MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Conexion conexion = new Conexion();
+            
             MySqlConnection conn = conexion.getConexion();
-
+            conn.Open();
             string query = "INSERT INTO asistencia (minuto, fkidjugador) VALUES (@minuto, @fkidjugador)";
 
             try
@@ -230,6 +286,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Ingresó una nueva asistencia", usuarioId);
                     MessageBox.Show("Asistencia registrada exitosamente.");
                     TxtIdAsistencia.Clear();
                     TxtMinuto.Clear();
@@ -255,6 +312,8 @@ namespace Campeonato_Polideportivo
         {
             string minuto = TxtMinuto.Text;
             int idAsistencia, idJugador;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
 
             if (!int.TryParse(TxtIdAsistencia.Text, out idAsistencia))
             {
@@ -267,14 +326,21 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show("Jugador no seleccionado.");
                 return;
             }
+            // Verifica que solo tenga digitos
+            if (!minuto.All(char.IsDigit))
+            {
+                MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
-
+            conn.Open();
             string query = "UPDATE asistencia SET minuto = @minuto, fkidjugador = @fkidjugador WHERE pkidasistencia = @pkidasistencia";
 
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@minuto", minuto);
                 cmd.Parameters.AddWithValue("@fkidjugador", idJugador);
@@ -284,6 +350,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Modificó una asistencia", usuarioId);
                     MessageBox.Show("Asistencia modificada exitosamente.");
                     TxtIdAsistencia.Clear();
                     TxtMinuto.Clear();
@@ -310,6 +377,8 @@ namespace Campeonato_Polideportivo
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             int asistenciaId;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             if (!int.TryParse(TxtIdAsistencia.Text, out asistenciaId))
             {
                 MessageBox.Show("ID inválido.");
@@ -318,11 +387,12 @@ namespace Campeonato_Polideportivo
 
             Conexion conexion = new Conexion();
             MySqlConnection conn = conexion.getConexion();
-
+            conn.Open();
             string query = "DELETE FROM asistencia WHERE pkidasistencia = @pkidasistencia";
 
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@pkidasistencia", asistenciaId);
 
@@ -330,6 +400,7 @@ namespace Campeonato_Polideportivo
 
                 if (result > 0)
                 {
+                    bitacora.RegistrarEvento("Eliminó una asistencia", usuarioId);
                     MessageBox.Show("Asistencia eliminada exitosamente.");
                     TxtIdAsistencia.Clear();
                     TxtMinuto.Clear();
@@ -365,6 +436,43 @@ namespace Campeonato_Polideportivo
             }
             catch
             {
+            }
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 78;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
             }
         }
     }

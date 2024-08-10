@@ -8,21 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
 
 namespace Campeonato_Polideportivo
 {
 
     public partial class Form4login : Form
     {
-
+        private Bitacora bitacora;
+        private string connectionString;
         private Conexion FormConexion; //Variable creada para conectar la base de datos al iniciar
         public Form4login()
         {
             InitializeComponent();
-            FormConexion = new Conexion();  //Se manda a llamar la conexion
+            Conexion conexion = new Conexion();
+            MySqlConnection conn = conexion.getConexion();
             this.Load += new EventHandler(Form4login_Load); //evento para poner el programa en pantalla completa
             // Asociar el evento KeyPress
             TxtContrasenia.KeyPress += TxtContrasenia_KeyPress;
+            bitacora = new Bitacora(connectionString);
+            this.FormClosing += new FormClosingEventHandler(Form4login_FormClosing);
         }
 
         private void TxtUsuario_Enter(object sender, EventArgs e)
@@ -84,19 +89,30 @@ namespace Campeonato_Polideportivo
             abrirForm(new Administrador());
         }
 
+        private string GetSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
         private void BtnIngresar_Click_1(object sender, EventArgs e)
         {
-            //Crea una nueva instancia de la clase Conexion
+            // Crea una nueva instancia de la clase Conexion
             Conexion conexion = new Conexion();
+            
 
             // Recoge los datos de los TextBox
-
-            //pruebas pendientes
             GlobalVariables.usuario = TxtUsuario.Text;
-            FormCampeonato formCampeonato = new FormCampeonato();
-
-
             string contrasenia = TxtContrasenia.Text;
+            string contraseniaHashIngresada = GetSHA256Hash(contrasenia);
 
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -104,10 +120,12 @@ namespace Campeonato_Polideportivo
                 {
                     bool tienePermisos = false;
                     bool esValido = false;
-                    int userId = 0;
+                    GlobalVariables.userId = 0;
+
+                    Bitacora bitacora = new Bitacora(connectionString);
 
                     // Consulta para verificar permisos del usuario
-                    string permisosQuery = "SELECT pkidusuario, fkpermisos, fkprivilegios FROM usuario WHERE usuario = @usuario";
+                    string permisosQuery = "SELECT pkidusuario, fkpermisos, fkprivilegios, contrasenia FROM usuario WHERE usuario = @usuario";
 
                     using (MySqlCommand permisosCmd = new MySqlCommand(permisosQuery, conn))
                     {
@@ -127,7 +145,11 @@ namespace Campeonato_Polideportivo
                                 int fkPrivilegios = reader.GetInt32("fkprivilegios");
 
                                 // Guarda el pkidusuario
-                                userId = reader.GetInt32("pkidusuario");
+                                GlobalVariables.userId = reader.GetInt32("pkidusuario");
+
+                                // Obtiene el hash de la contraseña almacenada en la base de datos
+                                string contraseniaAlmacenada = reader.GetString("contrasenia");
+
 
                                 // Verifica si los permisos son 1 y 1
                                 if (fkPermisos == 1 && fkPrivilegios == 1)
@@ -135,54 +157,36 @@ namespace Campeonato_Polideportivo
                                     tienePermisos = true;
                                 }
 
+                                // Verifica la contraseña ingresada contra la contraseña almacenada en la base de datos
+                                esValido = (contraseniaHashIngresada == contraseniaAlmacenada);
                             }
                         }
 
-                        if (tienePermisos)
+                        if (tienePermisos && esValido)
                         {
-                            // Consulta para verificar usuario y contraseña
-                            string credencialesQuery = "SELECT COUNT(*) FROM usuario WHERE usuario = @usuario AND contrasenia = @contrasenia";
+                            bitacora.RegistrarEvento("Inicio de sesión exitoso.", GlobalVariables.userId);
 
-                            using (MySqlCommand credencialesCmd = new MySqlCommand(credencialesQuery, conn))
+                            // Actualizar iniciodesesion a true para activar el trigger
+                            string actualizarInicioSesionQuery = "UPDATE usuario SET iniciosesion = @iniciosesion, ultimaconexion = @ultimaconexion WHERE pkidusuario = @userId";
+
+                            using (MySqlCommand actualizarCmd = new MySqlCommand(actualizarInicioSesionQuery, conn))
                             {
-                                credencialesCmd.Parameters.AddWithValue("@usuario", GlobalVariables.usuario);
-                                credencialesCmd.Parameters.AddWithValue("@contrasenia", contrasenia);
-
-                                int count = Convert.ToInt32(credencialesCmd.ExecuteScalar());
-                                if (count > 0)
-                                {
-                                    esValido = true;
-                                }
+                                actualizarCmd.Parameters.AddWithValue("@iniciosesion", true);
+                                actualizarCmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now);
+                                actualizarCmd.Parameters.AddWithValue("@userId", GlobalVariables.userId);
+                                actualizarCmd.ExecuteNonQuery();
                             }
 
-                            if (esValido)
-                            {
-                                // Actualizar iniciodesesion a true para activar el trigger
-                                string actualizarInicioSesionQuery = "UPDATE usuario SET iniciosesion = @iniciosesion, ultimaconexion = @ultimaconexion WHERE pkidusuario = @userId";
-
-                                using (MySqlCommand actualizarCmd = new MySqlCommand(actualizarInicioSesionQuery, conn))
-                                {
-                                    actualizarCmd.Parameters.AddWithValue("@iniciosesion", true);
-                                    actualizarCmd.Parameters.AddWithValue("@ultimaconexion", DateTime.Now);
-                                    actualizarCmd.Parameters.AddWithValue("@userId", userId);
-                                    actualizarCmd.ExecuteNonQuery();
-                                }
-
-                                // Acción a realizar si el usuario y la contraseña son válidos
-                                Form1 obj = new Form1();
-                                obj.Show();
-                                this.Hide();
-                            }
-                            else
-                            {
-                                // Acción a realizar si el usuario y/o la contraseña no son válidos
-                                MessageBox.Show("No puedes pasar, tu cuenta no existe!");
-                            }
+                            // Acción a realizar si el usuario y la contraseña son válidos
+                            Form1 obj = new Form1();
+                            obj.Show();
+                            this.Hide();
                         }
                         else
                         {
-                            // Mensaje si el usuario no tiene permisos suficientes
-                            MessageBox.Show("No tienes permisos suficientes para acceder a esta función.");
+                            // Acción a realizar si el usuario y/o la contraseña no son válidos
+                            MessageBox.Show("No puedes pasar, contraseña incorrecta ó tu cuenta no existe");
+                            bitacora.RegistrarEvento("Intento de inicio de sesión fallido.", GlobalVariables.userId);
                         }
                     }
                 }
@@ -200,6 +204,7 @@ namespace Campeonato_Polideportivo
                     }
                 }
             }
+
         }
 
         private void llblCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -220,7 +225,27 @@ namespace Campeonato_Polideportivo
                 // Evita el beep cuando se presiona Enter
                 e.Handled = true;
                 // Llama al método del botón como si se hubiera hecho clic en él
-                BtnIngresar_Click(sender, e);
+                BtnIngresar_Click_1( sender,  e);
+            }
+        }
+        public static class GlobalState
+        {
+            public static bool HasConfirmedExit = false;
+        }
+        private void Form4login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!GlobalState.HasConfirmedExit)
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de que quieres salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true; // Cancela el cierre del formulario
+                }
+                else
+                {
+                    GlobalState.HasConfirmedExit = true; // Marca que el mensaje ha sido mostrado
+                    Application.Exit(); // Asegúrate de que toda la aplicación se cierre
+                }
             }
         }
     }
@@ -230,7 +255,7 @@ namespace Campeonato_Polideportivo
         public static int fkpermisos { get; set; }
         public static int fkprivilegios { get; set; }
         public static int pkidusuario { get; set; }
-
+        public static int userId { get; set; }
     }
 }
 

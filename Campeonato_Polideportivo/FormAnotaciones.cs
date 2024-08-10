@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
-
+using System.Diagnostics; // Para Process y ProcessStartInfo
+using System.IO; // Para Path
 
 namespace Campeonato_Polideportivo
 {
@@ -297,21 +298,55 @@ namespace Campeonato_Polideportivo
             }
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();
-
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             try
             {
+                
                 // Datos de entrada del usuario
                 string Minuto = TxtMinuto.Text;
                 string tipoAnotacion = CmbTipoAnotacion.Text;
                 int IdPartido = Convert.ToInt32(CmbPartido.SelectedValue);
                 int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
                 int IdAsistencia = Convert.ToInt32(CmbAsistencia.SelectedValue);
-                string Descripcion = TxtDescripcion.Text;               
-                
+                string Descripcion = TxtDescripcion.Text;
+
+                //Solo permitie digitos
+                if (!Minuto.All(char.IsDigit))
+                {
+                    MessageBox.Show("El texto de minutos solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                //Solo permite texto
+                if (Descripcion.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El texto de descripcion no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Conexión a la base de datos
                 using (MySqlConnection conn = conexion.getConexion())
@@ -336,7 +371,9 @@ namespace Campeonato_Polideportivo
                         cmd.ExecuteNonQuery();
 
                         // Mostrar mensaje de éxito
+                        bitacora.RegistrarEvento("Ingresó una nueva anotación", usuarioId);
                         MessageBox.Show("Datos ingresados correctamente.");
+
                     }
                 }
                 // Habilitar el TextBox del ID de anotaciones para permitir futuras modificaciones
@@ -363,9 +400,11 @@ namespace Campeonato_Polideportivo
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();  // Conexión a la base de datos
-
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 // Variables
                 string Minuto = TxtMinuto.Text;
                 string tipoAnotacion = CmbTipoAnotacion.Text;
@@ -373,6 +412,16 @@ namespace Campeonato_Polideportivo
                 int IdJugador = Convert.ToInt32(CmbJugador.SelectedValue);
                 int IdAsistencia = Convert.ToInt32(CmbAsistencia.SelectedValue);
                 string Descripcion = TxtDescripcion.Text;
+                if (!Minuto.All(char.IsDigit))
+                {
+                    MessageBox.Show("El texto solo debe contener números.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (Descripcion.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El texto no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Conexión a la base de datos
                 using (MySqlConnection conn = conexion.getConexion())
@@ -400,6 +449,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mensaje de datos modificados correctamente
+                            bitacora.RegistrarEvento("Modificó una anotación", usuarioId);
                             MessageBox.Show("Datos modificados correctamente.");
                         }
                         else
@@ -421,6 +471,8 @@ namespace Campeonato_Polideportivo
         {
             // Conexión a la base de datos
             Conexion conexion = new Conexion();
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
 
             try
             {
@@ -435,6 +487,7 @@ namespace Campeonato_Polideportivo
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
+                        usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                         // Agregar el parámetro con su valor
                         cmd.Parameters.AddWithValue("@pkidanotaciones", pkidAnotaciones);
 
@@ -444,6 +497,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mensaje de datos eliminados correctamente
+                            bitacora.RegistrarEvento("Eliminó una anotación", usuarioId);
                             MessageBox.Show("Datos eliminados correctamente.");
                         }
                         else
@@ -470,6 +524,7 @@ namespace Campeonato_Polideportivo
             {
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     string query = "SELECT * FROM anotaciones";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -494,6 +549,29 @@ namespace Campeonato_Polideportivo
 
         private void FormAnotaciones_Load(object sender, EventArgs e)
         {
+            TxtIdAnotaciones.TabIndex = 0;
+            TxtMinuto.TabIndex = 1;
+            CmbTipoAnotacion.TabIndex = 2;
+            CmbCampeonato.TabIndex = 3;
+            CmbPartido.TabIndex = 4;
+            CmbEquipo.TabIndex = 5;
+            CmbJugador.TabIndex = 6;
+            CmbAsistencia.TabIndex = 7;
+            TxtDescripcion.TabIndex = 8;
+
+
+            BtnIngresar.TabIndex = 9;
+            BtnVer.TabIndex = 10;
+            BtnLimpiar.TabIndex = 11;
+            BtnModificar.TabIndex = 12;
+            BtnEliminar.TabIndex = 13;
+
+            BtnTablaMejoresJugs.TabIndex = 14;
+            BtnAyuda.TabIndex = 15;
+
+            DgvAnotaciones.TabStop = false;
+
+
             // Maximizar la ventana
             this.WindowState = FormWindowState.Maximized;
 
@@ -511,7 +589,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
@@ -551,6 +629,7 @@ namespace Campeonato_Polideportivo
             TxtIdPartido.Text = string.Empty;
             TxtIdJugador.Text = string.Empty;
             TxtDescripcion.Text = string.Empty;
+            
         }
 
         private void CmbCampeonato_SelectedIndexChanged(object sender, EventArgs e)
@@ -670,6 +749,7 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     //string query = "SELECT * FROM vista_clasificacion WHERE fkidcampeonato = @fkidcampeonato";
@@ -695,6 +775,48 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show($"Error al cargar la clasificación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 82;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
+
+
+
         }
     }
  }

@@ -54,11 +54,12 @@ namespace Campeonato_Polideportivo
             this.CmbJugador = new System.Windows.Forms.ComboBox();
             this.CmbAsistencia = new System.Windows.Forms.ComboBox();
             this.CmbCampeonato = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblCampeonato = new System.Windows.Forms.Label();
             this.CmbEquipo = new System.Windows.Forms.ComboBox();
             this.LblEquipo = new System.Windows.Forms.Label();
             this.BtnTablaMejoresJugs = new System.Windows.Forms.Button();
             this.DgvJugs = new System.Windows.Forms.DataGridView();
+            this.BtnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvAnotaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvJugs)).BeginInit();
             this.SuspendLayout();
@@ -66,14 +67,14 @@ namespace Campeonato_Polideportivo
             // BtnEliminar
             // 
             this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnEliminar.BackColor = System.Drawing.Color.LightCyan;
+            this.BtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnEliminar.FlatAppearance.BorderSize = 0;
             this.BtnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.BtnEliminar.Location = new System.Drawing.Point(548, 538);
+            this.BtnEliminar.ForeColor = System.Drawing.Color.White;
+            this.BtnEliminar.Location = new System.Drawing.Point(735, 545);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(173, 41);
@@ -85,14 +86,14 @@ namespace Campeonato_Polideportivo
             // BtnModificar
             // 
             this.BtnModificar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnModificar.BackColor = System.Drawing.Color.LightCyan;
+            this.BtnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnModificar.FlatAppearance.BorderSize = 0;
             this.BtnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificar.ForeColor = System.Drawing.Color.Black;
-            this.BtnModificar.Location = new System.Drawing.Point(336, 538);
+            this.BtnModificar.ForeColor = System.Drawing.Color.White;
+            this.BtnModificar.Location = new System.Drawing.Point(522, 545);
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(173, 41);
@@ -104,14 +105,14 @@ namespace Campeonato_Polideportivo
             // BtnIngresar
             // 
             this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnIngresar.BackColor = System.Drawing.Color.LightCyan;
+            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnIngresar.FlatAppearance.BorderSize = 0;
             this.BtnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnIngresar.ForeColor = System.Drawing.Color.Black;
-            this.BtnIngresar.Location = new System.Drawing.Point(243, 481);
+            this.BtnIngresar.ForeColor = System.Drawing.Color.White;
+            this.BtnIngresar.Location = new System.Drawing.Point(429, 488);
             this.BtnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnIngresar.Name = "BtnIngresar";
             this.BtnIngresar.Size = new System.Drawing.Size(173, 41);
@@ -125,7 +126,7 @@ namespace Campeonato_Polideportivo
             this.LblAnotaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.LblAnotaciones.AutoSize = true;
             this.LblAnotaciones.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAnotaciones.ForeColor = System.Drawing.Color.Black;
+            this.LblAnotaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.LblAnotaciones.Location = new System.Drawing.Point(400, 47);
             this.LblAnotaciones.Name = "LblAnotaciones";
             this.LblAnotaciones.Size = new System.Drawing.Size(229, 50);
@@ -159,6 +160,7 @@ namespace Campeonato_Polideportivo
             this.LblIdAnotaciones.Size = new System.Drawing.Size(109, 20);
             this.LblIdAnotaciones.TabIndex = 63;
             this.LblIdAnotaciones.Text = "Id_anotaciones";
+            this.LblIdAnotaciones.Visible = false;
             // 
             // LblMinuto
             // 
@@ -188,6 +190,7 @@ namespace Campeonato_Polideportivo
             this.TxtIdAnotaciones.Name = "TxtIdAnotaciones";
             this.TxtIdAnotaciones.Size = new System.Drawing.Size(164, 22);
             this.TxtIdAnotaciones.TabIndex = 66;
+            this.TxtIdAnotaciones.Visible = false;
             // 
             // TxtMinuto
             // 
@@ -274,11 +277,11 @@ namespace Campeonato_Polideportivo
             // BtnVer
             // 
             this.BtnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnVer.BackColor = System.Drawing.Color.LightCyan;
+            this.BtnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnVer.ForeColor = System.Drawing.Color.Black;
-            this.BtnVer.Location = new System.Drawing.Point(437, 481);
+            this.BtnVer.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnVer.ForeColor = System.Drawing.Color.White;
+            this.BtnVer.Location = new System.Drawing.Point(636, 488);
             this.BtnVer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnVer.Name = "BtnVer";
             this.BtnVer.Size = new System.Drawing.Size(173, 39);
@@ -290,14 +293,14 @@ namespace Campeonato_Polideportivo
             // BtnLimpiar
             // 
             this.BtnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnLimpiar.BackColor = System.Drawing.Color.LightCyan;
+            this.BtnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnLimpiar.FlatAppearance.BorderSize = 0;
             this.BtnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BtnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLimpiar.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLimpiar.ForeColor = System.Drawing.Color.Black;
-            this.BtnLimpiar.Location = new System.Drawing.Point(652, 481);
+            this.BtnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.BtnLimpiar.Location = new System.Drawing.Point(838, 485);
             this.BtnLimpiar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnLimpiar.Name = "BtnLimpiar";
             this.BtnLimpiar.Size = new System.Drawing.Size(173, 41);
@@ -355,15 +358,15 @@ namespace Campeonato_Polideportivo
             this.CmbCampeonato.Text = "Selecciona un campeonato...";
             this.CmbCampeonato.SelectedIndexChanged += new System.EventHandler(this.CmbCampeonato_SelectedIndexChanged);
             // 
-            // label1
+            // LblCampeonato
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bernard MT Condensed", 9.857143F);
-            this.label1.Location = new System.Drawing.Point(88, 223);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
-            this.label1.TabIndex = 107;
-            this.label1.Text = "Campeonato";
+            this.LblCampeonato.AutoSize = true;
+            this.LblCampeonato.Font = new System.Drawing.Font("Bernard MT Condensed", 9.857143F);
+            this.LblCampeonato.Location = new System.Drawing.Point(88, 223);
+            this.LblCampeonato.Name = "LblCampeonato";
+            this.LblCampeonato.Size = new System.Drawing.Size(89, 20);
+            this.LblCampeonato.TabIndex = 107;
+            this.LblCampeonato.Text = "Campeonato";
             // 
             // CmbEquipo
             // 
@@ -390,11 +393,11 @@ namespace Campeonato_Polideportivo
             // BtnTablaMejoresJugs
             // 
             this.BtnTablaMejoresJugs.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnTablaMejoresJugs.BackColor = System.Drawing.Color.LightCyan;
+            this.BtnTablaMejoresJugs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
             this.BtnTablaMejoresJugs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnTablaMejoresJugs.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnTablaMejoresJugs.ForeColor = System.Drawing.Color.Black;
-            this.BtnTablaMejoresJugs.Location = new System.Drawing.Point(37, 522);
+            this.BtnTablaMejoresJugs.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnTablaMejoresJugs.ForeColor = System.Drawing.Color.White;
+            this.BtnTablaMejoresJugs.Location = new System.Drawing.Point(140, 475);
             this.BtnTablaMejoresJugs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnTablaMejoresJugs.Name = "BtnTablaMejoresJugs";
             this.BtnTablaMejoresJugs.Size = new System.Drawing.Size(173, 69);
@@ -420,18 +423,35 @@ namespace Campeonato_Polideportivo
             this.DgvJugs.Size = new System.Drawing.Size(574, 307);
             this.DgvJugs.TabIndex = 112;
             // 
+            // BtnAyuda
+            // 
+            this.BtnAyuda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAyuda.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnAyuda.Location = new System.Drawing.Point(997, 11);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(50, 39);
+            this.BtnAyuda.TabIndex = 113;
+            this.BtnAyuda.Text = "?";
+            this.BtnAyuda.UseVisualStyleBackColor = false;
+            this.BtnAyuda.Click += new System.EventHandler(this.BtnAyuda_Click);
+            // 
             // FormAnotaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1059, 654);
+            this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.DgvJugs);
             this.Controls.Add(this.BtnTablaMejoresJugs);
             this.Controls.Add(this.CmbEquipo);
             this.Controls.Add(this.LblEquipo);
             this.Controls.Add(this.CmbCampeonato);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblCampeonato);
             this.Controls.Add(this.CmbAsistencia);
             this.Controls.Add(this.CmbJugador);
             this.Controls.Add(this.CmbPartido);
@@ -494,10 +514,11 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.ComboBox CmbJugador;
         private System.Windows.Forms.ComboBox CmbAsistencia;
         private System.Windows.Forms.ComboBox CmbCampeonato;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblCampeonato;
         private System.Windows.Forms.ComboBox CmbEquipo;
         private System.Windows.Forms.Label LblEquipo;
         private System.Windows.Forms.Button BtnTablaMejoresJugs;
         private System.Windows.Forms.DataGridView DgvJugs;
+        private System.Windows.Forms.Button BtnAyuda;
     }
 }

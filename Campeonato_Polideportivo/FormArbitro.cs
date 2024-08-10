@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -22,13 +24,53 @@ namespace Campeonato_Polideportivo
             usuarioValidator = new UsuarioValidator(connectionString);
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             string nombre = TxtNombre.Text;
             string apellido = TxtApellido.Text;
             DateTime fechaNacimiento = DtpFechaNacimiento.Value;
             string nacionalidad = TxtNacionalidad.Text;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
+
+            // Verificar si contiene dígitos
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }         
+            if (apellido.Any(char.IsDigit))
+            {
+                MessageBox.Show("El apellido no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (nacionalidad.Any(char.IsDigit))
+            {
+                MessageBox.Show("La nacionalidad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())
@@ -44,10 +86,12 @@ namespace Campeonato_Polideportivo
 
                     try
                     {
+                        
                         int result = command.ExecuteNonQuery();
 
                         if (result > 0)
                         {
+                            bitacora.RegistrarEvento("Ingresó un nuevo arbitro", usuarioId);
                             MessageBox.Show("Árbitro ingresado exitosamente.");
                         }
                         else
@@ -67,6 +111,8 @@ namespace Campeonato_Polideportivo
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             int idArbitro;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             if (!int.TryParse(TxtId.Text, out idArbitro))
             {
                 MessageBox.Show("ID inválido.");
@@ -80,6 +126,7 @@ namespace Campeonato_Polideportivo
 
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@id_arbitro", TxtId.Text);
 
@@ -88,6 +135,7 @@ namespace Campeonato_Polideportivo
                 if (result > 0)
                 {
                     MessageBox.Show("Árbitro eliminado exitosamente.");
+                    bitacora.RegistrarEvento("Eliminó un arbitro", usuarioId);
                 }
                 else
                 {
@@ -106,10 +154,12 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             Conexion conexion = new Conexion();
             try
             {
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 // Obtener los datos de los TextBoxes
                 string nombre = TxtNombre.Text;
                 string apellido = TxtApellido.Text;
@@ -135,6 +185,7 @@ namespace Campeonato_Polideportivo
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+
                     conn.Open();
                     // Crear la consulta SQL para actualizar datos
                     string query = "UPDATE arbitro SET nombre = @nombre, apellido = @apellido, fechanacimiento = @fechanacimiento, " +
@@ -158,6 +209,7 @@ namespace Campeonato_Polideportivo
 
                             if (rowsAffected > 0)
                             {
+                                bitacora.RegistrarEvento("Modificó un Arbitro", usuarioId);
                                 MessageBox.Show("Datos modificados correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
@@ -185,11 +237,11 @@ namespace Campeonato_Polideportivo
         {
             try
             {
-                TxtId.Text = DgwArbitro.CurrentRow.Cells[0].Value.ToString();
-                TxtNombre.Text = DgwArbitro.CurrentRow.Cells[1].Value.ToString();
-                TxtApellido.Text = DgwArbitro.CurrentRow.Cells[2].Value.ToString();
-                DtpFechaNacimiento.Text = DgwArbitro.CurrentRow.Cells[3].Value.ToString();
-                TxtNacionalidad.Text = DgwArbitro.CurrentRow.Cells[4].Value.ToString();
+                TxtId.Text = DgvArbitro.CurrentRow.Cells[0].Value.ToString();
+                TxtNombre.Text = DgvArbitro.CurrentRow.Cells[1].Value.ToString();
+                TxtApellido.Text = DgvArbitro.CurrentRow.Cells[2].Value.ToString();
+                DtpFechaNacimiento.Text = DgvArbitro.CurrentRow.Cells[3].Value.ToString();
+                TxtNacionalidad.Text = DgvArbitro.CurrentRow.Cells[4].Value.ToString();
             }
             catch
             {
@@ -216,7 +268,7 @@ namespace Campeonato_Polideportivo
                     adapter.Fill(dt);
 
                     // Asignar el DataTable como el origen de datos del DataGridView
-                    DgwArbitro.DataSource = dt;
+                    DgvArbitro.DataSource = dt;
                 }
             }
 
@@ -248,7 +300,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
@@ -276,6 +328,55 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+            TxtNombre.TabIndex = 0;
+            TxtApellido.TabIndex = 1;
+            DtpFechaNacimiento.TabIndex = 2;
+            TxtNacionalidad.TabIndex = 3;
+            BtnIngresar.TabIndex = 4;
+            BtnVer.TabIndex = 5;
+            BtnModificar.TabIndex = 6;
+            BtnEliminar.TabIndex = 7;
+            BtnAyuda.TabIndex = 8;
+            DgvArbitro.TabStop = false;
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 28;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
 
         }
     }

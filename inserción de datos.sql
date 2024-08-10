@@ -32,6 +32,7 @@ INSERT INTO equipo (nombre, estadio, ciudad) VALUES
 INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES
 ('admin', 'admin@domain.com', 'admin123', 1, 1, '2024-01-01'),
 ('user', 'user@domain.com', 'user123', 2, 2, '2024-01-01');
+select * from usuario;
 
 -- Inserciones para la tabla 'bitacora'
 INSERT INTO bitacora (fecha, accion, fkidusuario) VALUES
@@ -159,3 +160,4 @@ INSERT INTO Telefono_Empleado (fkidtelefono, fkidempleado) VALUES (1,1);
 INSERT INTO usuario (usuario, email, contrasenia, fkpermisos, fkprivilegios, ultimaconexion) VALUES 
 ('Katy', 'katy@gmail.com', '4321', 3, 3, '2024-08-01');
 
+select * from usuario;

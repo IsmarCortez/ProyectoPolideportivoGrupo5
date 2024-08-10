@@ -28,11 +28,12 @@ namespace Campeonato_Polideportivo
 
         public MySqlConnection getConexion()
         {
-            /*if (conexion == null) //en dado caso no se ha creado la conexion se crea
+            if (conexion == null) //en dado caso no se ha creado la conexion se crea
             {
                 conexion = new MySqlConnection(Conector); //se crea la conexion a traves de los datos del constructor
                 conexion.Open(); //Se abre la conexion, se inicia
-            }*/
+            }
+
 
             return new MySqlConnection(Conector); //retorna la conexion iniciada
         }

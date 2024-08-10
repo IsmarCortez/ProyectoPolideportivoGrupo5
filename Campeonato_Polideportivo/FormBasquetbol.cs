@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,7 +55,7 @@ namespace Campeonato_Polideportivo
                 LEFT JOIN partido p ON e.pkidequipo = p.fkequipolocalid OR e.pkidequipo = p.fkequipovisid
                 LEFT JOIN campeonato c ON p.fkidcampeonato = c.pkidcampeonato
                 LEFT JOIN deporte d ON c.fkiddeporte = d.pkiddeporte
-                WHERE d.nombre = 'Basquetbol' OR d.nombre IS NULL
+                WHERE d.nombre = 'Baloncesto' OR d.nombre IS NULL
                 ORDER BY e.nombre";
 
             try
@@ -131,7 +133,7 @@ namespace Campeonato_Polideportivo
                 SELECT c.pkidcampeonato, c.nombre 
                 FROM campeonato c
                 JOIN deporte d ON c.fkiddeporte = d.pkiddeporte
-                WHERE d.nombre = 'Basquetbol'
+                WHERE d.nombre = 'Baloncesto'
                 ORDER BY c.nombre";
             try
             {
@@ -312,7 +314,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
@@ -340,11 +342,62 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+            DtpFecha.MinDate = DateTime.Today;
+            DtpFecha.TabIndex = 0;
+            CmbEstadoPartido.TabIndex = 1;
+            CmbGanadorEmpate.TabIndex = 2;
+            CmbCampeonato.TabIndex = 3;
+            CmbFase.TabIndex = 4;
+            CmbArbitro.TabIndex = 5;
+            CmbEquipoLocal.TabIndex = 6;
+            NudPuntosLocal.TabIndex = 7;
+            NudRebotesLocal.TabIndex = 8;
+            NudAsistenciasLocal.TabIndex = 9;
+            NudRobosLocal.TabIndex = 10;
+            NudBloqueosLocal.TabIndex = 11;
+            NudPerdidasLocal.TabIndex = 12;
+            NudFaltasLocal.TabIndex = 13;
+            CmbEquipoVisitante.TabIndex = 14;
+            NudPuntosVisitante.TabIndex = 15;
+            NudRebotesVisitante.TabIndex = 16;
+            NudAsistenciasVisitante.TabIndex = 17;
+            NudRobosVisitante.TabIndex = 18;
+            NudBloqueosVisitante.TabIndex = 19;
+            NudPerdidasVisitante.TabIndex = 20;
+            NudFaltasVisitante.TabIndex = 21;
+            BtnIngresar.TabIndex = 22;
+            BtnVer.TabIndex = 23;
+            BtnModificar.TabIndex = 24;
+            BtnEliminar.TabIndex = 25;
+            BtnAyuda.TabIndex = 26;
+            DgvBasquetbol.TabStop = false;
         }
 
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
+
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
         private void BtnIngresar_Click_1(object sender, EventArgs e)
         {
             Conexion conexion = new Conexion();
+
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
 
             //Obtenemos los datos del form y declaramos variables
             //Partido
@@ -378,9 +431,12 @@ namespace Campeonato_Polideportivo
             //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 MySqlTransaction transaction = conn.BeginTransaction();
+                usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                 try
                 {
+                    
                     if (CmbGanadorEmpate.SelectedIndex == 0)
                     {
                         // SQL insertar datos en partido
@@ -406,6 +462,7 @@ namespace Campeonato_Polideportivo
 
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de basketball", usuarioId);
                             MessageBox.Show("Datos ingresados a partido correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -436,6 +493,7 @@ namespace Campeonato_Polideportivo
                             cmd.ExecuteNonQuery();
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de basketball", usuarioId);
                             MessageBox.Show("Datos ingresados a basquetbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
@@ -473,6 +531,7 @@ namespace Campeonato_Polideportivo
                             FkIdPartido = Convert.ToInt32(cmd.ExecuteScalar());
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de basketball", usuarioId);
                             MessageBox.Show("Datos ingresados a partido correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -503,6 +562,7 @@ namespace Campeonato_Polideportivo
                             cmd.ExecuteNonQuery();
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de basketball", usuarioId);
                             MessageBox.Show("Datos ingresados a basquetbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
@@ -540,6 +600,7 @@ namespace Campeonato_Polideportivo
                             FkIdPartido = Convert.ToInt32(cmd.ExecuteScalar());
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de basketball", usuarioId);
                             MessageBox.Show("Datos ingresados a partido correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
@@ -570,6 +631,7 @@ namespace Campeonato_Polideportivo
                             cmd.ExecuteNonQuery();
 
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Ingresó un nuevo partido de basketball", usuarioId);
                             MessageBox.Show("Datos ingresados a basquetbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         Limpiar();
@@ -602,6 +664,7 @@ namespace Campeonato_Polideportivo
             Conexion conexion = new Conexion(); //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
                     string query = @"
@@ -649,7 +712,7 @@ namespace Campeonato_Polideportivo
                     JOIN 
                         deporte d ON c.fkiddeporte = d.pkiddeporte
                     WHERE 
-                        d.nombre = 'Basquetbol'";
+                        d.nombre = 'Baloncesto'";
 
                     // Crear el adaptador
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -675,6 +738,8 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             Conexion conexion = new Conexion();
             CamposVacios();
             //Obtenemos los datos del form y declaramos variables
@@ -706,8 +771,10 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
+                    usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                     if (CmbGanadorEmpate.SelectedIndex == 0)
                     {
                         // SQL insertar datos en partido
@@ -760,6 +827,7 @@ namespace Campeonato_Polideportivo
                                     cmd2.ExecuteNonQuery();
 
                                     // Mostrar mensaje de éxito
+                                    bitacora.RegistrarEvento("Modificó un partido de basketball", usuarioId);
                                     MessageBox.Show("Datos modificados a basquetbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
@@ -836,11 +904,13 @@ namespace Campeonato_Polideportivo
                                     cmd2.ExecuteNonQuery();
 
                                     // Mostrar mensaje de éxito
+                                    bitacora.RegistrarEvento("Modificó un partido de basketball", usuarioId);
                                     MessageBox.Show("Datos modificados a basquetbol correctamente.", "Datos ingresados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
                                 if (rowsAffected > 0)
                                 {
+                                    bitacora.RegistrarEvento("Modificó un partido de basketball", usuarioId);
                                     MessageBox.Show("Datos modificados a partido correctamente.", "Datos modificados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
@@ -946,6 +1016,8 @@ namespace Campeonato_Polideportivo
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
             // Verificar que el campo TxtIdPartido no esté vacío y contenga un número válido
             if (string.IsNullOrWhiteSpace(TxtIdPartido.Text) || !int.TryParse(TxtIdPartido.Text, out int IdPartido))
             {
@@ -957,8 +1029,10 @@ namespace Campeonato_Polideportivo
 
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
+                    usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
                     // Iniciar una transacción para asegurar la integridad de los datos
                     using (MySqlTransaction transaction = conn.BeginTransaction())
                     {
@@ -991,6 +1065,7 @@ namespace Campeonato_Polideportivo
 
                                 if (rowsAffected > 0)
                                 {
+                                    bitacora.RegistrarEvento("Eliminó un partido de basketball", usuarioId);
                                     MessageBox.Show("Datos eliminados correctamente.", "Datos eliminados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Limpiar();
                                 }
@@ -1058,6 +1133,53 @@ namespace Campeonato_Polideportivo
             catch
             {
             }
+        }
+
+        private void CmbEquipoVisitante_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 58;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+        }
+
+        private void DtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

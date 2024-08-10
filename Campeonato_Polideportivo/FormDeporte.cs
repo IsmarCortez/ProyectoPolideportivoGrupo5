@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,7 @@ namespace Campeonato_Polideportivo
         public FormDeporte()
         {
             InitializeComponent();
-            CargarComboBox();
+            CargarDeporte();
           
            
 
@@ -27,70 +29,48 @@ namespace Campeonato_Polideportivo
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
         }
+        private int ObtenerIdUsuario(string nombreUsuario)
+        {
+            Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            Conexion conexion = new Conexion();
-            using (MySqlConnection conn = conexion.getConexion())
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "INSERT INTO deporte (nombre, tipo, id_regla) VALUES (@nombre, @tipo, @id_regla)";
-                    using (MySqlCommand command = new MySqlCommand(query, conn))
-                    {
-                        command.Parameters.AddWithValue("@nombre", textBox1IngresoDepo.Text);
-                        command.Parameters.AddWithValue("@tipo", textBox2IngresoTipo.Text);
-                        command.Parameters.AddWithValue("@id_regla", Convert.ToInt32(textBox3Regla.Text));
-
-                        int rowsAffected = command.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Datos insertados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se insertaron datos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    // Asegurarse de que la conexión se cierra
-                    if (conn.State == System.Data.ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                }
-            }
+           
         }
 
 
 
-        private void CargarComboBox()
+        private void CargarDeporte()
         {
             Conexion conexion = new Conexion();
             using (MySqlConnection conn = conexion.getConexion())
             {
-                string query = "SELECT nombre FROM deporte";
+                string query = "SELECT * FROM deporte";
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     try
                     {
                         conn.Open();
-                        MySqlDataReader reader = command.ExecuteReader();
-
-                        CmbDeporte.Items.Clear(); // Limpiar los elementos existentes
-                        while (reader.Read())
-                        {
-                            CmbDeporte.Items.Add(reader.GetString("nombre"));
-                        }
-                        reader.Close();
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        DgvDeporte.DataSource = dataTable;
                     }
                     catch (Exception ex)
                     {
@@ -125,7 +105,7 @@ namespace Campeonato_Polideportivo
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        dataGridView1.DataSource = dataTable;
+                        DgvDeporte.DataSource = dataTable;
                     }
                     catch (Exception ex)
                     {
@@ -149,117 +129,16 @@ namespace Campeonato_Polideportivo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Conexion conexion = new Conexion();
-            using (MySqlConnection conn = conexion.getConexion())
-            {
-                string query = "SELECT * FROM deporte";
-                using (MySqlCommand command = new MySqlCommand(query, conn))
-                {
-                    try
-                    {
-                        conn.Open();
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dataGridView1.DataSource = dataTable;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        // Asegurarse de que la conexión se cierra
-                        if (conn.State == System.Data.ConnectionState.Open)
-                        {
-                            conn.Close();
-                        }
-                    }
-                }
-            }
         }
 
         private void BtnModificar_Click_1(object sender, EventArgs e)
         {
-            Conexion conexion = new Conexion();
-            using (MySqlConnection conn = conexion.getConexion())
-            {
-                string query = "UPDATE deporte SET tipo = @tipo, id_regla = @idRegla WHERE nombre = @nombre";
-                using (MySqlCommand command = new MySqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@nombre", CmbDeporte.SelectedItem);
-                    command.Parameters.AddWithValue("@tipo", textBox2IngresoTipo.Text);
-                    command.Parameters.AddWithValue("@idRegla", int.Parse(textBox3Regla.Text));
-
-                    try
-                    {
-                        conn.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el registro para actualizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        // Asegurarse de que la conexión se cierra
-                        if (conn.State == System.Data.ConnectionState.Open)
-                        {
-                            conn.Close();
-                        }
-                    }
-                }
-            }
+          
         }
 
         private void BtnEliminar_Click_1(object sender, EventArgs e)
         {
-            Conexion conexion = new Conexion();
-            using (MySqlConnection conn = conexion.getConexion())
-            {
-                string query = "DELETE FROM deporte WHERE nombre = @nombre";
-                using (MySqlCommand command = new MySqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@nombre", CmbDeporte.SelectedItem);
-
-                    try
-                    {
-                        conn.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Registro eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarComboBox(); // Recarga el ComboBox después de eliminar
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el registro para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        // Asegurarse de que la conexión se cierra
-                        if (conn.State == System.Data.ConnectionState.Open)
-                        {
-                            conn.Close();
-                        }
-                    }
-                }
-            
-
-        }
+           
         }
 
         private void CmbDeporte_SelectedIndexChanged(object sender, EventArgs e)
@@ -288,33 +167,66 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
-                BtnVer.Visible = true;
-                BtnModificar.Visible = false;
-                BtnEliminar.Visible = false;
+               
+          
+    
+          
             }
             else if (nivelDeAcceso == 2)
             {
 
-                BtnIngresar.Visible = true;
-                BtnVer.Visible = true;
-                BtnModificar.Visible = false;
-                BtnEliminar.Visible = false;
+               
+
+     
+        
             }
             else if (nivelDeAcceso == 3)
             {
-                BtnIngresar.Visible = true;
-                BtnVer.Visible = true;
-                BtnModificar.Visible = true;
-                BtnEliminar.Visible = true;
+
             }
             else
             {
                 // Si el nivel de acceso no está definido (por ejemplo, usuario no encontrado)
-                BtnIngresar.Visible = false;
-                BtnVer.Visible = false;
-                BtnModificar.Visible = false;
-                BtnEliminar.Visible = false;
+               
+    
+         
+            }
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 9;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
             }
         }
     }

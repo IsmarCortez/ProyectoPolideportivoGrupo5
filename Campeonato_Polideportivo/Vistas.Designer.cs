@@ -29,8 +29,8 @@ namespace Campeonato_Polideportivo
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvVistas = new System.Windows.Forms.DataGridView();
-            this.lblVistas = new System.Windows.Forms.Label();
+            this.DgvVistas = new System.Windows.Forms.DataGridView();
+            this.LblVistas = new System.Windows.Forms.Label();
             this.BtnEquipos = new System.Windows.Forms.Button();
             this.BtnJugador = new System.Windows.Forms.Button();
             this.BtnFutbol = new System.Windows.Forms.Button();
@@ -40,31 +40,32 @@ namespace Campeonato_Polideportivo
             this.BtnSuspendido = new System.Windows.Forms.Button();
             this.BtnPerJugador = new System.Windows.Forms.Button();
             this.BtnPdf = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVistas)).BeginInit();
+            this.BtnBitacora = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvVistas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvVistas
+            // DgvVistas
             // 
-            this.dgvVistas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgvVistas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVistas.Location = new System.Drawing.Point(17, 255);
-            this.dgvVistas.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvVistas.Name = "dgvVistas";
-            this.dgvVistas.RowHeadersWidth = 51;
-            this.dgvVistas.Size = new System.Drawing.Size(961, 244);
-            this.dgvVistas.TabIndex = 0;
+            this.DgvVistas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DgvVistas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvVistas.Location = new System.Drawing.Point(17, 255);
+            this.DgvVistas.Margin = new System.Windows.Forms.Padding(4);
+            this.DgvVistas.Name = "DgvVistas";
+            this.DgvVistas.RowHeadersWidth = 51;
+            this.DgvVistas.Size = new System.Drawing.Size(961, 244);
+            this.DgvVistas.TabIndex = 0;
             // 
-            // lblVistas
+            // LblVistas
             // 
-            this.lblVistas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblVistas.AutoSize = true;
-            this.lblVistas.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVistas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
-            this.lblVistas.Location = new System.Drawing.Point(334, 47);
-            this.lblVistas.Name = "lblVistas";
-            this.lblVistas.Size = new System.Drawing.Size(322, 50);
-            this.lblVistas.TabIndex = 176;
-            this.lblVistas.Text = "VISTAS Y REPORTES";
+            this.LblVistas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblVistas.AutoSize = true;
+            this.LblVistas.Font = new System.Drawing.Font("Haettenschweiler", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblVistas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.LblVistas.Location = new System.Drawing.Point(333, 47);
+            this.LblVistas.Name = "LblVistas";
+            this.LblVistas.Size = new System.Drawing.Size(322, 50);
+            this.LblVistas.TabIndex = 176;
+            this.LblVistas.Text = "VISTAS Y REPORTES";
             // 
             // BtnEquipos
             // 
@@ -237,11 +238,32 @@ namespace Campeonato_Polideportivo
             this.BtnPdf.UseVisualStyleBackColor = false;
             this.BtnPdf.Click += new System.EventHandler(this.BtnPdf_Click);
             // 
+            // BtnBitacora
+            // 
+            this.BtnBitacora.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnBitacora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(84)))), ((int)(((byte)(134)))));
+            this.BtnBitacora.FlatAppearance.BorderSize = 0;
+            this.BtnBitacora.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.BtnBitacora.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBitacora.Font = new System.Drawing.Font("Haettenschweiler", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnBitacora.Location = new System.Drawing.Point(17, 197);
+            this.BtnBitacora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnBitacora.Name = "BtnBitacora";
+            this.BtnBitacora.Size = new System.Drawing.Size(264, 41);
+            this.BtnBitacora.TabIndex = 187;
+            this.BtnBitacora.Text = "BITACORA";
+            this.BtnBitacora.UseVisualStyleBackColor = false;
+            this.BtnBitacora.Click += new System.EventHandler(this.BtnBitacora_Click);
+            // 
             // Vistas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
+            this.Controls.Add(this.BtnBitacora);
             this.Controls.Add(this.BtnPdf);
             this.Controls.Add(this.BtnPerJugador);
             this.Controls.Add(this.BtnSuspendido);
@@ -251,12 +273,13 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.BtnFutbol);
             this.Controls.Add(this.BtnJugador);
             this.Controls.Add(this.BtnEquipos);
-            this.Controls.Add(this.lblVistas);
-            this.Controls.Add(this.dgvVistas);
+            this.Controls.Add(this.LblVistas);
+            this.Controls.Add(this.DgvVistas);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Vistas";
             this.Text = "Vistas";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVistas)).EndInit();
+            this.Load += new System.EventHandler(this.Vistas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvVistas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,8 +287,8 @@ namespace Campeonato_Polideportivo
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvVistas;
-        private System.Windows.Forms.Label lblVistas;
+        private System.Windows.Forms.DataGridView DgvVistas;
+        private System.Windows.Forms.Label LblVistas;
         private System.Windows.Forms.Button BtnEquipos;
         private System.Windows.Forms.Button BtnJugador;
         private System.Windows.Forms.Button BtnFutbol;
@@ -275,5 +298,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnSuspendido;
         private System.Windows.Forms.Button BtnPerJugador;
         private System.Windows.Forms.Button BtnPdf;
+        private System.Windows.Forms.Button BtnBitacora;
     }
 }

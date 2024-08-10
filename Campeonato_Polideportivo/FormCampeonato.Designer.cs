@@ -31,7 +31,7 @@ namespace Campeonato_Polideportivo
         {
             this.CmbDeporte = new System.Windows.Forms.ComboBox();
             this.LblCampeonato = new System.Windows.Forms.Label();
-            this.DgwCampeonato = new System.Windows.Forms.DataGridView();
+            this.DgvCampeonato = new System.Windows.Forms.DataGridView();
             this.LblIdCampeonato = new System.Windows.Forms.Label();
             this.LblNombre = new System.Windows.Forms.Label();
             this.LblTemporada = new System.Windows.Forms.Label();
@@ -47,7 +47,8 @@ namespace Campeonato_Polideportivo
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnIngresar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.DgwCampeonato)).BeginInit();
+            this.BtnAyuda = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCampeonato)).BeginInit();
             this.SuspendLayout();
             // 
             // CmbDeporte
@@ -72,24 +73,24 @@ namespace Campeonato_Polideportivo
             this.LblCampeonato.TabIndex = 50;
             this.LblCampeonato.Text = "CAMPEONATO";
             // 
-            // DgwCampeonato
+            // DgvCampeonato
             // 
-            this.DgwCampeonato.AllowUserToAddRows = false;
-            this.DgwCampeonato.AllowUserToDeleteRows = false;
-            this.DgwCampeonato.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvCampeonato.AllowUserToAddRows = false;
+            this.DgvCampeonato.AllowUserToDeleteRows = false;
+            this.DgvCampeonato.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgwCampeonato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DgwCampeonato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgwCampeonato.Location = new System.Drawing.Point(427, 98);
-            this.DgwCampeonato.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DgwCampeonato.Name = "DgwCampeonato";
-            this.DgwCampeonato.ReadOnly = true;
-            this.DgwCampeonato.RowHeadersWidth = 51;
-            this.DgwCampeonato.RowTemplate.Height = 24;
-            this.DgwCampeonato.Size = new System.Drawing.Size(521, 369);
-            this.DgwCampeonato.TabIndex = 49;
-            this.DgwCampeonato.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgwCampeonato_CellContentClick);
+            this.DgvCampeonato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvCampeonato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvCampeonato.Location = new System.Drawing.Point(427, 98);
+            this.DgvCampeonato.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DgvCampeonato.Name = "DgvCampeonato";
+            this.DgvCampeonato.ReadOnly = true;
+            this.DgvCampeonato.RowHeadersWidth = 51;
+            this.DgvCampeonato.RowTemplate.Height = 24;
+            this.DgvCampeonato.Size = new System.Drawing.Size(521, 369);
+            this.DgvCampeonato.TabIndex = 49;
+            this.DgvCampeonato.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgwCampeonato_CellContentClick);
             // 
             // LblIdCampeonato
             // 
@@ -99,6 +100,7 @@ namespace Campeonato_Polideportivo
             this.LblIdCampeonato.Size = new System.Drawing.Size(21, 17);
             this.LblIdCampeonato.TabIndex = 56;
             this.LblIdCampeonato.Text = "ID";
+            this.LblIdCampeonato.Visible = false;
             // 
             // LblNombre
             // 
@@ -169,6 +171,7 @@ namespace Campeonato_Polideportivo
             this.TxtIdCampeonato.Name = "TxtIdCampeonato";
             this.TxtIdCampeonato.Size = new System.Drawing.Size(100, 22);
             this.TxtIdCampeonato.TabIndex = 64;
+            this.TxtIdCampeonato.Visible = false;
             // 
             // TxtNombre
             // 
@@ -262,11 +265,29 @@ namespace Campeonato_Polideportivo
             this.BtnIngresar.UseVisualStyleBackColor = false;
             this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
+            // BtnAyuda
+            // 
+            this.BtnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAyuda.Font = new System.Drawing.Font("Haettenschweiler", 16.2F);
+            this.BtnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BtnAyuda.Location = new System.Drawing.Point(903, 22);
+            this.BtnAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnAyuda.Name = "BtnAyuda";
+            this.BtnAyuda.Size = new System.Drawing.Size(45, 35);
+            this.BtnAyuda.TabIndex = 322;
+            this.BtnAyuda.Text = "?";
+            this.BtnAyuda.UseVisualStyleBackColor = false;
+            this.BtnAyuda.Click += new System.EventHandler(this.BtnAyuda_Click);
+            // 
             // FormCampeonato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(995, 654);
+            this.Controls.Add(this.BtnAyuda);
             this.Controls.Add(this.BtnVer);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnModificar);
@@ -284,12 +305,12 @@ namespace Campeonato_Polideportivo
             this.Controls.Add(this.LblIdCampeonato);
             this.Controls.Add(this.CmbDeporte);
             this.Controls.Add(this.LblCampeonato);
-            this.Controls.Add(this.DgwCampeonato);
+            this.Controls.Add(this.DgvCampeonato);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormCampeonato";
             this.Text = "FormCampeonato";
             this.Load += new System.EventHandler(this.FormCampeonato_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DgwCampeonato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCampeonato)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,7 +319,7 @@ namespace Campeonato_Polideportivo
         #endregion
         private System.Windows.Forms.ComboBox CmbDeporte;
         private System.Windows.Forms.Label LblCampeonato;
-        private System.Windows.Forms.DataGridView DgwCampeonato;
+        private System.Windows.Forms.DataGridView DgvCampeonato;
         private System.Windows.Forms.Label LblIdCampeonato;
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.Label LblTemporada;
@@ -314,5 +335,6 @@ namespace Campeonato_Polideportivo
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnIngresar;
+        private System.Windows.Forms.Button BtnAyuda;
     }
 }

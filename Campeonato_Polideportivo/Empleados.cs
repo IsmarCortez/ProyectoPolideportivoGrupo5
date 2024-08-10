@@ -13,27 +13,35 @@ namespace Campeonato_Polideportivo
 {
     public partial class Empleados : Form
     {
+        private Bitacora bitacora;
         Conexion conexion = new Conexion();
+        private string connectionString;
         public Empleados()
         {
             InitializeComponent();
-            txtUsuario.Text = GlobalVariables.usuario;
-            
+            TxtUsuario.Text = GlobalVariables.usuario;
+
         }
 
         private void Empleados_Load(object sender, EventArgs e)
         {
-           
+            dgvEmpleados.TabStop = false;
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            string nom = txtNombre.Text;
-
+            //GlobalVariables.userId = 0;
+            string nom = TxtNombre.Text;
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             if (!string.IsNullOrEmpty(nom))
             {
-                int usuarioId = ObtenerIdUsuario(GlobalVariables.usuario); // Obtener el ID del usuario
+                ;
+                
+                // Obtener el ID del usuario
                 InsertarEmpleado(nom, usuarioId);
+                bitacora.RegistrarEvento("Ingreso un nuevo Empleado", usuarioId);
                 MessageBox.Show("Empleado guardado correctamente.");
             }
             else
@@ -41,18 +49,17 @@ namespace Campeonato_Polideportivo
                 MessageBox.Show("Por favor, ingrese el nombre del empleado.");
             }
 
-            txtIdEmpleado.Text = string.Empty;
-            txtNombre.Text = string.Empty;
-            txtApellido.Text = string.Empty;
-            cmbPuesto.Text = string.Empty;
-            txtUsuario.Text = string.Empty;
-            txtTelefono.Text = string.Empty;
-            txtCalle.Text = string.Empty;
-            txtAvenida.Text = string.Empty;
-            txtZona.Text = string.Empty;
-            cmbDepartamento.Text = string.Empty;
-            txtCodPostal.Text = string.Empty;
-            txtNumCasa.Text = string.Empty;
+
+            TxtNombre.Text = string.Empty;
+            TxtApellido.Text = string.Empty;
+            CmbPuesto.Text = string.Empty;
+            TxtTelefono.Text = string.Empty;
+            TxtCalle.Text = string.Empty;
+            TxtAvenida.Text = string.Empty;
+            TxtZona.Text = string.Empty;
+            CmbDepartamento.Text = string.Empty;
+            TxtCodPostal.Text = string.Empty;
+            TxtNumCasa.Text = string.Empty;
 
         }
 
@@ -60,17 +67,16 @@ namespace Campeonato_Polideportivo
         {
             Conexion conexion = new Conexion();
 
-            int idempleado = Convert.ToInt32(txtIdEmpleado.Text);
-            string nom = txtNombre.Text;
-            string apellido = txtApellido.Text;
-            string puesto = cmbPuesto.Text;
-            string telefono = txtTelefono.Text;
-            string calle = txtCalle.Text;
-            string avenida = txtAvenida.Text;
-            string zona = txtZona.Text;
-            string departamento = cmbDepartamento.Text;
-            string codpostal = txtCodPostal.Text;
-            string numcasa = txtNumCasa.Text;
+            string nom = TxtNombre.Text;
+            string apellido = TxtApellido.Text;
+            string puesto = CmbPuesto.Text;
+            string telefono = TxtTelefono.Text;
+            string calle = TxtCalle.Text;
+            string avenida = TxtAvenida.Text;
+            string zona = TxtZona.Text;
+            string departamento = CmbDepartamento.Text;
+            string codpostal = TxtCodPostal.Text;
+            string numcasa = TxtNumCasa.Text;
 
             using (MySqlConnection conn = conexion.getConexion())
             {
@@ -79,34 +85,23 @@ namespace Campeonato_Polideportivo
 
                     long direccionId;
                     long telefonoId;
+                    long empleadoId;
                     conn.Open();
                     MySqlTransaction transaction = conn.BeginTransaction();
 
-                    // Verificación de existencia de idusuario
-                    string checkQuery = "SELECT COUNT(*) FROM Empleado WHERE pkidempleado = @idempleado";
-                    using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn, transaction))
-                    {
-                        checkCmd.Parameters.AddWithValue("@idempleado", idempleado);
-                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
-                        if (count > 0)
-                        {
-                            MessageBox.Show("El idusuario ya existe.");
-                            return; // Salir del método si el usuario ya existe
-                        }
-                    }
 
                     // Inserción en Empleado
-                    string insertQuery = "INSERT INTO Empleado (pkidempleado, nombre, apellido, puesto, fkidusuario) " +
-                                         "VALUES (@idempleado, @nombre, @apellido, @puesto, @idusuario)";
+                    string insertQuery = "INSERT INTO Empleado (nombre, apellido, puesto, fkidusuario) " +
+                                         "VALUES (@nombre, @apellido, @puesto, @idusuario)";
                     using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn, transaction))
                     {
-                        cmd.Parameters.AddWithValue("@idempleado", idempleado);
+                        //cmd.Parameters.AddWithValue("@idempleado", idempleado);
                         cmd.Parameters.AddWithValue("@nombre", nom);
                         cmd.Parameters.AddWithValue("@apellido", apellido);
                         cmd.Parameters.AddWithValue("@puesto", puesto);
                         cmd.Parameters.AddWithValue("@idusuario", usuarioID);
                         cmd.ExecuteNonQuery();
-
+                        empleadoId = cmd.LastInsertedId;
                     }
 
                     // Inserción en Direccionempleado
@@ -140,7 +135,7 @@ namespace Campeonato_Polideportivo
                     using (MySqlCommand cmd4 = new MySqlCommand(insertQuery4, conn, transaction))
                     {
                         cmd4.Parameters.AddWithValue("@fkiddireccion", direccionId);
-                        cmd4.Parameters.AddWithValue("@fkidusuario", idempleado);
+                        cmd4.Parameters.AddWithValue("@fkidusuario", empleadoId);
                         cmd4.ExecuteNonQuery();
                     }
 
@@ -150,7 +145,7 @@ namespace Campeonato_Polideportivo
                     using (MySqlCommand cmd5 = new MySqlCommand(insertQuery5, conn, transaction))
                     {
                         cmd5.Parameters.AddWithValue("@fkidtelefono", telefonoId);
-                        cmd5.Parameters.AddWithValue("@fkidusuario", idempleado);
+                        cmd5.Parameters.AddWithValue("@fkidusuario", empleadoId);
                         cmd5.ExecuteNonQuery();
                     }
 
@@ -228,3 +223,4 @@ namespace Campeonato_Polideportivo
         }
     }
 }
+

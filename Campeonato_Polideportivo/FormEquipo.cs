@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Diagnostics; // Para Process y ProcessStartInfo
+using System.IO; // Para Path
+
+
 namespace Campeonato_Polideportivo
 {
     public partial class FormEquipo : Form
@@ -23,29 +27,63 @@ namespace Campeonato_Polideportivo
             MySqlConnection conn = conexion.getConexion();
             usuarioValidator = new UsuarioValidator(connectionString);
         }
-
-        private void BtnIngresar_Click(object sender, EventArgs e)
+        private int ObtenerIdUsuario(string nombreUsuario)
         {
             Conexion conexion = new Conexion();
+            int usuarioId = 0;
+            Bitacora bitacora = new Bitacora(connectionString);
+            string query = "SELECT pkidusuario FROM usuario WHERE usuario = @nombreUsuario";
 
-            int id_equipo = int.Parse(TxtIdEquipo.Text);
+            using (MySqlConnection conn = conexion.getConexion())
+            {
+                conn.Open();
+                using (var command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    usuarioId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return usuarioId;
+        }
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
+            Conexion conexion = new Conexion();
             string nombre = TxtNombreEquipo.Text;
             string estadio = TxtEstadio.Text;
             string ciudad = TxtCiudad.Text;
+            // Verificar si contiene dígitos
+            if (nombre.Any(char.IsDigit))
+            {
+                MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (estadio.Any(char.IsDigit))
+            {
+                MessageBox.Show("El estadio no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (ciudad.Any(char.IsDigit))
+            {
+                MessageBox.Show("La ciudad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //  conexión mysql
             using (MySqlConnection conn = conexion.getConexion())
             {
+                conn.Open();
                 try
                 {
-                    // SQL insertar datos
-                    string query = "INSERT INTO equipo (pkidequipo, nombre, estadio, ciudad) VALUES (@pkidequipo, @nombre, @estadio, @ciudad)";
+                    // Consulta SQL para insertar datos sin el ID
+                    string query = "INSERT INTO equipo (nombre, estadio, ciudad) VALUES (@nombre, @estadio, @ciudad)";
 
                     // Crear el comando
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Agregar los parámetros
-                        cmd.Parameters.AddWithValue("@pkidequipo", id_equipo);
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@estadio", estadio);
                         cmd.Parameters.AddWithValue("@ciudad", ciudad);
@@ -54,6 +92,7 @@ namespace Campeonato_Polideportivo
                         cmd.ExecuteNonQuery();
 
                         // Mostrar mensaje de éxito
+                        bitacora.RegistrarEvento("Ingresó un nuevo equipo", usuarioId);
                         MessageBox.Show("Datos ingresados correctamente.");
                     }
                 }
@@ -63,11 +102,14 @@ namespace Campeonato_Polideportivo
                     MessageBox.Show($"Error: {ex.Message}");
                 }
             }
-
         }
+
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
 
             try
@@ -78,6 +120,7 @@ namespace Campeonato_Polideportivo
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     // Crear la consulta SQL para eliminar datos
                     string query = "DELETE FROM equipo WHERE pkidequipo = @pkidequipo";
 
@@ -94,6 +137,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mostrar mensaje de que si se elimino
+                            bitacora.RegistrarEvento("Eliminó un equipo", usuarioId);
                             MessageBox.Show("Datos eliminados correctamente.");
                         }
                         else
@@ -113,6 +157,9 @@ namespace Campeonato_Polideportivo
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            Bitacora bitacora = new Bitacora(connectionString);
+            int usuarioId;
+            usuarioId = ObtenerIdUsuario(GlobalVariables.usuario);
             Conexion conexion = new Conexion();
             try
             {
@@ -121,10 +168,26 @@ namespace Campeonato_Polideportivo
                 string nombre = TxtNombreEquipo.Text;
                 string estadio = TxtEstadio.Text;
                 string ciudad = TxtCiudad.Text;
-
+                // Verificar si contiene dígitos
+                if (nombre.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El nombre no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (estadio.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El estadio no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (ciudad.Any(char.IsDigit))
+                {
+                    MessageBox.Show("La ciudad no puede contener números. Por favor, ingrese solo letras.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 // Crear la conexión
                 using (MySqlConnection conn = conexion.getConexion())
                 {
+                    conn.Open();
                     // Crear la consulta SQL para actualizar datos
                     string query = "UPDATE equipo SET nombre = @nombre, estadio = @estadio, ciudad = @ciudad WHERE pkidequipo = @pkidequipo";
 
@@ -144,6 +207,7 @@ namespace Campeonato_Polideportivo
                         if (rowsAffected > 0)
                         {
                             // Mostrar mensaje de éxito
+                            bitacora.RegistrarEvento("Modificó un equipo", usuarioId);
                             MessageBox.Show("Datos modificados correctamente.");
                         }
                         else
@@ -184,7 +248,7 @@ namespace Campeonato_Polideportivo
                         adapter.Fill(dt);
 
                         // Asignar el DataTable como el origen de datos del DataGridView
-                        dataGridView1.DataSource = dt;
+                        DgvEquipo.DataSource = dt;
                     }
                 }
             }
@@ -210,7 +274,24 @@ namespace Campeonato_Polideportivo
        
         private void FormEquipo_Load(object sender, EventArgs e)
         {
-           
+
+            TxtIdEquipo.TabIndex = 0;
+            TxtNombreEquipo.TabIndex = 1;
+            TxtEstadio.TabIndex = 2;
+            TxtCiudad.TabIndex = 3;
+
+            //desactivar dataGridView1
+            DgvEquipo.TabStop = false;
+
+            // Desactivar TabStop para los botones para que no reciban el foco con Tab
+            BtnIngresar.TabIndex = 4;
+            BtnModificar.TabIndex = 5;
+            BtnEliminar.TabIndex = 6;
+            BtnLimpiar.TabIndex = 7;
+            BtnVer.TabIndex = 8;
+            BtnAyuda.TabIndex = 9;
+
+
             // Maximizar la ventana
             this.WindowState = FormWindowState.Maximized;
 
@@ -228,7 +309,7 @@ namespace Campeonato_Polideportivo
             if (nivelDeAcceso == 1)
             {
 
-                BtnIngresar.Visible = true;
+                BtnIngresar.Visible = false;
                 BtnVer.Visible = true;
                 BtnLimpiar.Visible = true;
                 BtnModificar.Visible = false;
@@ -260,6 +341,79 @@ namespace Campeonato_Polideportivo
                 BtnModificar.Visible = false;
                 BtnEliminar.Visible = false;
             }
+            
+            TxtIdEquipo.TabIndex = 0;
+            TxtNombreEquipo.TabIndex = 1;
+            TxtEstadio.TabIndex = 2;
+            TxtCiudad.TabIndex = 3;
+
+            BtnIngresar.TabIndex= 4;
+            BtnModificar.TabIndex = 5;
+            BtnEliminar.TabIndex = 6;
+            BtnLimpiar.TabIndex = 7;
+            BtnVer.TabIndex = 8;
+            //desactivar dataGridView1
+            DgvEquipo.TabStop = false;
+
+        }
+
+        private void TxtIdEquipo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                TxtIdEquipo.Text = DgvEquipo.CurrentRow.Cells[0].Value.ToString();
+                TxtNombreEquipo.Text = DgvEquipo.CurrentRow.Cells[1].Value.ToString();
+                TxtEstadio.Text = DgvEquipo.CurrentRow.Cells[2].Value.ToString();
+                TxtCiudad.Text = DgvEquipo.CurrentRow.Cells[3].Value.ToString();
+               
+            }
+            catch
+            {
+            }
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            // Obtén la ruta del directorio base del proyecto
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ruta al archivo PDF en la raíz del proyecto
+            string pdfPath = Path.Combine(baseDirectory, "..", "..", "..", "manual.pdf");
+
+            // Verifica la ruta construida
+            string fullPath = Path.GetFullPath(pdfPath);
+            MessageBox.Show($"Ruta del PDF: {fullPath}");
+
+            // Número de página a la que deseas ir (comienza desde 1)
+            int pageNumber = 11;
+
+            // URL para abrir el PDF en una página específica
+            string pdfUrl = $"file:///{fullPath.Replace('\\', '/')}#page={pageNumber}";
+
+            // Escapa espacios en la URL
+            pdfUrl = pdfUrl.Replace(" ", "%20");
+
+            try
+            {
+                // Usa ProcessStartInfo para abrir el archivo con el programa asociado
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfUrl,
+                    UseShellExecute = true  // Asegúrate de que UseShellExecute esté en true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el PDF. Error: {ex.Message}");
+            }
+
+
         }
     }
 }
